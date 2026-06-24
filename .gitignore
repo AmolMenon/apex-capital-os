@@ -8,5 +8,4 @@ __pycache__
 dist
 .next
 coverage
-apex_capital.db
 .pytest_cache
