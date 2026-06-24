@@ -1,0 +1,12 @@
+node_modules
+venv
+.env
+.env.local
+__pycache__
+*.pyc
+.DS_Store
+dist
+.next
+coverage
+apex_capital.db
+.pytest_cache

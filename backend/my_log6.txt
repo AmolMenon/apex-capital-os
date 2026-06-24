@@ -1,0 +1,1102 @@
+INFO:     Started server process [17384]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:56177 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56334 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56335 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56334 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:56335 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56341 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56342 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56343 - "OPTIONS /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56344 - "OPTIONS /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56344 - "GET /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56343 - "GET /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56342 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56341 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56341 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56342 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56343 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56344 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56346 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56347 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56342 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56343 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56347 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56346 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56341 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56344 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57236 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57236 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57252 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57255 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57256 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57257 - "OPTIONS /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57258 - "OPTIONS /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57259 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57252 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57258 - "GET /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57257 - "GET /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57259 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57256 - "GET /deals/999 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57255 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57256 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57259 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57257 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57258 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57260 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57261 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57257 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57258 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57261 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57260 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57256 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57259 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57266 - "OPTIONS /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57267 - "OPTIONS /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57266 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57267 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57331 - "OPTIONS /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57332 - "OPTIONS /copilot/deals/1002/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57333 - "OPTIONS /copilot/deals/1002/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57334 - "OPTIONS /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57333 - "GET /copilot/deals/1002/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57332 - "GET /copilot/deals/1002/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57334 - "GET /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57331 - "GET /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57331 - "OPTIONS /conversations/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57334 - "OPTIONS /web-research/deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57332 - "OPTIONS /conversations/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57333 - "OPTIONS /web-research/deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57334 - "GET /web-research/deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57333 - "GET /web-research/deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57331 - "GET /conversations/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57332 - "GET /conversations/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57338 - "OPTIONS /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57339 - "OPTIONS /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57339 - "GET /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57338 - "GET /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57338 - "OPTIONS /war-room/deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57339 - "OPTIONS /war-room/deals/1002 HTTP/1.1" 200 OK
+Data room war room err: 'Deal' object has no attribute 'name'
+Data room war room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57338 - "GET /war-room/deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57339 - "GET /war-room/deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57340 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57341 - "OPTIONS /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57342 - "OPTIONS /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57343 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57342 - "GET /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57341 - "GET /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57343 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57340 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57340 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57343 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57341 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57342 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57341 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57342 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57342 - "OPTIONS /war-room/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57341 - "OPTIONS /war-room/deals/999 HTTP/1.1" 200 OK
+Data room war room err: 'Deal' object has no attribute 'name'
+Data room war room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57342 - "GET /war-room/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57341 - "GET /war-room/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57340 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57343 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57347 - "OPTIONS /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57348 - "OPTIONS /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57349 - "OPTIONS /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57350 - "OPTIONS /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57350 - "GET /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57349 - "GET /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57348 - "GET /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57347 - "GET /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57351 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57352 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57351 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57352 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57347 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57348 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57347 - "OPTIONS /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57349 - "OPTIONS /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57350 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57348 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57353 - "OPTIONS /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57347 - "OPTIONS /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57348 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57347 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57353 - "GET /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57347 - "GET /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57349 - "GET /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57354 - "GET /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57348 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57350 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57361 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57362 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57363 - "OPTIONS /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57364 - "OPTIONS /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57362 - "GET /copilot/deals/999/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57364 - "GET /copilot/deals/999/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57363 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57361 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57361 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57363 - "OPTIONS /deals/999/diligence-runs/run_mock_999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57364 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57362 - "OPTIONS /deals/999/diligence-runs/run_mock_999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57363 - "GET /deals/999/diligence-runs/run_mock_999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57362 - "GET /deals/999/diligence-runs/run_mock_999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57361 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57364 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57371 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57372 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57372 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57371 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57375 - "GET /fund/deals/999/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57376 - "GET /fund/deals/999/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57377 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57378 - "GET /deals/999/partner-review HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57379 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57381 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57382 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57381 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57382 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57382 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57381 - "GET /diligence/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57387 - "GET /diligence/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57386 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57385 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57386 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57399 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57399 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57401 - "GET /fund/deals/999/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57402 - "GET /fund/deals/999/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57399 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57400 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57403 - "GET /deals/999/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57404 - "GET /deals/999 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57403 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57404 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57407 - "GET /deals/999/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57408 - "GET /fund/deals/999/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57407 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57408 - "GET /deals/999 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57407 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57409 - "GET /deals/999/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57410 - "GET /deals/999 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57409 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57410 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57422 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57423 - "OPTIONS /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57423 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57422 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57422 - "OPTIONS /war-room/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57423 - "OPTIONS /war-room/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57422 - "GET /war-room/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57423 - "GET /war-room/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57424 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57425 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57424 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57425 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57423 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57422 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57426 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57427 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57427 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57423 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57422 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57426 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57424 - "GET /research/999 HTTP/1.1" 404 Not Found
+2026-06-17 16:41:12,872 - main - ERROR - Unhandled exception: '>' not supported between instances of 'NoneType' and 'int'
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+INFO:     127.0.0.1:57426 - "POST /research/999 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+2026-06-17 16:41:13,876 - main - ERROR - Unhandled exception: '>' not supported between instances of 'NoneType' and 'int'
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+INFO:     127.0.0.1:57422 - "POST /research/999 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+2026-06-17 16:41:14,139 - main - ERROR - Unhandled exception: '>' not supported between instances of 'NoneType' and 'int'
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+INFO:     127.0.0.1:57423 - "POST /research/999 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+2026-06-17 16:41:14,308 - main - ERROR - Unhandled exception: '>' not supported between instances of 'NoneType' and 'int'
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+INFO:     127.0.0.1:57427 - "POST /research/999 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+INFO:     127.0.0.1:57429 - "GET /decks/999 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57430 - "GET /decks/999 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57438 - "OPTIONS /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57439 - "OPTIONS /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57439 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57438 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57441 - "GET /research/999 HTTP/1.1" 404 Not Found
+2026-06-17 16:42:06,155 - main - ERROR - Unhandled exception: '>' not supported between instances of 'NoneType' and 'int'
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+INFO:     127.0.0.1:57444 - "POST /research/999 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+2026-06-17 16:42:06,991 - main - ERROR - Unhandled exception: '>' not supported between instances of 'NoneType' and 'int'
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+INFO:     127.0.0.1:57445 - "POST /research/999 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 144, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 316, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/concurrency.py", line 38, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/to_thread.py", line 63, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 2502, in run_sync_in_worker_thread
+    return await future
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/anyio/_backends/_asyncio.py", line 986, in run
+    result = context.run(func, *args)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 469, in generate_research
+    brief = orchestrator.generate_research_brief(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/research_orchestrator.py", line 35, in generate_research_brief
+    evidence_data = grade_evidence(deal_dict)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/research_engine/evidence_grader.py", line 5, in grade_evidence
+    if revenue > 500000:
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
+INFO:     127.0.0.1:57446 - "GET /fund/deals/999/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "GET /fund/deals/999/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57446 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57446 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57447 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57449 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57450 - "GET /diligence/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57452 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57453 - "GET /diligence/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57451 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57453 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57455 - "GET /deals/999/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57456 - "GET /fund/deals/999/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57455 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57456 - "GET /deals/999 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57455 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57455 - "GET /deals/999/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57456 - "GET /deals/999 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:57455 - "GET /deals/999/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57456 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57460 - "GET /deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57461 - "GET /deals/999/partner-review HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57462 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59516 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59516 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59519 - "GET /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59520 - "GET /web-research/deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59519 - "GET /deals/1002/diligence-runs/latest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59521 - "OPTIONS /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59522 - "OPTIONS /copilot/deals/1002/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59523 - "OPTIONS /copilot/deals/1002/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59524 - "OPTIONS /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59523 - "GET /copilot/deals/1002/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59522 - "GET /copilot/deals/1002/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59524 - "GET /deals/1002 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:59521 - "GET /deals/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59520 - "GET /deals/1002/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59521 - "OPTIONS /conversations/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59524 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59522 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59523 - "OPTIONS /conversations/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59525 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59526 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59524 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59522 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59526 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59525 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59521 - "GET /conversations/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59523 - "GET /conversations/1002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59539 - "POST /deals/1/platform-diligence/run HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59554 - "POST /deals/1/platform-diligence/run HTTP/1.1" 404 Not Found

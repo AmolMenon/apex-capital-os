@@ -1,0 +1,1357 @@
+
+> frontend@0.1.0 lint
+> eslint
+
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/command-center/page.tsx
+   4:52   warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+  10:123  warning  'Activity' is defined but never used         @typescript-eslint/no-unused-vars
+  10:162  warning  'Map' is defined but never used              @typescript-eslint/no-unused-vars
+  10:184  warning  'Network' is defined but never used          @typescript-eslint/no-unused-vars
+  10:193  warning  'Users' is defined but never used            @typescript-eslint/no-unused-vars
+  10:200  warning  'BookOpen' is defined but never used         @typescript-eslint/no-unused-vars
+  10:210  warning  'Play' is defined but never used             @typescript-eslint/no-unused-vars
+  10:216  warning  'CheckSquare' is defined but never used      @typescript-eslint/no-unused-vars
+  15:44   error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/compare/page.tsx
+   5:10  warning  'CheckCircle2' is defined but never used   @typescript-eslint/no-unused-vars
+   5:24  warning  'AlertTriangle' is defined but never used  @typescript-eslint/no-unused-vars
+   5:46  warning  'Target' is defined but never used         @typescript-eslint/no-unused-vars
+  10:32  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+  17:14  warning  'e' is defined but never used              @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/connectors/page.tsx
+   9:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  10:36  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deal-inbox/items/[inbound_id]/page.tsx
+  10:36  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  33:45  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  33:60  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deal-inbox/page.tsx
+  10:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/closing/page.tsx
+  11:46  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  12:46  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  34:9   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  34:65  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/conversations/page.tsx
+   10:3   warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+   18:3   warning  'CheckCircle2' is defined but never used     @typescript-eslint/no-unused-vars
+   19:3   warning  'Info' is defined but never used             @typescript-eslint/no-unused-vars
+   20:3   warning  'Search' is defined but never used           @typescript-eslint/no-unused-vars
+   27:3   warning  'User' is defined but never used             @typescript-eslint/no-unused-vars
+   34:36  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  152:45  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  257:49  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  354:48  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  384:49  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/copilot/page.tsx
+  4:10  warning  'use' is defined but never used           @typescript-eslint/no-unused-vars
+  7:43  warning  'params' is defined but never used        @typescript-eslint/no-unused-vars
+  8:41  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/customer-reference-script/page.tsx
+  11:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  66:45  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/data-room/page.tsx
+    2:10  warning  'OperationsPanel' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-unused-vars
+    5:10  warning  'use' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+   10:85  warning  'ArrowRight' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+   14:40  warning  'params' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+   15:41  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+   17:40  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+   22:5   error    Error: Cannot access variable before it is declared
+
+`fetchReport` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/data-room/page.tsx:22:5
+  20 |
+  21 |   useEffect(() => {
+> 22 |     fetchReport();
+     |     ^^^^^^^^^^^ `fetchReport` accessed before it is declared
+  23 |   }, [id]);
+  24 |
+  25 |   const fetchReport = async () => {
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/data-room/page.tsx:25:3
+  23 |   }, [id]);
+  24 |
+> 25 |   const fetchReport = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 26 |     try {
+     | ^^^^^^^^^
+> 27 |       setLoading(true);
+     …
+     | ^^^^^^^^^
+> 34 |     }
+     | ^^^^^^^^^
+> 35 |   };
+     | ^^^^^ `fetchReport` is declared here
+  36 |
+  37 |   const handleParse = async () => {
+  38 |     try {  react-hooks/immutability
+   23:6   warning  React Hook useEffect has a missing dependency: 'fetchReport'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+  127:48  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+  152:47  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/deal-room/page.tsx
+    7:10   warning  'PublicBenchmarkBadge' is defined but never used   @typescript-eslint/no-unused-vars
+    7:32   warning  'BenchmarkWarning' is defined but never used       @typescript-eslint/no-unused-vars
+    7:50   warning  'SourceConfidenceBadge' is defined but never used  @typescript-eslint/no-unused-vars
+    7:73   warning  'SourceRegistryTable' is defined but never used    @typescript-eslint/no-unused-vars
+   92:23   error    Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+   92:55   error    Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+   97:112  error    Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+   99:75   error    Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+  100:74   error    Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/deal-structuring/page.tsx
+   8:22  warning  'Target' is defined but never used        @typescript-eslint/no-unused-vars
+   8:43  warning  'LineChart' is defined but never used     @typescript-eslint/no-unused-vars
+  12:40  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  66:52  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  75:51  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/decision/page.tsx
+  3:10  warning  'PublicBenchmarkBadge' is defined but never used   @typescript-eslint/no-unused-vars
+  3:32  warning  'BenchmarkWarning' is defined but never used       @typescript-eslint/no-unused-vars
+  3:50  warning  'SourceConfidenceBadge' is defined but never used  @typescript-eslint/no-unused-vars
+  3:73  warning  'SourceRegistryTable' is defined but never used    @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/deck/page.tsx
+   10:42  warning  'PlusCircle' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-unused-vars
+   21:9   warning  'router' is assigned a value but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @typescript-eslint/no-unused-vars
+   24:52  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+   32:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/deck/page.tsx:32:7
+  30 |   useEffect(() => {
+  31 |     if (params.id) {
+> 32 |       setDealId(params.id as string)
+     |       ^^^^^^^^^ Avoid calling setState() directly within an effect
+  33 |       fetchDeckAnalysis(params.id as string)
+  34 |     }
+  35 |   }, [params.id])                                                             react-hooks/set-state-in-effect
+   33:7   error    Error: Cannot access variable before it is declared
+
+`fetchDeckAnalysis` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/deck/page.tsx:33:7
+  31 |     if (params.id) {
+  32 |       setDealId(params.id as string)
+> 33 |       fetchDeckAnalysis(params.id as string)
+     |       ^^^^^^^^^^^^^^^^^ `fetchDeckAnalysis` accessed before it is declared
+  34 |     }
+  35 |   }, [params.id])
+  36 |
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/deck/page.tsx:37:3
+  35 |   }, [params.id])
+  36 |
+> 37 |   const fetchDeckAnalysis = async (id: string) => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 38 |     try {
+     | ^^^^^^^^^
+> 39 |       const res = await fetch(`${"http://127.0.0.1:8000"}/decks/${id}`)
+     …
+     | ^^^^^^^^^
+> 48 |     }
+     | ^^^^^^^^^
+> 49 |   }
+     | ^^^^ `fetchDeckAnalysis` is declared here
+  50 |
+  51 |   const handleAnalyze = async () => {
+  52 |     if (!rawText.trim()) return  react-hooks/immutability
+  196:60  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  255:53  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/diligence/page.tsx
+    5:8   warning  'Link' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+    6:10  warning  'ArrowLeft' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+   16:36  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+   17:36  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+   18:46  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+   41:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/diligence/page.tsx:41:5
+  39 |
+  40 |   useEffect(() => {
+> 41 |     loadData()
+     |     ^^^^^^^^ Avoid calling setState() directly within an effect
+  42 |   }, [params.id])
+  43 |
+  44 |   const handleGenerate = async () => {  react-hooks/set-state-in-effect
+   42:6   warning  React Hook useEffect has a missing dependency: 'loadData'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react-hooks/exhaustive-deps
+   74:60  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  134:48  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   @typescript-eslint/no-explicit-any
+  140:71  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            react/no-unescaped-entities
+  140:96  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/evidence-center/page.tsx
+    4:10  warning  'use' is defined but never used                           @typescript-eslint/no-unused-vars
+    7:63  warning  'LinkIcon' is defined but never used                      @typescript-eslint/no-unused-vars
+   11:46  warning  'params' is defined but never used                        @typescript-eslint/no-unused-vars
+   12:41  error    Unexpected any. Specify a different type                  @typescript-eslint/no-explicit-any
+   15:44  error    Unexpected any. Specify a different type                  @typescript-eslint/no-explicit-any
+   16:10  warning  'filter' is assigned a value but never used               @typescript-eslint/no-unused-vars
+   16:18  warning  'setFilter' is assigned a value but never used            @typescript-eslint/no-unused-vars
+   45:7   error    'publicProfile' is never reassigned. Use 'const' instead  prefer-const
+  121:63  error    Unexpected any. Specify a different type                  @typescript-eslint/no-explicit-any
+  184:65  error    Unexpected any. Specify a different type                  @typescript-eslint/no-explicit-any
+  264:33  error    Unexpected any. Specify a different type                  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/founder-email/page.tsx
+  11:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/fund-fit/page.tsx
+  15:48  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         @typescript-eslint/no-explicit-any
+  33:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/fund-fit/page.tsx:33:5
+  31 |
+  32 |   useEffect(() => {
+> 33 |     loadAssessment();
+     |     ^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  34 |   }, [id]);
+  35 |
+  36 |   const handleGenerate = async () => {  react-hooks/set-state-in-effect
+  34:6   warning  React Hook useEffect has a missing dependency: 'loadAssessment'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                react-hooks/exhaustive-deps
+  48:14  warning  'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/ic-one-pager/page.tsx
+    1:10  warning  'Card' is defined but never used                   @typescript-eslint/no-unused-vars
+    1:16  warning  'CardContent' is defined but never used            @typescript-eslint/no-unused-vars
+    2:10  warning  'Button' is defined but never used                 @typescript-eslint/no-unused-vars
+    3:8   warning  'Link' is defined but never used                   @typescript-eslint/no-unused-vars
+    5:10  warning  'ArrowLeft' is defined but never used              @typescript-eslint/no-unused-vars
+   12:10  warning  'PublicBenchmarkBadge' is defined but never used   @typescript-eslint/no-unused-vars
+   12:32  warning  'BenchmarkWarning' is defined but never used       @typescript-eslint/no-unused-vars
+   12:50  warning  'SourceConfidenceBadge' is defined but never used  @typescript-eslint/no-unused-vars
+   12:73  warning  'SourceRegistryTable' is defined but never used    @typescript-eslint/no-unused-vars
+   19:12  warning  'e' is defined but never used                      @typescript-eslint/no-unused-vars
+   29:12  warning  'e' is defined but never used                      @typescript-eslint/no-unused-vars
+   39:12  warning  'e' is defined but never used                      @typescript-eslint/no-unused-vars
+   56:55  warning  'e' is defined but never used                      @typescript-eslint/no-unused-vars
+  203:44  error    Unexpected any. Specify a different type           @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/ic-packet/page.tsx
+   4:10  warning  'use' is defined but never used              @typescript-eslint/no-unused-vars
+   5:29  warning  'CardHeader' is defined but never used       @typescript-eslint/no-unused-vars
+   5:41  warning  'CardTitle' is defined but never used        @typescript-eslint/no-unused-vars
+   5:52  warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+  10:45  warning  'CheckCircle' is defined but never used      @typescript-eslint/no-unused-vars
+  13:40  warning  'params' is defined but never used           @typescript-eslint/no-unused-vars
+  14:41  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  29:17  warning  'e' is defined but never used                @typescript-eslint/no-unused-vars
+  34:17  warning  'e' is defined but never used                @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/knowledge-graph/page.tsx
+   6:27   warning  'AlertTriangle' is defined but never used                        @typescript-eslint/no-unused-vars
+   6:42   warning  'Link2' is defined but never used                                @typescript-eslint/no-unused-vars
+   6:49   warning  'BookOpen' is defined but never used                             @typescript-eslint/no-unused-vars
+   6:59   warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   9:33   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  12:46   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  13:52   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  53:135  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  69:42   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/layout.tsx
+   9:63  warning  'CheckSquare' is defined but never used                          @typescript-eslint/no-unused-vars
+  70:22  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  70:45  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  70:50  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/memo/page.tsx
+   1:10  warning  'Card' is defined but never used                   @typescript-eslint/no-unused-vars
+   1:16  warning  'CardContent' is defined but never used            @typescript-eslint/no-unused-vars
+   1:29  warning  'CardHeader' is defined but never used             @typescript-eslint/no-unused-vars
+   1:41  warning  'CardTitle' is defined but never used              @typescript-eslint/no-unused-vars
+   2:10  warning  'Button' is defined but never used                 @typescript-eslint/no-unused-vars
+   4:8   warning  'Link' is defined but never used                   @typescript-eslint/no-unused-vars
+   5:10  warning  'ArrowLeft' is defined but never used              @typescript-eslint/no-unused-vars
+  12:10  warning  'PublicBenchmarkBadge' is defined but never used   @typescript-eslint/no-unused-vars
+  12:50  warning  'SourceConfidenceBadge' is defined but never used  @typescript-eslint/no-unused-vars
+  12:73  warning  'SourceRegistryTable' is defined but never used    @typescript-eslint/no-unused-vars
+  19:12  warning  'e' is defined but never used                      @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/negotiation-prep/page.tsx
+  11:36  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/partner-review/page.tsx
+   5:25  warning  'CheckCircle' is defined but never used   @typescript-eslint/no-unused-vars
+  11:19  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  12:18  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/red-team/page.tsx
+    4:10   warning  'use' is defined but never used                                  @typescript-eslint/no-unused-vars
+    5:52   warning  'CardDescription' is defined but never used                      @typescript-eslint/no-unused-vars
+   11:39   warning  'params' is defined but never used                               @typescript-eslint/no-unused-vars
+   12:41   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   98:25   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   98:59   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   98:108  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   99:25   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   99:87   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  100:25   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  100:83   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/research/page.tsx
+    1:10  warning  'notFound' is defined but never used                             @typescript-eslint/no-unused-vars
+    4:10  warning  'Button' is defined but never used                               @typescript-eslint/no-unused-vars
+    6:10  warning  'Progress' is defined but never used                             @typescript-eslint/no-unused-vars
+   30:12  warning  'e' is defined but never used                                    @typescript-eslint/no-unused-vars
+   53:5   warning  'company_name' is assigned a value but never used                @typescript-eslint/no-unused-vars
+  169:44  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  200:58  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  285:52  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  314:41  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/scorecard/page.tsx
+    5:10   warning  'Activity' is defined but never used      @typescript-eslint/no-unused-vars
+   58:103  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  112:43   error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/term-sheet/page.tsx
+  11:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  55:71  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  61:74  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/war-room/page.tsx
+    3:10   warning  'OperationsPanel' is defined but never used                      @typescript-eslint/no-unused-vars
+   39:18   warning  'e' is defined but never used                                    @typescript-eslint/no-unused-vars
+  133:142  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/web-research/page.tsx
+   4:52  warning  'CardDescription' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+   6:10  warning  'Badge' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              @typescript-eslint/no-unused-vars
+   7:28  warning  'Search' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             @typescript-eslint/no-unused-vars
+  24:36  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       @typescript-eslint/no-explicit-any
+  40:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/[id]/web-research/page.tsx:40:5
+  38 |
+  39 |   useEffect(() => {
+> 40 |     fetchData()
+     |     ^^^^^^^^^ Avoid calling setState() directly within an effect
+  41 |   }, [numericId])
+  42 |
+  43 |   const handleRefresh = async () => {  react-hooks/set-state-in-effect
+  41:6   warning  React Hook useEffect has a missing dependency: 'fetchData'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   react-hooks/exhaustive-deps
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/active/[tab]/page.tsx
+  20:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/deals/active/[tab]/page.tsx:20:7
+  18 |       router.replace(`/deals/${activeId}/${params.tab}`)
+  19 |     } else {
+> 20 |       setLoading(false)
+     |       ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  21 |     }
+  22 |   }, [router, params.tab])
+  23 |  react-hooks/set-state-in-effect
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/decision-board/page.tsx
+   6:25  warning  'AlertTriangle' is defined but never used  @typescript-eslint/no-unused-vars
+   9:32  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+  16:14  warning  'e' is defined but never used              @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/decision-lab/cases/[case_id]/page.tsx
+  11:36  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  12:44  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  13:46  error  Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  90:47  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  90:70  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/decision-lab/counterfactuals/page.tsx
+   4:16  warning  'CardHeader' is defined but never used                           @typescript-eslint/no-unused-vars
+   4:28  warning  'CardTitle' is defined but never used                            @typescript-eslint/no-unused-vars
+   8:40  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  18:49  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  18:57  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  27:47  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  27:69  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/decision-lab/false-positives/page.tsx
+  7:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/decision-lab/missed-deals/page.tsx
+  7:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/decision-lab/page.tsx
+  10:10  warning  'status' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  10:40  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  11:38  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/decision-lab/playbook-backtests/page.tsx
+  7:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/demo-control-center/page.tsx
+   3:52  warning  'CardDescription' is defined but never used                      @typescript-eslint/no-unused-vars
+  77:25  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  77:39  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/demo-reliability/page.tsx
+  9:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/demo-script/page.tsx
+    2:29   warning  'CardHeader' is defined but never used                           @typescript-eslint/no-unused-vars
+    2:41   warning  'CardTitle' is defined but never used                            @typescript-eslint/no-unused-vars
+    4:10   warning  'ShieldCheck' is defined but never used                          @typescript-eslint/no-unused-vars
+    4:58   warning  'Briefcase' is defined but never used                            @typescript-eslint/no-unused-vars
+    4:69   warning  'Bot' is defined but never used                                  @typescript-eslint/no-unused-vars
+    4:74   warning  'Server' is defined but never used                               @typescript-eslint/no-unused-vars
+    4:82   warning  'CheckSquare' is defined but never used                          @typescript-eslint/no-unused-vars
+   14:11   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   14:102  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   34:73   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   34:302  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   55:73   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   55:319  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   59:46   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   59:80   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   75:92   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   75:118  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   77:73   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   77:93   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   77:256  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   94:73   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+   94:238  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  115:73   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  115:196  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  115:211  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  115:327  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  115:365  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  115:387  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/demo/page.tsx
+   30:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/demo/page.tsx:30:5
+  28 |
+  29 |   useEffect(() => {
+> 30 |     setIsClient(true)
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  31 |     const stored = localStorage.getItem("apex_demo_progress")
+  32 |     if (stored) {
+  33 |       try {  react-hooks/set-state-in-effect
+   35:16  warning  'e' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           @typescript-eslint/no-unused-vars
+  192:61  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react/no-unescaped-entities
+  192:72  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/evals/page.tsx
+  8:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  9:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/feature-map/page.tsx
+  1:29  warning  'CardHeader' is defined but never used       @typescript-eslint/no-unused-vars
+  1:41  warning  'CardTitle' is defined but never used        @typescript-eslint/no-unused-vars
+  1:52  warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund-os/capital-planning/page.tsx
+   8:43  warning  'Download' is defined but never used      @typescript-eslint/no-unused-vars
+  11:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund-os/construction/page.tsx
+   7:10  warning  'Button' is defined but never used        @typescript-eslint/no-unused-vars
+  12:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  97:72  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund-os/data-room/page.tsx
+   8:21  warning  'FileText' is defined but never used      @typescript-eslint/no-unused-vars
+  11:44  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund-os/fundraising-pipeline/page.tsx
+   6:16  warning  'CardHeader' is defined but never used    @typescript-eslint/no-unused-vars
+   6:28  warning  'CardTitle' is defined but never used     @typescript-eslint/no-unused-vars
+  11:44  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund-os/lp-questions/page.tsx
+   6:16  warning  'CardHeader' is defined but never used                           @typescript-eslint/no-unused-vars
+   6:28  warning  'CardTitle' is defined but never used                            @typescript-eslint/no-unused-vars
+  11:46  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  52:17  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  52:35  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund-os/lp-report/page.tsx
+   6:28  warning  'CardTitle' is defined but never used     @typescript-eslint/no-unused-vars
+   8:31  warning  'FileText' is defined but never used      @typescript-eslint/no-unused-vars
+  11:40  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund-os/lps/page.tsx
+   6:16  warning  'CardHeader' is defined but never used    @typescript-eslint/no-unused-vars
+   6:28  warning  'CardTitle' is defined but never used     @typescript-eslint/no-unused-vars
+   8:21  warning  'Users' is defined but never used         @typescript-eslint/no-unused-vars
+   8:51  warning  'TrendingUp' is defined but never used    @typescript-eslint/no-unused-vars
+  11:34  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund-os/page.tsx
+   3:10  warning  'OperationsPanel' is defined but never used  @typescript-eslint/no-unused-vars
+   7:16  warning  'CardHeader' is defined but never used       @typescript-eslint/no-unused-vars
+   7:28  warning  'CardTitle' is defined but never used        @typescript-eslint/no-unused-vars
+   9:10  warning  'Badge' is defined but never used            @typescript-eslint/no-unused-vars
+  13:42  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  57:48  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund-os/performance/page.tsx
+   8:21  warning  'TrendingUp' is defined but never used    @typescript-eslint/no-unused-vars
+   8:33  warning  'AlertCircle' is defined but never used   @typescript-eslint/no-unused-vars
+  11:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/fund/page.tsx
+  12:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  13:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  14:50  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  15:54  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/getting-started/page.tsx
+  4:10  warning  'ArrowRight' is defined but never used     @typescript-eslint/no-unused-vars
+  5:10  warning  'TooltipHelper' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/knowledge-graph/page.tsx
+    5:27  warning  'AlertTriangle' is defined but never used  @typescript-eslint/no-unused-vars
+    5:53  warning  'Link2' is defined but never used          @typescript-eslint/no-unused-vars
+    5:60  warning  'ShieldAlert' is defined but never used    @typescript-eslint/no-unused-vars
+    5:73  warning  'BookOpen' is defined but never used       @typescript-eslint/no-unused-vars
+    8:44  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   75:51  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+   94:51  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+  112:49  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+  136:52  error    Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/login/page.tsx
+  46:14  warning  'err' is defined but never used                                  @typescript-eslint/no-unused-vars
+  99:16  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/market-radar/page.tsx
+   5:16  warning  'CardHeader' is defined but never used    @typescript-eslint/no-unused-vars
+   5:28  warning  'CardTitle' is defined but never used     @typescript-eslint/no-unused-vars
+  11:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/meetings/[meeting_id]/page.tsx
+  10:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  70:47  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/meetings/page.tsx
+  10:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/observability/page.tsx
+  8:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  9:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/operations/alerts/page.tsx
+  7:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/operations/approvals/page.tsx
+  8:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/operations/cadence/page.tsx
+  7:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  8:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/operations/page.tsx
+    4:29   warning  'CardHeader' is defined but never used                           @typescript-eslint/no-unused-vars
+    4:41   warning  'CardTitle' is defined but never used                            @typescript-eslint/no-unused-vars
+    4:52   warning  'CardDescription' is defined but never used                      @typescript-eslint/no-unused-vars
+    8:8    warning  'Link' is defined but never used                                 @typescript-eslint/no-unused-vars
+   11:36   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   34:25   error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+   52:51   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   87:37   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+   87:76   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  111:39   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  111:118  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/operations/tasks/page.tsx
+  8:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/operations/workflows/page.tsx
+  7:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/page.tsx
+  5:52  warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/pipeline/page.tsx
+   19:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   55:86  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   56:87  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  117:67  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  119:33  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  123:51  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  124:56  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/playbooks/[playbook_id]/page.tsx
+  9:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/playbooks/builder/page.tsx
+  2:10  warning  'useState' is defined but never used   @typescript-eslint/no-unused-vars
+  2:20  warning  'useEffect' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/playbooks/page.tsx
+   6:20  warning  'Settings' is defined but never used      @typescript-eslint/no-unused-vars
+   6:30  warning  'PlayCircle' is defined but never used    @typescript-eslint/no-unused-vars
+  10:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  11:40  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/playbooks/simulator/page.tsx
+  2:20  warning  'useEffect' is defined but never used     @typescript-eslint/no-unused-vars
+  8:42  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/portfolio/companies/[companyId]/page.tsx
+    8:10  warning  'Button' is defined but never used        @typescript-eslint/no-unused-vars
+   10:56  warning  'FileText' is defined but never used      @typescript-eslint/no-unused-vars
+   16:42  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   17:40  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   18:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   19:42  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   20:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   21:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   95:56  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  129:34  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  213:64  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/portfolio/follow-on/page.tsx
+   7:10  warning  'Button' is defined but never used        @typescript-eslint/no-unused-vars
+  12:48  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/portfolio/lp-report/page.tsx
+   8:55  warning  'AlertCircle' is defined but never used   @typescript-eslint/no-unused-vars
+  14:40  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/portfolio/page.tsx
+   3:10  warning  'OperationsPanel' is defined but never used  @typescript-eslint/no-unused-vars
+  12:40  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  13:46  error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/portfolio/reserves/page.tsx
+   7:10  warning  'Button' is defined but never used        @typescript-eslint/no-unused-vars
+  12:44  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  74:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/portfolio/value-creation/page.tsx
+   6:16  warning  'CardHeader' is defined but never used                 @typescript-eslint/no-unused-vars
+   6:28  warning  'CardTitle' is defined but never used                  @typescript-eslint/no-unused-vars
+   9:21  warning  'Activity' is defined but never used                   @typescript-eslint/no-unused-vars
+  12:42  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  20:29  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  25:13  error    'allActions' is never reassigned. Use 'const' instead  prefer-const
+  25:25  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  26:32  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+  28:50  error    Unexpected any. Specify a different type               @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/presentation/page.tsx
+  117:172  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  117:200  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  142:54   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  142:61   error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  142:212  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  148:173  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/real-benchmarks/page.tsx
+  10:31   warning  'FileText' is defined but never used                             @typescript-eslint/no-unused-vars
+  10:53   warning  'ShieldAlert' is defined but never used                          @typescript-eslint/no-unused-vars
+  10:66   warning  'CheckCircle2' is defined but never used                         @typescript-eslint/no-unused-vars
+  80:40   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  80:47   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  80:209  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  80:235  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/register/page.tsx
+  59:14  warning  'err' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/sequoia-walkthrough/page.tsx
+    4:29   warning  'CardHeader' is defined but never used                           @typescript-eslint/no-unused-vars
+    4:41   warning  'CardTitle' is defined but never used                            @typescript-eslint/no-unused-vars
+    4:52   warning  'CardDescription' is defined but never used                      @typescript-eslint/no-unused-vars
+    8:10   warning  'Presentation' is defined but never used                         @typescript-eslint/no-unused-vars
+  164:80   error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  164:101  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/settings/page.tsx
+   4:52  warning  'CardDescription' is defined but never used          @typescript-eslint/no-unused-vars
+   5:10  warning  'Badge' is defined but never used                    @typescript-eslint/no-unused-vars
+   6:10  warning  'ShieldAlert' is defined but never used              @typescript-eslint/no-unused-vars
+   6:54  warning  'Globe' is defined but never used                    @typescript-eslint/no-unused-vars
+   9:48  error    Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  10:10  warning  'healthData' is assigned a value but never used      @typescript-eslint/no-unused-vars
+  10:48  error    Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  11:10  warning  'researchStatus' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  11:56  error    Unexpected any. Specify a different type             @typescript-eslint/no-explicit-any
+  37:9   warning  'modeLabel' is assigned a value but never used       @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/sourcing/companies/[id]/page.tsx
+   16:42  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   17:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  113:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/sourcing/page.tsx
+  11:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  12:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  13:44  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/sourcing/theses/[id]/page.tsx
+   16:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   17:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   18:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  111:49  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/sourcing/theses/page.tsx
+  10:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/system-status/page.tsx
+   6:10  warning  'Activity' is defined but never used      @typescript-eslint/no-unused-vars
+   6:35  warning  'Globe' is defined but never used         @typescript-eslint/no-unused-vars
+  12:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  25:18  warning  'e' is defined but never used             @typescript-eslint/no-unused-vars
+  28:19  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/trust-center/page.tsx
+   7:68   warning  'XCircle' is defined but never used                              @typescript-eslint/no-unused-vars
+  12:40   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  13:40   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  14:40   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  15:38   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  16:48   error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  31:143  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/trust-center/review-queue/page.tsx
+  8:38  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/app/walkthrough/page.tsx
+  97:13  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  97:41  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/DemoNarrative.tsx
+  86:63  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  86:69  error  `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/OnboardingModal.tsx
+  14:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/OnboardingModal.tsx:14:7
+  12 |     const hasSeenOnboarding = localStorage.getItem("apex_onboarding_seen")
+  13 |     if (!hasSeenOnboarding) {
+> 14 |       setIsOpen(true)
+     |       ^^^^^^^^^ Avoid calling setState() directly within an effect
+  15 |     }
+  16 |   }, [])
+  17 |  react-hooks/set-state-in-effect
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/OperationsPanel.tsx
+   7:35  warning  'entityType' is defined but never used    @typescript-eslint/no-unused-vars
+   8:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   9:50  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  14:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  19:44  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/ScreenshotProvider.tsx
+  18:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/ScreenshotProvider.tsx:18:7
+  16 |     const saved = localStorage.getItem("apex_screenshot_mode")
+  17 |     if (saved === "true") {
+> 18 |       setIsScreenshotMode(true)
+     |       ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  19 |     }
+  20 |   }, [])
+  21 |  react-hooks/set-state-in-effect
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/Sidebar.tsx
+  63:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/TopNav.tsx
+  19:7  error  'breadcrumbs' is never reassigned. Use 'const' instead  prefer-const
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/agent-workflow/AgentComponents.tsx
+    1:17  warning  'useState' is defined but never used      @typescript-eslint/no-unused-vars
+    4:42  warning  'CheckCircle' is defined but never used   @typescript-eslint/no-unused-vars
+    4:61  warning  'ArrowRight' is defined but never used    @typescript-eslint/no-unused-vars
+    6:10  warning  'format' is defined but never used        @typescript-eslint/no-unused-vars
+    8:81  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   59:56  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  118:53  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/agent-workflow/AgentWorkflowClientWrapper.tsx
+  9:108  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/copilot/CopilotChat.tsx
+    5:27  warning  'AlertCircle' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+    5:88  warning  'MessageSquare' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+    8:44  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-explicit-any
+   16:7   error    Error: Cannot access variable before it is declared
+
+`loadSession` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/copilot/CopilotChat.tsx:16:7
+  14 |   useEffect(() => {
+  15 |     if (!crossDeal && dealId) {
+> 16 |       loadSession();
+     |       ^^^^^^^^^^^ `loadSession` accessed before it is declared
+  17 |       loadSuggested();
+  18 |     }
+  19 |   }, [dealId, crossDeal]);
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/copilot/CopilotChat.tsx:25:3
+  23 |   }, [messages]);
+  24 |
+> 25 |   const loadSession = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 26 |     try {
+     | ^^^^^^^^^
+> 27 |       const res = await api.getCopilotSession(dealId as string);
+     | ^^^^^^^^^
+> 28 |       if (res && res.messages) {
+     | ^^^^^^^^^
+> 29 |         setMessages(res.messages);
+     | ^^^^^^^^^
+> 30 |       }
+     | ^^^^^^^^^
+> 31 |     } catch (e) {
+     | ^^^^^^^^^
+> 32 |       console.error(e);
+     | ^^^^^^^^^
+> 33 |     }
+     | ^^^^^^^^^
+> 34 |   };
+     | ^^^^^ `loadSession` is declared here
+  35 |
+  36 |   const loadSuggested = async () => {
+  37 |     try {  react-hooks/immutability
+   17:7   error    Error: Cannot access variable before it is declared
+
+`loadSuggested` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/copilot/CopilotChat.tsx:17:7
+  15 |     if (!crossDeal && dealId) {
+  16 |       loadSession();
+> 17 |       loadSuggested();
+     |       ^^^^^^^^^^^^^ `loadSuggested` accessed before it is declared
+  18 |     }
+  19 |   }, [dealId, crossDeal]);
+  20 |
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/copilot/CopilotChat.tsx:36:3
+  34 |   };
+  35 |
+> 36 |   const loadSuggested = async () => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |     try {
+     | ^^^^^^^^^
+> 38 |       const res = await api.getSuggestedCopilotQuestions(dealId as string);
+     | ^^^^^^^^^
+> 39 |       if (res) setSuggested(res);
+     | ^^^^^^^^^
+> 40 |     } catch (e) {
+     | ^^^^^^^^^
+> 41 |       console.error(e);
+     | ^^^^^^^^^
+> 42 |     }
+     | ^^^^^^^^^
+> 43 |   };
+     | ^^^^^ `loadSuggested` is declared here
+  44 |
+  45 |   const clearSession = async () => {
+  46 |     if (dealId && !crossDeal) {                                                                                 react-hooks/immutability
+   19:6   warning  React Hook useEffect has missing dependencies: 'loadSession' and 'loadSuggested'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/exhaustive-deps
+   82:37  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-explicit-any
+  124:43  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-explicit-any
+  173:49  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/copilot/GlobalCopilotBar.tsx
+  3:27  warning  'useEffect' is defined but never used      @typescript-eslint/no-unused-vars
+  4:32  warning  'MessageSquare' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/data-room/EvidenceGraph.tsx
+   95:38  warning  'idx' is defined but never used  @typescript-eslint/no-unused-vars
+  113:37  warning  'idx' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/deck/DeckComponents.tsx
+   7:38  warning  'FileText' is defined but never used      @typescript-eslint/no-unused-vars
+   7:48  warning  'UploadCloud' is defined but never used   @typescript-eslint/no-unused-vars
+  28:62  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  63:58  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  98:62  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/diligence/DiligenceComponents.tsx
+    7:36  warning  'HelpCircle' is defined but never used                           @typescript-eslint/no-unused-vars
+    7:61  warning  'Clock' is defined but never used                                @typescript-eslint/no-unused-vars
+   67:64  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  122:62  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  137:57  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  137:72  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  152:66  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  209:66  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  230:70  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  251:64  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  274:65  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  321:87  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+  332:35  error    Unexpected any. Specify a different type                         @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/diligence/PublicDataComponents.tsx
+  48:61  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/fund/ConcentrationRiskCard.tsx
+  4:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/fund/FundFitAssessmentCard.tsx
+  5:69  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/fund/FundProfileCard.tsx
+  4:57  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/fund/FundReturnSimulation.tsx
+  4:56  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/fund/PortfolioConstructionGrid.tsx
+  4:61  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/research/ResearchComponents.tsx
+   5:61  warning  'Activity' is defined but never used      @typescript-eslint/no-unused-vars
+   5:71  warning  'BarChart' is defined but never used      @typescript-eslint/no-unused-vars
+   5:81  warning  'ShieldAlert' is defined but never used   @typescript-eslint/no-unused-vars
+  44:61  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  71:61  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/ui/DealTopStatusBar.tsx
+  7:10  warning  'CheckCircle2' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/ui/DealWorkflowStatusBar.tsx
+  4:32  warning  'AlertCircle' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/ui/NextBestActionCard.tsx
+  14:44  warning  'hasFundFit' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/ui/WorkflowGuide.tsx
+  100:25  warning  'idx' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/war-room/ChangeOurMindPanel.tsx
+  1:52  warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+  4:42  warning  'AlertCircle' is defined but never used      @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/war-room/ConvictionDashboard.tsx
+  5:10  warning  'ShieldCheck' is defined but never used  @typescript-eslint/no-unused-vars
+  5:23  warning  'Target' is defined but never used       @typescript-eslint/no-unused-vars
+  5:58  warning  'Scale' is defined but never used        @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/war-room/FundMathPanel.tsx
+  3:10  warning  'Badge' is defined but never used  @typescript-eslint/no-unused-vars
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/war-room/ICSimulationPanel.tsx
+   1:52  warning  'CardDescription' is defined but never used                      @typescript-eslint/no-unused-vars
+  96:61  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  96:91  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/war-room/PartnerPersonaGrid.tsx
+   4:16  warning  'ThumbsUp' is defined but never used                             @typescript-eslint/no-unused-vars
+   4:26  warning  'ThumbsDown' is defined but never used                           @typescript-eslint/no-unused-vars
+  44:17  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  44:40  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/components/web-research/WebResearchComponents.tsx
+    2:52   warning  'CardDescription' is defined but never used  @typescript-eslint/no-unused-vars
+    4:39   warning  'ShieldCheck' is defined but never used      @typescript-eslint/no-unused-vars
+    4:64   warning  'XCircle' is defined but never used          @typescript-eslint/no-unused-vars
+    4:73   warning  'FileText' is defined but never used         @typescript-eslint/no-unused-vars
+    4:83   warning  'Activity' is defined but never used         @typescript-eslint/no-unused-vars
+    4:111  warning  'Database' is defined but never used         @typescript-eslint/no-unused-vars
+   51:60   error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+   86:60   error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  108:62   error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  126:49   error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+  135:52   error    Unexpected any. Specify a different type     @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/context/AuthContext.tsx
+  42:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/context/AuthContext.tsx:42:7
+  40 |     if (!isAuthEnabled) {
+  41 |       // Mock user for demo mode
+> 42 |       setUser({ id: 1, email: 'demo@apexcapital.com', name: 'Demo User', role: 'admin' });
+     |       ^^^^^^^ Avoid calling setState() directly within an effect
+  43 |       setWorkspaces([{ id: 1, name: 'Demo Workspace', slug: 'demo' }]);
+  44 |       setActiveWorkspace({ id: 1, name: 'Demo Workspace', slug: 'demo' });
+  45 |       setIsLoading(false);  react-hooks/set-state-in-effect
+  51:7  error  Error: Cannot access variable before it is declared
+
+`fetchUser` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/context/AuthContext.tsx:51:7
+  49 |     const token = localStorage.getItem('token');
+  50 |     if (token) {
+> 51 |       fetchUser(token);
+     |       ^^^^^^^^^ `fetchUser` accessed before it is declared
+  52 |     } else {
+  53 |       setIsLoading(false);
+  54 |     }
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/context/AuthContext.tsx:57:3
+  55 |   }, [isAuthEnabled]);
+  56 |
+> 57 |   const fetchUser = async (token: string) => {
+     |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 58 |     try {
+     | ^^^^^^^^^
+> 59 |       const apiUrl = 'http://127.0.0.1:8000';
+     …
+     | ^^^^^^^^^
+> 84 |     }
+     | ^^^^^^^^^
+> 85 |   };
+     | ^^^^^ `fetchUser` is declared here
+  86 |
+  87 |   const login = (token: string) => {
+  88 |     localStorage.setItem('token', token);                                                                                                                                                                      react-hooks/immutability
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/lib/api.ts
+   29:16  warning  'e' is defined but never used             @typescript-eslint/no-unused-vars
+   54:37  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   68:59  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   69:52  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   70:56  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   71:57  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   72:64  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   73:62  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   74:62  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   77:29  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   78:30  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   82:31  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   83:32  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   84:67  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   89:22  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  116:40  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  117:53  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  118:53  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  121:42  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  124:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  127:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  128:49  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  129:49  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  130:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  131:62  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  132:52  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  137:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  138:52  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  139:50  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  144:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  145:64  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  148:66  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  151:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  152:71  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  154:56  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  155:58  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  156:55  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  159:43  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  160:41  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  161:64  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  162:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  163:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  164:40  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  167:37  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  168:29  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  169:39  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  170:34  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  171:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  172:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  173:42  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  174:47  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  175:49  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  176:53  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  177:57  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  178:39  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  179:57  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  179:74  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  180:48  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  183:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  184:41  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  185:49  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  186:57  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  186:74  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  187:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  188:43  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  188:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  189:47  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  190:43  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  190:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  191:50  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  192:55  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  193:55  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  194:50  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  195:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  196:37  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  197:40  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  198:41  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  199:31  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  202:35  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  203:34  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  204:39  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  205:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  206:40  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  207:32  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  208:32  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  209:26  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  210:35  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  211:42  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  212:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  212:77  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  213:34  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  214:35  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  217:39  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  218:28  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  219:33  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  220:41  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  221:41  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  221:58  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  222:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  223:43  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  224:32  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  225:67  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  226:90  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  227:34  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  228:52  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  229:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  230:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  231:29  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  232:33  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  233:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  234:32  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  234:49  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  235:32  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  236:29  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  236:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  237:52  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  238:51  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  239:35  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  240:43  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  241:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  242:39  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  243:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  244:31  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  246:35  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  247:53  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  247:70  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  248:35  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  249:31  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  249:48  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  250:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  251:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  252:37  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  252:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  255:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  258:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  261:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  264:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  267:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  270:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  273:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  275:57  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  276:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  284:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  287:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  290:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  293:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  296:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  299:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  302:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  307:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  310:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  313:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  316:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  319:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  322:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  325:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  330:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  333:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  336:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  344:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  347:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  351:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  354:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  357:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  360:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  363:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  369:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  372:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  379:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  382:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  385:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  387:41  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  388:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  393:32  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  394:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  400:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  403:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  405:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  406:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  412:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  415:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  418:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  421:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  424:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  427:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  430:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  433:21  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  436:44  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  437:47  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  438:59  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  439:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  440:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  441:51  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  442:39  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  443:41  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  444:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  445:36  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  446:38  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  449:44  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  450:43  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  451:59  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  452:39  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  453:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  454:63  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  455:58  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  456:63  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  457:61  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  458:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  459:49  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  462:43  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  463:37  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  464:53  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  465:46  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  466:62  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  467:63  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  467:80  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  468:67  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  469:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  470:64  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  471:54  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  471:71  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  472:45  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  473:45  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  475:50  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  476:64  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  477:58  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  478:57  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  479:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  480:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  481:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  482:65  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  483:58  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  484:72  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  485:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  486:60  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  487:53  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  487:70  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  488:58  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  489:59  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  490:79  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  490:96  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  491:57  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  492:77  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  492:94  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  493:59  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/frontend/types/index.ts
+   48:24  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   49:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   50:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   51:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   52:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   53:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   54:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   55:14  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   56:18  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  113:20  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  114:24  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  115:22  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  116:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  117:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  118:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  120:20  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  140:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  141:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  142:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  143:13  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  144:10  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  145:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  146:22  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  147:24  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  157:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  158:24  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  159:22  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  160:33  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  161:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  162:25  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  163:19  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  193:15  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  194:27  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  195:24  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  196:21  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  197:22  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  206:12  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  208:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  217:17  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  229:14  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+✖ 803 problems (582 errors, 221 warnings)
+  3 errors and 0 warnings potentially fixable with the `--fix` option.
+

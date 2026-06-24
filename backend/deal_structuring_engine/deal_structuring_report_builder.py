@@ -1,0 +1,1 @@
+# deal_structuring_report_builder.py\n# Engine placeholder. In demo mode, orchestrator returns fixture data directly.\n

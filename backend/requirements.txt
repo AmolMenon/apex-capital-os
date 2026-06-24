@@ -1,0 +1,9 @@
+google-generativeai
+anthropic
+openai
+python-dotenv
+email-validator
+pandas
+openpyxl
+python-pptx
+

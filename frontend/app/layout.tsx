@@ -1,0 +1,56 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Sidebar } from "@/components/Sidebar";
+import { TopNav } from "@/components/TopNav";
+import { OnboardingModal } from "@/components/OnboardingModal";
+import { ScreenshotProvider } from "@/components/ScreenshotProvider";
+import { CommandPalette } from "@/components/CommandPalette";
+import { AuthProvider } from "@/context/AuthContext";
+import { GlobalCopilotBar } from "@/components/copilot/GlobalCopilotBar";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Apex Capital | Analyst OS",
+  description: "Institutional-grade venture capital analyst platform.",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
+        <div className="bg-rose-600 text-white text-xs font-bold uppercase tracking-widest text-center py-1 relative z-50">
+          VC Showcase Demo: Simulated Environment & Mock Data
+        </div>
+        <AuthProvider>
+          <ScreenshotProvider>
+            <OnboardingModal />
+            <CommandPalette />
+            <div className="flex h-screen overflow-hidden bg-background">
+              <Sidebar />
+              <div className="flex flex-1 flex-col overflow-hidden">
+              <TopNav />
+              <main className="flex-1 overflow-y-auto bg-muted/20 flex flex-col relative">
+                <div className="flex-1">
+                  {children}
+                </div>
+                <footer className="w-full border-t border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 text-center mt-auto">
+                  <p className="text-xs text-muted-foreground/70 max-w-4xl mx-auto leading-relaxed">
+                    <strong>Apex Capital</strong> is a portfolio project and educational prototype. It is not financial advice, investment advice, or a substitute for professional diligence. Outputs run in mock mode by default unless real providers are configured.
+                  </p>
+                </footer>
+              </main>
+              </div>
+              <GlobalCopilotBar />
+            </div>
+          </ScreenshotProvider>
+        </AuthProvider>
+      </body>
+    </html>
+  );
+}
