@@ -4660,3 +4660,641 @@ INFO:     127.0.0.1:53930 - "GET /deals/1004/one-pager HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53933 - "GET /deals/1004/one-pager HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53932 - "GET /conversations/1004 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53934 - "GET /conversations/1004 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54974 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54974 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54974 - "OPTIONS /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54976 - "OPTIONS /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54976 - "GET /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54974 - "GET /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54996 - "GET /sourcing/pipeline HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54995 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54995 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54996 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54995 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54998 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54997 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54995 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:54996 - "GET /deals/bharatvector/decision HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:54997 - "GET /deals/bharatvector/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /web-research/deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "OPTIONS /web-research/deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /web-research/deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "GET /web-research/deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /war-room/deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /war-room/deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /war-room/deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /war-room/deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /copilot/deals/bharatvector/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /copilot/deals/bharatvector/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "OPTIONS /copilot/deals/bharatvector/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /copilot/deals/bharatvector/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /copilot/deals/bharatvector/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "GET /copilot/deals/bharatvector/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /copilot/deals/bharatvector/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /copilot/deals/bharatvector/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54995 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+2026-06-24 16:32:28,612 - main - ERROR - Unhandled exception: invalid literal for int() with base 10: 'bharatvector'
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/routes/conversation.py", line 23, in get_conversation_intelligence
+    deal_id_int = int(str(deal_id).replace("deal-", ""))
+ValueError: invalid literal for int() with base 10: 'bharatvector'
+INFO:     127.0.0.1:54997 - "GET /conversations/bharatvector HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/routes/conversation.py", line 23, in get_conversation_intelligence
+    deal_id_int = int(str(deal_id).replace("deal-", ""))
+ValueError: invalid literal for int() with base 10: 'bharatvector'
+INFO:     127.0.0.1:54998 - "GET /fund/deals/bharatvector/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54996 - "GET /deals/bharatvector/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55003 - "GET /knowledge-graph/deals/bharatvector/similar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /trust/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /trust/scores HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "OPTIONS /trust/claims HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /trust/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /trust/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "OPTIONS /trust/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /trust/scores HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /trust/claims HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "OPTIONS /trust/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /trust/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /trust/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /trust/scores HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /trust/claims HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /trust/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /trust/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "GET /trust/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /trust/scores HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /trust/claims HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /trust/gates HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /trust/provenance HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "OPTIONS /operations/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /operations/workflows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /operations/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "OPTIONS /operations/workflows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /operations/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /operations/workflows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /operations/alerts HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /operations/workflows HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /ai/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /web-research/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /ai/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /web-research/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55008 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55009 - "GET /web-research/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "OPTIONS /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "GET /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55008 - "GET /deals/1000/diligence-runs/latest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /deals/1000 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:55009 - "GET /deals/1000/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /conversations/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /conversations/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54999 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54993 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55008 - "GET /deals/1000 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:55009 - "GET /deals/1000/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55015 - "GET /knowledge-graph/deals/1000/similar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55014 - "GET /fund/deals/1000/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /conversations/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /conversations/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55013 - "GET /conversations/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55008 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /war-room/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /war-room/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /war-room/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /war-room/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "OPTIONS /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "OPTIONS /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /copilot/deals/1000/session HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /copilot/deals/1000/suggested-questions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55019 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55021 - "GET /web-research/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55020 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55019 - "GET /deals/1000/diligence-runs/latest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55022 - "GET /web-research/deals/1000 HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:55020 - "GET /deals/1000/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55019 - "GET /deals/1000/diligence-runs/latest HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:55021 - "GET /deals/1000/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55000 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55002 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /web-research/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /web-research/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /web-research/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /web-research/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /war-room/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /war-room/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /war-room/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /war-room/deals/1000 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55025 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55027 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55026 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55025 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:55028 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55026 - "GET /deals/bharatvector/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55025 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:55026 - "GET /deals/bharatvector/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55029 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55030 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55031 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55032 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55031 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55032 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55029 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55030 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55030 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55029 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55029 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55030 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55030 - "OPTIONS /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55029 - "OPTIONS /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55030 - "GET /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55029 - "GET /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55029 - "OPTIONS /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55030 - "OPTIONS /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55029 - "GET /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55030 - "GET /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55025 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+2026-06-24 16:32:51,761 - main - ERROR - Unhandled exception: invalid literal for int() with base 10: 'bharatvector'
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/routes/conversation.py", line 23, in get_conversation_intelligence
+    deal_id_int = int(str(deal_id).replace("deal-", ""))
+ValueError: invalid literal for int() with base 10: 'bharatvector'
+INFO:     127.0.0.1:55027 - "GET /conversations/bharatvector HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/routes/conversation.py", line 23, in get_conversation_intelligence
+    deal_id_int = int(str(deal_id).replace("deal-", ""))
+ValueError: invalid literal for int() with base 10: 'bharatvector'
+INFO:     127.0.0.1:55028 - "GET /fund/deals/bharatvector/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55026 - "GET /deals/bharatvector/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55033 - "GET /knowledge-graph/deals/bharatvector/similar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /deals/bharatvector/memo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "OPTIONS /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "OPTIONS /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55001 - "GET /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54994 - "GET /deals/bharatvector/one-pager HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62005 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62005 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62005 - "OPTIONS /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62006 - "OPTIONS /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62006 - "GET /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62005 - "GET /deal-inbox/items HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62008 - "GET /sourcing/pipeline HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62007 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62005 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62006 - "OPTIONS /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62006 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62005 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62005 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62006 - "OPTIONS /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62007 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62008 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62007 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62011 - "GET /web-research/deals/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62010 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62007 - "GET /deals/999/diligence-runs/latest HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:62008 - "GET /deals/bharatvector/decision HTTP/1.1" 200 OK
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:62010 - "GET /deals/bharatvector/decision HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62013 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62014 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62013 - "OPTIONS /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62015 - "OPTIONS /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62013 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62015 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62014 - "GET /operations/tasks HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62013 - "GET /operations/next-actions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62005 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62006 - "GET /conversations/999 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62166 - "GET /deals/bharatvector HTTP/1.1" 200 OK
+2026-06-25 17:16:03,972 - main - ERROR - Unhandled exception: invalid literal for int() with base 10: 'bharatvector'
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/routes/conversation.py", line 23, in get_conversation_intelligence
+    deal_id_int = int(str(deal_id).replace("deal-", ""))
+ValueError: invalid literal for int() with base 10: 'bharatvector'
+Data room err: 'Deal' object has no attribute 'name'
+INFO:     127.0.0.1:62168 - "GET /conversations/bharatvector HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/protocols/http/h11_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/applications.py", line 1138, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/cors.py", line 85, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 196, in __call__
+    recv_stream.close()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/contextlib.py", line 135, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_utils.py", line 85, in collapse_excgroups
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/core/middleware.py", line 37, in dispatch
+    response = await call_next(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 121, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 107, in app
+    response = await f(request)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 426, in app
+    raw_response = await run_endpoint_function(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/fastapi/routing.py", line 314, in run_endpoint_function
+    return await dependant.call(**values)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/routes/conversation.py", line 23, in get_conversation_intelligence
+    deal_id_int = int(str(deal_id).replace("deal-", ""))
+ValueError: invalid literal for int() with base 10: 'bharatvector'
+INFO:     127.0.0.1:62170 - "GET /knowledge-graph/deals/bharatvector/similar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62169 - "GET /fund/deals/bharatvector/fit HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62167 - "GET /deals/bharatvector/decision HTTP/1.1" 200 OK
