@@ -13,3 +13,10 @@ openpyxl
 python-pptx
 requests
 python-multipart
+tenacity
+passlib
+bcrypt
+python-jose
+alembic
+boto3
+google-api-python-client
