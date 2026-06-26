@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ShieldAlert, Server, CheckCircle2, XCircle, Globe } from "lucide-react"
+import { ShieldAlert, Server, CheckCircle, CircleX, Globe } from "lucide-react"
 
 export default function SettingsPage() {
   const [statusData, setStatusData] = useState<any>(null)
@@ -112,9 +112,9 @@ export default function SettingsPage() {
                     <div className="flex justify-between items-center mb-1">
                       <h4 className="font-semibold text-sm capitalize">{providerName}</h4>
                       {info.available ? (
-                        <CheckCircle2 className="w-5 h-5 text-green-500" />
+                        <CheckCircle className="w-5 h-5 text-green-500" />
                       ) : (
-                        <XCircle className="w-5 h-5 text-red-400" />
+                        <CircleX className="w-5 h-5 text-red-400" />
                       )}
                     </div>
                     <p className="text-xs text-muted-foreground truncate" title={info.reason}>

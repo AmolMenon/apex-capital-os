@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge"
-import { ShieldCheck, ShieldAlert, Sparkles, User, HelpCircle } from "lucide-react"
+import { ShieldCheck, ShieldAlert, Sparkles, User, CircleHelp } from "lucide-react"
 
 export type EvidenceType = "verified" | "founder-provided" | "deck-supported" | "research-supported" | "mock-estimate" | "unsupported" | "assumption" | "needs-verification"
 
@@ -23,7 +23,7 @@ export function EvidenceLabel({ type, text }: EvidenceLabelProps) {
       case "needs-verification":
         return { bg: "bg-amber-50 text-amber-700 border-amber-200", icon: <ShieldAlert className="w-3 h-3" /> }
       case "assumption":
-        return { bg: "bg-slate-100 text-slate-700 border-slate-200", icon: <HelpCircle className="w-3 h-3" /> }
+        return { bg: "bg-slate-100 text-slate-700 border-slate-200", icon: <CircleHelp className="w-3 h-3" /> }
       default:
         return { bg: "bg-muted text-muted-foreground", icon: null }
     }

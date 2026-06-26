@@ -5,7 +5,7 @@ import { api } from "@/lib/api";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, FileText, CheckCircle2, Clock, AlertCircle } from "lucide-react";
+import { ArrowLeft, FileText, CheckCircle, Clock, AlertCircle } from "lucide-react";
 
 export default function DataRoomPage() {
   const [dataRoom, setDataRoom] = useState<any[]>([]);
@@ -51,7 +51,7 @@ export default function DataRoomPage() {
                   <CardContent className="p-4 flex items-center justify-between">
                     <div className="flex items-center gap-4">
                       {item.status === 'Completed' ? (
-                        <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                        <CheckCircle className="w-5 h-5 text-emerald-400" />
                       ) : item.status === 'In Progress' ? (
                         <Clock className="w-5 h-5 text-amber-400" />
                       ) : (

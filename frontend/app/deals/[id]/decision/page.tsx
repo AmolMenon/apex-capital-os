@@ -3,7 +3,7 @@ import { api } from "@/lib/api"
 import { PublicBenchmarkBadge, BenchmarkWarning, SourceConfidenceBadge, SourceRegistryTable } from '@/components/diligence/PublicDataComponents'
 import { PageHelpBanner } from "@/components/ui/PageHelpBanner"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Activity, CheckCircle, XCircle, AlertCircle, MessageSquare, Zap, Target, Network } from "lucide-react"
+import { Activity, CheckCircle, CircleX, AlertCircle, MessageSquare, Zap, Target, Network } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { defaultDecision, defaultFundFit } from "@/lib/safeDefaults"
 
@@ -95,7 +95,7 @@ export default async function DecisionEnginePage(props: { params: Promise<{ id: 
           <CardContent className="pt-6 space-y-6">
             <div>
               <h4 className="text-sm font-bold text-destructive mb-2 flex items-center gap-2">
-                <XCircle className="w-4 h-4" /> Hard Blockers
+                <CircleX className="w-4 h-4" /> Hard Blockers
               </h4>
               <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
                 {decisionOutput.blocking_issues?.length > 0 ? (

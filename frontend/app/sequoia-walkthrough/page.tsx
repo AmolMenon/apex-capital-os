@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { Presentation, ArrowRight, ArrowLeft, Copy, CheckCircle2, PlayCircle } from "lucide-react"
+import { Presentation, ArrowRight, ArrowLeft, Copy, CheckCircle, PlayCircle } from "lucide-react"
 
 const slides = [
   {
@@ -164,7 +164,7 @@ export default function SequoiaWalkthroughPage() {
             <p className="text-xl leading-relaxed text-indigo-950 font-medium">"{slide.talkingPoint}"</p>
             <div className="mt-4 flex justify-end">
               <Button variant="ghost" size="sm" onClick={copyText} className="text-indigo-600 hover:text-indigo-800 hover:bg-indigo-100">
-                {copied ? <CheckCircle2 className="w-4 h-4 mr-2" /> : <Copy className="w-4 h-4 mr-2" />}
+                {copied ? <CheckCircle className="w-4 h-4 mr-2" /> : <Copy className="w-4 h-4 mr-2" />}
                 {copied ? "Copied" : "Copy Talking Point"}
               </Button>
             </div>

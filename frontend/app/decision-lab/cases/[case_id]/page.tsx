@@ -4,7 +4,7 @@ import { api } from '@/lib/api'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useParams } from 'next/navigation'
-import { AlertTriangle, CheckCircle2 } from 'lucide-react'
+import { AlertTriangle, CheckCircle } from 'lucide-react'
 
 export default function CaseDetail() {
   const { case_id } = useParams()
@@ -42,7 +42,7 @@ export default function CaseDetail() {
       <p className="text-muted-foreground">Decision Date: {data.decision_date} | Cutoff: {data.information_cutoff}</p>
       
       {integrity && integrity.safe_to_use_in_backtest ? (
-        <div className="flex items-center gap-2 text-emerald-600 bg-emerald-50 p-2 rounded"><CheckCircle2 className="w-4 h-4"/> Cutoff Integrity Verified (No Future Leakage)</div>
+        <div className="flex items-center gap-2 text-emerald-600 bg-emerald-50 p-2 rounded"><CheckCircle className="w-4 h-4"/> Cutoff Integrity Verified (No Future Leakage)</div>
       ) : (
         <div className="flex items-center gap-2 text-rose-600 bg-rose-50 p-2 rounded"><AlertTriangle className="w-4 h-4"/> Cutoff Integrity Warning</div>
       )}

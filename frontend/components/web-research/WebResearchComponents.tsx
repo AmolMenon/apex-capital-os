@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { CheckCircle2, AlertTriangle, ShieldCheck, HelpCircle, XCircle, FileText, Activity, Link as LinkIcon, Database } from "lucide-react"
+import { CheckCircle, AlertTriangle, ShieldCheck, CircleHelp, CircleX, FileText, Activity, Link as LinkIcon, Database } from "lucide-react"
 
 export function WebResearchModeBadge({ mode }: { mode: string }) {
   const colors: Record<string, string> = {
@@ -92,7 +92,7 @@ export function UnknownMetricsGrid({ metrics }: { metrics: any[] }) {
         <Card key={i} className="border-amber-500/20 bg-amber-500/5">
           <CardHeader className="p-3 pb-0">
             <CardTitle className="text-sm font-semibold flex items-center gap-2">
-              <HelpCircle className="w-4 h-4 text-amber-500" />
+              <CircleHelp className="w-4 h-4 text-amber-500" />
               {m.metric}
             </CardTitle>
           </CardHeader>
@@ -121,7 +121,7 @@ export function EvidenceGraphPanel({ evidence }: { evidence: any[] }) {
           <CardContent className="py-3">
             <div className="flex flex-col md:flex-row gap-6">
               <div className="flex-1">
-                <h4 className="text-xs font-bold text-muted-foreground uppercase mb-2 flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-green-500"/> Supporting Sources</h4>
+                <h4 className="text-xs font-bold text-muted-foreground uppercase mb-2 flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-500"/> Supporting Sources</h4>
                 <ul className="text-sm space-y-1">
                   {e.supporting_sources.map((s: any, idx: number) => (
                     <li key={idx}><a href={s.url} className="text-blue-600 hover:underline">{s.title}</a></li>

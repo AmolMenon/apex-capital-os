@@ -1,6 +1,6 @@
 "use client"
 import { Deal } from "@/types"
-import { CheckCircle2, Circle, ArrowRight } from "lucide-react"
+import { CheckCircle, Circle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -131,7 +131,7 @@ export function ChecklistMode({ deal, hasFundFit = false }: ChecklistModeProps) 
             <div className="flex items-center gap-3 overflow-hidden">
               <div className="flex-shrink-0">
                 {item.completed ? (
-                  <CheckCircle2 className="h-4 w-4 text-primary" />
+                  <CheckCircle className="h-4 w-4 text-primary" />
                 ) : (
                   <Circle className="h-4 w-4 text-muted-foreground/40" />
                 )}

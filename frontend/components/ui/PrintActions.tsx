@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Printer, Copy, CheckCircle2 } from "lucide-react"
+import { Printer, Copy, CheckCircle } from "lucide-react"
 import { useState } from "react"
 
 interface PrintActionsProps {
@@ -29,7 +29,7 @@ export function PrintActions({ documentTitle, summaryTextToCopy }: PrintActionsP
       {summaryTextToCopy && (
         <Button variant="outline" size="sm" onClick={handleCopy} className="bg-background">
           {copied ? (
-            <><CheckCircle2 className="mr-2 h-4 w-4 text-emerald-500" /> Copied!</>
+            <><CheckCircle className="mr-2 h-4 w-4 text-emerald-500" /> Copied!</>
           ) : (
             <><Copy className="mr-2 h-4 w-4" /> Copy Executive Summary</>
           )}

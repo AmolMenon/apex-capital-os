@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Progress } from "@/components/ui/progress"
-import { AlertTriangle, CheckCircle, FileText, UploadCloud, XCircle, AlertCircle } from "lucide-react"
+import { AlertTriangle, CheckCircle, FileText, UploadCloud, CircleX, AlertCircle } from "lucide-react"
 
 export function DeckQualityScoreCard({ title, score }: { title: string, score: number }) {
   let color = "text-red-500"
@@ -45,7 +45,7 @@ export function ClaimVerificationTable({ claims }: { claims: any[] }) {
             <TableCell><Badge variant="outline">{claim.claim_type}</Badge></TableCell>
             <TableCell>
               {claim.evidence_level === "Unsupported" ? (
-                <Badge variant="destructive" className="flex items-center gap-1 w-fit"><XCircle className="w-3 h-3"/> Unsupported</Badge>
+                <Badge variant="destructive" className="flex items-center gap-1 w-fit"><CircleX className="w-3 h-3"/> Unsupported</Badge>
               ) : claim.evidence_level === "Weak" ? (
                 <Badge variant="secondary" className="text-orange-500 border-orange-500/20 bg-orange-500/10">Weak</Badge>
               ) : (

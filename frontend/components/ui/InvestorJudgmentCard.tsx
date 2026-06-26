@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, AlertTriangle, Scale, Target, ShieldAlert, CheckCircle2 } from "lucide-react"
+import { ArrowRight, AlertTriangle, Scale, Target, ShieldAlert, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { useState } from "react"
@@ -45,7 +45,7 @@ export function InvestorJudgmentCard({
   
   const isInvest = recommendation.toLowerCase().includes("invest") && !recommendation.toLowerCase().includes("watchlist")
   const statusColor = isInvest ? "bg-emerald-500/20 text-emerald-500 border-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]" : "bg-amber-500/10 text-amber-500 border-amber-500/50"
-  const icon = isInvest ? <CheckCircle2 className="w-5 h-5 text-emerald-500" /> : <Scale className="w-5 h-5 text-amber-500" />
+  const icon = isInvest ? <CheckCircle className="w-5 h-5 text-emerald-500" /> : <Scale className="w-5 h-5 text-amber-500" />
   const cardGlow = isInvest ? "shadow-[0_0_25px_rgba(16,185,129,0.15)] border-emerald-500/30" : "border-primary/20"
 
   return (

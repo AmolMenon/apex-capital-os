@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { api } from "@/lib/api"
 import { Deal } from "@/types"
-import { LayoutDashboard, ArrowRight, Zap, AlertTriangle, ShieldAlert, FileText, CheckCircle2, FlaskConical, Target, Cpu, Activity, Presentation, Bot, Database, Map, Radar, PieChart, Network, Users, BookOpen, Play, CheckSquare, Plus } from "lucide-react"
+import { LayoutDashboard, ArrowRight, Zap, AlertTriangle, ShieldAlert, FileText, CheckCircle, FlaskConical, Target, Cpu, Activity, Presentation, Bot, Database, Map, Radar, PieChart, Network, Users, BookOpen, Play, CheckSquare, Plus } from "lucide-react"
 import { OperationsPanel } from "@/components/OperationsPanel"
 
 export default function VCAnalystHome() {
@@ -323,7 +323,7 @@ export default function VCAnalystHome() {
           <CardContent className="pt-4 space-y-4">
             <div className="flex justify-between items-center border-b pb-3">
               <div>
-                <span className="font-semibold flex items-center gap-2">{sarvam?.startup_name} <CheckCircle2 className="w-4 h-4 text-emerald-500"/></span>
+                <span className="font-semibold flex items-center gap-2">{sarvam?.startup_name} <CheckCircle className="w-4 h-4 text-emerald-500"/></span>
                 <span className="text-xs text-muted-foreground">IC One-Pager Generated</span>
               </div>
               <Link href={`/deals/${sarvam?.id}/ic-packet`}><Button variant="outline" size="sm" className="border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300">Open Packet</Button></Link>

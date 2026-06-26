@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { HelpCircle } from "lucide-react"
+import { CircleHelp } from "lucide-react"
 import {
   Tooltip,
   TooltipContent,
@@ -24,7 +24,7 @@ export function TooltipHelper({ content, children }: TooltipHelperProps) {
               {children}
             </span>
           ) : (
-            <HelpCircle className="h-4 w-4 inline-block text-muted-foreground cursor-help ml-1 align-text-bottom hover:text-foreground transition-colors" />
+            <CircleHelp className="h-4 w-4 inline-block text-muted-foreground cursor-help ml-1 align-text-bottom hover:text-foreground transition-colors" />
           )}
         </TooltipTrigger>
         <TooltipContent className="max-w-[300px] text-sm leading-relaxed z-50">

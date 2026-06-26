@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { HelpCircle, ChevronRight } from "lucide-react"
+import { CircleHelp, ChevronRight } from "lucide-react"
 import {
   Sheet,
   SheetContent,
@@ -55,7 +55,7 @@ export function HelpDrawer() {
     <Sheet>
       <SheetTrigger asChild>
         <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-primary">
-          <HelpCircle className="h-5 w-5" />
+          <CircleHelp className="h-5 w-5" />
         </Button>
       </SheetTrigger>
       <SheetContent>
@@ -86,7 +86,7 @@ export function HelpDrawer() {
             <div className="space-y-2">
               <Link href="/demo">
                 <Button variant="outline" className="w-full justify-start text-primary border-primary/20 hover:bg-primary/5">
-                  <HelpCircle className="w-4 h-4 mr-2" /> Resume Demo Walkthrough
+                  <CircleHelp className="w-4 h-4 mr-2" /> Resume Demo Walkthrough
                 </Button>
               </Link>
               <Link href="/">

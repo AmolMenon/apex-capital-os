@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
-import { ExternalLink, CheckCircle2, FlaskConical, ShieldAlert, Zap } from "lucide-react"
+import { ExternalLink, CheckCircle, FlaskConical, ShieldAlert, Zap } from "lucide-react"
 
 export default function FeatureMapPage() {
   const categories = [
@@ -45,7 +45,7 @@ export default function FeatureMapPage() {
 
   const getStatusBadge = (status: string) => {
     switch(status) {
-      case "Ready": return <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200 hover:bg-emerald-100"><CheckCircle2 className="w-3 h-3 mr-1"/> Ready</Badge>
+      case "Ready": return <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200 hover:bg-emerald-100"><CheckCircle className="w-3 h-3 mr-1"/> Ready</Badge>
       case "Live & Mock": return <Badge className="bg-indigo-100 text-indigo-800 border-indigo-200 hover:bg-indigo-100"><Zap className="w-3 h-3 mr-1"/> Live & Mock</Badge>
       case "Needs API Key": return <Badge className="bg-amber-100 text-amber-800 border-amber-200 hover:bg-amber-100"><ShieldAlert className="w-3 h-3 mr-1"/> Needs API Key</Badge>
       case "Needs Private Data": return <Badge className="bg-slate-100 text-slate-800 border-slate-200 hover:bg-slate-100"><FlaskConical className="w-3 h-3 mr-1"/> Private Data Only</Badge>

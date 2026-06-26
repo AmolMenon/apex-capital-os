@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { AlertCircle, Target, TrendingUp, CheckCircle2, Map, LayoutDashboard, Building2, Users } from "lucide-react";
+import { AlertCircle, Target, TrendingUp, CheckCircle, Map, LayoutDashboard, Building2, Users } from "lucide-react";
 
 export default function GPCockpit() {
   const [cockpit, setCockpit] = useState<any>(null);
@@ -173,7 +173,7 @@ export default function GPCockpit() {
             </Link>
             <Link href="/fund-os/data-room">
               <Button variant="secondary" className="w-full justify-start bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300">
-                <CheckCircle2 className="w-4 h-4 mr-2 text-amber-400" />
+                <CheckCircle className="w-4 h-4 mr-2 text-amber-400" />
                 Fund Data Room Completeness
               </Button>
             </Link>

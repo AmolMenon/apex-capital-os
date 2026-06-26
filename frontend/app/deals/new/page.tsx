@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ChevronRight, Save, Briefcase, Zap, Building, Banknote, HelpCircle } from "lucide-react";
+import { ChevronRight, Save, Briefcase, Zap, Building, Banknote, CircleHelp } from "lucide-react";
 import { Deal } from "@/types";
 import { useToast } from "@/components/ui/use-toast"; // wait, check if use-toast exists, if not use sonner or standard alert
 

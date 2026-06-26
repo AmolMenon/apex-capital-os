@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { ICSimulation } from "@/types"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { MessageSquare, Users, ThumbsUp, ThumbsDown, Scale, FileText, CheckCircle2, Copy } from "lucide-react"
+import { MessageSquare, Users, ThumbsUp, ThumbsDown, Scale, FileText, CheckCircle, Copy } from "lucide-react"
 
 export function ICSimulationPanel({ simulation }: { simulation?: ICSimulation }) {
   if (!simulation) return <div>No IC simulation available.</div>
@@ -81,7 +81,7 @@ Required Diligence: ${(simulation.required_diligence || []).join(", ")}
           <Card className="shadow-sm border-primary/20 bg-primary/5">
             <CardHeader className="pb-3 border-b border-primary/10">
               <CardTitle className="text-lg flex items-center gap-2 text-primary">
-                <CheckCircle2 className="h-5 w-5" /> Final Decision
+                <CheckCircle className="h-5 w-5" /> Final Decision
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-4 space-y-4">

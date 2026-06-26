@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { AlertCircle, CheckCircle } from "lucide-react";
 
 export function ConcentrationRiskCard({ data }: { data: any }) {
   if (!data) return null;
@@ -38,7 +38,7 @@ export function ConcentrationRiskCard({ data }: { data: any }) {
           </div>
         ) : (
           <div className="p-3 bg-green-500/10 rounded-lg flex items-center gap-2">
-            <CheckCircle2 className="w-5 h-5 text-green-500" />
+            <CheckCircle className="w-5 h-5 text-green-500" />
             <span className="text-sm text-green-700 dark:text-green-400">Portfolio is well-diversified across sectors and stages.</span>
           </div>
         )}

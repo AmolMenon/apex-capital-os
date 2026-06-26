@@ -1,4 +1,4 @@
-import { CheckCircle2, Circle } from "lucide-react"
+import { CheckCircle, Circle } from "lucide-react"
 
 interface TimelineEvent {
   title: string
@@ -20,7 +20,7 @@ export function DealTimeline({ events }: DealTimelineProps) {
         <div key={i} className="relative">
           <div className="absolute -left-[35px] top-1 bg-background">
             {event.isCompleted ? (
-              <CheckCircle2 className="w-5 h-5 text-primary bg-background rounded-full" />
+              <CheckCircle className="w-5 h-5 text-primary bg-background rounded-full" />
             ) : event.isCurrent ? (
               <div className="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center bg-background">
                 <div className="w-2.5 h-2.5 rounded-full bg-primary" />

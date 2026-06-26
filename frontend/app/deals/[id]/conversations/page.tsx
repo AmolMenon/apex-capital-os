@@ -15,7 +15,7 @@ import { Badge } from "@/components/ui/badge"
 import { 
   MessageSquare, 
   AlertTriangle, 
-  CheckCircle2, 
+  CheckCircle, 
   Info, 
   Search, 
   ThumbsUp, 

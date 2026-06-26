@@ -15,7 +15,7 @@ import { PartnerPersonaGrid } from "@/components/war-room/PartnerPersonaGrid"
 import { ICSimulationPanel } from "@/components/war-room/ICSimulationPanel"
 import { FundMathPanel } from "@/components/war-room/FundMathPanel"
 import { ChangeOurMindPanel } from "@/components/war-room/ChangeOurMindPanel"
-import { ArrowLeft, PlayCircle, Loader2, FileText, CheckCircle2, Users, Cpu } from "lucide-react"
+import { ArrowLeft, PlayCircle, Loader2, FileText, CheckCircle, Users, Cpu } from "lucide-react"
 import Link from "next/link"
 
 import { useParams } from "next/navigation"
@@ -119,7 +119,7 @@ export default function WarRoomPage() {
           </div>
           <div className="bg-muted/30 p-4 rounded-lg border">
             <div className="text-xs font-semibold text-muted-foreground uppercase mb-1">War Room Status</div>
-            <div className="font-bold text-sm text-green-600 flex items-center gap-1"><CheckCircle2 className="h-3 w-3" /> {warRoom.war_room_status.replace(/_/g, " ")}</div>
+            <div className="font-bold text-sm text-green-600 flex items-center gap-1"><CheckCircle className="h-3 w-3" /> {warRoom.war_room_status.replace(/_/g, " ")}</div>
           </div>
         </div>
       )}

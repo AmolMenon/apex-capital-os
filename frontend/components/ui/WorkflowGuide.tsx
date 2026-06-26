@@ -1,7 +1,7 @@
 "use client"
 
 import { Deal } from "@/types"
-import { CheckCircle2, Circle, ArrowRight } from "lucide-react"
+import { CheckCircle, Circle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -110,7 +110,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
               isReady && "text-blue-500",
               isNotStarted && "text-muted-foreground"
             )}>
-              {isCompleted ? <CheckCircle2 className="h-5 w-5 bg-background" /> : <Circle className={cn("h-4 w-4 bg-background", isReady && "fill-blue-500/20 text-blue-500")} />}
+              {isCompleted ? <CheckCircle className="h-5 w-5 bg-background" /> : <Circle className={cn("h-4 w-4 bg-background", isReady && "fill-blue-500/20 text-blue-500")} />}
             </div>
             
             <div className={cn(

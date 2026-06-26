@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { PartnerPersona } from "@/types"
 import { Badge } from "@/components/ui/badge"
-import { User, ThumbsUp, ThumbsDown, HelpCircle, FileSearch, ArrowRightCircle } from "lucide-react"
+import { User, ThumbsUp, ThumbsDown, CircleHelp, FileSearch, CircleArrowRight } from "lucide-react"
 
 export function PartnerPersonaGrid({ personas }: { personas?: PartnerPersona[] }) {
   if (!personas || personas.length === 0) return <div>No partner personas available.</div>
@@ -47,7 +47,7 @@ export function PartnerPersonaGrid({ personas }: { personas?: PartnerPersona[] }
 
             <div>
               <h4 className="text-xs font-bold text-muted-foreground uppercase mb-2 flex items-center gap-1">
-                <HelpCircle className="h-3 w-3" /> Top Questions
+                <CircleHelp className="h-3 w-3" /> Top Questions
               </h4>
               <ul className="space-y-2">
                 {(persona.top_questions || []).map((q, i) => (
@@ -70,7 +70,7 @@ export function PartnerPersonaGrid({ personas }: { personas?: PartnerPersona[] }
           </CardContent>
           <div className="bg-muted/30 p-4 border-t mt-auto">
             <div className="flex items-center gap-2 text-sm">
-              <ArrowRightCircle className="h-4 w-4 text-muted-foreground" />
+              <CircleArrowRight className="h-4 w-4 text-muted-foreground" />
               <span className="font-bold text-muted-foreground uppercase text-xs">What would change view:</span>
               <span className="text-foreground">{persona.what_would_change_view}</span>
             </div>

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { ChangeOurMindCondition } from "@/types"
 import { Badge } from "@/components/ui/badge"
-import { ArrowUpCircle, ArrowDownCircle, AlertCircle } from "lucide-react"
+import { CircleArrowUp, CircleArrowDown, AlertCircle } from "lucide-react"
 
 export function ChangeOurMindPanel({ conditions }: { conditions?: ChangeOurMindCondition[] }) {
   if (!conditions || conditions.length === 0) return <div>No conditions available.</div>
@@ -19,7 +19,7 @@ export function ChangeOurMindPanel({ conditions }: { conditions?: ChangeOurMindC
         <Card className="border-l-4 border-l-green-500 shadow-sm">
           <CardHeader className="pb-3">
             <CardTitle className="text-lg flex items-center gap-2 text-green-700 dark:text-green-300">
-              <ArrowUpCircle className="h-5 w-5" /> Upgrade to Invest if...
+              <CircleArrowUp className="h-5 w-5" /> Upgrade to Invest if...
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -47,7 +47,7 @@ export function ChangeOurMindPanel({ conditions }: { conditions?: ChangeOurMindC
         <Card className="border-l-4 border-l-destructive shadow-sm">
           <CardHeader className="pb-3">
             <CardTitle className="text-lg flex items-center gap-2 text-destructive">
-              <ArrowDownCircle className="h-5 w-5" /> Downgrade or Pass if...
+              <CircleArrowDown className="h-5 w-5" /> Downgrade or Pass if...
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">

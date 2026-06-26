@@ -5,7 +5,7 @@ import { api } from "@/lib/api";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Download, FileText, CheckCircle2, AlertCircle } from "lucide-react";
+import { ArrowLeft, Download, FileText, CheckCircle, AlertCircle } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Button } from "@/components/ui/button";
@@ -87,7 +87,7 @@ export default function LPReportHQ() {
               <ul className="space-y-3">
                 {report?.next_quarter_priorities.map((p: string, i: number) => (
                   <li key={i} className="flex gap-3 text-sm text-zinc-300">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                    <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0" />
                     <span>{p}</span>
                   </li>
                 ))}

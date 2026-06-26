@@ -1,7 +1,7 @@
 "use client"
 
 import { Deal } from "@/types"
-import { CheckCircle2, Circle, AlertCircle, Clock } from "lucide-react"
+import { CheckCircle, Circle, AlertCircle, Clock } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
@@ -106,7 +106,7 @@ export function DealWorkflowStatusBar({ deal }: DealWorkflowStatusBarProps) {
             let colorClass = "text-muted-foreground"
             
             if (isCompleted) {
-              Icon = CheckCircle2
+              Icon = CheckCircle
               colorClass = "text-emerald-500"
             } else if (isActive) {
               Icon = Clock

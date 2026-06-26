@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Bell, Search, UserCircle, ChevronRight, Camera, Route } from "lucide-react"
+import { Bell, Search, CircleUser, ChevronRight, Camera, Route } from "lucide-react"
 import { DemoNarrative } from "@/components/DemoNarrative"
 import { DealSwitcher } from "@/components/DealSwitcher"
 import { HelpDrawer } from "@/components/ui/HelpDrawer"
@@ -86,7 +86,7 @@ export function TopNav() {
           <Bell className="h-5 w-5" />
         </Button>
         <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
-          <UserCircle className="h-5 w-5" />
+          <CircleUser className="h-5 w-5" />
         </Button>
       </div>
     </div>

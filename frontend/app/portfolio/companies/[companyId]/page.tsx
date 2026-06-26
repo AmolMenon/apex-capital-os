@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Activity, TrendingUp, AlertCircle, FileText, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Activity, TrendingUp, AlertCircle, FileText, CheckCircle } from "lucide-react";
 
 export default function CompanyProfile() {
   const params = useParams();
@@ -213,7 +213,7 @@ export default function CompanyProfile() {
                {valueCreation.recommended_actions.map((action: any, i: number) => (
                  <div key={i} className="flex gap-4 p-4 bg-zinc-900 border border-zinc-800 rounded-lg">
                    <div className="mt-0.5">
-                     <CheckCircle2 className="w-5 h-5 text-indigo-500" />
+                     <CheckCircle className="w-5 h-5 text-indigo-500" />
                    </div>
                    <div>
                      <h4 className="text-sm font-medium text-white">{action.action_type}</h4>

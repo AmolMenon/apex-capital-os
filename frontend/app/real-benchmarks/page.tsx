@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 import { api } from "@/lib/api"
 import { Deal } from "@/types"
-import { Target, Search, Cpu, FileText, ArrowRight, ShieldAlert, CheckCircle2, FlaskConical, Map } from "lucide-react"
+import { Target, Search, Cpu, FileText, ArrowRight, ShieldAlert, CheckCircle, FlaskConical, Map } from "lucide-react"
 
 export default function RealBenchmarksPage() {
   const [deals, setDeals] = useState<Deal[]>([])

@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, TerminalSquare, Database, Network, Building2, CheckCircle2, ShieldAlert } from "lucide-react"
+import { ArrowRight, TerminalSquare, Database, Network, Building2, CheckCircle, ShieldAlert } from "lucide-react"
 
 export default function PresentationPage() {
   const copyPitch = () => {
@@ -74,7 +74,7 @@ export default function PresentationPage() {
           </div>
           <div>
             <h2 className="text-sm font-bold tracking-widest uppercase text-emerald-400 mb-4 flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4" /> The Product Thesis
+              <CheckCircle className="h-4 w-4" /> The Product Thesis
             </h2>
             <h3 className="text-3xl font-bold mb-6">Unified Intelligence</h3>
             <p className="text-slate-400 text-lg leading-relaxed">

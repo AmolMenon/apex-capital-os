@@ -4,7 +4,7 @@ import { useParams } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Globe, Search, RefreshCw, Activity, ShieldCheck, HelpCircle } from "lucide-react"
+import { ArrowLeft, Globe, Search, RefreshCw, Activity, ShieldCheck, CircleHelp } from "lucide-react"
 import Link from "next/link"
 import { 
   WebResearchModeBadge, 
@@ -132,7 +132,7 @@ export default function WebResearchPage() {
       {/* Missing/Private Metrics */}
       <div className="space-y-4">
         <h2 className="text-xl font-bold flex items-center gap-2">
-          <HelpCircle className="w-5 h-5" />
+          <CircleHelp className="w-5 h-5" />
           Unknown Private Metrics
         </h2>
         <p className="text-sm text-muted-foreground">These critical metrics could not be verified via public sources and require private diligence.</p>

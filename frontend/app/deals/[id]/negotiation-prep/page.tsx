@@ -4,7 +4,7 @@ import { api } from '@/lib/api'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { useParams } from 'next/navigation'
-import { Target, CheckCircle2, ShieldAlert } from 'lucide-react'
+import { Target, CheckCircle, ShieldAlert } from 'lucide-react'
 
 export default function NegotiationPrep() {
   const { id } = useParams()
@@ -29,7 +29,7 @@ export default function NegotiationPrep() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Card>
-          <CardHeader><CardTitle className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-sky-600"/> Fund Priorities</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="flex items-center gap-2"><CheckCircle className="w-5 h-5 text-sky-600"/> Fund Priorities</CardTitle></CardHeader>
           <CardContent>
             <ul className="list-disc list-inside text-sm space-y-1">
               {prep.fund_priorities.map((item:string, i:number) => <li key={i}>{item}</li>)}

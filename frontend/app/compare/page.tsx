@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { api } from "@/lib/api"
 import { Deal } from "@/types"
-import { CheckCircle2, AlertTriangle, Scale, Target } from "lucide-react"
+import { CheckCircle, AlertTriangle, Scale, Target } from "lucide-react"
 import Link from "next/link"
 import { calculateDealHealth } from "@/lib/deal-logic"
 

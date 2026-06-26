@@ -5,7 +5,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { HelpCircle } from "lucide-react"
+import { CircleHelp } from "lucide-react"
 
 interface ExplanationPopoverProps {
   title: string
@@ -20,7 +20,7 @@ export function ExplanationPopover({ title, explanation, children }: Explanation
       <Popover>
         <PopoverTrigger asChild>
           <button className="text-muted-foreground hover:text-primary transition-colors focus:outline-none">
-            <HelpCircle className="h-4 w-4" />
+            <CircleHelp className="h-4 w-4" />
           </button>
         </PopoverTrigger>
         <PopoverContent className="w-80 p-4" align="start">

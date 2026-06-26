@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowUpCircle, ArrowDownCircle, XCircle } from "lucide-react"
+import { CircleArrowUp, CircleArrowDown, CircleX } from "lucide-react"
 
 interface ChangeOurMindCardProps {
   upgradeTriggers: string[]
@@ -17,7 +17,7 @@ export function ChangeOurMindCard({ upgradeTriggers, downgradeTriggers, passTrig
         <div className="grid grid-cols-3 divide-x divide-border">
           <div className="p-5 space-y-4">
             <div className="flex items-center gap-2 text-emerald-600">
-              <ArrowUpCircle className="w-5 h-5" />
+              <CircleArrowUp className="w-5 h-5" />
               <h4 className="font-semibold text-sm">Upgrade Case</h4>
             </div>
             <ul className="space-y-3">
@@ -32,7 +32,7 @@ export function ChangeOurMindCard({ upgradeTriggers, downgradeTriggers, passTrig
           
           <div className="p-5 space-y-4">
             <div className="flex items-center gap-2 text-amber-600">
-              <ArrowDownCircle className="w-5 h-5" />
+              <CircleArrowDown className="w-5 h-5" />
               <h4 className="font-semibold text-sm">Downgrade Case</h4>
             </div>
             <ul className="space-y-3">
@@ -47,7 +47,7 @@ export function ChangeOurMindCard({ upgradeTriggers, downgradeTriggers, passTrig
 
           <div className="p-5 space-y-4 bg-destructive/5">
             <div className="flex items-center gap-2 text-destructive">
-              <XCircle className="w-5 h-5" />
+              <CircleX className="w-5 h-5" />
               <h4 className="font-semibold text-sm">Pass Conditions</h4>
             </div>
             <ul className="space-y-3">

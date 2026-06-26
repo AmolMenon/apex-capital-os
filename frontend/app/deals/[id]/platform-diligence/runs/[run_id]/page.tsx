@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { api } from '@/lib/api';
-import { ArrowLeft, Loader2, AlertTriangle, MessageSquare, Hash, Globe, Users, Target, Activity, ShieldAlert, Printer, CheckCircle, XCircle, User, Flame, Wrench, CheckSquare, Square } from 'lucide-react';
+import { ArrowLeft, Loader2, AlertTriangle, MessageSquare, Hash, Globe, Users, Target, Activity, ShieldAlert, Printer, CheckCircle, CircleX, User, Flame, Wrench, CheckSquare, Square } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { PieChart, Pie, Cell, Tooltip as RechartsTooltip, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 
@@ -114,7 +114,7 @@ export default function PlatformDiligenceReportPage() {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold flex items-center gap-2 text-red-400 mb-2 mt-4"><XCircle className="h-4 w-4" /> The Bad</h4>
+                  <h4 className="text-sm font-bold flex items-center gap-2 text-red-400 mb-2 mt-4"><CircleX className="h-4 w-4" /> The Bad</h4>
                   <ul className="space-y-2">
                     {report.sentiment_summary?.the_bad?.map((b: string, i: number) => (
                       <li key={i} className="text-sm text-gray-300 flex items-start gap-2"><span className="mt-1.5 h-1 w-1 rounded-full bg-red-500 shrink-0"></span>{b}</li>

@@ -14,7 +14,7 @@ import {
   Server, 
   Layers, 
   Cpu, 
-  CheckCircle2, 
+  CheckCircle, 
   Activity, 
   Search, 
   LineChart, 

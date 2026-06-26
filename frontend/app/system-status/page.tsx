@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Activity, Database, Cpu, Globe, Server, AlertTriangle, CheckCircle2, Bot } from "lucide-react"
+import { Activity, Database, Cpu, Globe, Server, AlertTriangle, CheckCircle, Bot } from "lucide-react"
 import { api } from "@/lib/api"
 import { SystemStatus } from "@/types"
 
@@ -152,7 +152,7 @@ export default function SystemStatusPage() {
             <div className="flex justify-between items-center p-2 border-b border-blue-100">
               <span className="text-sm font-semibold">Routes Healthy</span>
               {copilotStatus.routes_healthy ? (
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
               ) : (
                 <AlertTriangle className="w-4 h-4 text-red-600" />
               )}
@@ -177,7 +177,7 @@ export default function SystemStatusPage() {
                 <span className="font-semibold">{feature}</span>
                 {health === "healthy" ? (
                   <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200 hover:bg-emerald-100 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3" /> Healthy
+                    <CheckCircle className="w-3 h-3" /> Healthy
                   </Badge>
                 ) : (
                   <Badge className="bg-amber-100 text-amber-800 border-amber-200 hover:bg-amber-100 flex items-center gap-1">

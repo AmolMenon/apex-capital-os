@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { api } from "@/lib/api"
 import { Deal, FullAnalysisOutput } from "@/types"
-import { ShieldAlert, TrendingDown, Target, HelpCircle, CheckCircle } from "lucide-react"
+import { ShieldAlert, TrendingDown, Target, CircleHelp, CheckCircle } from "lucide-react"
 
 export default function RedTeamPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = useParams() as any;
@@ -86,7 +86,7 @@ export default function RedTeamPage({ params }: { params: Promise<{ id: string }
           <Card className="border-slate-200 dark:border-slate-800">
             <CardHeader>
               <CardTitle className="text-lg flex items-center gap-2 text-slate-900 dark:text-slate-100">
-                <HelpCircle className="w-5 h-5 text-slate-600 dark:text-slate-400" /> Partner Pushback
+                <CircleHelp className="w-5 h-5 text-slate-600 dark:text-slate-400" /> Partner Pushback
               </CardTitle>
             </CardHeader>
             <CardContent>

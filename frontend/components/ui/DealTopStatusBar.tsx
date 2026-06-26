@@ -4,7 +4,7 @@ import { Deal } from "@/types"
 import { calculateDealHealth, calculateCompletionScore } from "@/lib/deal-logic"
 import { useEffect, useState } from "react"
 import { api } from "@/lib/api"
-import { CheckCircle2, AlertTriangle, ArrowRight } from "lucide-react"
+import { CheckCircle, AlertTriangle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Button } from "./button"
 

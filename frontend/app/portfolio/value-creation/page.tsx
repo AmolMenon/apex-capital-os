@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Activity, Briefcase, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Activity, Briefcase, CheckCircle } from "lucide-react";
 
 export default function ValueCreationHQ() {
   const [actions, setActions] = useState<any[]>([]);
@@ -98,7 +98,7 @@ export default function ValueCreationHQ() {
                     Owner: <span className="text-zinc-300 font-medium">{action.owner}</span>
                   </div>
                   <Button variant="secondary" className="bg-zinc-800 hover:bg-zinc-700 text-white flex items-center gap-2 h-8 text-xs">
-                    <CheckCircle2 className="w-3 h-3" />
+                    <CheckCircle className="w-3 h-3" />
                     Mark Complete
                   </Button>
                 </div>

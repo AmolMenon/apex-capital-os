@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { StatusBadge } from "@/components/ui/StatusBadge"
 import { ExplanationPopover } from "@/components/ui/ExplanationPopover"
 import { calculateDealHealth } from "@/lib/deal-logic"
-import { AlertTriangle, Activity, CheckCircle2 } from "lucide-react"
+import { AlertTriangle, Activity, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -76,7 +76,7 @@ export function DealHealthSummary({ deal }: { deal: Deal }) {
           
           <div className="flex flex-col gap-2">
             <h4 className="text-sm font-bold text-emerald-600 flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4" /> Next Best Action
+              <CheckCircle className="w-4 h-4" /> Next Best Action
             </h4>
             <div className="bg-emerald-50 p-3 rounded-md border border-emerald-100 flex items-center justify-between">
               <span className="text-sm font-semibold text-emerald-800">{health.nextActionTitle}</span>

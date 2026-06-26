@@ -15,7 +15,7 @@ import {
   Network,
   Activity,
   Database,
-  CheckCircle2,
+  CheckCircle,
   RefreshCw,
   Play
 } from "lucide-react"
@@ -181,7 +181,7 @@ export default function DemoPage() {
                   </div>
                   <h3 className="font-bold text-xl">{step.title}</h3>
                 </div>
-                {isDone && <CheckCircle2 className="text-emerald-500 h-6 w-6" />}
+                {isDone && <CheckCircle className="text-emerald-500 h-6 w-6" />}
               </div>
               
               <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -201,7 +201,7 @@ export default function DemoPage() {
                     </Link>
                     {!isDone ? (
                       <Button onClick={() => markCompleted(index)} variant="outline" className="w-full text-emerald-600 border-emerald-200 hover:bg-emerald-50">
-                        Mark as Completed <CheckCircle2 className="ml-2 h-4 w-4" />
+                        Mark as Completed <CheckCircle className="ml-2 h-4 w-4" />
                       </Button>
                     ) : (
                       <Button disabled variant="secondary" className="w-full">

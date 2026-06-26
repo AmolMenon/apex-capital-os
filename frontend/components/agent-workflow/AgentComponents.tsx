@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle2, ShieldAlert, Cpu, CheckCircle, Info, ArrowRight, BrainCircuit } from 'lucide-react'
+import { CheckCircle, ShieldAlert, Cpu, CheckCircle, Info, ArrowRight, BrainCircuit } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { format } from 'date-fns'
 
@@ -34,7 +34,7 @@ export function AgentWorkflowStatus({ metadata, agentsRun, onRun }: { metadata: 
           <div className="p-4 border rounded-md bg-white">
             <div className="text-xs text-muted-foreground uppercase font-semibold mb-1">Status</div>
             <div className="text-lg font-bold text-green-600 flex items-center gap-1">
-              <CheckCircle2 className="w-4 h-4"/> Completed
+              <CheckCircle className="w-4 h-4"/> Completed
             </div>
           </div>
           <div className="p-4 border rounded-md bg-white">

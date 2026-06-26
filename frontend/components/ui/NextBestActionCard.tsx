@@ -3,7 +3,7 @@
 import { Deal } from "@/types"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { ArrowRight, Play, Upload, CheckCircle2, Search, FileText, CheckSquare, Activity, AlertCircle } from "lucide-react"
+import { ArrowRight, Play, Upload, CheckCircle, Search, FileText, CheckSquare, Activity, AlertCircle } from "lucide-react"
 import { calculateDealHealth } from "@/lib/deal-logic"
 
 interface NextBestActionCardProps {
@@ -37,7 +37,7 @@ export function NextBestActionCard({ deal, hasFundFit = false }: NextBestActionC
   } else if (health.nextActionTitle.includes("IC")) {
     icon = CheckSquare
   } else {
-    icon = CheckCircle2
+    icon = CheckCircle
     urgencyLabel = "Completed"
     urgencyClass = "text-emerald-600 bg-emerald-100"
   }

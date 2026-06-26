@@ -4,7 +4,7 @@ import { api } from '@/lib/api'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { ShieldCheck, Server, AlertCircle, FileCheck, CheckCircle, XCircle } from 'lucide-react'
+import { ShieldCheck, Server, AlertCircle, FileCheck, CheckCircle, CircleX } from 'lucide-react'
 import Link from 'next/link'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 

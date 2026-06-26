@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ShieldAlert, ShieldCheck, HelpCircle, CheckCircle, Clock, AlertTriangle, FileText, FileSearch, UserCheck, MessageSquare, Phone, Activity } from "lucide-react"
+import { ShieldAlert, ShieldCheck, CircleHelp, CheckCircle, Clock, AlertTriangle, FileText, FileSearch, UserCheck, MessageSquare, Phone, Activity } from "lucide-react"
 
 export function DiligenceStatusBadge({ status }: { status: string }) {
   let variant: "default" | "secondary" | "destructive" | "outline" = "outline"

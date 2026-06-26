@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { AgentWorkflowStatus, AgentTraceTimeline, RedTeamCritique } from "@/components/agent-workflow/AgentComponents"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import { CheckCircle2, Loader2 } from "lucide-react"
+import { CheckCircle, Loader2 } from "lucide-react"
 
 export function AgentWorkflowClientWrapper({ dealId, initialWorkflow }: { dealId: string, initialWorkflow: any }) {
   const [isRunning, setIsRunning] = useState(false)
@@ -91,7 +91,7 @@ export function AgentWorkflowClientWrapper({ dealId, initialWorkflow }: { dealId
                   <h4 className="text-xs font-bold text-muted-foreground uppercase mb-1">Missing Private Metrics</h4>
                   <ul className="text-sm space-y-1">
                     {initialWorkflow.final_report.private_diligence_required.map((m: string, i: number) => (
-                      <li key={i} className="flex items-center gap-1.5"><CheckCircle2 className="w-3 h-3 text-amber-500"/> {m}</li>
+                      <li key={i} className="flex items-center gap-1.5"><CheckCircle className="w-3 h-3 text-amber-500"/> {m}</li>
                     ))}
                   </ul>
                 </div>
