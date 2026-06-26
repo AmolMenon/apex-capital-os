@@ -11,6 +11,7 @@ from db.database import SessionLocal, engine
 from analysis_engine.analyst_orchestrator import AnalystOrchestrator
 import json
 import os
+import sys
 from repositories.deal_repository import DealRepository
 from database import crud
 import database.conversation_models
@@ -84,9 +85,8 @@ def startup_checks():
         deal_count = db.query(models.Deal).count()
         if deal_count == 0:
             logger.info("Database is empty! Automatically running main seeder...")
-            import sys
-            import os
-            sys.path.append(os.path.join(os.path.dirname(__file__), "seed"))
+            if os.path.dirname(__file__) not in sys.path:
+                sys.path.append(os.path.join(os.path.dirname(__file__), "seed"))
             from seed.seed import seed_database
             seed_database()
             logger.info("Database seeded successfully.")
