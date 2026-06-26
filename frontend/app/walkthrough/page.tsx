@@ -26,31 +26,31 @@ export default function WalkthroughPage() {
     {
       title: "3. Agentic Workflow Engine",
       script: "When we evaluate a deal like Sarvam AI, we trigger an Agentic Workflow. This isn't a single prompt. It's a sequential 12-agent loop. The 'Market Sizer' finds the TAM, the 'Financial Auditor' extracts metrics, and the 'Red Team' actively tries to kill the deal.",
-      action: "/deals/1/agent-workflow",
+      action: "/deals/1000/agent-workflow",
       actionText: "View Agent Timeline"
     },
     {
       title: "4. The Skeptical Red Team",
       script: "A key part of the workflow is the Red Team Room. This agent takes all the positive evidence and attacks it, generating skeptical partner pushback and highlighting hype risks or missing private data.",
-      action: "/deals/1/red-team",
+      action: "/deals/1000/red-team",
       actionText: "Open Red Team Room"
     },
     {
       title: "5. Decision Engine & Fund Fit",
       script: "The Decision Engine synthesizes the findings and caps recommendations. If evidence is missing, it won't allow a 'Strong Yes'. The Fund Fit engine then calculates if the deal matches our mandate and power-law return models.",
-      action: "/deals/1/decision",
+      action: "/deals/1000/decision",
       actionText: "View Decision Engine"
     },
     {
       title: "6. Deal War Room",
       script: "Now we enter the Autonomous Deal War Room. Here the system calculates conviction, simulates the IC debate with partner personas, and determines exactly what evidence is still required to get to a Yes.",
-      action: "/deals/1/war-room",
+      action: "/deals/1000/war-room",
       actionText: "Enter War Room"
     },
     {
       title: "7. Compiled IC Packet",
       script: "Finally, all of this is compiled into an Investment Committee (IC) Packet. Instead of starting from a blank page, the analyst starts with a heavily structured, source-backed first draft of the deal memo.",
-      action: "/deals/1/ic-packet",
+      action: "/deals/1000/ic-packet",
       actionText: "View IC Packet"
     },
     {

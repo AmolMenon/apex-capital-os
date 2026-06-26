@@ -356,7 +356,7 @@ export default function VCAnalystHome() {
             <p className="text-sm">Use <strong>Sarvam AI</strong> to show public benchmark analysis where private data is missing, keeping IC readiness capped.</p>
             
             <div className="flex flex-col space-y-2 mt-4">
-              <Link href="/deals/1/data-room">
+              <Link href="/deals/1000/data-room">
                 <Button className="w-full bg-emerald-600 hover:bg-emerald-700">Open NeuralDesk Data Room</Button>
               </Link>
               <Link href="/deals/2/data-room">

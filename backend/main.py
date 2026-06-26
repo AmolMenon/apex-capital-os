@@ -60,6 +60,7 @@ def normalize_deal_id(deal_id: str) -> int:
     if d_id == "bharatvector": return 999
     if d_id == "neuraldesk": return 1000
     if d_id == "sarvam": return 1001
+    if d_id == "1": return 1000
     try:
         return int(d_id)
     except ValueError:

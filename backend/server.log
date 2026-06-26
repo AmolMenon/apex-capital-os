@@ -5715,3 +5715,11 @@ INFO:     Finished server process [54572]
 INFO:     Started server process [54574]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [54574]
+INFO:     Started server process [54823]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

@@ -44,10 +44,10 @@ export function CommandPalette() {
     { id: "demo", name: "Open Demo Checklist", icon: Presentation, route: "/demo" },
     { id: "presentation", name: "Open Presentation Mode", icon: Presentation, route: "/presentation" },
     { id: "settings", name: "Open Settings", icon: Settings, route: "/settings" },
-    { id: "deal", name: "Open NeuralDesk Deal Room", icon: Briefcase, route: "/deals/1/deal-room" },
-    { id: "research", name: "Open NeuralDesk Research", icon: SearchIcon, route: "/deals/1/research" },
-    { id: "diligence", name: "Open NeuralDesk Diligence", icon: Activity, route: "/deals/1/diligence" },
-    { id: "memo", name: "Open NeuralDesk Memo", icon: FileText, route: "/deals/1/memo" },
+    { id: "deal", name: "Open NeuralDesk Deal Room", icon: Briefcase, route: "/deals/1000/deal-room" },
+    { id: "research", name: "Open NeuralDesk Research", icon: SearchIcon, route: "/deals/1000/research" },
+    { id: "diligence", name: "Open NeuralDesk Diligence", icon: Activity, route: "/deals/1000/diligence" },
+    { id: "memo", name: "Open NeuralDesk Memo", icon: FileText, route: "/deals/1000/memo" },
   ]
 
   const filteredActions = actions.filter(action => 

@@ -17,28 +17,28 @@ export default function FeatureMapPage() {
     {
       title: "Intelligence & Workflows",
       features: [
-        { name: "Public Web Research", desc: "Searches web for background context", status: "Live & Mock", route: "/deals/1/web-research" },
-        { name: "Agentic VC Workflow", desc: "12-Agent sequential evaluation loop", status: "Live & Mock", route: "/deals/1/agent-workflow" },
-        { name: "Deck Intelligence", desc: "Analyzes uploaded pitch decks", status: "Needs API Key", route: "/deals/1/deck" },
-        { name: "Conversation Intelligence", desc: "Analyzes founder call transcripts", status: "Needs Private Data", route: "/deals/1/conversations" },
+        { name: "Public Web Research", desc: "Searches web for background context", status: "Live & Mock", route: "/deals/1000/web-research" },
+        { name: "Agentic VC Workflow", desc: "12-Agent sequential evaluation loop", status: "Live & Mock", route: "/deals/1000/agent-workflow" },
+        { name: "Deck Intelligence", desc: "Analyzes uploaded pitch decks", status: "Needs API Key", route: "/deals/1000/deck" },
+        { name: "Conversation Intelligence", desc: "Analyzes founder call transcripts", status: "Needs Private Data", route: "/deals/1000/conversations" },
       ]
     },
     {
       title: "Diligence & Decision Engine",
       features: [
-        { name: "Evidence Center", desc: "Source-backed fact verification graph", status: "Ready", route: "/deals/1/evidence-center" },
-        { name: "Red Team Room", desc: "Skeptical partner objections & hype risk", status: "Ready", route: "/deals/1/red-team" },
-        { name: "Decision Engine", desc: "Calculated scoring and recommendation cap", status: "Ready", route: "/deals/1/decision" },
-        { name: "Fund Fit", desc: "Checks mandate and ownership potential", status: "Ready", route: "/deals/1/fund-fit" },
+        { name: "Evidence Center", desc: "Source-backed fact verification graph", status: "Ready", route: "/deals/1000/evidence-center" },
+        { name: "Red Team Room", desc: "Skeptical partner objections & hype risk", status: "Ready", route: "/deals/1000/red-team" },
+        { name: "Decision Engine", desc: "Calculated scoring and recommendation cap", status: "Ready", route: "/deals/1000/decision" },
+        { name: "Fund Fit", desc: "Checks mandate and ownership potential", status: "Ready", route: "/deals/1000/fund-fit" },
       ]
     },
     {
       title: "Investment Outputs",
       features: [
-        { name: "IC Packet Builder", desc: "Compiled IC Document", status: "Ready", route: "/deals/1/ic-packet" },
-        { name: "Public Benchmark Memo", desc: "Generated deal memo based on public signal", status: "Ready", route: "/deals/1/memo" },
-        { name: "IC One-Pager", desc: "Summarized single page overview", status: "Ready", route: "/deals/1/ic-one-pager" },
-        { name: "Founder Email", desc: "Generated diligence follow-up email", status: "Ready", route: "/deals/1/founder-email" },
+        { name: "IC Packet Builder", desc: "Compiled IC Document", status: "Ready", route: "/deals/1000/ic-packet" },
+        { name: "Public Benchmark Memo", desc: "Generated deal memo based on public signal", status: "Ready", route: "/deals/1000/memo" },
+        { name: "IC One-Pager", desc: "Summarized single page overview", status: "Ready", route: "/deals/1000/ic-one-pager" },
+        { name: "Founder Email", desc: "Generated diligence follow-up email", status: "Ready", route: "/deals/1000/founder-email" },
       ]
     }
   ]

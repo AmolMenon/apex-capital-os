@@ -42,7 +42,7 @@ export default function PresentationPage() {
                 Open Dashboard <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Link href="/deals/1/deal-room">
+            <Link href="/deals/1000/deal-room">
               <Button size="lg" variant="outline" className="h-14 px-8 text-lg font-bold bg-white/5 border-white/10 hover:bg-white/10 text-white">
                 View NeuralDesk Deal
               </Button>
@@ -201,27 +201,27 @@ export default function PresentationPage() {
           </p>
           
           <div className="flex flex-col gap-4 max-w-md mx-auto">
-            <Link href="/deals/1/deal-room">
+            <Link href="/deals/1000/deal-room">
               <Button size="lg" className="w-full h-14 text-lg justify-between px-6 bg-primary hover:bg-primary/90">
                 1. Open Deal Room <ArrowRight className="h-5 w-5 opacity-70" />
               </Button>
             </Link>
-            <Link href="/deals/1/research">
+            <Link href="/deals/1000/research">
               <Button size="lg" variant="outline" className="w-full h-14 text-lg justify-between px-6 bg-white/5 border-white/10 hover:bg-white/10">
                 2. Open Research Brief <ArrowRight className="h-5 w-5 opacity-50" />
               </Button>
             </Link>
-            <Link href="/deals/1/deck">
+            <Link href="/deals/1000/deck">
               <Button size="lg" variant="outline" className="w-full h-14 text-lg justify-between px-6 bg-white/5 border-white/10 hover:bg-white/10">
                 3. Open Deck Intelligence <ArrowRight className="h-5 w-5 opacity-50" />
               </Button>
             </Link>
-            <Link href="/deals/1/diligence">
+            <Link href="/deals/1000/diligence">
               <Button size="lg" variant="outline" className="w-full h-14 text-lg justify-between px-6 bg-white/5 border-white/10 hover:bg-white/10">
                 4. Open Diligence Command <ArrowRight className="h-5 w-5 opacity-50" />
               </Button>
             </Link>
-            <Link href="/deals/1/memo">
+            <Link href="/deals/1000/memo">
               <Button size="lg" variant="outline" className="w-full h-14 text-lg justify-between px-6 bg-white/5 border-white/10 hover:bg-white/10">
                 5. Open Investment Memo <ArrowRight className="h-5 w-5 opacity-50" />
               </Button>
