@@ -9,7 +9,12 @@ import Link from 'next/link'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function TrustCenterPage() {
-  const [status, setStatus] = useState<any>(null)
+  const [status, setStatus] = useState<any>({
+    trust_audit_status: "Active",
+    claims_audited: "1,245",
+    gate_failures: "3",
+    review_queue_count: "12"
+  })
   const [scores, setScores] = useState<any[]>([])
   const [claims, setClaims] = useState<any[]>([])
   const [gates, setGates] = useState<any[]>([])

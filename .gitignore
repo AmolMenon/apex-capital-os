@@ -9,3 +9,4 @@ dist
 .next
 coverage
 .pytest_cache
+testenv/

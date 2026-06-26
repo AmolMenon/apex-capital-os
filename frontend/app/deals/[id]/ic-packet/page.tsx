@@ -22,7 +22,7 @@ export default function ICPacketPage({ params }: { params: Promise<{ id: string 
     valuation: 50000000,
     analysis: {
       one_line_thesis: "A highly technical team building the orchestration layer for enterprise AI.",
-      recommendation: "Strong Buy",
+      recommendation: "Proceed to Partner Review, Not IC-Ready Yet",
       risks: [
         { category: "Market", description: "High competition from AWS/GCP." },
         { category: "Execution", description: "First time founders." }
@@ -38,7 +38,7 @@ export default function ICPacketPage({ params }: { params: Promise<{ id: string 
   } as any)
   const [ic, setIC] = useState<ICOnePagerOutput | null>({
     one_line_thesis: "A highly technical team building the orchestration layer for enterprise AI.",
-    recommendation: "Strong Buy",
+    recommendation: "Proceed to Partner Review, Not IC-Ready Yet",
     why_now: "Enterprises are moving from AI experimentation to production, creating a massive need for orchestration.",
     why_this_team: "Founders are ex-Google Brain engineers who previously built similar internal systems.",
     why_this_can_be_big: "If successful, this becomes the standard operating system for all enterprise AI deployments.",

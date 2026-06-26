@@ -107,7 +107,7 @@ export const api = {
         deal_type: "demo",
         analysis: {
           one_line_thesis: "A highly technical team building the orchestration layer for enterprise AI.",
-          recommendation: "Strong Buy",
+          recommendation: "Proceed to Partner Review, Not IC-Ready Yet",
           risks: [{ category: "Market", description: "High competition from AWS/GCP." }],
           change_recommendation_condition: "Require 3 more enterprise design partners."
         }
