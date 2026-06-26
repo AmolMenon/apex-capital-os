@@ -55,7 +55,7 @@ export default function LandingPage() {
               <LayoutDashboard className="mr-2 h-5 w-5" /> Open Command Center
             </Button>
           </Link>
-          <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <Link href="https://github.com/GoogleCloudPlatform/gemini-vc-os" target="_blank" rel="noopener noreferrer">
             <Button size="lg" variant="ghost" className="h-14 px-8 font-bold text-lg text-muted-foreground hover:text-foreground transition-all">
               <FileText className="mr-2 h-5 w-5" /> View Case Study
             </Button>

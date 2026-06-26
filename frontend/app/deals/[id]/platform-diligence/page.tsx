@@ -9,13 +9,15 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShieldAlert, Activity, Search, AlertTriangle, ArrowRight, ArrowLeft, Target, Globe, TerminalSquare } from 'lucide-react';
 
+import { useDeal } from "@/components/DealProvider"
+
 export default function PlatformDiligencePage() {
   const params = useParams();
   const dealId = params.id as string;
   const router = useRouter();
+  const deal = useDeal();
 
   const [loading, setLoading] = useState(true);
-  const [deal, setDeal] = useState<any>(null);
   const [latestRun, setLatestRun] = useState<any>(null);
   const [running, setRunning] = useState(false);
 
@@ -26,9 +28,6 @@ export default function PlatformDiligencePage() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const dealData = await api.getDeal(dealId);
-      setDeal(dealData);
-      
       try {
         const runData = await api.getLatestPlatformDiligence(dealId);
         setLatestRun(runData);

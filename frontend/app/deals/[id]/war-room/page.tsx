@@ -1,6 +1,6 @@
 "use client"
-
 import { OperationsPanel } from "@/components/OperationsPanel";
+import { useDeal } from "@/components/DealProvider";
 import { useState, useEffect } from "react"
 import { api } from "@/lib/api"
 import { DealWarRoom, Deal } from "@/types"
@@ -23,7 +23,7 @@ import { useParams } from "next/navigation"
 export default function WarRoomPage() {
   const params = useParams()
   const id = params.id as string
-  const [deal, setDeal] = useState<Deal | null>(null)
+  const deal = useDeal()
   const [warRoom, setWarRoom] = useState<DealWarRoom | null>(null)
   const [loading, setLoading] = useState(true)
   const [running, setRunning] = useState(false)
@@ -31,16 +31,10 @@ export default function WarRoomPage() {
   useEffect(() => {
     async function load() {
       try {
-        const dealData = await api.getDeal(id)
-        setDeal(dealData)
-        try {
-          const wrData = await api.getWarRoom(id)
-          setWarRoom(wrData)
-        } catch (e) {
-          console.warn("War Room data not found yet.")
-        }
-      } catch (error) {
-        console.error(error)
+        const wrData = await api.getWarRoom(id)
+        setWarRoom(wrData)
+      } catch (e) {
+        console.warn("War Room data not found yet.")
       } finally {
         setLoading(false)
       }

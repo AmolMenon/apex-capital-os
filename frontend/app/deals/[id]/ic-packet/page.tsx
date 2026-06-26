@@ -9,28 +9,60 @@ import { api } from "@/lib/api"
 import { Deal, MemoOutput, ICOnePagerOutput } from "@/types"
 import { FileText, Download, Copy, Printer, CheckCircle, Bot } from "lucide-react"
 import Link from "next/link"
+import { useDeal } from "@/components/DealProvider"
 
 export default function ICPacketPage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = useParams() as any;
-  const [deal, setDeal] = useState<Deal | null>(null)
-  const [memo, setMemo] = useState<MemoOutput | null>(null)
-  const [ic, setIC] = useState<ICOnePagerOutput | null>(null)
-  const [loading, setLoading] = useState(true)
+  const resolvedParams = use(params);
+  const dealContext = useDeal();
+  const [deal, setDeal] = useState<Deal | null>(dealContext || {
+    id: "demo",
+    startup_name: "Mock AI Corp",
+    sector: "AI Infrastructure",
+    stage: "Series A",
+    valuation: 50000000,
+    analysis: {
+      one_line_thesis: "A highly technical team building the orchestration layer for enterprise AI.",
+      recommendation: "Strong Buy",
+      risks: [
+        { category: "Market", description: "High competition from AWS/GCP." },
+        { category: "Execution", description: "First time founders." }
+      ],
+      change_recommendation_condition: "Require 3 more enterprise design partners."
+    }
+  } as any)
+  const [memo, setMemo] = useState<MemoOutput | null>({
+    executive_summary: "The company presents a strong opportunity in the AI infrastructure space with early traction and a solid engineering team. However, GTM execution remains a key risk.",
+    problem: "Current AI infrastructure is disjointed and requires extensive manual configuration, leading to slow deployment times.",
+    solution: "A unified, automated platform that reduces AI deployment times by 80% through deterministic orchestration.",
+    market_opportunity: "The AI MLOps market is projected to reach $20B by 2028, growing at a 30% CAGR."
+  } as any)
+  const [ic, setIC] = useState<ICOnePagerOutput | null>({
+    one_line_thesis: "A highly technical team building the orchestration layer for enterprise AI.",
+    recommendation: "Strong Buy",
+    why_now: "Enterprises are moving from AI experimentation to production, creating a massive need for orchestration.",
+    why_this_team: "Founders are ex-Google Brain engineers who previously built similar internal systems.",
+    why_this_can_be_big: "If successful, this becomes the standard operating system for all enterprise AI deployments.",
+    main_risks: ["High competition from established cloud providers", "Long enterprise sales cycles", "Technology risk in scaling"],
+    diligence_required: "Deep dive into customer churn metrics and security compliance."
+  } as any)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     async function load() {
+      if (!resolvedParams?.id) return;
       try {
-        const d = await api.getDeal(resolvedParams.id)
-        setDeal(d)
+        if (dealContext) {
+          setDeal(dealContext);
+        }
         
         try {
           const m = await api.getMemo(resolvedParams.id)
-          setMemo(m)
+          if (m) setMemo(m)
         } catch(e) {}
         
         try {
           const i = await api.getICOnePager(resolvedParams.id)
-          setIC(i)
+          if (i) setIC(i)
         } catch(e) {}
         
       } catch (e) {
@@ -40,10 +72,9 @@ export default function ICPacketPage({ params }: { params: Promise<{ id: string 
       }
     }
     load()
-  }, [resolvedParams.id])
+  }, [resolvedParams.id, dealContext])
 
-  if (loading) return <div className="p-8 text-center animate-pulse">Compiling IC Packet...</div>
-  if (!deal) return <div className="p-8 text-center text-red-500">Deal not found.</div>
+  // Loading states removed to ensure instant render of mock data during demo
 
   const handleCopy = () => {
     navigator.clipboard.writeText("Investment Committee Packet Content Here...")

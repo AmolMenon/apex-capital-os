@@ -38,7 +38,13 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise
 }
 
 
-function resolveId(id: string | number): string {
+function resolveId(id: string | number | undefined | null): string {
+  if (id === undefined || id === null) {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("activeDealId") || "1";
+    }
+    return "1";
+  }
   const strId = id.toString().replace("deal-", "");
   if (strId === "active") {
     if (typeof window !== "undefined") {

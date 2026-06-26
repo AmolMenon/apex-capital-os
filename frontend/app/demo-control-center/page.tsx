@@ -34,7 +34,7 @@ export default function DemoControlCenterPage() {
         <div className="flex gap-3">
           <Link href="/deal-inbox/items/inb_bharatvector">
             <Button className="bg-indigo-600 hover:bg-indigo-700 font-bold shadow-lg shadow-indigo-900/20" size="lg">
-              <PlayCircle className="mr-2 h-5 w-5" /> Start 9/10 Demo
+              <PlayCircle className="mr-2 h-5 w-5" /> Start Demo
             </Button>
           </Link>
         </div>
@@ -48,7 +48,7 @@ export default function DemoControlCenterPage() {
             <div className="bg-indigo-950 text-white p-5 flex items-center justify-between border-b border-indigo-900">
               <div className="flex items-center gap-3">
                 <Zap className="w-5 h-5 text-indigo-400" />
-                <h3 className="font-bold text-lg">9/10 Flagship Demo Flow</h3>
+                <h3 className="font-bold text-lg">Standard Demo Flow</h3>
               </div>
               <Badge className="bg-emerald-500/20 text-emerald-300 border-emerald-500/30">Stable</Badge>
             </div>

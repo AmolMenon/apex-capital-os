@@ -11,7 +11,7 @@ export default function DemoScriptPage() {
           <Play className="w-10 h-10 text-rose-600" /> Apex Capital Demo Script
         </h1>
         <p className="text-xl text-muted-foreground mt-4 font-serif italic">
-          "The 6-minute pitch that proves Apex is the most advanced VC operating system in the world."
+          "The 6-minute walkthrough demonstrating how Apex transforms raw data into a structured investment workflow."
         </p>
       </div>
 

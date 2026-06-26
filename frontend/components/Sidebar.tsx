@@ -138,7 +138,7 @@ export function Sidebar() {
           <p className="text-xs text-muted-foreground">Status</p>
           <div className="flex items-center gap-2 mt-1">
             <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></div>
-            <p className="text-xs font-medium text-foreground">9/10 Flagship Demo Mode</p>
+            <p className="text-xs font-medium text-foreground">System Online</p>
           </div>
         </div>
       </div>

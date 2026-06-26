@@ -8,23 +8,15 @@ import { api } from "@/lib/api"
 import { Deal, FullAnalysisOutput } from "@/types"
 import { ShieldAlert, TrendingDown, Target, CircleHelp, CheckCircle } from "lucide-react"
 
+import { useDeal } from "@/components/DealProvider"
+
 export default function RedTeamPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = useParams() as any;
-  const [deal, setDeal] = useState<Deal | null>(null)
-  const [loading, setLoading] = useState(true)
+  const deal = useDeal()
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    async function load() {
-      try {
-        const d = await api.getDeal(resolvedParams.id)
-        setDeal(d)
-      } catch (e) {
-        console.error(e)
-      } finally {
-        setLoading(false)
-      }
-    }
-    load()
+    // Red team specific logic would load here
   }, [resolvedParams.id])
 
   if (loading) return <div className="p-8 text-center animate-pulse">Summoning Red Team...</div>

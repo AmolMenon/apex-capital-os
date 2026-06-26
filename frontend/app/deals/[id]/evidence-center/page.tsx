@@ -8,9 +8,11 @@ import { ShieldCheck, FileText, Globe, AlertTriangle, Link as LinkIcon, Database
 import { api } from "@/lib/api"
 import { Deal } from "@/types"
 
+import { useDeal } from "@/components/DealProvider"
+
 export default function EvidenceCenterPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = useParams() as any;
-  const [deal, setDeal] = useState<Deal | null>(null)
+  const deal = useDeal()
   const [loading, setLoading] = useState(true)
   const [research, setResearch] = useState<any>(null)
   const [filter, setFilter] = useState('All')
@@ -18,8 +20,6 @@ export default function EvidenceCenterPage({ params }: { params: Promise<{ id: s
   useEffect(() => {
     async function loadData() {
       try {
-        const d = await api.getDeal(resolvedParams.id)
-        setDeal(d)
         try { 
           const r = await api.getWebResearch(resolvedParams.id); 
           setResearch(r); 

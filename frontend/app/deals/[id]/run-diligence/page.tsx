@@ -8,12 +8,13 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Loader2, Play, FileText, CheckCircle, AlertTriangle, ShieldCheck, Database, RefreshCw, X, FolderOpen, ArrowRight } from "lucide-react";
+import { useDeal } from "@/components/DealProvider"
 
 export default function RunDiligencePage() {
   const params = useParams();
   const router = useRouter();
   const id = params.id as string;
-  const [deal, setDeal] = useState<any>(null);
+  const deal = useDeal();
   const [readiness, setReadiness] = useState<any>(null);
   const [latestRun, setLatestRun] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -36,11 +37,9 @@ export default function RunDiligencePage() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [dealData, runData] = await Promise.all([
-        api.getDeal(id),
+      const [runData] = await Promise.all([
         api.getLatestDiligenceRun(id).catch(() => null)
       ]);
-      setDeal(dealData);
       setLatestRun(runData);
       
       // Simulating readiness data since we don't have a direct endpoint yet
