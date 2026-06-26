@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     APP_MODE: str = "mock"
     ENABLE_REAL_LLM: bool = False
 
-    DATABASE_URL: str = "sqlite:///./data/apex_local.db"
+    DATABASE_URL: str = "sqlite:///./apex_capital.db"
     TEST_DATABASE_URL: str = "sqlite:///./test_apex_capital.db"
 
     CORS_ORIGINS: str = "*"
