@@ -17,6 +17,7 @@ export default async function Pipeline({ searchParams }: { searchParams: Promise
   const resolvedParams = await searchParams;
   let deals: Deal[] = []
   let sourcingPipeline: any[] = []
+  let fetchError: string | null = null;
   
   try {
     const [d, s] = await Promise.all([
@@ -25,8 +26,9 @@ export default async function Pipeline({ searchParams }: { searchParams: Promise
     ]);
     deals = d;
     sourcingPipeline = s;
-  } catch (e) {
+  } catch (e: any) {
     console.error("Failed to fetch data", e)
+    fetchError = e.message || "Failed to connect to the backend server.";
   }
 
   const currentFilter = resolvedParams.filter || "all"
@@ -59,6 +61,28 @@ export default async function Pipeline({ searchParams }: { searchParams: Promise
 
   return (
     <div className="container py-8 max-w-7xl mx-auto space-y-6 px-4 md:px-8">
+      {fetchError && (
+        <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded-md">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <ShieldCheck className="h-5 w-5 text-red-500" />
+            </div>
+            <div className="ml-3">
+              <h3 className="text-sm font-medium text-red-800">Backend Connection Failed</h3>
+              <div className="mt-2 text-sm text-red-700">
+                <p>The frontend could not connect to the backend server. If you are on Render, this usually means:</p>
+                <ul className="list-disc pl-5 mt-1 space-y-1">
+                  <li>You forgot to set <strong>NEXT_PUBLIC_API_URL</strong> to your backend's URL.</li>
+                  <li>You set the variable, but forgot to do a <strong>Manual Deploy &rarr; Clear build cache & deploy</strong> on the frontend.</li>
+                  <li>Your backend is currently down or waking up from sleep.</li>
+                </ul>
+                <p className="mt-2 font-mono bg-red-100 p-2 rounded text-xs">{fetchError}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-foreground">Deal Pipeline</h2>
