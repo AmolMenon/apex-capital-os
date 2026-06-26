@@ -15601,3 +15601,71 @@ API Fetch Error [/conversations/bharatvector]: Error [ApiError]: Internal Server
 ⚠     Unrecognized key(s) in object: 'eslint'
 ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
 
+ GET / 200 in 421ms (next.js: 161ms, application-code: 261ms)
+⨯ Error: Page with `dynamic = "force-dynamic"` couldn't be exported. `output: "export"` requires all pages be renderable statically because there is no runtime server to dynamically render routes in this output format. Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+    at ignore-listed frames {
+  code: 'NEXT_STATIC_GEN_BAILOUT'
+}
+⨯ Error: Page with `dynamic = "force-dynamic"` couldn't be exported. `output: "export"` requires all pages be renderable statically because there is no runtime server to dynamically render routes in this output format. Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+    at ignore-listed frames {
+  code: 'NEXT_STATIC_GEN_BAILOUT',
+  page: '/pipeline'
+}
+ GET /pipeline 500 in 570ms (next.js: 487ms, application-code: 83ms)
+⨯ Error: Page with `dynamic = "force-dynamic"` couldn't be exported. `output: "export"` requires all pages be renderable statically because there is no runtime server to dynamically render routes in this output format. Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+    at ignore-listed frames {
+  code: 'NEXT_STATIC_GEN_BAILOUT'
+}
+⨯ Error: Page with `dynamic = "force-dynamic"` couldn't be exported. `output: "export"` requires all pages be renderable statically because there is no runtime server to dynamically render routes in this output format. Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+    at ignore-listed frames {
+  code: 'NEXT_STATIC_GEN_BAILOUT',
+  page: '/pipeline'
+}
+ GET /pipeline 500 in 314ms (next.js: 309ms, application-code: 5ms)
+[browser] Uncaught Error: Page with `dynamic = "force-dynamic"` couldn't be exported. `output: "export"` requires all pages be renderable statically because there is no runtime server to dynamically render routes in this output format. Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+⨯ Error: Page "/deals/[id]/page" is missing exported function "generateStaticParams()", which is required with "output: export" config.
+    at ignore-listed frames {
+  page: '/deals/bharatvector'
+}
+ GET /deals/bharatvector 500 in 391ms (next.js: 386ms, application-code: 5ms)
+⨯ Error: Page "/deals/[id]/page" is missing exported function "generateStaticParams()", which is required with "output: export" config.
+    at ignore-listed frames {
+  page: '/deals/bharatvector'
+}
+ GET /deals/bharatvector 500 in 235ms (next.js: 230ms, application-code: 5ms)
+[browser] Uncaught Error: Page "/deals/[id]/page" is missing exported function "generateStaticParams()", which is required with "output: export" config.
+⨯ Error: Page "/deals/[id]/deal-room/page" is missing exported function "generateStaticParams()", which is required with "output: export" config.
+    at ignore-listed frames {
+  page: '/deals/999/deal-room'
+}
+ GET /deals/999/deal-room 500 in 256ms (next.js: 251ms, application-code: 5ms)
+⨯ Error: Page "/deals/[id]/deal-room/page" is missing exported function "generateStaticParams()", which is required with "output: export" config.
+    at ignore-listed frames {
+  page: '/deals/999/deal-room'
+}
+ GET /deals/999/deal-room 500 in 223ms (next.js: 218ms, application-code: 5ms)
+[browser] Uncaught Error: Page "/deals/[id]/deal-room/page" is missing exported function "generateStaticParams()", which is required with "output: export" config.
+⚠ Found a change in next.config.ts. Restarting the server to apply the changes...
+▲ Next.js 16.2.7 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.8.11:3000
+- Environments: .env
+✓ Ready in 209ms
+⨯ Failed to load next.config.ts, see more info here https://nextjs.org/docs/messages/next-config-error
+[Error:   x Unexpected token `}`. Expected yield, an identifier, [ or {
+    ,-[12:1]
+  9 |     ignoreBuildErrors: true,
+ 10 |   },
+ 11 |   },
+ 12 | };
+    : ^
+ 13 | 
+ 14 | export default nextConfig;
+    `----
+
+
+Caused by:
+    Syntax Error] {
+  code: 'GenericFailure'
+}
+[?25h

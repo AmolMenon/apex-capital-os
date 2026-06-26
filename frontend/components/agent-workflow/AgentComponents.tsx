@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { CheckCircle, ShieldAlert, Cpu, CheckCircle, Info, ArrowRight, BrainCircuit } from 'lucide-react'
+import { CheckCircle, ShieldAlert, Cpu, Info, ArrowRight, BrainCircuit } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { format } from 'date-fns'
 

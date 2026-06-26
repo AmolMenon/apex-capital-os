@@ -365,7 +365,7 @@ export default function VCAnalystHome() {
             </div>
           </div>
         </Card>
-
+      </div>
     </div>
   )
 }
