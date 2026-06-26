@@ -5425,3 +5425,9 @@ INFO:     127.0.0.1:63096 - "GET /deal-inbox/items HTTP/1.1" 200 OK
 INFO:     127.0.0.1:63095 - "GET /deal-inbox/items HTTP/1.1" 200 OK
 INFO:     127.0.0.1:65521 - "OPTIONS /deals HTTP/1.1" 200 OK
 INFO:     127.0.0.1:65521 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49416 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49416 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49418 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49418 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49418 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49418 - "GET /deals HTTP/1.1" 200 OK

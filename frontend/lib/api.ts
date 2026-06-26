@@ -1,6 +1,6 @@
 import { Deal, FullAnalysisOutput, DiligencePlan, DecisionOutput, FundFit, AgentWorkflowRun, SystemStatus } from "@/types";
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 
 class ApiError extends Error {
   constructor(public status: number, message: string) {
@@ -504,7 +504,7 @@ export const api = {
     if (documentType) formData.append('document_type', documentType);
     
     // Custom fetch for multipart/form-data
-    const res = await fetch(`http://127.0.0.1:8000/deals/${dealId}/documents/upload`, {
+    const res = await fetch(`${API_BASE_URL}/deals/${dealId}/documents/upload`, {
       method: 'POST',
       body: formData,
     });
