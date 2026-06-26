@@ -1,6 +1,7 @@
 import { Deal, FullAnalysisOutput, DiligencePlan, DecisionOutput, FundFit, AgentWorkflowRun, SystemStatus } from "@/types";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+const RAW_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+const API_BASE_URL = RAW_API_URL.replace(/\/$/, "");
 
 class ApiError extends Error {
   constructor(public status: number, message: string) {
