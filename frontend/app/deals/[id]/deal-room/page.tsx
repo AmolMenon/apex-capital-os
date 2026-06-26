@@ -29,26 +29,7 @@ export default async function DealRoomOverview(props: { params: Promise<{ id: st
     console.error("Fetch error", e)
   }
   
-  if (!deal) {
-    // Fallback for demo when backend is down
-    deal = {
-      id: params.id,
-      startup_name: "Mock AI Corp",
-      sector: "AI Infrastructure",
-      stage: "Series A",
-      valuation: 50000000,
-      status: "In Progress",
-      deal_type: "demo",
-      analysis: {
-        one_line_thesis: "A highly technical team building the orchestration layer for enterprise AI.",
-        recommendation: "Strong Buy",
-        risks: [
-          { category: "Market", description: "High competition from AWS/GCP." }
-        ],
-        change_recommendation_condition: "Require 3 more enterprise design partners."
-      }
-    } as any;
-  }
+
 
   const analysis = deal.analysis || {
     ic_one_pager: null,

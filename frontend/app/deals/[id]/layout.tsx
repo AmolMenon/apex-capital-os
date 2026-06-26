@@ -40,26 +40,7 @@ export default async function DealLayout({ children, params }: { children: React
     console.error("Failed to process layout logic.", e);
   }
   
-  // If deal is null (backend down) and we are not redirecting, inject mock data
-  if (!deal && id !== 'active') {
-    deal = {
-      id: id,
-      startup_name: "Mock AI Corp",
-      sector: "AI Infrastructure",
-      stage: "Series A",
-      valuation: 50000000,
-      status: "In Progress",
-      deal_type: "demo",
-      analysis: {
-        one_line_thesis: "A highly technical team building the orchestration layer for enterprise AI.",
-        recommendation: "Strong Buy",
-        risks: [
-          { category: "Market", description: "High competition from AWS/GCP." }
-        ],
-        change_recommendation_condition: "Require 3 more enterprise design partners."
-      }
-    } as any;
-  }
+
 
   if (!deal && id !== 'active') {
     return (
