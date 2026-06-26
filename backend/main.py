@@ -81,6 +81,16 @@ def startup_checks():
     # Seed document intelligence fixtures
     db = SessionLocal()
     try:
+        deal_count = db.query(models.Deal).count()
+        if deal_count == 0:
+            logger.info("Database is empty! Automatically running main seeder...")
+            import sys
+            import os
+            sys.path.append(os.path.join(os.path.dirname(__file__), "seed"))
+            from seed.seed import seed_database
+            seed_database()
+            logger.info("Database seeded successfully.")
+
         DocumentFixtures.seed_documents(db)
         DiligenceRunFixtures.seed_runs(db)
     except Exception as e:
