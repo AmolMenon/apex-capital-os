@@ -25,7 +25,7 @@ export function HelpDrawer() {
     "Go to the Dashboard to see an overview."
   ]
 
-  if (pathname.includes('/deal/')) {
+  if (pathname.includes('/deals/')) {
     title = "Deal Room Help"
     description = "You are currently reviewing a specific startup."
     tips = [

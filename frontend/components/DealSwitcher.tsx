@@ -30,7 +30,7 @@ export function DealSwitcher() {
   
   // Extract deal ID from pathname if we are on a deal page
   const segments = pathname.split('/').filter(Boolean)
-  const isDealRoute = segments[0] === 'deal' && segments.length >= 2
+  const isDealRoute = segments[0] === 'deals' && segments.length >= 2
   const currentDealId = isDealRoute ? Number(segments[1]) : null
 
   useEffect(() => {
@@ -77,9 +77,10 @@ export function DealSwitcher() {
                   value={deal.startup_name}
                   onSelect={() => {
                     setOpen(false)
-                    // We try to maintain the same tab if possible
-                    const currentTab = segments.length >= 3 ? segments[2] : "deal-room"
-                    router.push(`/deal/${deal.id}/${currentTab}`)
+                    // We try to maintain the same tab if possible, but only if we are currently in a deal context
+                    const isDealRoute = segments[0] === "deals"
+                    const currentTab = (isDealRoute && segments.length >= 3) ? segments[2] : "deal-room"
+                    router.push(`/deals/${deal.id}/${currentTab}`)
                   }}
                 >
                   <Check

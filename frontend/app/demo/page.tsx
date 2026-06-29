@@ -73,7 +73,7 @@ export default function DemoPage() {
       pointOut: "The 'Next Best Action' card guiding the analyst, and the 'Pre-IC Checklist'.",
       matters: "It forces the user to check evidence before making an investment decision, providing deterministic guardrails alongside AI.",
       actionLabel: "Open Deal Room",
-      actionHref: `/deal/${demoDealId}/deal-room`
+      actionHref: `/deals/${demoDealId}/deal-room`
     },
     {
       icon: <FileSearch className="w-5 h-5 text-primary" />,
@@ -82,7 +82,7 @@ export default function DemoPage() {
       pointOut: "The Evidence Grader and the separation between 'Thesis' and 'Evidence'.",
       matters: "It shows we don't blindly trust the founder's deck. We grade the evidence independently.",
       actionLabel: "Open Research Brief",
-      actionHref: `/deal/${demoDealId}/research`
+      actionHref: `/deals/${demoDealId}/research`
     },
     {
       icon: <Files className="w-5 h-5 text-primary" />,
@@ -91,7 +91,7 @@ export default function DemoPage() {
       pointOut: "The 'Unsupported Claims' section needing verification.",
       matters: "It shows the AI acting as an adversarial thinker, not just a summarizer.",
       actionLabel: "Open Deck Intelligence",
-      actionHref: `/deal/${demoDealId}/deck`
+      actionHref: `/deals/${demoDealId}/deck`
     },
     {
       icon: <ClipboardCheck className="w-5 h-5 text-primary" />,
@@ -100,7 +100,7 @@ export default function DemoPage() {
       pointOut: "The specific 'Founder Follow-ups' mapped directly to risks identified earlier.",
       matters: "It automates the most tedious part of VC analyst work—preparing for diligence calls.",
       actionLabel: "Open Diligence Command Center",
-      actionHref: `/deal/${demoDealId}/diligence`
+      actionHref: `/deals/${demoDealId}/diligence`
     },
     {
       icon: <Activity className="w-5 h-5 text-primary" />,
@@ -109,7 +109,7 @@ export default function DemoPage() {
       pointOut: "The Power Law Simulation chart and the Thesis Fit verdict.",
       matters: "It elevates the app from a 'deal tool' to a true 'portfolio management OS'.",
       actionLabel: "Open Fund Fit",
-      actionHref: `/deal/${demoDealId}/fund-fit`
+      actionHref: `/deals/${demoDealId}/fund-fit`
     },
     {
       icon: <FileText className="w-5 h-5 text-primary" />,
@@ -118,7 +118,7 @@ export default function DemoPage() {
       pointOut: "The structured layout covering market opportunity, differentiation, and risks.",
       matters: "It proves the memo is evidence-backed, not just an LLM hallucinating a good story.",
       actionLabel: "Open Memo",
-      actionHref: `/deal/${demoDealId}/memo`
+      actionHref: `/deals/${demoDealId}/memo`
     },
     {
       icon: <FileSignature className="w-5 h-5 text-primary" />,
@@ -127,7 +127,7 @@ export default function DemoPage() {
       pointOut: "The 'Final Call' and the 'Diligence Required' sections.",
       matters: "It shows an understanding of how VC firms actually consume information.",
       actionLabel: "Open IC One-Pager",
-      actionHref: `/deal/${demoDealId}/ic-one-pager`
+      actionHref: `/deals/${demoDealId}/ic-one-pager`
     },
     {
       icon: <Network className="w-5 h-5 text-primary" />,

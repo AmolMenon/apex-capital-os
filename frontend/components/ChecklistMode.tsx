@@ -16,91 +16,91 @@ export function ChecklistMode({ deal, hasFundFit = false }: ChecklistModeProps) 
       id: "basic",
       label: "Basic deal profile completed",
       completed: !!deal,
-      href: `/deal/${deal.id}/deal-room`
+      href: `/deals/${deal.id}/deal-room`
     },
     {
       id: "scorecard",
       label: "Scorecard generated",
       completed: !!deal.analysis?.scorecard,
-      href: `/deal/${deal.id}/deal-room`
+      href: `/deals/${deal.id}/deal-room`
     },
     {
       id: "risks",
       label: "Key risks identified",
       completed: !!deal.analysis?.risks && deal.analysis.risks.length > 0,
-      href: `/deal/${deal.id}/deal-room`
+      href: `/deals/${deal.id}/deal-room`
     },
     {
       id: "research",
       label: "Research brief generated",
       completed: !!deal.analysis,
-      href: `/deal/${deal.id}/research`
+      href: `/deals/${deal.id}/research`
     },
     {
       id: "evidence",
       label: "Evidence score reviewed",
       completed: !!deal.analysis,
-      href: `/deal/${deal.id}/research`
+      href: `/deals/${deal.id}/research`
     },
     {
       id: "deck",
       label: "Pitch deck analyzed",
       completed: !!deal.analysis,
-      href: `/deal/${deal.id}/deck`
+      href: `/deals/${deal.id}/deck`
     },
     {
       id: "unsupported",
       label: "Unsupported claims reviewed",
       completed: !!deal.analysis,
-      href: `/deal/${deal.id}/deck`
+      href: `/deals/${deal.id}/deck`
     },
     {
       id: "diligence_plan",
       label: "Diligence plan generated",
       completed: !!deal.analysis,
-      href: `/deal/${deal.id}/diligence`
+      href: `/deals/${deal.id}/diligence`
     },
     {
       id: "founder",
       label: "Founder follow-ups prepared",
       completed: !!deal.analysis,
-      href: `/deal/${deal.id}/diligence`
+      href: `/deals/${deal.id}/diligence`
     },
     {
       id: "customer",
       label: "Customer reference questions prepared",
       completed: !!deal.analysis,
-      href: `/deal/${deal.id}/diligence`
+      href: `/deals/${deal.id}/diligence`
     },
     {
       id: "dataroom",
       label: "Data room requests prepared",
       completed: !!deal.analysis,
-      href: `/deal/${deal.id}/diligence`
+      href: `/deals/${deal.id}/diligence`
     },
     {
       id: "fundfit",
       label: "Fund fit reviewed",
       completed: hasFundFit,
-      href: `/deal/${deal.id}/fund-fit`
+      href: `/deals/${deal.id}/fund-fit`
     },
     {
       id: "memo",
       label: "Memo prepared",
       completed: !!deal.analysis?.memo,
-      href: `/deal/${deal.id}/memo`
+      href: `/deals/${deal.id}/memo`
     },
     {
       id: "ic",
       label: "IC one-pager prepared",
       completed: !!deal.analysis?.ic_one_pager,
-      href: `/deal/${deal.id}/ic-one-pager`
+      href: `/deals/${deal.id}/ic-one-pager`
     },
     {
       id: "final",
       label: "Final recommendation reviewed",
       completed: deal.status !== "New" && deal.status !== "Screening" && deal.status !== "Research",
-      href: `/deal/${deal.id}/deal-room`
+      href: `/deals/${deal.id}/deal-room`
     }
   ]
 

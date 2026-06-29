@@ -24,7 +24,7 @@ export function TopNav() {
   else if (segments[0] === "methodology") breadcrumbs.push("Methodology")
   else if (segments[0] === "demo-script") breadcrumbs.push("Demo Script")
   else if (segments[0] === "portfolio") breadcrumbs.push("Watchlist")
-  else if (segments[0] === "deal" && segments.length >= 3) {
+  else if (segments[0] === "deals" && segments.length >= 3) {
     breadcrumbs.push("Pipeline")
     const id = segments[1]
     const tab = segments[2].replace(/-/g, " ")

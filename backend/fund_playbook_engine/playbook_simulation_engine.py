@@ -44,7 +44,7 @@ def simulate_deal(deal, company_name: str, playbook: FundPlaybook) -> PlaybookSi
         return PlaybookSimulationResult(
             company_name=company_name, playbook_id=playbook.playbook_id, playbook_name=playbook.playbook_name,
             base_score=80, playbook_adjusted_score=80 + (10 if playbook.playbook_id == 'evidence_heavy' else 0),
-            recommendation="IC Ready" if playbook.playbook_id == 'evidence_heavy' else "Strong Buy",
+            recommendation="IC Ready" if playbook.playbook_id == 'evidence_heavy' else "Proceed to Partner Review, Not IC-Ready Yet",
             gates_triggered=[], biggest_blocker="Valuation", required_next_action="Negotiate term sheet"
         )
     else:

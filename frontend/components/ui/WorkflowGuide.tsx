@@ -27,7 +27,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Generate the first structured investment view: scorecard, thesis, risks, and recommendation.",
       status: deal?.analysis ? "Completed" : (deal ? "Ready" : "Not Started"),
       actionLabel: "Generate Analysis",
-      actionHref: deal ? `/deal/${deal.id}/deal-room` : "#"
+      actionHref: deal ? `/deals/${deal.id}/deal-room` : "#"
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Use this as the central command center for the startup.",
       status: deal?.analysis ? "Completed" : "Not Started",
       actionLabel: "Open Deal Room",
-      actionHref: deal ? `/deal/${deal.id}/deal-room` : "#"
+      actionHref: deal ? `/deals/${deal.id}/deal-room` : "#"
     },
     {
       id: 4,
@@ -43,7 +43,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Validate market, customer, competitor, pricing, GTM, and evidence quality.",
       status: deal?.analysis ? "Completed" : (deal?.analysis ? "Ready" : "Not Started"),
       actionLabel: "Generate Research Brief",
-      actionHref: deal ? `/deal/${deal.id}/research` : "#"
+      actionHref: deal ? `/deals/${deal.id}/research` : "#"
     },
     {
       id: 5,
@@ -51,7 +51,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Upload or paste the pitch deck to extract claims and missing information.",
       status: deal?.analysis ? "Completed" : (deal?.analysis ? "Ready" : "Not Started"),
       actionLabel: "Analyze Deck",
-      actionHref: deal ? `/deal/${deal.id}/deck` : "#"
+      actionHref: deal ? `/deals/${deal.id}/deck` : "#"
     },
     {
       id: 6,
@@ -59,7 +59,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Convert risks and unsupported claims into diligence tasks, founder questions, customer references, and data room requests.",
       status: deal?.analysis ? "Completed" : (deal?.analysis ? "Ready" : "Not Started"),
       actionLabel: "Generate Diligence Plan",
-      actionHref: deal ? `/deal/${deal.id}/diligence` : "#"
+      actionHref: deal ? `/deals/${deal.id}/diligence` : "#"
     },
     {
       id: 7,
@@ -67,7 +67,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Check whether this deal fits the fund strategy and can return meaningful capital.",
       status: hasFundFit ? "Completed" : (deal?.analysis ? "Ready" : "Not Started"),
       actionLabel: "Open Fund Fit",
-      actionHref: deal ? `/deal/${deal.id}/fund-fit` : "#"
+      actionHref: deal ? `/deals/${deal.id}/fund-fit` : "#"
     },
     {
       id: 8,
@@ -75,7 +75,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Review the full investment memo.",
       status: deal?.analysis?.memo ? "Completed" : (hasFundFit ? "Ready" : "Not Started"),
       actionLabel: "Open Memo",
-      actionHref: deal ? `/deal/${deal.id}/memo` : "#"
+      actionHref: deal ? `/deals/${deal.id}/memo` : "#"
     },
     {
       id: 9,
@@ -83,7 +83,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Review the partner-ready one-page IC summary.",
       status: deal?.analysis?.ic_one_pager ? "Completed" : (deal?.analysis?.memo ? "Ready" : "Not Started"),
       actionLabel: "Open IC One-Pager",
-      actionHref: deal ? `/deal/${deal.id}/ic-one-pager` : "#"
+      actionHref: deal ? `/deals/${deal.id}/ic-one-pager` : "#"
     },
     {
       id: 10,
@@ -91,7 +91,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Move the deal to Watchlist, Diligence, Invested, Passed, or Revisit Later.",
       status: deal?.status !== "New" && deal?.analysis?.ic_one_pager ? "Ready" : "Not Started",
       actionLabel: "Update Status",
-      actionHref: deal ? `/deal/${deal.id}/deal-room` : "#"
+      actionHref: deal ? `/deals/${deal.id}/deal-room` : "#"
     }
   ]
 

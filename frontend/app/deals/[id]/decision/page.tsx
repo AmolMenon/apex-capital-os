@@ -231,7 +231,7 @@ export default async function DecisionEnginePage(props: { params: Promise<{ id: 
             <div>
               <h4 className="text-sm font-bold text-foreground mb-1">Fund Return Potential</h4>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                {fundFit.fund_return_potential || "Not evaluated"} — Requires exit of ${fundFit.ownership_scenarios?.required_exit_value_1x_fund ? (fundFit.ownership_scenarios.required_exit_value_1x_fund >= 1000000000 ? (fundFit.ownership_scenarios.required_exit_value_1x_fund / 1000000000).toFixed(1) + "B" : (fundFit.ownership_scenarios.required_exit_value_1x_fund / 1000000).toFixed(1) + "M") : "N/A"} to return 1x of the fund.
+                {fundFit.fund_return_potential || "Not evaluated"} — Requires exit of ${fundFit.ownership_scenarios?.required_exit_value_1x_fund ? (Number(fundFit.ownership_scenarios.required_exit_value_1x_fund) >= 1e9 ? (Number(fundFit.ownership_scenarios.required_exit_value_1x_fund) / 1e9).toFixed(1) + "B" : (Number(fundFit.ownership_scenarios.required_exit_value_1x_fund) / 1e6).toFixed(1) + "M") : "N/A"} to return 1x of the fund.
               </p>
             </div>
             <div className="pt-4 border-t">
