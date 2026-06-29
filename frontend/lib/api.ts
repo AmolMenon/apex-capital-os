@@ -91,7 +91,28 @@ export const api = {
   testAIProvider: (taskType: string, context: string) => fetchAPI<any>("/ai/test-provider", { method: "POST", body: JSON.stringify({ task_type: taskType, context }) }),
 
   // Deals
-  getDeals: () => fetchAPI<Deal[]>("/deals"),
+  getDeals: async () => {
+    try {
+      return await fetchAPI<Deal[]>("/deals");
+    } catch (e) {
+      console.warn("[getDeals] Failed to fetch deals, returning mock list.");
+      return [
+        {
+          id: 1000,
+          startup_name: "Mock AI Corp",
+          sector: "AI Infrastructure",
+          stage: "Series A",
+          valuation: 50000000,
+          status: "In Progress",
+          deal_type: "demo",
+          analysis: {
+            overall_score: 85,
+            recommendation: "Proceed to Partner Review, Not IC-Ready Yet"
+          }
+        }
+      ] as any;
+    }
+  },
   getDeal: async (id: string | number) => {
     try {
       return await fetchAPI<Deal>(`/deals/${resolveId(id)}`);
