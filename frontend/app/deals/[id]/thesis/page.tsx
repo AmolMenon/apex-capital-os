@@ -20,8 +20,10 @@ export default function LivingThesis() {
   useEffect(() => {
     if (deal?.id) {
       fetchThesisData();
+    } else if (!loading) {
+      setIsLoadingThesis(false);
     }
-  }, [deal?.id]);
+  }, [deal?.id, loading]);
 
   const fetchThesisData = async () => {
     setIsLoadingThesis(true);

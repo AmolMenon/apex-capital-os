@@ -54,7 +54,7 @@ models.Base.metadata.create_all(bind=engine)
 
 def normalize_deal_id(deal_id: str) -> int:
     d_id = str(deal_id).replace("deal-", "").replace("src_", "").lower()
-    if d_id == "active": return 7
+    if d_id == "active": return 1000
     if d_id == "zepto": return 1002
     if d_id == "mistral": return 5
     if d_id == "bharatvector": return 999
