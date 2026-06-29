@@ -7,7 +7,6 @@ from datetime import datetime
 
 from db.database import SessionLocal
 from database import crud
-from routes.web_research import generate_research
 from pydantic import BaseModel
 from typing import List, Optional
 
