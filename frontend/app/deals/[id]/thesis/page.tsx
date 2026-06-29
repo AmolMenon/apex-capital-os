@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { FileText, Target, Activity, RefreshCw, AlertTriangle, CheckCircle, HelpCircle } from "lucide-react";
 import { RedFlagEngine } from '@/components/RedFlagEngine';
 import { DecisionAuditTrail, PortfolioPatternMatch, EvidenceGraphMock } from '@/components/AdvancedIntelligence';
+import { api } from "@/lib/api";
 
 export default function LivingThesis() {
   const { state, loading } = useGlobalDeal();
@@ -28,14 +29,13 @@ export default function LivingThesis() {
   const fetchThesisData = async () => {
     setIsLoadingThesis(true);
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
       const [thesisRes, assumptionsRes] = await Promise.all([
-        fetch(`${apiUrl}/api/deals/${deal?.id}/thesis`),
-        fetch(`${apiUrl}/api/deals/${deal?.id}/assumptions`)
+        api.get(`/api/deals/${deal?.id}/thesis`).catch(() => null),
+        api.get(`/api/deals/${deal?.id}/assumptions`).catch(() => null)
       ]);
       
-      if (thesisRes.ok) setThesis(await thesisRes.json());
-      if (assumptionsRes.ok) setAssumptions(await assumptionsRes.json());
+      if (thesisRes) setThesis(thesisRes);
+      if (assumptionsRes) setAssumptions(assumptionsRes);
     } catch (e) {
       console.error(e);
     } finally {
