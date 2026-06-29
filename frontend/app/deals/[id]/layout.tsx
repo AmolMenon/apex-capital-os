@@ -1,13 +1,11 @@
 import Link from "next/link"
 import { api } from "@/lib/api"
 import { Deal } from "@/types"
-import { StatusBadge } from "@/components/ui/StatusBadge"
-import { DealWorkflowStatusBar } from "@/components/ui/DealWorkflowStatusBar"
-import { DealTopStatusBar } from "@/components/ui/DealTopStatusBar"
-import { DealNavigation } from "@/components/ui/DealNavigation"
-import { DealProvider } from "@/components/DealProvider"
-import { Play, AlertTriangle } from "lucide-react"
+import { AlertTriangle } from "lucide-react"
 import { redirect } from "next/navigation"
+import { GlobalDealProvider } from "@/components/GlobalDealProvider"
+import { AutonomousSidebar } from "@/components/AutonomousSidebar"
+import { DealNavigation } from "@/components/ui/DealNavigation"
 
 export const dynamic = "force-dynamic"
 
@@ -39,8 +37,6 @@ export default async function DealLayout({ children, params }: { children: React
   } catch (e) {
     console.error("Failed to process layout logic.", e);
   }
-  
-
 
   if (!deal && id !== 'active') {
     return (
@@ -62,48 +58,27 @@ export default async function DealLayout({ children, params }: { children: React
   }
 
   return (
-    <div className="flex-1 flex flex-col min-h-0 bg-background">
-      {/* Top Header */}
-      <div className="border-b border-white/10 px-6 py-3 flex items-center justify-between bg-black/20 backdrop-blur-md relative z-10">
-        <nav className="flex items-center gap-4 text-sm font-medium">
-          <Link href="/pipeline" className="text-muted-foreground hover:text-foreground">Pipeline</Link>
-          <Link href="/compare" className="text-muted-foreground hover:text-foreground">Compare Deals</Link>
-        </nav>
-        <div className="flex items-center gap-3">
-          <Link href={`/deals/${id}/run-diligence`}>
-            <button className="hidden md:flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-emerald-600 text-white hover:bg-emerald-700 h-9 px-4 py-2 shadow-sm mr-2">
-              <Play className="w-4 h-4 mr-2" /> Run Diligence
-            </button>
-          </Link>
-          <div className="text-right mr-2 hidden md:block">
-            <p className="text-xs text-muted-foreground">Status</p>
-            <p className="text-sm font-semibold">{deal?.status || 'Pending'}</p>
+    <GlobalDealProvider dealId={id}>
+      <div className="flex-1 flex min-h-0 bg-background overflow-hidden">
+        {/* Left Sidebar */}
+        <AutonomousSidebar />
+
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col min-h-0 overflow-y-auto">
+          {/* Top Navigation */}
+          <div className="border-b border-white/10 px-6 py-4 flex items-center justify-between bg-black/20 backdrop-blur-md sticky top-0 z-20">
+            <nav className="flex items-center gap-4 text-sm font-medium">
+              <Link href="/pipeline" className="text-muted-foreground hover:text-foreground">← Back to Pipeline</Link>
+            </nav>
+            <DealNavigation id={id} />
           </div>
-          {deal?.analysis ? (
-            <StatusBadge status={deal.analysis.recommendation} />
-          ) : (
-            <StatusBadge status="Pending Analysis" />
-          )}
-        </div>
-      </div>
 
-      {/* Comprehensive Status Bar */}
-      {deal && <DealTopStatusBar deal={deal} />}
-
-      {/* Workflow Status Bar */}
-      {deal && <DealWorkflowStatusBar deal={deal} />}
-
-      {/* Tabs Navigation */}
-      <DealNavigation id={id} />
-
-      {/* Page Content */}
-      <DealProvider deal={deal}>
-        <div className="flex-1 overflow-y-auto p-4 md:p-6 bg-transparent relative z-10">
-          <div className="max-w-6xl mx-auto space-y-6">
+          {/* Page Content */}
+          <div className="flex-1 p-6 lg:p-8 bg-transparent relative z-10 max-w-6xl mx-auto w-full">
             {children}
           </div>
         </div>
-      </DealProvider>
-    </div>
+      </div>
+    </GlobalDealProvider>
   )
 }

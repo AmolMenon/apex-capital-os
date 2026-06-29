@@ -1,4 +1,5 @@
-import { notFound } from "next/navigation"
+"use client";
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -16,41 +17,33 @@ import { GenerateResearchButton } from "@/components/research/GenerateResearchBu
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { EmptyState } from "@/components/ui/EmptyState"
 import { PageHelpBanner } from "@/components/ui/PageHelpBanner"
+import { useGlobalDeal } from "@/components/GlobalDealProvider"
 
-export const dynamic = "force-dynamic"
+export default function ResearchBriefPage() {
+  const { state, loading, simulateAutonomous } = useGlobalDeal();
 
-async function getResearch(id: string) {
-  try {
-    const res = await fetch(`${"http://127.0.0.1:8000"}/research/${id}`, { cache: 'no-store' })
-    if (!res.ok) {
-      if (res.status === 404) return null
-      throw new Error('Failed to fetch research')
-    }
-    return res.json()
-  } catch (e) {
-    return null
-  }
-}
+  if (loading || !state) return <div className="p-12 text-center animate-pulse">Loading Research...</div>;
 
-export default async function ResearchBriefPage(props: { params: Promise<{ id: string }> }) {
-  const params = await props.params;
-  const research = await getResearch(params.id)
-  if (!research) {
+  const research = state.research;
+  const deal = state.deal;
+
+  if (!research || Object.keys(research).length === 0) {
     return (
       <div className="flex-1 flex items-center justify-center py-12">
         <EmptyState 
           title="Research Not Found" 
-          description="Research brief has not been generated yet. Generate one to evaluate market attractiveness, TAM/SAM/SOM, customer personas, competitor intensity, and source confidence."
+          description="Research brief has not been generated yet. The autonomous pipeline will generate this."
           icon={<Search className="h-6 w-6" />}
         >
-          <GenerateResearchButton dealId={params.id} />
+          <button onClick={simulateAutonomous} className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium mt-4">
+            Run Autonomous Pipeline
+          </button>
         </EmptyState>
       </div>
     )
   }
 
   const {
-    company_name,
     market_research,
     competitor_research,
     customer_personas,
@@ -61,7 +54,7 @@ export default async function ResearchBriefPage(props: { params: Promise<{ id: s
     source_registry,
     research_gaps,
     research_backed_recommendation
-  } = research
+  } = research;
 
   const aiMeta = market_research?._ai_metadata || competitor_research?._ai_metadata || customer_personas?._ai_metadata;
 
@@ -87,22 +80,24 @@ export default async function ResearchBriefPage(props: { params: Promise<{ id: s
       )}
       
       {/* Evidence Stats Strip */}
-      <div className="flex gap-4 p-4 bg-muted/20 border rounded-lg">
-        <div className="bg-card border rounded px-4 py-2 text-sm flex-1">
-          <div className="text-muted-foreground text-xs uppercase tracking-wider mb-1">Evidence Score</div>
-          <div className="font-mono font-bold text-xl">{evidence_grade.overall_score}/100</div>
+      {evidence_grade && (
+        <div className="flex gap-4 p-4 bg-muted/20 border rounded-lg">
+          <div className="bg-card border rounded px-4 py-2 text-sm flex-1">
+            <div className="text-muted-foreground text-xs uppercase tracking-wider mb-1">Evidence Score</div>
+            <div className="font-mono font-bold text-xl">{evidence_grade.overall_score}/100</div>
+          </div>
+          <div className="bg-card border rounded px-4 py-2 text-sm flex-1">
+            <div className="text-muted-foreground text-xs uppercase tracking-wider mb-1">Source Confidence</div>
+            <div><ResearchConfidenceBadge level={evidence_grade.confidence_level} /></div>
+          </div>
+          <div className="bg-card border rounded px-4 py-2 text-sm flex-[2]">
+            <div className="text-muted-foreground text-xs uppercase tracking-wider mb-1">Recommendation</div>
+            <div className="font-semibold text-primary truncate" title={research_backed_recommendation}>{research_backed_recommendation}</div>
+          </div>
         </div>
-        <div className="bg-card border rounded px-4 py-2 text-sm flex-1">
-          <div className="text-muted-foreground text-xs uppercase tracking-wider mb-1">Source Confidence</div>
-          <div><ResearchConfidenceBadge level={evidence_grade.confidence_level} /></div>
-        </div>
-        <div className="bg-card border rounded px-4 py-2 text-sm flex-[2]">
-          <div className="text-muted-foreground text-xs uppercase tracking-wider mb-1">Recommendation</div>
-          <div className="font-semibold text-primary truncate" title={research_backed_recommendation}>{research_backed_recommendation}</div>
-        </div>
-      </div>
+      )}
 
-      {evidence_grade.narrative_warning && (
+      {evidence_grade?.narrative_warning && (
         <div className="bg-destructive/10 border border-destructive/20 text-destructive p-4 rounded-lg flex items-start gap-3">
           <ShieldAlert className="h-5 w-5 mt-0.5" />
           <div>

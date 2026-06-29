@@ -21,7 +21,7 @@ const tabs = [
   { name: "Conversations", path: "conversations", icon: MessageSquare },
   { name: "Fund Fit", path: "fund-fit", icon: Activity },
   { name: "Partner Review", path: "partner-review", icon: Activity },
-  { name: "Memo & IC", path: "memo", icon: FileText },
+  { name: "Living Thesis", path: "thesis", icon: Users },
   { name: "Evidence Center", path: "evidence-center", icon: FileText },
   { name: "Knowledge Graph", path: "knowledge-graph", icon: Activity },
 ]

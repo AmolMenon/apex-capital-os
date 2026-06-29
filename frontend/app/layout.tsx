@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   description: "Institutional-grade venture capital analyst platform.",
 };
 
+import { GlobalPortfolioProvider } from "@/components/GlobalPortfolioProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +29,8 @@ export default function RootLayout({
         <div className="bg-rose-600 text-white text-xs font-bold uppercase tracking-widest text-center py-1 relative z-50">
           VC Showcase Demo: Simulated Environment & Mock Data
         </div>
-        <AuthProvider>
+        <GlobalPortfolioProvider>
+          <AuthProvider>
           <ScreenshotProvider>
             <OnboardingModal />
             <CommandPalette />
@@ -50,6 +53,7 @@ export default function RootLayout({
             </div>
           </ScreenshotProvider>
         </AuthProvider>
+        </GlobalPortfolioProvider>
       </body>
     </html>
   );

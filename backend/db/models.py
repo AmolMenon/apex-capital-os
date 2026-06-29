@@ -618,3 +618,78 @@ class PlatformSignalModel(Base):
     next_action = Column(String, nullable=True)
     metadata_json = Column(Text, default="{}")
     created_at = Column(DateTime, default=datetime.utcnow)
+
+class ActivityLog(Base):
+    __tablename__ = "activity_logs"
+    id = Column(Integer, primary_key=True, index=True)
+    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), nullable=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    action = Column(String, index=True)
+    details = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class DealComment(Base):
+    __tablename__ = "deal_comments"
+    id = Column(Integer, primary_key=True, index=True)
+    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
+    content = Column(Text)
+    section = Column(String, nullable=True) # e.g. "Memo", "Team"
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class DealAssignment(Base):
+    __tablename__ = "deal_assignments"
+    id = Column(Integer, primary_key=True, index=True)
+    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
+    role = Column(String) # e.g. "Lead Partner", "Analyst"
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class InvestmentThesis(Base):
+    __tablename__ = "investment_theses"
+    id = Column(Integer, primary_key=True, index=True)
+    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), unique=True, index=True)
+    bull_case = Column(Text, nullable=True)
+    bear_case = Column(Text, nullable=True)
+    recommendation = Column(String, nullable=True)
+    conviction = Column(String, nullable=True) # High, Medium, Low
+    confidence = Column(Integer, nullable=True) # 0-100
+    unknowns = Column(Text, nullable=True) # JSON list
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+class Assumption(Base):
+    __tablename__ = "assumptions"
+    id = Column(Integer, primary_key=True, index=True)
+    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
+    description = Column(Text)
+    status = Column(String, default="Unvalidated") # Validated, Invalidated, Unvalidated
+    confidence = Column(Integer, default=50) # 0-100
+    owner = Column(String, nullable=True)
+    supporting_evidence = Column(Text, nullable=True) # JSON list
+    contradicting_evidence = Column(Text, nullable=True) # JSON list
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+class RedFlag(Base):
+    __tablename__ = "red_flags"
+    id = Column(Integer, primary_key=True, index=True)
+    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
+    severity = Column(String) # High, Medium, Low
+    confidence = Column(Integer, default=50) # 0-100
+    reason = Column(Text)
+    evidence = Column(Text, nullable=True)
+    suggested_diligence = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    resolved = Column(Boolean, default=False)
+
+class DecisionAuditLog(Base):
+    __tablename__ = "decision_audit_logs"
+    id = Column(Integer, primary_key=True, index=True)
+    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
+    previous_recommendation = Column(String, nullable=True)
+    current_recommendation = Column(String)
+    reason_changed = Column(Text)
+    evidence_responsible = Column(Text, nullable=True)
+    confidence_change = Column(Integer, nullable=True) # e.g. +10, -5
+    created_at = Column(DateTime, default=datetime.utcnow)

@@ -166,9 +166,10 @@ export function CopilotChat({ dealId, crossDeal = false, fullHeight = false }: {
         {/* Follow Ups */}
         {ans.follow_up_questions && ans.follow_up_questions.length > 0 && (
           <div className="pt-3 border-t border-border/50">
-            <p className="text-xs font-medium text-muted-foreground mb-3 flex items-center">
-              <Bot className="w-3.5 h-3.5 mr-1" /> Suggested Deep Dives
-            </p>
+            <h2 className="text-xl font-bold text-foreground flex items-center gap-2 mb-3">
+              <Sparkles className="text-indigo-400" size={20} />
+              AI Investment Partner
+            </h2>
             <div className="flex flex-wrap gap-2">
               {ans.follow_up_questions.map((fq: any, idx: number) => (
                 <button 
@@ -195,7 +196,7 @@ export function CopilotChat({ dealId, crossDeal = false, fullHeight = false }: {
             <Bot className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
           </div>
           <div>
-            <h3 className="font-bold text-foreground text-base tracking-wide">Ask Apex</h3>
+            <h3 className="font-bold text-foreground text-base tracking-wide">AI Investment Partner</h3>
             <p className="text-[11px] text-muted-foreground font-medium tracking-wider uppercase">Intelligence Engine</p>
           </div>
         </div>

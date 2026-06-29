@@ -168,6 +168,9 @@ app.include_router(connector_router, prefix="/connectors", tags=["Connector Hub"
 app.include_router(deal_inbox_router, prefix="/deal-inbox", tags=["Deal Inbox"])
 app.include_router(meeting_router, prefix="/meetings", tags=["Meeting Intelligence"])
 app.include_router(deal_structuring_router, prefix="/deal-structuring", tags=["Deal Structuring"])
+
+from routes.intelligence import router as intelligence_router
+app.include_router(intelligence_router)
 from routes.workspace import router as workspace_router
 from routes.platform_diligence import router as platform_diligence_router
 from routes.platform_diligence import deal_router as platform_diligence_deal_router
@@ -177,6 +180,9 @@ app.include_router(workspace_router, tags=["Workspace"])
 app.include_router(platform_diligence_router)
 app.include_router(platform_diligence_deal_router)
 app.include_router(platform_diligence_signals_router)
+
+from routes.autonomous import router as autonomous_router
+app.include_router(autonomous_router, tags=["Autonomous Workflow"])
 
 app.add_middleware(
     CORSMiddleware,
@@ -1107,4 +1113,42 @@ def get_deal_war_room(deal_id: str, db: Session = Depends(get_db)):
         final_recommendation=json.loads(db_war_room.final_recommendation_json) if db_war_room.final_recommendation_json else {},
         metadata=json.loads(db_war_room.metadata_json) if db_war_room.metadata_json else {}
     )
+
+
+@app.get("/api/portfolio/activity-feed")
+def get_activity_feed(db: Session = Depends(get_db)):
+    logs = db.query(models.ActivityLog).order_by(models.ActivityLog.created_at.desc()).limit(50).all()
+    # Mocking some data if empty
+    if not logs:
+        return [
+            {"id": 1, "action": "Research Completed", "details": "Autonomous research finished for NeuralDesk.", "created_at": "Just now"},
+            {"id": 2, "action": "Recommendation Updated", "details": "StripeClone moved to Partner Review.", "created_at": "5 mins ago"},
+            {"id": 3, "action": "Founder Score Increased", "details": "Founders of Acme Corp have high domain expertise.", "created_at": "1 hour ago"},
+        ]
+    return [{"id": log.id, "action": log.action, "details": log.details, "created_at": log.created_at.isoformat()} for log in logs]
+
+class DealCommentCreate(BaseModel):
+    content: str
+    section: str = "General"
+
+@app.get("/api/deals/{deal_id}/comments")
+def get_deal_comments(deal_id: int, db: Session = Depends(get_db)):
+    comments = db.query(models.DealComment).filter(models.DealComment.deal_id == deal_id).order_by(models.DealComment.created_at.desc()).all()
+    # Mock data if empty
+    if not comments:
+        return [
+            {"id": 1, "deal_id": deal_id, "user_name": "Sarah Partner", "content": "We need to dig deeper into the customer acquisition cost. It seems too good to be true.", "section": "Traction", "created_at": "2 hours ago"},
+            {"id": 2, "deal_id": deal_id, "user_name": "Mike Analyst", "content": "I've requested the raw cohort data from the founders.", "section": "Traction", "created_at": "1 hour ago"}
+        ]
+    return [{"id": c.id, "deal_id": c.deal_id, "user_name": "User", "content": c.content, "section": c.section, "created_at": c.created_at.isoformat()} for c in comments]
+
+@app.post("/api/deals/{deal_id}/comments")
+def create_deal_comment(deal_id: int, comment: DealCommentCreate, db: Session = Depends(get_db)):
+    db_comment = models.DealComment(deal_id=deal_id, user_id=1, content=comment.content, section=comment.section)
+    db.add(db_comment)
+    # Also log this activity
+    db_log = models.ActivityLog(deal_id=deal_id, user_id=1, action="Comment Added", details=f"New comment in {comment.section}")
+    db.add(db_log)
+    db.commit()
+    return {"status": "success"}
 
