@@ -72,6 +72,11 @@ export const api = {
     if (!response.ok) throw new Error("Failed to upload document");
     return response.json();
   },
+  
+  // Generic Utility Methods
+  get: async (endpoint: string) => fetchAPI<any>(endpoint),
+  post: async (endpoint: string, data: any) => fetchAPI<any>(endpoint, { method: 'POST', body: JSON.stringify(data) }),
+  
   getDataRoomDocuments: (id: string | number) => fetchAPI<any[]>(`/data-room/deals/${resolveId(id)}/documents`),
   parseDataRoom: (id: string | number) => fetchAPI<any>(`/data-room/deals/${resolveId(id)}/parse`, { method: "POST" }),
   getDataRoomReport: (id: string | number) => fetchAPI<any>(`/data-room/deals/${resolveId(id)}/report`),
