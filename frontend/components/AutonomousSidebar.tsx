@@ -11,7 +11,7 @@ export function AutonomousSidebar() {
 
   if (loading || !state) {
     return (
-      <div className="w-80 border-r border-gray-800 bg-gray-950 p-6 flex flex-col min-h-screen">
+      <div className="hidden xl:flex w-80 border-r border-gray-800 bg-gray-950 p-6 flex-col min-h-screen">
         <div className="animate-pulse space-y-4">
           <div className="h-8 bg-gray-800 rounded w-2/3"></div>
           <div className="h-4 bg-gray-800 rounded w-1/3"></div>
@@ -34,7 +34,7 @@ export function AutonomousSidebar() {
   const overallScore = 76;
 
   return (
-    <div className="w-80 border-r border-gray-800 bg-[#0c0c0e] flex flex-col h-screen overflow-y-auto shrink-0 sticky top-0">
+    <div className="hidden xl:flex w-80 border-r border-gray-800 bg-[#0c0c0e] flex-col h-screen overflow-y-auto shrink-0 sticky top-0">
       <div className="p-6 border-b border-gray-800/60">
         <div className="flex items-start justify-between mb-4">
           <div>

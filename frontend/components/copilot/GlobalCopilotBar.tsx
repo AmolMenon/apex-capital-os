@@ -21,19 +21,19 @@ export function GlobalCopilotBar() {
     <>
       {/* Floating Button / Bar */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-50">
+        <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
           <button
             onClick={() => setIsOpen(true)}
             className="flex items-center space-x-2 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 px-4 py-3 rounded-full shadow-2xl hover:scale-105 transition-transform"
           >
             <Bot className="w-5 h-5" />
-            <span className="font-medium text-sm">Ask Apex</span>
+            <span className="font-medium text-sm hidden sm:inline-block">Ask Apex</span>
           </button>
         </div>
       )}
 
       {/* Expanded Modal / Drawer (Always mounted to preserve state) */}
-      <div className={`fixed bottom-6 right-6 w-[400px] z-50 transition-all duration-200 ${isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+      <div className={`fixed bottom-4 right-4 md:bottom-6 md:right-6 w-[calc(100vw-2rem)] md:w-[400px] z-50 transition-all duration-200 ${isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
         <div className="bg-white dark:bg-neutral-900 rounded-xl shadow-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden flex flex-col">
           {/* Header */}
           <div className="flex items-center justify-between p-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">

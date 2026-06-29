@@ -39,7 +39,7 @@ const advancedRoutes = [
   { name: "Deal Structuring", path: "/deal-structuring", icon: Calculator, isDeal: true },
 ]
 
-export function Sidebar() {
+export function Sidebar({ mobile }: { mobile?: boolean } = {}) {
   const pathname = usePathname()
   const { isScreenshotMode } = useScreenshotMode()
   const [advancedOpen, setAdvancedOpen] = useState(false)
@@ -89,7 +89,7 @@ export function Sidebar() {
   }
 
   return (
-    <div className="flex h-screen w-64 flex-col border-r bg-card py-6 overflow-y-auto">
+    <div className={cn("flex flex-col border-r bg-card py-6 overflow-y-auto", mobile ? "w-full h-full" : "w-64 h-screen")}>
       <div className="mb-6 px-6 flex flex-col gap-1">
         <Link href="/">
           <h1 className="text-xl font-bold tracking-tight text-primary">APEX<span className="text-foreground">CAPITAL</span></h1>

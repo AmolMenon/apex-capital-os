@@ -8,11 +8,14 @@ import { DealSwitcher } from "@/components/DealSwitcher"
 import { HelpDrawer } from "@/components/ui/HelpDrawer"
 import { useScreenshotMode } from "@/components/ScreenshotProvider"
 import React from "react"
-import Link from "next/link"
+import { Menu } from "lucide-react"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet"
+import { Sidebar } from "@/components/Sidebar"
 
 export function TopNav() {
   const pathname = usePathname()
   const { isScreenshotMode, toggleScreenshotMode } = useScreenshotMode()
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
   
   // Quick breadcrumb logic
   const segments = pathname.split('/').filter(Boolean)
@@ -32,14 +35,34 @@ export function TopNav() {
     breadcrumbs.push(tab.charAt(0).toUpperCase() + tab.slice(1))
   }
 
+  // Close mobile menu on route change
+  React.useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [pathname])
+
   return (
     <div className="flex h-14 items-center justify-between border-b bg-card/50 px-4 md:px-6">
       <div className="flex flex-1 items-center space-x-2">
-        <div className="flex items-center text-sm text-muted-foreground font-medium">
+        <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="md:hidden mr-2 shrink-0">
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="p-0 w-72 bg-card border-r">
+            <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+            <SheetDescription className="sr-only">Access all platform modules.</SheetDescription>
+            <div className="h-full overflow-y-auto">
+              <Sidebar mobile />
+            </div>
+          </SheetContent>
+        </Sheet>
+
+        <div className="flex items-center text-xs md:text-sm text-muted-foreground font-medium truncate">
           {breadcrumbs.map((b, i) => (
             <React.Fragment key={i}>
-              {i > 0 && <ChevronRight className="h-4 w-4 mx-1 opacity-50" />}
-              <span className={i === breadcrumbs.length - 1 ? "text-foreground" : "capitalize"}>
+              {i > 0 && <ChevronRight className="h-4 w-4 mx-1 opacity-50 shrink-0" />}
+              <span className={i === breadcrumbs.length - 1 ? "text-foreground truncate max-w-[120px] md:max-w-none" : "capitalize truncate hidden sm:inline-block"}>
                 {b}
               </span>
             </React.Fragment>

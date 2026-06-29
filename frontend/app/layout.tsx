@@ -34,12 +34,14 @@ export default function RootLayout({
           <ScreenshotProvider>
             <OnboardingModal />
             <CommandPalette />
-            <div className="flex h-screen overflow-hidden bg-background">
-              <Sidebar />
-              <div className="flex flex-1 flex-col overflow-hidden">
+            <div className="flex h-[100dvh] overflow-hidden bg-background">
+              <div className="hidden md:flex">
+                <Sidebar />
+              </div>
+              <div className="flex flex-1 flex-col overflow-hidden w-full max-w-full">
               <TopNav />
-              <main className="flex-1 overflow-y-auto bg-muted/20 flex flex-col relative">
-                <div className="flex-1">
+              <main className="flex-1 overflow-y-auto bg-muted/20 flex flex-col relative w-full">
+                <div className="flex-1 w-full max-w-full">
                   {children}
                 </div>
                 <footer className="w-full border-t border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 text-center mt-auto">
