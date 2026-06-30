@@ -1,120 +1,168 @@
 "use client";
 
 import React from 'react';
-import { useGlobalPortfolio } from "@/components/GlobalPortfolioProvider";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BarChart, LineChart, PieChart, TrendingUp, Users, Target, Activity } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Network, Activity, AlertTriangle, ArrowRightLeft, Users, Building, Globe } from "lucide-react";
+import { PageHelpBanner } from "@/components/ui/PageHelpBanner";
 
 export default function PortfolioIntelligence() {
-  const { deals, loading } = useGlobalPortfolio();
-
-  if (loading) return <div className="p-12 text-center animate-pulse">Loading Analytics...</div>;
-
-  const totalDeals = deals.length;
-  const inPipeline = deals.filter(d => !['Approved', 'Passed'].includes(d.status)).length;
-  const approved = deals.filter(d => d.status === 'Approved').length;
-  const passed = deals.filter(d => d.status === 'Passed').length;
-  
-  // Dummy conversion rate
-  const conversionRate = totalDeals > 0 ? ((approved / totalDeals) * 100).toFixed(1) : "0";
-
   return (
-    <div className="p-8 max-w-7xl mx-auto space-y-8 min-h-screen">
+    <div className="space-y-8 pb-20 max-w-7xl mx-auto p-6 lg:p-8">
       <div>
-        <h1 className="text-4xl font-bold tracking-tight text-foreground flex items-center gap-3">
-          <BarChart className="w-8 h-8 text-indigo-500" />
+        <h1 className="text-3xl font-bold flex items-center gap-2">
+          <Network className="w-8 h-8 text-indigo-500" />
           Portfolio Intelligence
         </h1>
-        <p className="text-muted-foreground mt-2">Firm-wide analytics, conversion rates, and stage-by-stage insights.</p>
+        <p className="text-muted-foreground mt-1">Cross-portfolio graph analysis identifying concentration risks, overlapping customers, and strategic introductions.</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card className="bg-muted/30">
+      <PageHelpBanner 
+        title="Network Effects" 
+        explanation="Apex Capital maps the entire portfolio as a living graph. We automatically identify when one of our portfolio companies should sell to another, or when they are competing for the same customers."
+      />
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <Card className="bg-red-500/5 border-red-500/20">
           <CardHeader className="pb-2">
-             <CardTitle className="text-sm font-medium flex items-center text-muted-foreground">
-               <Target className="w-4 h-4 mr-2" /> Total Deals Analyzed
-             </CardTitle>
+            <CardTitle className="text-sm font-medium flex items-center text-red-500">
+              <AlertTriangle className="w-4 h-4 mr-2" /> Concentration Risk
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-foreground">{totalDeals}</div>
+            <div className="text-2xl font-bold text-foreground">High Exposure</div>
+            <p className="text-xs text-muted-foreground mt-1">4 companies heavily reliant on OpenAI API. Consider hedging with open-source infrastructure plays.</p>
           </CardContent>
         </Card>
-        <Card className="bg-muted/30">
+        
+        <Card className="bg-emerald-500/5 border-emerald-500/20">
           <CardHeader className="pb-2">
-             <CardTitle className="text-sm font-medium flex items-center text-muted-foreground">
-               <Activity className="w-4 h-4 mr-2" /> Active in Pipeline
-             </CardTitle>
+            <CardTitle className="text-sm font-medium flex items-center text-emerald-500">
+              <Users className="w-4 h-4 mr-2" /> Overlapping Customers
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-foreground">{inPipeline}</div>
+            <div className="text-2xl font-bold text-foreground">12 Shared Accounts</div>
+            <p className="text-xs text-muted-foreground mt-1">DataDog and Snowflake are common enterprise customers across the portfolio.</p>
           </CardContent>
         </Card>
-        <Card className="bg-muted/30">
+
+        <Card className="bg-indigo-500/5 border-indigo-500/20">
           <CardHeader className="pb-2">
-             <CardTitle className="text-sm font-medium flex items-center text-muted-foreground">
-               <Users className="w-4 h-4 mr-2" /> Approved
-             </CardTitle>
+            <CardTitle className="text-sm font-medium flex items-center text-indigo-500">
+              <ArrowRightLeft className="w-4 h-4 mr-2" /> Introduction Opportunities
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold text-green-500">{approved}</div>
-          </CardContent>
-        </Card>
-        <Card className="bg-muted/30">
-          <CardHeader className="pb-2">
-             <CardTitle className="text-sm font-medium flex items-center text-muted-foreground">
-               <TrendingUp className="w-4 h-4 mr-2" /> Approval Rate
-             </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-3xl font-bold text-primary">{conversionRate}%</div>
+            <div className="text-2xl font-bold text-foreground">5 High Conviction</div>
+            <p className="text-xs text-muted-foreground mt-1">Identified 5 potential vendor relationships between our Series A and Seed companies.</p>
           </CardContent>
         </Card>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <Card>
-          <CardHeader>
+          <CardHeader className="border-b border-border/50">
             <CardTitle className="flex items-center gap-2">
-              <PieChart className="w-5 h-5 text-indigo-400" />
-              Sector Breakdown
+              <ArrowRightLeft className="w-5 h-5 text-indigo-500" /> Strategic Introductions
             </CardTitle>
+            <CardDescription>AI-identified synergistic relationships within the portfolio.</CardDescription>
           </CardHeader>
-          <CardContent className="h-64 flex items-center justify-center border-t border-border/50 bg-muted/10">
-            {/* Placeholder for actual chart */}
-            <div className="text-center text-muted-foreground">
-               <p className="font-medium">Sectors Analyzed</p>
-               <div className="mt-4 flex flex-wrap gap-2 justify-center">
-                 <span className="px-3 py-1 bg-indigo-500/10 text-indigo-400 rounded-full text-xs">Enterprise SaaS (45%)</span>
-                 <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full text-xs">Fintech (30%)</span>
-                 <span className="px-3 py-1 bg-amber-500/10 text-amber-400 rounded-full text-xs">Healthtech (25%)</span>
-               </div>
-            </div>
+          <CardContent className="p-0 divide-y divide-border/50">
+             <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
+                <div className="flex-1 text-center sm:text-right border border-border/50 p-4 rounded-lg bg-muted/20 w-full sm:w-auto">
+                   <div className="font-bold">NeuralDesk (Fund III)</div>
+                   <div className="text-xs text-muted-foreground">Selling Enterprise AI Agents</div>
+                </div>
+                <div className="shrink-0 flex flex-col items-center">
+                   <Badge className="bg-indigo-500 text-white mb-2">Sell To</Badge>
+                   <ArrowRightLeft className="w-4 h-4 text-muted-foreground" />
+                </div>
+                <div className="flex-1 text-center sm:text-left border border-border/50 p-4 rounded-lg bg-muted/20 w-full sm:w-auto">
+                   <div className="font-bold">Acme Corp (Fund II)</div>
+                   <div className="text-xs text-muted-foreground">Looking to automate CS workflows</div>
+                </div>
+             </div>
+             <div className="p-6 flex flex-col sm:flex-row items-center gap-6">
+                <div className="flex-1 text-center sm:text-right border border-border/50 p-4 rounded-lg bg-muted/20 w-full sm:w-auto">
+                   <div className="font-bold">DataFlow (Fund IV)</div>
+                   <div className="text-xs text-muted-foreground">Data Integration API</div>
+                </div>
+                <div className="shrink-0 flex flex-col items-center">
+                   <Badge className="bg-indigo-500 text-white mb-2">Partner With</Badge>
+                   <ArrowRightLeft className="w-4 h-4 text-muted-foreground" />
+                </div>
+                <div className="flex-1 text-center sm:text-left border border-border/50 p-4 rounded-lg bg-muted/20 w-full sm:w-auto">
+                   <div className="font-bold">ModelOps (Fund IV)</div>
+                   <div className="text-xs text-muted-foreground">ML Deployment Platform</div>
+                </div>
+             </div>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <LineChart className="w-5 h-5 text-emerald-400" />
-              Funnel Velocity
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="h-64 flex flex-col justify-center px-8 border-t border-border/50 bg-muted/10 space-y-4">
-             {/* Funnel visualization */}
-             <div className="w-full bg-muted rounded-full h-8 overflow-hidden flex items-center relative">
-               <div className="absolute inset-y-0 left-0 bg-blue-500/50 w-full rounded-full flex items-center px-4 text-xs font-bold shadow-sm">New (100%)</div>
-             </div>
-             <div className="w-[80%] mx-auto bg-muted rounded-full h-8 overflow-hidden flex items-center relative">
-               <div className="absolute inset-y-0 left-0 bg-indigo-500/60 w-full rounded-full flex items-center px-4 text-xs font-bold shadow-sm">Partner Review (80%)</div>
-             </div>
-             <div className="w-[40%] mx-auto bg-muted rounded-full h-8 overflow-hidden flex items-center relative">
-               <div className="absolute inset-y-0 left-0 bg-purple-500/70 w-full rounded-full flex items-center px-4 text-xs font-bold shadow-sm text-white">IC (40%)</div>
-             </div>
-             <div className="w-[15%] mx-auto bg-muted rounded-full h-8 overflow-hidden flex items-center relative">
-               <div className="absolute inset-y-0 left-0 bg-emerald-500 w-full rounded-full flex items-center justify-center text-xs font-bold shadow-sm text-white">Approved (15%)</div>
-             </div>
-          </CardContent>
-        </Card>
+        <div className="space-y-8">
+           <Card>
+             <CardHeader className="border-b border-border/50">
+               <CardTitle className="flex items-center gap-2">
+                 <Building className="w-5 h-5 text-emerald-500" /> Sector Exposure Matrix
+               </CardTitle>
+             </CardHeader>
+             <CardContent className="p-6 space-y-6">
+                <div className="space-y-2">
+                   <div className="flex justify-between text-sm">
+                      <span className="font-medium">Applied AI & Agents</span>
+                      <span className="text-emerald-500">45%</span>
+                   </div>
+                   <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                      <div className="h-full bg-emerald-500 w-[45%]" />
+                   </div>
+                </div>
+                <div className="space-y-2">
+                   <div className="flex justify-between text-sm">
+                      <span className="font-medium">Developer Tools</span>
+                      <span className="text-indigo-500">30%</span>
+                   </div>
+                   <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                      <div className="h-full bg-indigo-500 w-[30%]" />
+                   </div>
+                </div>
+                <div className="space-y-2">
+                   <div className="flex justify-between text-sm">
+                      <span className="font-medium">B2B Fintech</span>
+                      <span className="text-amber-500">15%</span>
+                   </div>
+                   <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                      <div className="h-full bg-amber-500 w-[15%]" />
+                   </div>
+                </div>
+                <div className="space-y-2">
+                   <div className="flex justify-between text-sm">
+                      <span className="font-medium">Digital Health</span>
+                      <span className="text-muted-foreground">10%</span>
+                   </div>
+                   <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
+                      <div className="h-full bg-muted-foreground w-[10%]" />
+                   </div>
+                </div>
+             </CardContent>
+           </Card>
+
+           <Card className="bg-primary/5 border-primary/20">
+             <CardHeader className="pb-3 border-b border-primary/10">
+               <CardTitle className="flex items-center gap-2 text-sm text-primary">
+                 <Globe className="w-4 h-4" /> Market Event Blast Radius
+               </CardTitle>
+             </CardHeader>
+             <CardContent className="p-4 space-y-3 text-sm">
+                <p className="text-muted-foreground leading-relaxed">
+                   <strong>Event:</strong> Nvidia announces new Blackwell architecture.
+                </p>
+                <div className="bg-background border border-border/50 p-3 rounded-md">
+                   <strong>Impact:</strong> 3 portfolio companies (Compute AI, ModelOps, ScaleGraph) will see a 20% reduction in training costs if they migrate. Recommending technical advisory session with founders.
+                </div>
+             </CardContent>
+           </Card>
+        </div>
       </div>
     </div>
   );

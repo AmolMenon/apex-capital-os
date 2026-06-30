@@ -61,9 +61,9 @@ export default function DiligenceCommandCenterPage() {
         <EmptyState 
           title="No Diligence Plan" 
           description="Generate a plan to convert open risks and unsupported claims into actionable tasks."
-          icon={<RefreshCw className="h-6 w-6 text-muted-foreground" />}
-          actionLabel="Generate Diligence Plan"
-          onAction={handleGenerate}
+          icon={RefreshCw}
+          primaryActionLabel="Generate Diligence Plan"
+          onPrimaryAction={handleGenerate}
         />
       </div>
     )

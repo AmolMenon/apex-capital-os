@@ -26,12 +26,12 @@ export default async function DecisionBoardPage() {
   const deals = await api.getDeals()
   
   const columns = [
-    { id: "New", title: "New", deals: deals.filter(d => d.status === "New") },
-    { id: "Screening", title: "Screening", deals: deals.filter(d => d.status === "Screening") },
-    { id: "Diligence", title: "Diligence", deals: deals.filter(d => d.status === "Diligence") },
+    { id: "New", title: "New Opportunities", deals: deals.filter(d => d.status === "New") },
+    { id: "Screening", title: "Initial Screen", deals: deals.filter(d => d.status === "Screening") },
+    { id: "Diligence", title: "Deep Diligence", deals: deals.filter(d => d.status === "Diligence") },
     { id: "Partner Review", title: "Partner Review", deals: deals.filter(d => d.status === "Partner Review") },
     { id: "IC Ready", title: "IC Ready", deals: deals.filter(d => d.status === "IC Ready") },
-    { id: "Passed", title: "Passed", deals: deals.filter(d => d.status === "Passed") }
+    { id: "Passed", title: "Archived", deals: deals.filter(d => d.status === "Passed") }
   ]
 
   const convIntels = await getConversationIntelForDeals(deals)
@@ -64,7 +64,7 @@ export default async function DecisionBoardPage() {
                     <CardContent className="p-4 pt-0">
                       <div className="flex justify-between items-end mt-2">
                         <div className="flex flex-col">
-                          <div className="text-[10px] uppercase font-semibold text-muted-foreground">Apex Score</div>
+                          <div className="text-[10px] uppercase font-semibold text-muted-foreground">Conviction Score</div>
                           <div className="font-bold text-sm text-primary">{d.analysis?.overall_score || '--'}</div>
                         </div>
                         {convIntels[d.id] && (

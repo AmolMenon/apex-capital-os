@@ -93,8 +93,8 @@ export default function ICPacketPage({ params }: { params: Promise<{ id: string 
           </p>
         </div>
         <div className="flex items-center gap-2 mt-4 sm:mt-0">
-          <Link href={`/deals/${resolvedParams.id}/war-room`}>
-            <Button variant="outline" size="sm" className="bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 dark:bg-indigo-900/40">Open War Room</Button>
+          <Link href={`/deals/${resolvedParams.id}/deal-sync`}>
+            <Button variant="outline" size="sm" className="bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 border-indigo-200 dark:border-indigo-800 hover:bg-indigo-100 dark:bg-indigo-900/40">Open Deal Sync</Button>
           </Link>
           <Button variant="outline" size="sm" onClick={handleCopy}><Copy className="w-4 h-4 mr-2"/> Copy</Button>
           <Button variant="outline" size="sm" onClick={() => window.print()}><Printer className="w-4 h-4 mr-2"/> Print</Button>
@@ -102,7 +102,7 @@ export default function ICPacketPage({ params }: { params: Promise<{ id: string 
         </div>
       </div>
       
-      {/* Copilot CTA */}
+      {/* Assistant CTA */}
       <div className="mb-8 p-4 bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900/30 rounded-lg flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="p-2 bg-blue-100 dark:bg-blue-900/40 rounded-full">
@@ -113,9 +113,9 @@ export default function ICPacketPage({ params }: { params: Promise<{ id: string 
             <p className="text-xs text-blue-800/80 dark:text-blue-300/80">Get a 60-second summary or ask about unresolved risks.</p>
           </div>
         </div>
-        <Link href={`/deals/${resolvedParams.id}/copilot`}>
+        <Link href={`/deals/${resolvedParams.id}/assistant`}>
           <Button variant="outline" size="sm" className="bg-white dark:bg-neutral-800 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-800">
-            Open Copilot
+            Open Assistant
           </Button>
         </Link>
       </div>

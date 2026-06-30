@@ -63,10 +63,10 @@ const slides = [
     actionText: "Open Red Team Room"
   },
   {
-    title: "10. The Deal War Room",
+    title: "10. The Deal Deal Sync",
     talkingPoint: "This is where all research synthesizes. It calculates a conviction score, maps what must be true for this to be a fund returner, and sets clear 'change our mind' conditions.",
-    actionLink: "/deals/active/war-room",
-    actionText: "Open Deal War Room"
+    actionLink: "/deals/active/deal-sync",
+    actionText: "Open Deal Deal Sync"
   },
   {
     title: "11. Partner Personas",
@@ -99,10 +99,10 @@ const slides = [
     actionText: "Open IC Packet"
   },
   {
-    title: "16. The Partner Copilot",
-    talkingPoint: "This is the flagship feature. Partners, founders, or analysts can ask natural language questions about any deal, and the Copilot answers using only grounded evidence from the War Room and Data Center. No hallucinated metrics.",
-    actionLink: "/deals/active/copilot",
-    actionText: "Open Deal Copilot"
+    title: "16. The Analyst Assistant",
+    talkingPoint: "This is the flagship feature. Partners, founders, or analysts can ask natural language questions about any deal, and the Assistant answers using only grounded evidence from the Deal Sync and Data Center. No hallucinated metrics.",
+    actionLink: "/deals/active/assistant",
+    actionText: "Open Deal Assistant"
   },
   {
     title: "17. Mock vs Real Mode",

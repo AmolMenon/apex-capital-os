@@ -55,6 +55,55 @@ export default function DealKnowledgeGraphPage() {
         </div>
       </div>
 
+      <div className="bg-neutral-900 rounded-2xl border border-neutral-800 p-8 min-h-[400px] relative overflow-hidden flex items-center justify-center">
+        {/* Visual SVG Knowledge Graph Mock */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="edgeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#6366f1" stopOpacity="0.5" />
+              <stop offset="100%" stopColor="#10b981" stopOpacity="0.5" />
+            </linearGradient>
+          </defs>
+          <g stroke="url(#edgeGradient)" strokeWidth="2" fill="none">
+             {/* Center to Left */}
+             <path d="M 50% 50% Q 40% 40% 30% 30%" />
+             {/* Center to Top Right */}
+             <path d="M 50% 50% Q 65% 35% 75% 25%" />
+             {/* Center to Bottom */}
+             <path d="M 50% 50% Q 55% 65% 50% 80%" />
+             {/* Center to Bottom Right */}
+             <path d="M 50% 50% Q 70% 60% 80% 70%" />
+             {/* Cross connection */}
+             <path d="M 75% 25% Q 80% 45% 80% 70%" />
+          </g>
+        </svg>
+
+        <div className="absolute top-[30%] left-[30%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
+           <div className="w-16 h-16 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center font-bold text-red-500 z-10 shadow-lg shadow-red-500/20">Competitor</div>
+           <span className="text-xs font-semibold text-neutral-400 bg-neutral-900 px-2 rounded-full border border-neutral-800">Competes With</span>
+        </div>
+
+        <div className="absolute top-[25%] left-[75%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
+           <div className="w-16 h-16 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center font-bold text-emerald-500 z-10 shadow-lg shadow-emerald-500/20">Stripe</div>
+           <span className="text-xs font-semibold text-neutral-400 bg-neutral-900 px-2 rounded-full border border-neutral-800">Former Emp</span>
+        </div>
+
+        <div className="absolute top-[80%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
+           <div className="w-16 h-16 rounded-full bg-indigo-500/20 border-2 border-indigo-500 flex items-center justify-center font-bold text-indigo-500 z-10 shadow-lg shadow-indigo-500/20">Fund II</div>
+           <span className="text-xs font-semibold text-neutral-400 bg-neutral-900 px-2 rounded-full border border-neutral-800">Sell To</span>
+        </div>
+
+        <div className="absolute top-[70%] left-[80%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-2">
+           <div className="w-16 h-16 rounded-full bg-amber-500/20 border-2 border-amber-500 flex items-center justify-center font-bold text-amber-500 z-10 shadow-lg shadow-amber-500/20">Sam Altman</div>
+           <span className="text-xs font-semibold text-neutral-400 bg-neutral-900 px-2 rounded-full border border-neutral-800">Angel</span>
+        </div>
+
+        {/* Central Node */}
+        <div className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-primary flex items-center justify-center font-bold text-primary-foreground z-20 shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+           Target Deal
+        </div>
+      </div>
+
       <div className="grid grid-cols-3 gap-6">
         {/* Similar Deals Network */}
         <div className="col-span-3 lg:col-span-2 space-y-6">

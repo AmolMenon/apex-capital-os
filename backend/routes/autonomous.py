@@ -186,7 +186,14 @@ def get_autonomous_state(deal_id: str, db: Session = Depends(get_db)):
             state["research"] = {
                 "market_research": json.loads(deal.research_brief.market_research_json),
                 "competitor_research": json.loads(deal.research_brief.competitor_research_json),
-                "evidence_grade": json.loads(deal.research_brief.evidence_grade_json)
+                "evidence_grade": json.loads(deal.research_brief.evidence_grade_json),
+                "customer_personas": json.loads(deal.research_brief.customer_personas_json),
+                "pricing_research": json.loads(deal.research_brief.pricing_research_json),
+                "gtm_research": json.loads(deal.research_brief.gtm_research_json),
+                "tam_sam_som": json.loads(deal.research_brief.tam_sam_som_json),
+                "source_registry": json.loads(deal.research_brief.source_registry_json),
+                "research_gaps": json.loads(deal.research_brief.research_gaps_json),
+                "research_backed_recommendation": ""
             }
         except:
             pass

@@ -9,7 +9,7 @@ import { SystemStatus } from "@/types"
 
 export default function SystemStatusPage() {
   const [status, setStatus] = useState<SystemStatus | null>(null)
-  const [copilotStatus, setCopilotStatus] = useState<any>(null)
+  const [copilotStatus, setAssistantStatus] = useState<any>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -20,10 +20,10 @@ export default function SystemStatusPage() {
         setStatus(data)
         
         try {
-          const copilotData = await api.getCopilotStatus()
-          setCopilotStatus(copilotData)
+          const copilotData = await api.getAssistantStatus()
+          setAssistantStatus(copilotData)
         } catch (e) {
-          console.warn("Copilot status not available yet.")
+          console.warn("Assistant status not available yet.")
         }
       } catch (e: any) {
         setError(e.message || "Could not connect to the Apex backend. Start FastAPI on http://127.0.0.1:8000 or check NEXT_PUBLIC_API_URL.")
@@ -125,7 +125,7 @@ export default function SystemStatusPage() {
         <Card className="border-blue-200 bg-blue-50/20">
           <CardHeader className="pb-3 border-b bg-blue-50/50">
             <CardTitle className="text-lg flex items-center gap-2 text-blue-900">
-              <Bot className="w-5 h-5 text-blue-600" /> Partner Copilot Engine
+              <Bot className="w-5 h-5 text-blue-600" /> Analyst Assistant Engine
             </CardTitle>
           </CardHeader>
           <CardContent className="pt-4 grid grid-cols-1 md:grid-cols-2 gap-4">

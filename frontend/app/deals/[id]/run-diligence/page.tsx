@@ -72,7 +72,7 @@ export default function RunDiligencePage() {
         "Public Research",
         "Diligence Gap Analysis",
         "Diligence Questions",
-        "War Room Summary",
+        "Deal Sync Summary",
         "Decision Synthesis",
         "IC Packet Draft",
         "Trust Audit",

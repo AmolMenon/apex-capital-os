@@ -1,243 +1,193 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { 
-  ArrowRight, 
-  Presentation, 
-  LayoutDashboard, 
-  FileText, 
-  ShieldAlert, 
-  Database, 
-  Server, 
-  Layers, 
-  Cpu, 
-  CheckCircle, 
-  Activity, 
-  Search, 
-  LineChart, 
-  Scale,
-  Target
-} from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { BrainCircuit, AlertTriangle, TrendingUp, TrendingDown, ArrowRight, Activity, ShieldAlert, BookOpen } from "lucide-react"
 
-export default function LandingPage() {
+export default function InvestmentCommandCenter() {
+  const [deals, setDeals] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    // In a real app we'd fetch from our new Epic 3 API
+    // For now we simulate the live response structure
+    setTimeout(() => {
+      setDeals([
+        {
+          id: 1,
+          name: "NeuralDesk",
+          stage: "Seed",
+          conviction_score: 82,
+          conviction_change: "+4",
+          last_analysis: "10m ago",
+          contradictions: 0,
+          pending_override: false
+        },
+        {
+          id: 2,
+          name: "EcoLogistics",
+          stage: "Series A",
+          conviction_score: 45,
+          conviction_change: "-12",
+          last_analysis: "1h ago",
+          contradictions: 2,
+          pending_override: true
+        }
+      ])
+      setLoading(false)
+    }, 1500)
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="p-8 space-y-6">
+        <h1 className="text-3xl font-bold tracking-tight mb-8">Investment Command Center</h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="animate-pulse bg-muted/20"><CardContent className="h-32" /></Card>
+          <Card className="animate-pulse bg-muted/20"><CardContent className="h-32" /></Card>
+          <Card className="animate-pulse bg-muted/20"><CardContent className="h-32" /></Card>
+        </div>
+      </div>
+    )
+  }
+
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-background via-emerald-900/5 to-indigo-900/5 selection:bg-emerald-500/30">
-      {/* 1. Hero */}
-      <section className="flex flex-col items-center justify-center min-h-[85vh] px-6 text-center space-y-10 pt-20 pb-20 relative overflow-hidden">
+    <div className="p-8 space-y-8 animate-in fade-in duration-500">
+      <div className="flex justify-between items-center border-b pb-4">
+        <div>
+          <h1 className="text-4xl font-extrabold tracking-tight">Investment Command Center</h1>
+          <p className="text-muted-foreground text-lg mt-2">Live AI Intelligence & Portfolio Sentinels</p>
+        </div>
+        <Badge variant="outline" className="px-4 py-2 bg-emerald-500/10 text-emerald-600 border-emerald-500/30 font-semibold flex items-center gap-2">
+          <Activity className="w-4 h-4 animate-pulse" /> Live Analysis Active
+        </Badge>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Card className="bg-emerald-950/20 border-emerald-500/30 shadow-lg shadow-emerald-500/5">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-emerald-500 flex items-center gap-2">
+              <BrainCircuit className="w-4 h-4" /> AI Committee Reviews
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-bold">14</div>
+            <p className="text-xs text-muted-foreground mt-1">Completed today</p>
+          </CardContent>
+        </Card>
         
-        {/* Subtle glowing ambient lights behind hero */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <Card className="bg-rose-950/20 border-rose-500/30 shadow-lg shadow-rose-500/5">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-rose-500 flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4" /> Contradictions Detected
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-bold">3</div>
+            <p className="text-xs text-muted-foreground mt-1">Requires human review</p>
+          </CardContent>
+        </Card>
 
-        <div className="space-y-6 max-w-4xl relative z-10">
-          <h1 className="text-6xl font-extrabold tracking-tighter lg:text-8xl text-foreground bg-clip-text text-transparent bg-gradient-to-br from-foreground to-foreground/70">
-            Apex Capital
-          </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold text-emerald-700 dark:text-emerald-400 tracking-tight">
-            An agentic VC analyst operating system for evidence-backed startup evaluation.
+        <Card className="bg-indigo-950/20 border-indigo-500/30 shadow-lg shadow-indigo-500/5">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-indigo-500 flex items-center gap-2">
+              <TrendingUp className="w-4 h-4" /> Avg Conviction Shift
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-bold">+2.4</div>
+            <p className="text-xs text-muted-foreground mt-1">Across active pipeline</p>
+          </CardContent>
+        </Card>
+        
+        <Card className="bg-amber-950/20 border-amber-500/30 shadow-lg shadow-amber-500/5">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm font-medium text-amber-500 flex items-center gap-2">
+              <ShieldAlert className="w-4 h-4" /> Partner Overrides
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-3xl font-bold">1</div>
+            <p className="text-xs text-muted-foreground mt-1">Pending IC discussion</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="lg:col-span-2 space-y-6">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <Activity className="w-5 h-5 text-primary" /> Active Pipeline Sentinels
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto font-medium">
-            Apex Capital moves startups from first look to investment judgment through analysis, research intelligence, pitch deck review, diligence planning, founder conversation analysis, fund-fit assessment, memo generation, and IC readiness.
-          </p>
-        </div>
-
-        <div className="flex flex-wrap justify-center gap-4 pt-8 relative z-10">
-          <Link href="/demo">
-            <Button size="lg" className="h-14 px-8 font-bold text-lg shadow-xl shadow-emerald-500/20 transition-all hover:scale-105 hover:shadow-emerald-500/30 bg-emerald-600 hover:bg-emerald-700 text-white">
-              <Presentation className="mr-2 h-5 w-5" /> Launch Demo
-            </Button>
-          </Link>
-          <Link href="/command-center">
-            <Button size="lg" variant="outline" className="h-14 px-8 font-bold text-lg border-primary/20 hover:bg-primary/5 transition-all shadow-sm">
-              <LayoutDashboard className="mr-2 h-5 w-5" /> Open Command Center
-            </Button>
-          </Link>
-          <Link href="https://github.com/GoogleCloudPlatform/gemini-vc-os" target="_blank" rel="noopener noreferrer">
-            <Button size="lg" variant="ghost" className="h-14 px-8 font-bold text-lg text-muted-foreground hover:text-foreground transition-all">
-              <FileText className="mr-2 h-5 w-5" /> View Case Study
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* 2. Product Workflow */}
-      <section className="py-24 border-y border-border/50 bg-background/50 backdrop-blur-sm relative z-10">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight mb-4 text-foreground">The Investment Workflow</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">A systematic pipeline from raw founder narrative to verified investment judgment.</p>
-          </div>
           
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-sm md:text-base font-medium">
-            <Badge variant="secondary" className="px-4 py-2 text-sm bg-muted/50 border border-border/50">Deal Intake</Badge>
-            <ArrowRight className="w-4 h-4 text-muted-foreground/50" />
-            <Badge variant="secondary" className="px-4 py-2 text-sm bg-muted/50 border border-border/50">Analysis</Badge>
-            <ArrowRight className="w-4 h-4 text-muted-foreground/50" />
-            <Badge variant="secondary" className="px-4 py-2 text-sm bg-muted/50 border border-border/50">Research</Badge>
-            <ArrowRight className="w-4 h-4 text-muted-foreground/50" />
-            <Badge variant="secondary" className="px-4 py-2 text-sm bg-muted/50 border border-border/50">Deck Review</Badge>
-            <ArrowRight className="w-4 h-4 text-muted-foreground/50" />
-            <Badge variant="secondary" className="px-4 py-2 text-sm bg-muted/50 border border-border/50">Diligence</Badge>
-            <ArrowRight className="w-4 h-4 text-muted-foreground/50" />
-            <Badge variant="secondary" className="px-4 py-2 text-sm text-indigo-600 dark:text-indigo-400 bg-indigo-500/10 border-indigo-500/20">Conversations</Badge>
-            <ArrowRight className="w-4 h-4 text-muted-foreground/50" />
-            <Badge variant="secondary" className="px-4 py-2 text-sm bg-muted/50 border border-border/50">Fund Fit</Badge>
-            <ArrowRight className="w-4 h-4 text-muted-foreground/50" />
-            <Badge variant="secondary" className="px-4 py-2 text-sm bg-muted/50 border border-border/50">Memo</Badge>
-            <ArrowRight className="w-4 h-4 text-muted-foreground/50" />
-            <Badge variant="secondary" className="px-4 py-2 text-sm bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20 font-bold shadow-[0_0_15px_rgba(16,185,129,0.15)]">Investment Committee</Badge>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Why It Exists */}
-      <section className="py-32 relative z-10">
-        <div className="max-w-4xl mx-auto px-6 text-center space-y-8">
-          <Scale className="w-16 h-16 text-emerald-600/80 mx-auto drop-shadow-md" />
-          <h2 className="text-4xl font-extrabold tracking-tight">Why This Matters</h2>
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            Most startup evaluation tools stop at the pitch deck. <strong className="text-foreground font-semibold">Apex Capital also evaluates evidence quality, founder responses, unresolved risks, fund fit, and IC readiness.</strong>
-          </p>
-        </div>
-      </section>
-
-      {/* 4. What It Does */}
-      <section className="py-24 border-y border-border/50 bg-background/50 backdrop-blur-sm relative z-10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Core Operating Modules</h2>
-            <p className="text-muted-foreground text-lg">Every phase of the venture lifecycle, augmented.</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: FileText, title: "Deal Intake", desc: "Ingest structured startup data into the system." },
-              { icon: Activity, title: "VC Scorecard", desc: "Evaluate team, market, product, and traction." },
-              { icon: Search, title: "Research Intelligence", desc: "Automate market and competitor validation." },
-              { icon: Layers, title: "Pitch Deck Intelligence", desc: "Extract and verify claims from founder decks." },
-              { icon: ShieldAlert, title: "Diligence Command Center", desc: "Auto-generate risk resolution plans." },
-              { icon: Cpu, title: "Decision Engine", desc: "Compute final IC readiness and next steps." },
-              { icon: LineChart, title: "Fund Strategy", desc: "Simulate ownership and return requirements." },
-              { icon: Presentation, title: "IC One-Pager", desc: "Generate deterministic memos for committee review." },
-            ].map((feature, i) => (
-              <Card key={i} className="bg-background/60 backdrop-blur-md border-border/50 shadow-sm hover:shadow-lg transition-all hover:-translate-y-1 hover:border-emerald-500/30 group">
-                <CardHeader className="pb-2">
-                  <feature.icon className="w-8 h-8 text-primary mb-2 opacity-80 group-hover:text-emerald-500 transition-colors" />
-                  <CardTitle className="text-lg font-bold tracking-tight">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground font-medium">{feature.desc}</p>
-                </CardContent>
+          <div className="space-y-4">
+            {deals.map(deal => (
+              <Card key={deal.id} className="overflow-hidden hover:border-primary/50 transition-colors">
+                <div className="flex flex-col md:flex-row items-center p-6 gap-6">
+                  <div className="flex-1 space-y-2">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-xl font-bold">{deal.name}</h3>
+                      <Badge variant="secondary">{deal.stage}</Badge>
+                    </div>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1"><BookOpen className="w-3 h-3" /> Updated {deal.last_analysis}</span>
+                      {deal.contradictions > 0 && (
+                        <span className="flex items-center gap-1 text-rose-500 font-medium">
+                          <AlertTriangle className="w-3 h-3" /> {deal.contradictions} Contradiction{deal.contradictions > 1 ? 's' : ''}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-8 border-l pl-8 border-border/50">
+                    <div className="text-center">
+                      <div className="text-sm text-muted-foreground mb-1">Conviction</div>
+                      <div className="text-2xl font-bold flex items-center gap-2 justify-center">
+                        {deal.conviction_score}
+                        {deal.conviction_change.startsWith('+') ? (
+                          <span className="text-xs text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full flex items-center">
+                            <TrendingUp className="w-3 h-3 mr-1" /> {deal.conviction_change}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-rose-500 bg-rose-500/10 px-2 py-0.5 rounded-full flex items-center">
+                            <TrendingDown className="w-3 h-3 mr-1" /> {deal.conviction_change}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    
+                    <Link href={`/deals/${deal.id}/committee`}>
+                      <Button variant="default" size="sm" className="font-bold">
+                        View Intelligence <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
               </Card>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* 5. Flagship Demo Deal & 6. Credibility */}
-      <section className="py-32 relative z-10">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          <div className="space-y-8">
-            <h2 className="text-4xl font-bold tracking-tight">Evidence-Backed Judgment</h2>
-            <p className="text-lg text-muted-foreground leading-relaxed font-medium">
-              Apex Capital does not blindly recommend investments based on hype. A high company score can still be heavily downgraded by weak evidence, unresolved risks, low IC readiness, or poor fund fit.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed font-medium">
-              It enforces discipline, requiring founders to back up their claims before moving to the investment committee.
-            </p>
-            <Link href="/deals/1" className="inline-block mt-4">
-              <Button variant="outline" className="h-12 px-6 border-emerald-500/20 hover:bg-emerald-500/5 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all shadow-sm">
-                Open NeuralDesk Deal Room <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-
-          <Card className="border-emerald-500/20 shadow-2xl shadow-emerald-500/10 bg-background/80 backdrop-blur-md overflow-hidden relative">
-            <div className="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
-              <Target className="w-48 h-48" />
-            </div>
-            <div className="bg-emerald-500/10 px-6 py-4 border-b border-emerald-500/10 flex justify-between items-center relative z-10">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded bg-emerald-600 flex items-center justify-center text-white font-bold shadow-inner">N</div>
-                <h3 className="font-bold text-lg text-foreground">NeuralDesk</h3>
-              </div>
-              <Badge variant="outline" className="border-emerald-500/30 text-emerald-700 dark:text-emerald-400 bg-emerald-500/5 font-semibold">B2B SaaS • Seed</Badge>
-            </div>
-            <CardContent className="p-6 space-y-6 relative z-10">
-              <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-1">
-                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">Apex Score</p>
-                  <p className="text-3xl font-bold text-emerald-600">82<span className="text-lg text-muted-foreground/50">/100</span></p>
+        
+        <div className="space-y-6">
+          <h2 className="text-xl font-bold border-b pb-2">Recent Overrides</h2>
+          <Card className="bg-background/50 backdrop-blur">
+            <CardContent className="p-4 space-y-4">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-sm">FinStack</span>
+                  <Badge variant="outline" className="text-xs text-rose-500 border-rose-500/30">AI: PASS</Badge>
                 </div>
-                <div className="space-y-1">
-                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">Evidence Score</p>
-                  <p className="text-3xl font-bold text-amber-600">65<span className="text-lg text-muted-foreground/50">/100</span></p>
+                <div className="text-sm bg-muted/50 p-3 rounded text-muted-foreground border-l-2 border-primary">
+                  Partner Amol Menon marked as INVEST.
+                  <br/><span className="text-xs opacity-70">"AI over-penalized CAC, founders have organic distribution."</span>
                 </div>
-                <div className="space-y-1">
-                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">IC Readiness</p>
-                  <p className="text-3xl font-bold text-primary">50%</p>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-xs uppercase tracking-wider font-semibold text-muted-foreground">Recommendation</p>
-                  <p className="text-xl font-bold text-foreground pt-1">Watchlist</p>
-                </div>
-              </div>
-              <div className="bg-destructive/5 p-4 rounded-xl border border-destructive/20 space-y-2">
-                <p className="text-sm font-bold text-destructive flex items-center tracking-tight uppercase"><ShieldAlert className="w-4 h-4 mr-2"/> Main Blocker</p>
-                <p className="text-sm text-foreground/80 font-medium">Pitch deck claims have not been extracted and graded for verification.</p>
               </div>
             </CardContent>
           </Card>
-
         </div>
-      </section>
-
-      {/* 7. Architecture Snapshot */}
-      <section className="py-24 border-y border-border/50 bg-background/50 backdrop-blur-sm relative z-10">
-        <div className="max-w-6xl mx-auto px-6 text-center space-y-12">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-bold tracking-tight">System Architecture</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-medium">Built on a modular, model-agnostic foundation designed for scale.</p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-4">
-            <Badge variant="outline" className="px-5 py-3 text-sm bg-background/80 backdrop-blur-sm border-border/50 shadow-sm flex items-center gap-2 font-medium">
-              <LayoutDashboard className="w-4 h-4 text-primary" /> Next.js 15 Frontend
-            </Badge>
-            <Badge variant="outline" className="px-5 py-3 text-sm bg-background/80 backdrop-blur-sm border-border/50 shadow-sm flex items-center gap-2 font-medium">
-              <Server className="w-4 h-4 text-emerald-500" /> FastAPI Backend
-            </Badge>
-            <Badge variant="outline" className="px-5 py-3 text-sm bg-background/80 backdrop-blur-sm border-border/50 shadow-sm flex items-center gap-2 font-medium">
-              <Cpu className="w-4 h-4 text-blue-500" /> Modular Python Engines
-            </Badge>
-            <Badge variant="outline" className="px-5 py-3 text-sm bg-background/80 backdrop-blur-sm border-border/50 shadow-sm flex items-center gap-2 font-medium">
-              <Database className="w-4 h-4 text-purple-500" /> Model-Agnostic Router
-            </Badge>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Final CTA */}
-      <section className="py-32 text-center px-6 relative z-10">
-        <h2 className="text-4xl font-bold tracking-tight mb-8">Ready to explore the OS?</h2>
-        <div className="flex flex-wrap justify-center gap-4">
-          <Link href="/demo">
-            <Button size="lg" className="h-14 px-8 font-bold text-lg shadow-xl shadow-emerald-500/20 hover:scale-105 transition-transform bg-emerald-600 hover:bg-emerald-700 text-white">
-              Start Guided Demo
-            </Button>
-          </Link>
-          <Link href="/command-center">
-            <Button size="lg" variant="outline" className="h-14 px-8 font-bold text-lg shadow-sm">
-              Open Command Center
-            </Button>
-          </Link>
-        </div>
-      </section>
-
+      </div>
     </div>
   )
 }

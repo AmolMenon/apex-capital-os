@@ -6,6 +6,7 @@ import { redirect } from "next/navigation"
 import { GlobalDealProvider } from "@/components/GlobalDealProvider"
 import { AutonomousSidebar } from "@/components/AutonomousSidebar"
 import { DealNavigation } from "@/components/ui/DealNavigation"
+import { DealTopNav } from "@/components/ui/DealTopNav"
 
 export const dynamic = "force-dynamic"
 
@@ -21,11 +22,11 @@ export default async function DealLayout({ children, params }: { children: React
         if (d) {
           redirect(`/deals/${d.id}/deal-room`);
         } else {
-          redirect(`/deals/demo/deal-room`);
+          redirect(`/deals/1000/deal-room`);
         }
       } catch(e) {
         // Fallback for demo when backend is down
-        redirect(`/deals/demo/deal-room`);
+        redirect(`/deals/1000/deal-room`);
       }
     } else {
       try {
@@ -66,12 +67,7 @@ export default async function DealLayout({ children, params }: { children: React
         {/* Main Content Area */}
         <div className="flex-1 flex flex-col min-h-0 overflow-y-auto">
           {/* Top Navigation */}
-          <div className="border-b border-white/10 px-6 py-4 flex items-center justify-between bg-black/20 backdrop-blur-md sticky top-0 z-20">
-            <nav className="flex items-center gap-4 text-sm font-medium">
-              <Link href="/pipeline" className="text-muted-foreground hover:text-foreground">← Back to Pipeline</Link>
-            </nav>
-            <DealNavigation id={id} />
-          </div>
+          <DealTopNav />
 
           {/* Page Content */}
           <div className="flex-1 p-6 lg:p-8 bg-transparent relative z-10 max-w-6xl mx-auto w-full">

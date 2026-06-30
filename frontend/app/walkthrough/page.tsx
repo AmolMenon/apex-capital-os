@@ -42,10 +42,10 @@ export default function WalkthroughPage() {
       actionText: "View Decision Engine"
     },
     {
-      title: "6. Deal War Room",
-      script: "Now we enter the Autonomous Deal War Room. Here the system calculates conviction, simulates the IC debate with partner personas, and determines exactly what evidence is still required to get to a Yes.",
-      action: "/deals/1000/war-room",
-      actionText: "Enter War Room"
+      title: "6. Deal Deal Sync",
+      script: "Now we enter the Autonomous Deal Deal Sync. Here the system calculates conviction, simulates the IC debate with partner personas, and determines exactly what evidence is still required to get to a Yes.",
+      action: "/deals/1000/deal-sync",
+      actionText: "Enter Deal Sync"
     },
     {
       title: "7. Compiled IC Packet",

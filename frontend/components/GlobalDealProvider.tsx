@@ -24,19 +24,24 @@ interface GlobalDealContextType {
   loading: boolean;
   error: any;
   simulateAutonomous: () => void;
+  isPartnerMode: boolean;
+  togglePartnerMode: () => void;
 }
 
 const GlobalDealContext = createContext<GlobalDealContextType>({
   state: null,
   loading: true,
   error: null,
-  simulateAutonomous: () => {}
+  simulateAutonomous: () => {},
+  isPartnerMode: false,
+  togglePartnerMode: () => {}
 });
 
 export function GlobalDealProvider({ children, dealId }: { children: React.ReactNode, dealId: string }) {
   const [state, setState] = useState<DealState | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isPartnerMode, setIsPartnerMode] = useState(false);
 
   const fetchState = async () => {
     try {
@@ -70,7 +75,14 @@ export function GlobalDealProvider({ children, dealId }: { children: React.React
   };
 
   return (
-    <GlobalDealContext.Provider value={{ state, loading, error, simulateAutonomous }}>
+    <GlobalDealContext.Provider value={{ 
+      state, 
+      loading, 
+      error, 
+      simulateAutonomous,
+      isPartnerMode,
+      togglePartnerMode: () => setIsPartnerMode(!isPartnerMode)
+    }}>
       {children}
     </GlobalDealContext.Provider>
   );

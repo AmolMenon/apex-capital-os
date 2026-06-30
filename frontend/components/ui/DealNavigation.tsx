@@ -7,23 +7,12 @@ import { cn } from "@/lib/utils"
 import { Briefcase, Search, Presentation, Activity, FileText, MessageSquare, Globe, Users, Bot, Play } from "lucide-react"
 
 const tabs = [
-  { name: "Deal War Room", path: "war-room", icon: Users },
-  { name: "Copilot", path: "copilot", icon: Bot },
   { name: "Overview", path: "deal-room", icon: Briefcase },
-  { name: "Decision", path: "decision", icon: Activity },
-  { name: "Scorecard", path: "scorecard", icon: Activity },
+  { name: "Founder", path: "founder", icon: Users },
   { name: "Research", path: "research", icon: Search },
-  { name: "Web Research", path: "web-research", icon: Globe },
-  { name: "Deck", path: "deck", icon: Presentation },
-  { name: "Run Diligence", path: "run-diligence", icon: Play },
-  { name: "Platform Diligence", path: "platform-diligence", icon: Users },
   { name: "Diligence", path: "diligence", icon: Activity },
-  { name: "Conversations", path: "conversations", icon: MessageSquare },
-  { name: "Fund Fit", path: "fund-fit", icon: Activity },
-  { name: "Partner Review", path: "partner-review", icon: Activity },
-  { name: "Living Thesis", path: "thesis", icon: Users },
-  { name: "Evidence Center", path: "evidence-center", icon: FileText },
-  { name: "Knowledge Graph", path: "knowledge-graph", icon: Activity },
+  { name: "Living Thesis", path: "thesis", icon: FileText },
+  { name: "Decision Lab", path: "decision-lab", icon: Play },
 ]
 
 export function DealNavigation({ id }: { id: string }) {

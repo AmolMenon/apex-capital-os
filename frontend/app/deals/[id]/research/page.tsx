@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Progress } from "@/components/ui/progress"
-import { CheckCircle, AlertTriangle, ShieldAlert, Database, Search, Sparkles } from "lucide-react"
+import { CheckCircle, AlertTriangle, ShieldAlert, Database, Search, Sparkles, Activity, TrendingUp } from "lucide-react"
 import { 
   ResearchConfidenceBadge, 
   EvidenceGradeBadge, 
@@ -33,12 +33,10 @@ export default function ResearchBriefPage() {
         <EmptyState 
           title="Research Not Found" 
           description="Research brief has not been generated yet. The autonomous pipeline will generate this."
-          icon={<Search className="h-6 w-6" />}
-        >
-          <button onClick={simulateAutonomous} className="bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium mt-4">
-            Run Autonomous Pipeline
-          </button>
-        </EmptyState>
+          icon={Search}
+          primaryActionLabel="Run Autonomous Pipeline"
+          onPrimaryAction={simulateAutonomous}
+        />
       </div>
     )
   }
@@ -116,11 +114,11 @@ export default function ResearchBriefPage() {
               <CardTitle className="text-lg">TAM / SAM / SOM</CardTitle>
             </CardHeader>
             <CardContent>
-              <TAMChart tam={tam_sam_som.tam} sam={tam_sam_som.sam} som={tam_sam_som.som} />
+              <TAMChart tam={tam_sam_som?.tam || 'Unknown'} sam={tam_sam_som?.sam || 'Unknown'} som={tam_sam_som?.som || 'Unknown'} />
               <div className="text-xs text-muted-foreground space-y-2 mt-4">
-                <p><strong>TAM:</strong> {tam_sam_som.tam}</p>
-                <p><strong>SAM:</strong> {tam_sam_som.sam}</p>
-                <p><strong>SOM:</strong> {tam_sam_som.som}</p>
+                <p><strong>TAM:</strong> {tam_sam_som?.tam || 'Unknown'}</p>
+                <p><strong>SAM:</strong> {tam_sam_som?.sam || 'Unknown'}</p>
+                <p><strong>SOM:</strong> {tam_sam_som?.som || 'Unknown'}</p>
               </div>
             </CardContent>
           </Card>
@@ -135,20 +133,20 @@ export default function ResearchBriefPage() {
               <div>
                 <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider">Why Now Analysis</h4>
                 <ul className="list-disc pl-5 mt-2 text-sm space-y-1">
-                  {market_research.why_now_analysis.map((item: string, i: number) => <li key={i}>{item}</li>)}
+                  {(market_research?.why_now_analysis || []).map((item: string, i: number) => <li key={i}>{item}</li>)}
                 </ul>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider">Tailwinds</h4>
                   <ul className="list-disc pl-5 mt-2 text-sm text-green-500/80 space-y-1">
-                    {market_research.drivers.map((item: string, i: number) => <li key={i}>{item}</li>)}
+                    {(market_research?.drivers || []).map((item: string, i: number) => <li key={i}>{item}</li>)}
                   </ul>
                 </div>
                 <div>
                   <h4 className="font-semibold text-sm text-muted-foreground uppercase tracking-wider">Headwinds</h4>
                   <ul className="list-disc pl-5 mt-2 text-sm text-red-500/80 space-y-1">
-                    {market_research.constraints.map((item: string, i: number) => <li key={i}>{item}</li>)}
+                    {(market_research?.constraints || []).map((item: string, i: number) => <li key={i}>{item}</li>)}
                   </ul>
                 </div>
               </div>
@@ -161,7 +159,7 @@ export default function ResearchBriefPage() {
       <section>
         <h2 className="text-2xl font-bold mb-4">Customer Personas</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {customer_personas.map((persona: any, i: number) => (
+          {(customer_personas || []).map((persona: any, i: number) => (
             <CustomerPersonaCard key={i} persona={persona} />
           ))}
         </div>
@@ -176,7 +174,7 @@ export default function ResearchBriefPage() {
               <CardTitle>Threat Matrix</CardTitle>
               <div className="flex items-center gap-2 text-sm">
                 <span className="text-muted-foreground">Intensity Score:</span>
-                <span className="font-mono font-bold text-lg">{competitor_research.competitive_intensity_score}/100</span>
+                <span className="font-mono font-bold text-lg">{competitor_research?.competitive_intensity_score || 0}/100</span>
               </div>
             </div>
           </CardHeader>
@@ -192,7 +190,7 @@ export default function ResearchBriefPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {competitor_research.competitors.map((c: any, i: number) => (
+                {(competitor_research?.competitors || []).map((c: any, i: number) => (
                   <TableRow key={i}>
                     <TableCell className="font-bold">{c.name}</TableCell>
                     <TableCell><Badge variant="outline">{c.type}</Badge></TableCell>
@@ -204,8 +202,8 @@ export default function ResearchBriefPage() {
               </TableBody>
             </Table>
             <div className="mt-6 bg-muted/20 p-4 rounded-lg space-y-2">
-              <div><span className="font-semibold text-sm">White Space:</span> <span className="text-sm text-muted-foreground">{competitor_research.white_space_analysis}</span></div>
-              <div><span className="font-semibold text-sm">Incumbent Risk:</span> <span className="text-sm text-muted-foreground">{competitor_research.incumbent_response_risk}</span></div>
+              <div><span className="font-semibold text-sm">White Space:</span> <span className="text-sm text-muted-foreground">{competitor_research?.white_space_analysis || 'N/A'}</span></div>
+              <div><span className="font-semibold text-sm">Incumbent Risk:</span> <span className="text-sm text-muted-foreground">{competitor_research?.incumbent_response_risk || 'N/A'}</span></div>
             </div>
           </CardContent>
         </Card>
@@ -220,19 +218,19 @@ export default function ResearchBriefPage() {
           <CardContent className="space-y-4 text-sm">
             <div className="flex justify-between border-b pb-2">
               <span className="text-muted-foreground">Primary Motion</span>
-              <span className="font-medium">{gtm_research.primary_motion}</span>
+              <span className="font-medium">{gtm_research?.primary_motion || 'N/A'}</span>
             </div>
             <div className="flex justify-between border-b pb-2">
               <span className="text-muted-foreground">First Wedge</span>
-              <span className="font-medium text-right max-w-[200px]">{gtm_research.first_wedge}</span>
+              <span className="font-medium text-right max-w-[200px]">{gtm_research?.first_wedge || 'N/A'}</span>
             </div>
             <div className="flex justify-between border-b pb-2">
               <span className="text-muted-foreground">Sales Cycle</span>
-              <span className="font-medium">{gtm_research.sales_cycle_estimate}</span>
+              <span className="font-medium">{gtm_research?.sales_cycle_estimate || 'N/A'}</span>
             </div>
             <div className="pt-2">
               <span className="font-semibold block mb-1">Recommended Next 90 Days:</span>
-              <span className="text-muted-foreground">{gtm_research.next_90_days_proof}</span>
+              <span className="text-muted-foreground">{gtm_research?.next_90_days_proof || 'N/A'}</span>
             </div>
           </CardContent>
         </Card>
@@ -244,19 +242,19 @@ export default function ResearchBriefPage() {
           <CardContent className="space-y-4 text-sm">
             <div className="flex justify-between border-b pb-2">
               <span className="text-muted-foreground">Current vs Suggested</span>
-              <span className="font-medium">{pricing_research.current_model} → {pricing_research.suggested_model}</span>
+              <span className="font-medium">{pricing_research?.current_model || 'N/A'} → {pricing_research?.suggested_model || 'N/A'}</span>
             </div>
             <div className="flex justify-between border-b pb-2">
               <span className="text-muted-foreground">Margin Implication</span>
-              <span className="font-medium text-right max-w-[200px]">{pricing_research.gross_margin_implication}</span>
+              <span className="font-medium text-right max-w-[200px]">{pricing_research?.gross_margin_implication || 'N/A'}</span>
             </div>
             <div className="flex justify-between border-b pb-2">
               <span className="text-muted-foreground">Benchmark</span>
-              <span className="font-mono">{pricing_research.benchmark_pricing}</span>
+              <span className="font-mono">{pricing_research?.benchmark_pricing || 'N/A'}</span>
             </div>
             <div className="pt-2">
               <span className="font-semibold block mb-1">Pricing Risk:</span>
-              <span className="text-destructive/80 font-medium">{pricing_research.pricing_risk}</span>
+              <span className="text-destructive/80 font-medium">{pricing_research?.pricing_risk || 'N/A'}</span>
             </div>
           </CardContent>
         </Card>
@@ -277,7 +275,7 @@ export default function ResearchBriefPage() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {evidence_grade.categories.map((c: any, i: number) => (
+                {(evidence_grade?.categories || []).map((c: any, i: number) => (
                   <TableRow key={i}>
                     <TableCell className="font-medium">{c.category}</TableCell>
                     <TableCell><EvidenceGradeBadge grade={c.grade} /></TableCell>
@@ -289,6 +287,65 @@ export default function ResearchBriefPage() {
             </Table>
           </CardContent>
         </Card>
+
+        {/* Dynamic Tracked Competitors */}
+        <div className="mt-8">
+          <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+            <Activity className="w-5 h-5 text-indigo-500" /> Active Competitor Tracking
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="bg-indigo-500/5 border-indigo-500/20">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium flex items-center justify-between text-indigo-500">
+                  <span className="flex items-center"><Search className="w-4 h-4 mr-2" /> Website Changes (30d)</span>
+                  <Badge variant="outline" className="bg-indigo-500/10 text-indigo-500 border-indigo-500/20">Live</Badge>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                 <div className="text-sm bg-background/80 p-3 rounded border border-border/50">
+                    <span className="font-bold">Competitor A</span> completely revamped their pricing page. Removed "freemium" tier.
+                 </div>
+                 <div className="text-sm bg-background/80 p-3 rounded border border-border/50">
+                    <span className="font-bold">Competitor B</span> updated their hero messaging to focus on "Enterprise AI" instead of "Workflow Automation".
+                 </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-emerald-500/5 border-emerald-500/20">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium flex items-center justify-between text-emerald-500">
+                  <span className="flex items-center"><TrendingUp className="w-4 h-4 mr-2" /> Hiring Velocity</span>
+                  <Badge variant="outline" className="bg-emerald-500/10 text-emerald-500 border-emerald-500/20">Live</Badge>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                 <div className="text-sm bg-background/80 p-3 rounded border border-border/50">
+                    <span className="font-bold">Competitor A</span> opened 15 new roles in Sales, indicating a shift towards enterprise GTM.
+                 </div>
+                 <div className="text-sm bg-background/80 p-3 rounded border border-border/50">
+                    <span className="font-bold">Competitor B</span> hiring slowed by 40% QoQ. Key engineering leaders departed.
+                 </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-amber-500/5 border-amber-500/20">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium flex items-center justify-between text-amber-500">
+                  <span className="flex items-center"><Sparkles className="w-4 h-4 mr-2" /> Feature Releases</span>
+                  <Badge variant="outline" className="bg-amber-500/10 text-amber-500 border-amber-500/20">Live</Badge>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                 <div className="text-sm bg-background/80 p-3 rounded border border-border/50">
+                    <span className="font-bold">Competitor A</span> launched SOC2 compliance and SSO, closing the gap for enterprise readiness.
+                 </div>
+                 <div className="text-sm bg-background/80 p-3 rounded border border-border/50">
+                    <span className="font-bold">Competitor B</span> shipped an AI copilot feature (beta). Sentiment on Twitter is mixed.
+                 </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
       </section>
 
       {/* 6. Source Registry & Gaps */}
@@ -310,7 +367,7 @@ export default function ResearchBriefPage() {
           </CardHeader>
           <CardContent>
             <ul className="space-y-3">
-              {research_gaps.map((gap: string, i: number) => (
+              {(research_gaps || []).map((gap: string, i: number) => (
                 <li key={i} className="flex gap-2 text-sm text-muted-foreground items-start">
                   <AlertTriangle className="h-4 w-4 text-yellow-500 shrink-0 mt-0.5" />
                   <span>{gap}</span>

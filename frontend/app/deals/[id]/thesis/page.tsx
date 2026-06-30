@@ -9,10 +9,13 @@ import { FileText, Target, Activity, RefreshCw, AlertTriangle, CheckCircle, Help
 import { RedFlagEngine } from '@/components/RedFlagEngine';
 import { DecisionAuditTrail, PortfolioPatternMatch, EvidenceGraphMock } from '@/components/AdvancedIntelligence';
 import { api } from "@/lib/api";
+import { DealRoomSkeleton } from "@/components/ui/DealRoomSkeleton";
+import { TooltipHelper } from "@/components/ui/TooltipHelper";
 
 export default function LivingThesis() {
   const { state, loading } = useGlobalDeal();
   const [thesis, setThesis] = useState<any>(null);
+  const [snapshots, setSnapshots] = useState<any[]>([]);
   const [assumptions, setAssumptions] = useState<any[]>([]);
   const [isLoadingThesis, setIsLoadingThesis] = useState(true);
 
@@ -29,12 +32,14 @@ export default function LivingThesis() {
   const fetchThesisData = async () => {
     setIsLoadingThesis(true);
     try {
-      const [thesisRes, assumptionsRes] = await Promise.all([
-        api.get(`/api/deals/${deal?.id}/thesis`).catch(() => null),
+      const [brainRes, snapshotsRes, assumptionsRes] = await Promise.all([
+        api.get(`/api/deals/${deal?.id}/brain`).catch(() => null),
+        api.get(`/api/deals/${deal?.id}/thesis-snapshots`).catch(() => null),
         api.get(`/api/deals/${deal?.id}/assumptions`).catch(() => null)
       ]);
       
-      if (thesisRes) setThesis(thesisRes);
+      if (brainRes?.thesis) setThesis(brainRes.thesis);
+      if (snapshotsRes?.snapshots) setSnapshots(snapshotsRes.snapshots);
       if (assumptionsRes) setAssumptions(assumptionsRes);
     } catch (e) {
       console.error(e);
@@ -43,7 +48,7 @@ export default function LivingThesis() {
     }
   };
 
-  if (loading || isLoadingThesis) return <div className="p-12 text-center animate-pulse">Loading Living Thesis...</div>;
+  if (loading || isLoadingThesis) return <DealRoomSkeleton />;
 
   let unknowns = [];
   try {
@@ -71,8 +76,9 @@ export default function LivingThesis() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card className="bg-primary/5 border-primary/20">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center text-primary">
-              <Target className="w-4 h-4 mr-2" /> Current Recommendation
+            <CardTitle className="text-sm font-medium flex items-center justify-between text-primary">
+              <span className="flex items-center"><Target className="w-4 h-4 mr-2" /> Current Recommendation</span>
+              <TooltipHelper content="Synthesized by the Multi-Agent orchestrator based on the current health score." />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -82,8 +88,9 @@ export default function LivingThesis() {
         
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center text-muted-foreground">
-              <Activity className="w-4 h-4 mr-2" /> AI Conviction
+            <CardTitle className="text-sm font-medium flex items-center justify-between text-muted-foreground">
+              <span className="flex items-center"><Activity className="w-4 h-4 mr-2" /> AI Conviction</span>
+              <TooltipHelper content="The firmness of our recommendation. Low conviction means more diligence is needed to shift the score." />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -91,14 +98,20 @@ export default function LivingThesis() {
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="border-indigo-500/20 bg-indigo-500/5">
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center text-muted-foreground">
-              <CheckCircle className="w-4 h-4 mr-2" /> Thesis Confidence
+            <CardTitle className="text-sm font-medium flex items-center justify-between text-indigo-500">
+              <span className="flex items-center"><CheckCircle className="w-4 h-4 mr-2" /> Deal Health Score</span>
+              <TooltipHelper content="Continuously updating Deal Health Score based on new information. A score above 80 indicates strong invest readiness." />
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-primary">{thesis?.confidence || 0}%</div>
+            <div className="text-2xl font-bold text-indigo-500 flex items-baseline gap-2">
+              {thesis?.health_score || 50}/100
+              <span className="text-xs font-normal opacity-70">
+                ({thesis?.confidence}% Confidence)
+              </span>
+            </div>
           </CardContent>
         </Card>
       </div>
@@ -107,10 +120,11 @@ export default function LivingThesis() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <Card className="border-emerald-500/30">
-          <CardHeader className="pb-3 border-b border-border/50 bg-emerald-500/5">
+          <CardHeader className="pb-3 border-b border-border/50 bg-emerald-500/5 flex flex-row items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-emerald-500">
               <CheckCircle className="w-5 h-5" /> Bull Case
             </CardTitle>
+            <TooltipHelper content="What must go right for this to be a venture-scale outlier." />
           </CardHeader>
           <CardContent className="p-6">
             <p className="text-sm leading-relaxed text-foreground/90">
@@ -120,10 +134,11 @@ export default function LivingThesis() {
         </Card>
 
         <Card className="border-red-500/30">
-          <CardHeader className="pb-3 border-b border-border/50 bg-red-500/5">
+          <CardHeader className="pb-3 border-b border-border/50 bg-red-500/5 flex flex-row items-center justify-between">
             <CardTitle className="flex items-center gap-2 text-red-500">
               <AlertTriangle className="w-5 h-5" /> Bear Case
             </CardTitle>
+            <TooltipHelper content="The most likely reasons this startup fails or yields a sub-par return." />
           </CardHeader>
           <CardContent className="p-6">
             <p className="text-sm leading-relaxed text-foreground/90">
@@ -205,7 +220,7 @@ export default function LivingThesis() {
           <PortfolioPatternMatch />
           <EvidenceGraphMock />
         </div>
-        <DecisionAuditTrail logs={[
+        <DecisionAuditTrail logs={snapshots.length > 0 ? snapshots : [
           { created_at: "2026-06-28T10:00:00Z", previous_recommendation: "Monitor", current_recommendation: "Proceed to IC", reason_changed: "Strong cohort retention data received.", confidence_change: 15, evidence_responsible: "Cohort Analysis Data Room Upload" },
           { created_at: "2026-06-25T14:30:00Z", previous_recommendation: "Pending", current_recommendation: "Monitor", reason_changed: "Initial meeting completed. Founder execution score high.", confidence_change: 20, evidence_responsible: "Founder Interview Transcript" }
         ]} />

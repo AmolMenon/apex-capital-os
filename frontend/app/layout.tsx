@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Sidebar } from "@/components/Sidebar";
 import { TopNav } from "@/components/TopNav";
@@ -7,7 +8,8 @@ import { OnboardingModal } from "@/components/OnboardingModal";
 import { ScreenshotProvider } from "@/components/ScreenshotProvider";
 import { CommandPalette } from "@/components/CommandPalette";
 import { AuthProvider } from "@/context/AuthContext";
-import { GlobalCopilotBar } from "@/components/copilot/GlobalCopilotBar";
+import { GlobalAssistantBar } from "@/components/assistant/GlobalAssistantBar";
+import { SmartInsightsWidget } from "@/components/ui/SmartInsightsWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +28,16 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-JR9STX7Q4P" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-JR9STX7Q4P');
+          `}
+        </Script>
         <div className="bg-rose-600 text-white text-xs font-bold uppercase tracking-widest text-center py-1 relative z-50">
           VC Showcase Demo: Simulated Environment & Mock Data
         </div>
@@ -51,11 +63,12 @@ export default function RootLayout({
                 </footer>
               </main>
               </div>
-              <GlobalCopilotBar />
+              <GlobalAssistantBar />
             </div>
           </ScreenshotProvider>
         </AuthProvider>
         </GlobalPortfolioProvider>
+        <SmartInsightsWidget />
       </body>
     </html>
   );

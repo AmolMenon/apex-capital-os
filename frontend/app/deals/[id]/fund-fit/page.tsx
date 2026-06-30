@@ -77,9 +77,9 @@ export default function DealFundFitPage() {
         <EmptyState 
           title="No Fund Fit Assessment" 
           description="Evaluate how this deal fits into the broader fund strategy, including ownership targets and reserves."
-          icon={<RefreshCw className="h-6 w-6 text-muted-foreground" />}
-          actionLabel="Run Assessment"
-          onAction={handleGenerate}
+          icon={RefreshCw}
+          primaryActionLabel="Run Assessment"
+          onPrimaryAction={handleGenerate}
         />
       ) : (
         <div className="grid grid-cols-1 gap-6 pb-12">

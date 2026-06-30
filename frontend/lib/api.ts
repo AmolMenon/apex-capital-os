@@ -1,4 +1,5 @@
 import { Deal, FullAnalysisOutput, DiligencePlan, DecisionOutput, FundFit, AgentWorkflowRun, SystemStatus } from "@/types";
+import { extendedDeals } from "@/data/extended_deals";
 
 const RAW_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
 const API_BASE_URL = RAW_API_URL.replace(/\/$/, "");
@@ -10,17 +11,64 @@ class ApiError extends Error {
   }
 }
 
+async function refreshAccessToken(): Promise<boolean> {
+  const refreshToken = localStorage.getItem("apex_refresh_token");
+  if (!refreshToken) return false;
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/v1/auth/refresh`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${refreshToken}`
+      }
+    });
+    if (!res.ok) {
+      localStorage.removeItem("apex_access_token");
+      localStorage.removeItem("apex_refresh_token");
+      return false;
+    }
+    const data = await res.json();
+    localStorage.setItem("apex_access_token", data.access_token);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`;
+  let accessToken = typeof window !== "undefined" ? localStorage.getItem("apex_access_token") : null;
+  
+  const buildHeaders = () => {
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+      ...options.headers as Record<string, string>,
+    };
+    if (accessToken) {
+      headers["Authorization"] = `Bearer ${accessToken}`;
+    }
+    return headers;
+  };
+
   try {
-    const response = await fetch(url, {
+    let response = await fetch(url, {
       ...options,
-      headers: {
-        "Content-Type": "application/json",
-        ...options.headers,
-      },
+      headers: buildHeaders(),
       cache: "no-store",
     });
+
+    if (response.status === 401) {
+      // Attempt token refresh
+      const refreshed = await refreshAccessToken();
+      if (refreshed) {
+        accessToken = localStorage.getItem("apex_access_token");
+        response = await fetch(url, {
+          ...options,
+          headers: buildHeaders(),
+          cache: "no-store",
+        });
+      }
+    }
 
     if (!response.ok) {
       let errorMsg = response.statusText;
@@ -37,20 +85,19 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise
   }
 }
 
-
 function resolveId(id: string | number | undefined | null): string {
   if (id === undefined || id === null) {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("activeDealId") || "1";
+      return localStorage.getItem("activeDealId") || "1000";
     }
-    return "1";
+    return "1000";
   }
   const strId = id.toString().replace("deal-", "");
-  if (strId === "active") {
+  if (strId === "active" || strId === "demo") {
     if (typeof window !== "undefined") {
-      return localStorage.getItem("activeDealId") || "1";
+      return localStorage.getItem("activeDealId") || "1000";
     }
-    return "1";
+    return "1000";
   }
   return strId;
 }
@@ -101,21 +148,7 @@ export const api = {
       return await fetchAPI<Deal[]>("/deals");
     } catch (e) {
       console.warn("[getDeals] Failed to fetch deals, returning mock list.");
-      return [
-        {
-          id: 1000,
-          startup_name: "Mock AI Corp",
-          sector: "AI Infrastructure",
-          stage: "Series A",
-          valuation: 50000000,
-          status: "In Progress",
-          deal_type: "demo",
-          analysis: {
-            overall_score: 85,
-            recommendation: "Proceed to Partner Review, Not IC-Ready Yet"
-          }
-        }
-      ] as any;
+      return extendedDeals as any;
     }
   },
   getDeal: async (id: string | number) => {
@@ -123,21 +156,11 @@ export const api = {
       return await fetchAPI<Deal>(`/deals/${resolveId(id)}`);
     } catch (e) {
       console.warn(`[getDeal] Failed to fetch deal ${id}, returning mock data.`);
-      return {
-        id: resolveId(id),
-        startup_name: "Mock AI Corp",
-        sector: "AI Infrastructure",
-        stage: "Series A",
-        valuation: 50000000,
-        status: "In Progress",
-        deal_type: "demo",
-        analysis: {
-          one_line_thesis: "A highly technical team building the orchestration layer for enterprise AI.",
-          recommendation: "Proceed to Partner Review, Not IC-Ready Yet",
-          risks: [{ category: "Market", description: "High competition from AWS/GCP." }],
-          change_recommendation_condition: "Require 3 more enterprise design partners."
-        }
-      } as any;
+      const activeId = resolveId(id);
+      const deal = extendedDeals.find(d => d.id.toString() === activeId || d.id === parseInt(activeId));
+      if (deal) return deal as any;
+      
+      return extendedDeals[0] as any;
     }
   },
   createDeal: (data: any) => fetchAPI<Deal>("/deals", { method: "POST", body: JSON.stringify(data) }),
@@ -156,7 +179,7 @@ export const api = {
       if (found) return found;
     }
     
-    const priorityNames = ["Sarvam AI", "NeuralDesk", "Zepto", "Mistral AI"];
+    const priorityNames = ["NexusAI", "Aura Health", "CarbonGrid", "PayFlow"];
     for (const name of priorityNames) {
       const found = deals.find(d => d.startup_name === name);
       if (found) {
@@ -180,13 +203,13 @@ export const api = {
   runAgentWorkflow: (id: string | number) => fetchAPI<AgentWorkflowRun>(`/agent-workflow/deals/${resolveId(id)}/run`, { method: "POST" }),
   getAgentTrace: (runId: string) => fetchAPI<any>(`/agent-workflow/runs/${runId}/trace`),
 
-  // Deal War Room
-  getWarRoomStatus: () => fetchAPI<any>("/war-room/status"),
-  getWarRoom: (id: string | number) => fetchAPI<any>(`/war-room/deals/${resolveId(id)}`),
-  runWarRoom: (id: string | number) => fetchAPI<any>(`/war-room/deals/${resolveId(id)}/run`, { method: "POST" }),
-  getICSimulation: (id: string | number) => fetchAPI<any>(`/war-room/deals/${resolveId(id)}/ic-simulation`),
-  getValuationSensitivity: (id: string | number) => fetchAPI<any>(`/war-room/deals/${resolveId(id)}/valuation`),
-  getFundReturn: (id: string | number) => fetchAPI<any>(`/war-room/deals/${resolveId(id)}/fund-return`),
+  // Deal Deal Sync
+  getWarRoomStatus: () => fetchAPI<any>("/deal-sync/status"),
+  getWarRoom: (id: string | number) => fetchAPI<any>(`/deal-sync/deals/${resolveId(id)}`),
+  runWarRoom: (id: string | number) => fetchAPI<any>(`/deal-sync/deals/${resolveId(id)}/run`, { method: "POST" }),
+  getICSimulation: (id: string | number) => fetchAPI<any>(`/deal-sync/deals/${resolveId(id)}/ic-simulation`),
+  getValuationSensitivity: (id: string | number) => fetchAPI<any>(`/deal-sync/deals/${resolveId(id)}/valuation`),
+  getFundReturn: (id: string | number) => fetchAPI<any>(`/deal-sync/deals/${resolveId(id)}/fund-return`),
 
   // Outputs
   getDecision: (id: string | number) => fetchAPI<DecisionOutput>(`/deals/${resolveId(id)}/decision`),
@@ -204,13 +227,13 @@ export const api = {
   generateDiligencePlan: (id: string | number) => fetchAPI<DiligencePlan>(`/diligence/${resolveId(id)}`, { method: "POST" }),
   getConversationIntelligence: (id: string | number) => fetchAPI<any>(`/conversations/${resolveId(id)}`),
 
-  // Copilot
-  getCopilotStatus: () => fetchAPI<any>("/copilot/status"),
-  askDealCopilot: (id: string | number, question: string) => fetchAPI<any>(`/copilot/deals/${resolveId(id)}/ask`, { method: "POST", body: JSON.stringify({ question }) }),
-  getSuggestedCopilotQuestions: (id: string | number) => fetchAPI<string[]>(`/copilot/deals/${resolveId(id)}/suggested-questions`),
-  getCopilotSession: (id: string | number) => fetchAPI<any>(`/copilot/deals/${resolveId(id)}/session`),
-  clearCopilotSession: (id: string | number) => fetchAPI<any>(`/copilot/deals/${resolveId(id)}/clear-session`, { method: "POST" }),
-  askWorkspaceCopilot: (question: string) => fetchAPI<any>("/copilot/ask", { method: "POST", body: JSON.stringify({ question }) }),
+  // Assistant
+  getAssistantStatus: () => fetchAPI<any>("/assistant/status"),
+  askDealAssistant: (id: string | number, question: string) => fetchAPI<any>(`/assistant/deals/${resolveId(id)}/ask`, { method: "POST", body: JSON.stringify({ question }) }),
+  getSuggestedAssistantQuestions: (id: string | number) => fetchAPI<string[]>(`/assistant/deals/${resolveId(id)}/suggested-questions`),
+  getAssistantSession: (id: string | number) => fetchAPI<any>(`/assistant/deals/${resolveId(id)}/session`),
+  clearAssistantSession: (id: string | number) => fetchAPI<any>(`/assistant/deals/${resolveId(id)}/clear-session`, { method: "POST" }),
+  askWorkspaceAssistant: (question: string) => fetchAPI<any>("/assistant/ask", { method: "POST", body: JSON.stringify({ question }) }),
 
   // Knowledge Graph
   getKnowledgeGraphStatus: () => fetchAPI<any>("/knowledge-graph/status"),
@@ -236,7 +259,7 @@ export const api = {
   updateSourcingPipelineItem: (itemId: string, payload: any) => fetchAPI<any>(`/sourcing/pipeline/${itemId}`, { method: "PUT", body: JSON.stringify(payload) }),
   getMarketMap: (thesisId: string) => fetchAPI<any>(`/sourcing/market-map/${thesisId}`),
 
-  // Portfolio Intelligence Engine
+  // Portfolio Analysis Engine
   getPortfolioStatus: () => fetchAPI<any>("/api/portfolio/status"),
   getPortfolioCompanies: () => fetchAPI<any[]>("/api/portfolio/companies"),
   getPortfolioCompany: (id: string) => fetchAPI<any>(`/api/portfolio/companies/${id}`),
@@ -349,8 +372,8 @@ export const api = {
   getGoldenCases: async () => {
     return fetchAPI<any>('/evals/golden-cases');
   },
-  getCopilotEvals: async () => {
-    return fetchAPI<any>('/evals/copilot');
+  getAssistantEvals: async () => {
+    return fetchAPI<any>('/evals/assistant');
   },
   getDecisionGates: async () => {
     return fetchAPI<any>('/evals/decision-gates');

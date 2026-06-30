@@ -1,61 +1,91 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
+from typing import Any
+from pydantic import BaseModel
+
 from db.database import get_db
-from db.models import User, Workspace, WorkspaceMember
-from auth.schemas import UserCreate, UserLogin, Token, UserResponse, WorkspaceResponse, WorkspaceCreate
-from auth.password import get_password_hash, verify_password
-from auth.jwt import create_access_token
-from auth.dependencies import get_current_user
-from core.config import settings
+from db.models import User
+from auth.jwt_handler import (
+    verify_password,
+    get_password_hash,
+    create_access_token,
+    create_refresh_token
+)
+from auth.dependencies import get_current_active_user
 
 router = APIRouter()
 
-@router.post("/register", response_model=UserResponse)
-def register(user: UserCreate, db: Session = Depends(get_db)):
-    if not settings.ENABLE_AUTH:
-        raise HTTPException(status_code=400, detail="Authentication is disabled in this environment.")
-        
-    db_user = db.query(User).filter(User.email == user.email).first()
-    if db_user:
-        raise HTTPException(status_code=400, detail="Email already registered")
-        
-    hashed_password = get_password_hash(user.password)
-    new_user = User(email=user.email, name=user.name, hashed_password=hashed_password)
-    db.add(new_user)
-    db.commit()
-    db.refresh(new_user)
-    return new_user
+class TokenResponse(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
 
-@router.post("/login", response_model=Token)
-def login(user: UserLogin, db: Session = Depends(get_db)):
-    if not settings.ENABLE_AUTH:
-        # Mock token if auth disabled
-        return {"access_token": "mock-token-auth-disabled", "token_type": "bearer"}
-        
-    db_user = db.query(User).filter(User.email == user.email).first()
-    if not db_user or not verify_password(user.password, db_user.hashed_password):
+class UserCreate(BaseModel):
+    email: str
+    password: str
+    name: str
+    role: str = "Viewer"
+
+class UserResponse(BaseModel):
+    id: int
+    email: str
+    name: str
+    role: str
+
+    class Config:
+        orm_mode = True
+
+@router.post("/login", response_model=TokenResponse)
+def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)) -> Any:
+    """
+    OAuth2 compatible token login, get an access token for future requests
+    """
+    user = db.query(User).filter(User.email == form_data.username).first()
+    if not user or not verify_password(form_data.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Incorrect email or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-        
-    access_token = create_access_token(data={"sub": str(db_user.id)})
-    return {"access_token": access_token, "token_type": "bearer"}
+    if not user.is_active:
+        raise HTTPException(status_code=400, detail="Inactive user")
+
+    access_token = create_access_token(data={"sub": str(user.id), "role": user.role})
+    refresh_token = create_refresh_token(data={"sub": str(user.id), "role": user.role})
+
+    return {
+        "access_token": access_token,
+        "refresh_token": refresh_token,
+        "token_type": "bearer"
+    }
+
+@router.post("/register", response_model=UserResponse)
+def register(user_in: UserCreate, db: Session = Depends(get_db)) -> Any:
+    """
+    Create new user. (In production, this would be admin-only or invite-only)
+    """
+    user = db.query(User).filter(User.email == user_in.email).first()
+    if user:
+        raise HTTPException(
+            status_code=400,
+            detail="The user with this email already exists in the system.",
+        )
+    
+    new_user = User(
+        email=user_in.email,
+        hashed_password=get_password_hash(user_in.password),
+        name=user_in.name,
+        role=user_in.role
+    )
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    return new_user
 
 @router.get("/me", response_model=UserResponse)
-def get_me(current_user: User = Depends(get_current_user)):
+def read_users_me(current_user: User = Depends(get_current_active_user)) -> Any:
+    """
+    Get current user.
+    """
     return current_user
-
-@router.get("/workspaces", response_model=list[WorkspaceResponse])
-def get_my_workspaces(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    memberships = db.query(WorkspaceMember).filter(WorkspaceMember.user_id == current_user.id).all()
-    workspaces = [m.workspace for m in memberships]
-    
-    # If no workspaces and in demo mode, inject demo workspace
-    if not workspaces and not settings.ENABLE_AUTH:
-        demo_ws = db.query(Workspace).filter(Workspace.slug == "demo").first()
-        if demo_ws:
-            return [demo_ws]
-            
-    return workspaces

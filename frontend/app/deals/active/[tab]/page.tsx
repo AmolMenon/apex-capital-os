@@ -30,7 +30,7 @@ export default function ActiveDealRedirect() {
       <EmptyState
         title="No Active Deal Selected"
         description="Select a deal from your Pipeline or Dashboard to view this workspace."
-        icon={<Database className="h-6 w-6" />}
+        icon={Database}
       />
       <div className="mt-6">
         <Link href="/pipeline">

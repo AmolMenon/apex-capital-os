@@ -6026,3 +6026,514 @@ Traceback (most recent call last):
   File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/routes/autonomous.py", line 10, in <module>
     from routes.web_research import generate_research
 ImportError: cannot import name 'generate_research' from 'routes.web_research' (/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/routes/web_research.py)
+WARNING:  StatReload detected changes in 'routes/autonomous.py'. Reloading...
+INFO:     Started server process [83455]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [83455]
+INFO:     Started server process [83624]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:54057 - "GET /deals/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54083 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54084 - "OPTIONS /api/portfolio/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54085 - "OPTIONS /api/portfolio/companies HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54086 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54085 - "GET /api/portfolio/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54084 - "GET /api/portfolio/companies HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54083 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54086 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54089 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54089 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54101 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54101 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54102 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54102 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54104 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54104 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54106 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54106 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54107 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54107 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54108 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54108 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54113 - "OPTIONS /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54113 - "GET /deals HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54147 - "GET /deals/1 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'routes/autonomous.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [83624]
+INFO:     Started server process [87404]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'db/models.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87404]
+INFO:     Started server process [87863]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87863]
+Process SpawnProcess-65:
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 176, in <module>
+    from routes import platform, admin, autonomous, eval, realtime, knowledge, war_room, diligence, brain
+ImportError: cannot import name 'platform' from 'routes' (unknown location)
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Started server process [87877]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87877]
+INFO:     Started server process [87883]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'routes/brain.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [87883]
+INFO:     Started server process [88002]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'db/seed_demo_data.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88002]
+INFO:     Started server process [88410]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'db/seed_demo_data.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88410]
+INFO:     Started server process [88683]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:56675 - "GET /decks/1004 HTTP/1.1" 404 Not Found
+WARNING:  StatReload detected changes in 'db/models.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [88683]
+Process SpawnProcess-71:
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 1, in <module>
+    from data_room_engine.data_room_orchestrator import get_or_create_data_room_report
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/data_room_engine/data_room_orchestrator.py", line 5, in <module>
+    from database.crud import get_deal
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/database/crud.py", line 3, in <module>
+    from db.models import Deal, Analysis, ResearchBriefModel, DeckAnalysisModel, DiligencePlanModel, ICDecisionLogModel, FundFitAssessmentModel, DealWarRoomModel
+ImportError: cannot import name 'Analysis' from 'db.models' (/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/db/models.py)
+WARNING:  StatReload detected changes in 'auth/dependencies.py'. Reloading...
+Process SpawnProcess-72:
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 1, in <module>
+    from data_room_engine.data_room_orchestrator import get_or_create_data_room_report
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/data_room_engine/data_room_orchestrator.py", line 5, in <module>
+    from database.crud import get_deal
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/database/crud.py", line 3, in <module>
+    from db.models import Deal, Analysis, ResearchBriefModel, DeckAnalysisModel, DiligencePlanModel, ICDecisionLogModel, FundFitAssessmentModel, DealWarRoomModel
+ImportError: cannot import name 'Analysis' from 'db.models' (/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/db/models.py)
+WARNING:  StatReload detected changes in 'auth/routes.py'. Reloading...
+Process SpawnProcess-73:
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 1, in <module>
+    from data_room_engine.data_room_orchestrator import get_or_create_data_room_report
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/data_room_engine/data_room_orchestrator.py", line 5, in <module>
+    from database.crud import get_deal
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/database/crud.py", line 3, in <module>
+    from db.models import Deal, Analysis, ResearchBriefModel, DeckAnalysisModel, DiligencePlanModel, ICDecisionLogModel, FundFitAssessmentModel, DealWarRoomModel
+ImportError: cannot import name 'Analysis' from 'db.models' (/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/db/models.py)
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [91189]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'repositories/document_repository.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91189]
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [91222]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91222]
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+Process SpawnProcess-76:
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/importer.py", line 22, in import_from_string
+    raise exc from None
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 19, in <module>
+    from core.logging_middleware import LoggingMiddleware
+ModuleNotFoundError: No module named 'core.logging_middleware'
+WARNING:  StatReload detected changes in 'schemas/user.py'. Reloading...
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [91246]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'alembic/env.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91246]
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [91255]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91255]
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [91305]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'tests/conftest.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91305]
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [91312]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'schemas/company.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91312]
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [91318]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'db/models.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [91318]
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+Process SpawnProcess-82:
+Traceback (most recent call last):
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: table ai_analysis_memory already exists
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_subprocess.py", line 80, in subprocess_started
+    target(sockets=sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio_run(self.serve(sockets=sockets), loop_factory=self.config.get_loop_factory())
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/_compat.py", line 60, in asyncio_run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 71, in serve
+    await self._serve(sockets)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/server.py", line 78, in _serve
+    config.load()
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/config.py", line 439, in load
+    self.loaded_app = import_from_string(self.app)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/uvicorn/importer.py", line 19, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py", line 127, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 1030, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1007, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 986, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 680, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 850, in exec_module
+  File "<frozen importlib._bootstrap>", line 228, in _call_with_frames_removed
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/main.py", line 25, in <module>
+    Base.metadata.create_all(bind=engine)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/sql/schema.py", line 5930, in create_all
+    bind._run_ddl_visitor(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 3270, in _run_ddl_visitor
+    conn._run_ddl_visitor(visitorcallable, element, **kwargs)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2467, in _run_ddl_visitor
+    visitorcallable(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/sql/visitors.py", line 661, in traverse_single
+    return meth(obj, **kw)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/sql/ddl.py", line 985, in visit_metadata
+    self.traverse_single(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/sql/visitors.py", line 661, in traverse_single
+    return meth(obj, **kw)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/sql/ddl.py", line 1018, in visit_table
+    CreateTable(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/sql/ddl.py", line 322, in _invoke_with
+    return bind.execute(self)
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1421, in execute
+    return meth(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/sql/ddl.py", line 188, in _execute_on_connection
+    return connection._execute_ddl(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1532, in _execute_ddl
+    ret = self._execute_context(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) table ai_analysis_memory already exists
+[SQL: 
+CREATE TABLE ai_analysis_memory (
+	id INTEGER NOT NULL, 
+	deal_id INTEGER, 
+	conviction_score FLOAT, 
+	risk_score FLOAT, 
+	recommendation VARCHAR, 
+	analysis_json TEXT, 
+	created_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(deal_id) REFERENCES deals (id) ON DELETE CASCADE
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+WARNING:  StatReload detected changes in 'main.py'. Reloading...
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/venv/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/services/ai/committee_orchestrator.py:2: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+INFO:     Started server process [91399]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:apex_audit:API_REQUEST: {'method': 'GET', 'url': '/fund/deals/999/fit', 'status_code': 404, 'latency_ms': 0.81, 'user_id': 'anonymous', 'role': 'none', 'client_ip': '127.0.0.1'}
+INFO:     127.0.0.1:58291 - "GET /fund/deals/999/fit HTTP/1.1" 404 Not Found
+INFO:apex_audit:API_REQUEST: {'method': 'POST', 'url': '/fund/deals/999/fit', 'status_code': 404, 'latency_ms': 0.45, 'user_id': 'anonymous', 'role': 'none', 'client_ip': '127.0.0.1'}
+INFO:     127.0.0.1:58291 - "POST /fund/deals/999/fit HTTP/1.1" 404 Not Found
+INFO:apex_audit:API_REQUEST: {'method': 'POST', 'url': '/fund/deals/999/fit', 'status_code': 404, 'latency_ms': 0.35, 'user_id': 'anonymous', 'role': 'none', 'client_ip': '127.0.0.1'}
+INFO:     127.0.0.1:58291 - "POST /fund/deals/999/fit HTTP/1.1" 404 Not Found

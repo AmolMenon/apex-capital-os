@@ -128,7 +128,7 @@ export default function DiligenceRunReportPage() {
           </div>
           <div className="p-4 border rounded-lg bg-neutral-50">
             <Eye className="w-6 h-6 mx-auto mb-2 text-neutral-400" />
-            <div className="font-semibold text-neutral-700">War Room</div>
+            <div className="font-semibold text-neutral-700">Deal Sync</div>
             <div className="text-neutral-500 text-xs mt-1">Summary Generated</div>
           </div>
           <div className="p-4 border rounded-lg bg-neutral-50">

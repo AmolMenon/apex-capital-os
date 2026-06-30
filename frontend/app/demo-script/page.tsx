@@ -45,16 +45,16 @@ export default function DemoScriptPage() {
         <section>
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-slate-900 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">2</div>
-            <h2 className="text-2xl font-bold">The War Room & Evidence</h2>
+            <h2 className="text-2xl font-bold">The Deal Sync & Evidence</h2>
           </div>
           <Card>
             <CardContent className="p-6 space-y-4">
               <div className="flex gap-2 mb-2">
-                <Badge variant="outline"><MousePointer className="w-3 h-3 mr-1"/> Go to Deal &rarr; War Room</Badge>
+                <Badge variant="outline"><MousePointer className="w-3 h-3 mr-1"/> Go to Deal &rarr; Deal Sync</Badge>
               </div>
-              <p className="text-slate-700"><strong>Narration:</strong> "We convert it to a deal. The system spins up a War Room. It runs a Red Team critique against the claims. It finds that they claim a $40M valuation cap, but the web research engine shows inference costs for Indic models might crush their margins."</p>
+              <p className="text-slate-700"><strong>Narration:</strong> "We convert it to a deal. The system spins up a Deal Sync. It runs a Red Team critique against the claims. It finds that they claim a $40M valuation cap, but the web research engine shows inference costs for Indic models might crush their margins."</p>
               <ul className="list-disc pl-5 text-sm space-y-2 text-slate-600">
-                <li>Show the <strong>War Room</strong> dashboard.</li>
+                <li>Show the <strong>Deal Sync</strong> dashboard.</li>
                 <li>Click on the <strong>Evidence Center</strong> tab to show how every claim is grounded to a specific PDF page or Web URL.</li>
                 <li>Emphasize that the AI isn't just hallucinating opinions, it's synthesizing hard facts.</li>
               </ul>
@@ -66,15 +66,15 @@ export default function DemoScriptPage() {
         <section>
           <div className="flex items-center gap-3 mb-4">
             <div className="bg-slate-900 text-white w-8 h-8 flex items-center justify-center rounded-full font-bold">3</div>
-            <h2 className="text-2xl font-bold">Partner Copilot Debate</h2>
+            <h2 className="text-2xl font-bold">Analyst Assistant Debate</h2>
           </div>
           <Card>
             <CardContent className="p-6 space-y-4">
                <div className="flex gap-2 mb-2">
-                <Badge variant="outline"><MousePointer className="w-3 h-3 mr-1"/> Go to Deal &rarr; Copilot</Badge>
+                <Badge variant="outline"><MousePointer className="w-3 h-3 mr-1"/> Go to Deal &rarr; Assistant</Badge>
                 <Badge variant="secondary"><MessageSquare className="w-3 h-3 mr-1"/> Type: "What is the biggest risk?"</Badge>
               </div>
-              <p className="text-slate-700"><strong>Narration:</strong> "As a Partner, I don't want to read a 10-page memo. I just want to ask questions. I ask the Copilot what the biggest risk is. It immediately flags the unverified ARR and the $40M cap."</p>
+              <p className="text-slate-700"><strong>Narration:</strong> "As a Partner, I don't want to read a 10-page memo. I just want to ask questions. I ask the Assistant what the biggest risk is. It immediately flags the unverified ARR and the $40M cap."</p>
             </CardContent>
           </Card>
         </section>

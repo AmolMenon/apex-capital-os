@@ -78,11 +78,14 @@ export function TopNav() {
           <form>
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <input
-                type="search"
-                placeholder="Search database..."
-                className="w-full bg-background shadow-sm appearance-none rounded-md border border-input pl-8 pr-4 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
-              />
+                <input
+                  type="search"
+                  placeholder="Search or jump to... (⌘K)"
+                  className="w-full bg-background shadow-sm appearance-none rounded-md border border-input pl-8 pr-4 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
+                  onClick={() => {
+                     document.dispatchEvent(new KeyboardEvent('keydown', {'key': 'k', 'metaKey': true}));
+                  }}
+                />
             </div>
           </form>
         </div>
