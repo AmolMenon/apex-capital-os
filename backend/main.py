@@ -40,7 +40,14 @@ from core.logging_middleware import LoggingMiddleware
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Create tables
+import db.models as models
+
+# Create DB tables
+from sqlalchemy import text
+with engine.begin() as conn:
+    # Drop tables that had schema changes to force recreation
+    conn.execute(text("DROP TABLE IF EXISTS web_research_briefs"))
+    conn.execute(text("DROP TABLE IF EXISTS deal_war_rooms"))
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
