@@ -1,7 +1,7 @@
 import db.models as db_models
 from sqlalchemy.orm import Session
 from db.models import Deal, Analysis, ResearchBriefModel, DeckAnalysisModel, DiligencePlanModel, ICDecisionLogModel, FundFitAssessmentModel, DealWarRoomModel
-import schemas
+import schemas.deal as schemas
 import json
 
 def get_deal(db: Session, deal_id: int):
