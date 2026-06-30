@@ -11,7 +11,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { calculateDealHealth } from "@/lib/deal-logic";
 import { Search, Plus, Filter, LayoutGrid, List, AlertCircle, Clock, Calendar, CheckCircle2 } from "lucide-react";
 import { TooltipHelper } from "@/components/ui/TooltipHelper";
+
 import { Deal } from "@/types";
+import { PipelineCharts } from "@/components/dashboard/PipelineCharts";
 
 const COLUMNS = [
   "New",
@@ -37,6 +39,7 @@ export default function KanbanPipeline() {
   const { deals, loading, updateDealStage } = useGlobalPortfolio();
   const [localDeals, setLocalDeals] = useState<Deal[]>([]);
   const [search, setSearch] = useState("");
+  const [viewMode, setViewMode] = useState<"board" | "dashboard">("board");
 
   // Sync with global state
   useEffect(() => {
@@ -103,22 +106,6 @@ export default function KanbanPipeline() {
     d.startup_name.toLowerCase().includes(search.toLowerCase()) || 
     (d.sector && d.sector.toLowerCase().includes(search.toLowerCase()))
   );
-
-  return (
-    <div className="flex flex-col h-full bg-muted/10">
-      
-import { PipelineCharts } from "@/components/dashboard/PipelineCharts";
-
-// ... existing code ...
-
-export default function KanbanPipeline() {
-  const { deals, loading, updateDealStage } = useGlobalPortfolio();
-  const [localDeals, setLocalDeals] = useState<Deal[]>([]);
-  const [search, setSearch] = useState("");
-  const [viewMode, setViewMode] = useState<"board" | "dashboard">("board");
-
-  // Sync with global state
-// ...
 
   return (
     <div className="flex flex-col h-full bg-muted/10">
@@ -300,6 +287,7 @@ export default function KanbanPipeline() {
                 </div>
               );
             })}
+          </div>
         </DragDropContext>
       </div>
       </>

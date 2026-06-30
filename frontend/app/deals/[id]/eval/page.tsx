@@ -5,7 +5,7 @@ import { useGlobalDeal } from "@/components/GlobalDealProvider";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { User, Activity, ArrowUpRight, TrendingUp, Twitter, Linkedin, Building2, Podcast, History, Users } from "lucide-react";
+import { User, Activity, ArrowUpRight, TrendingUp, MessageCircle, Briefcase, Building2, Podcast, History, Users } from "lucide-react";
 import { DealRoomSkeleton } from "@/components/ui/DealRoomSkeleton";
 import { TooltipHelper } from "@/components/ui/TooltipHelper";
 
@@ -31,7 +31,7 @@ export default function FounderProfile() {
       { year: "2018", event: "Founded PaymentsCo" },
       { year: "2020", event: "Sold PaymentsCo to Square for $45M" },
       { year: "2022", event: "Started exploring AI reasoning models" },
-      { year: "2023", event: f"Founded {deal?.startup_name || 'Startup'}" }
+      { year: "2023", event: `Founded ${deal?.startup_name || 'Startup'}` }
     ],
     networks: [
       "Stripe Mafia", "YCombinator Alumni", "AI Researchers"
@@ -50,8 +50,8 @@ export default function FounderProfile() {
              <h1 className="text-3xl font-bold">{founder.name}</h1>
              <p className="text-muted-foreground mt-1 flex items-center gap-2">
                {founder.role} at {deal?.startup_name}
-               <a href="#" className="text-indigo-400 hover:text-indigo-300"><Linkedin className="w-4 h-4" /></a>
-               <a href="#" className="text-indigo-400 hover:text-indigo-300"><Twitter className="w-4 h-4" /></a>
+               <a href="#" className="text-indigo-400 hover:text-indigo-300"><Briefcase className="w-4 h-4" /></a>
+               <a href="#" className="text-indigo-400 hover:text-indigo-300"><MessageCircle className="w-4 h-4" /></a>
              </p>
            </div>
         </div>

@@ -152,7 +152,6 @@ export default function ICMemoPage() {
                 </div>
               </div>
             </CardContent>
-            </CardContent>
           </Card>
 
           {/* Cap Table & Returns Modeling */}
