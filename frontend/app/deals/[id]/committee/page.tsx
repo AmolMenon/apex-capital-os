@@ -4,13 +4,36 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { BrainCircuit, Search, ChevronRight, CheckCircle2, XCircle, AlertCircle, FileText } from "lucide-react"
+import { BrainCircuit, Search, ChevronRight, CheckCircle2, XCircle, FileText } from "lucide-react"
+
+interface Agent {
+  role: string
+  recommendation: string
+  confidence: number
+  observations: string[]
+  evidenceCount: number
+}
+
+interface Evidence {
+  claim: string
+  source: string
+  confidence: number
+  id: number
+}
+
+interface Moderator {
+  recommendation: string
+  confidence: number
+  why: string
+  comparedToWhat: string
+  evidence: Evidence[]
+}
 
 export default function CommitteeView() {
   const [loading, setLoading] = useState(true)
-  const [agents, setAgents] = useState<any[]>([])
-  const [moderator, setModerator] = useState<any>(null)
-  const [selectedEvidence, setSelectedEvidence] = useState<any>(null)
+  const [agents, setAgents] = useState<Agent[]>([])
+  const [moderator, setModerator] = useState<Moderator | null>(null)
+  const [selectedEvidence, setSelectedEvidence] = useState<Evidence | null>(null)
 
   useEffect(() => {
     // Simulate progressive streaming from the backend API
@@ -127,16 +150,16 @@ export default function CommitteeView() {
               <CardHeader>
                 <div className="flex justify-between items-center mb-4">
                   <CardTitle className="text-2xl text-indigo-400">Final Verdict</CardTitle>
-                  <Badge className="bg-amber-500 text-black font-extrabold text-sm px-3 py-1">{moderator.recommendation}</Badge>
+                  <Badge className="bg-amber-500 text-black font-extrabold text-sm px-3 py-1">{moderator?.recommendation}</Badge>
                 </div>
                 <div className="space-y-4">
                   <div>
                     <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">Why</div>
-                    <p className="text-sm leading-relaxed">{moderator.why}</p>
+                    <p className="text-sm leading-relaxed">{moderator?.why}</p>
                   </div>
                   <div>
                     <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-1">Compared To What</div>
-                    <p className="text-sm leading-relaxed text-emerald-400/90">{moderator.comparedToWhat}</p>
+                    <p className="text-sm leading-relaxed text-emerald-400/90">{moderator?.comparedToWhat}</p>
                   </div>
                 </div>
               </CardHeader>
@@ -144,7 +167,7 @@ export default function CommitteeView() {
                 <div className="pt-4 border-t border-indigo-500/20">
                   <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">Evidence Trail</div>
                   <div className="space-y-3">
-                    {moderator.evidence.map((ev: any) => (
+                    {moderator?.evidence.map((ev: Evidence) => (
                       <button 
                         key={ev.id}
                         onClick={() => setSelectedEvidence(ev)}

@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { History, TrendingUp, TrendingDown, Clock, MoveRight } from "lucide-react"
+import { History, TrendingUp, TrendingDown, Clock } from "lucide-react"
 
 const MEMORY_SNAPSHOTS = [
   {

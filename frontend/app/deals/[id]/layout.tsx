@@ -5,7 +5,6 @@ import { AlertTriangle } from "lucide-react"
 import { redirect } from "next/navigation"
 import { GlobalDealProvider } from "@/components/GlobalDealProvider"
 import { AutonomousSidebar } from "@/components/AutonomousSidebar"
-import { DealNavigation } from "@/components/ui/DealNavigation"
 import { DealTopNav } from "@/components/ui/DealTopNav"
 
 export const dynamic = "force-dynamic"

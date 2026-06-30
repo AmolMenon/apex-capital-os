@@ -7,8 +7,19 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { BrainCircuit, AlertTriangle, TrendingUp, TrendingDown, ArrowRight, Activity, ShieldAlert, BookOpen } from "lucide-react"
 
+interface Deal {
+  id: number
+  name: string
+  stage: string
+  conviction_score: number
+  conviction_change: string
+  last_analysis: string
+  contradictions: number
+  pending_override: boolean
+}
+
 export default function InvestmentCommandCenter() {
-  const [deals, setDeals] = useState<any[]>([])
+  const [deals, setDeals] = useState<Deal[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -181,7 +192,7 @@ export default function InvestmentCommandCenter() {
                 </div>
                 <div className="text-sm bg-muted/50 p-3 rounded text-muted-foreground border-l-2 border-primary">
                   Partner Amol Menon marked as INVEST.
-                  <br/><span className="text-xs opacity-70">"AI over-penalized CAC, founders have organic distribution."</span>
+                  <br/><span className="text-xs opacity-70">&quot;AI over-penalized CAC, founders have organic distribution.&quot;</span>
                 </div>
               </div>
             </CardContent>

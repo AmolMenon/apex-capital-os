@@ -6,9 +6,24 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { AlertTriangle, ArrowRightLeft, CheckCircle2, FileText, Activity } from "lucide-react"
 
+interface ContradictionSource {
+  name: string
+  claim: string
+  snippet: string
+}
+
+interface Contradiction {
+  id: number
+  severity: string
+  explanation: string
+  sourceA: ContradictionSource
+  sourceB: ContradictionSource
+  status: string
+}
+
 export default function ContradictionCenter() {
   const [loading, setLoading] = useState(true)
-  const [contradictions, setContradictions] = useState<any[]>([])
+  const [contradictions, setContradictions] = useState<Contradiction[]>([])
 
   useEffect(() => {
     // Simulate progressive loading
@@ -97,7 +112,7 @@ export default function ContradictionCenter() {
                     <p className="font-medium">{contradiction.sourceA.claim}</p>
                   </div>
                   <div className="p-4 bg-muted/30 rounded-md border text-sm font-mono text-muted-foreground leading-relaxed">
-                    {contradiction.sourceA.snippet.split("200 active enterprise customers").map((part: string, i: number, arr: any[]) => 
+                    {contradiction.sourceA.snippet.split("200 active enterprise customers").map((part: string, i: number, arr: string[]) => 
                       <span key={i}>
                         {part}
                         {i !== arr.length - 1 && <mark className="bg-rose-500/20 text-rose-300 px-1 rounded">200 active enterprise customers</mark>}
@@ -116,7 +131,7 @@ export default function ContradictionCenter() {
                     <p className="font-medium">{contradiction.sourceB.claim}</p>
                   </div>
                   <div className="p-4 bg-muted/30 rounded-md border text-sm font-mono text-muted-foreground leading-relaxed">
-                    {contradiction.sourceB.snippet.split("35").map((part: string, i: number, arr: any[]) => 
+                    {contradiction.sourceB.snippet.split("35").map((part: string, i: number, arr: string[]) => 
                       <span key={i}>
                         {part}
                         {i !== arr.length - 1 && <mark className="bg-rose-500/20 text-rose-300 px-1 rounded">35</mark>}
