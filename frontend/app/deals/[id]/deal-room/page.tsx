@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { 
   Target, AlertTriangle, Sparkles, Globe, Cpu, Users, 
-  Banknote, LineChart, PieChart, ShieldAlert, Zap, TrendingUp, CheckCircle, Crosshair
+  Banknote, LineChart, PieChart, ShieldAlert, Zap, TrendingUp, CheckCircle, Crosshair, MessageSquare
 } from "lucide-react"
 import { useGlobalDeal } from "@/components/GlobalDealProvider"
 import { DealRoomSkeleton } from "@/components/ui/DealRoomSkeleton"

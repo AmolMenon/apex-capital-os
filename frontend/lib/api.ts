@@ -12,7 +12,7 @@ class ApiError extends Error {
 }
 
 async function refreshAccessToken(): Promise<boolean> {
-  const refreshToken = localStorage.getItem("apex_refresh_token");
+  const refreshToken = typeof window !== "undefined" ? localStorage.getItem("apex_refresh_token") : null;
   if (!refreshToken) return false;
 
   try {
@@ -61,7 +61,7 @@ async function fetchAPI<T>(endpoint: string, options: RequestInit = {}): Promise
       // Attempt token refresh
       const refreshed = await refreshAccessToken();
       if (refreshed) {
-        accessToken = localStorage.getItem("apex_access_token");
+        accessToken = typeof window !== "undefined" ? localStorage.getItem("apex_access_token") : null;
         response = await fetch(url, {
           ...options,
           headers: buildHeaders(),
