@@ -54,8 +54,21 @@ def run_deal_sync(deal_id: str, db: Session = Depends(get_db)):
         "war_room_status": "ready",
         "thesis": {"core_belief": "They will win.", "market_pull": "High"},
         "anti_thesis": {"biggest_risk": "Competition", "mitigation": "Execution"},
+        "what_must_be_true": [{"statement": "They can sell", "probability": 0.8}],
+        "partner_personas": [],
+        "partner_questions": [],
+        "ic_simulation": {"committee_decision": "Lean Yes"},
+        "conviction_score": {"overall_score": 85, "conviction_level": "High"},
+        "conviction_deltas": [],
+        "valuation_sensitivity": {},
+        "ownership_scenarios": [],
+        "fund_return_scenarios": [],
+        "change_our_mind": [],
+        "decision_gates": [],
+        "final_recommendation": {"recommendation": "Invest"}
     }
     
     create_war_room(db, deal_id, mock_data)
-    return {"status": "success"}
+    # Get it back from db so it formats the json correctly
+    return get_deal_sync(str(deal_id), db)
 
