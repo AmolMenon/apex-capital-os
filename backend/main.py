@@ -15,6 +15,12 @@ from routes.comments import router as comments_router
 from routes.tasks import router as tasks_router
 from routes.users import router as users_router
 from routes.ai_intelligence import router as ai_router
+from routes.copilot import router as copilot_router
+from routes.intelligence import router as intelligence_router
+from routes.sourcing import router as sourcing_router
+from routes.knowledge_graph import router as kg_router
+from routes.autonomous import router as autonomous_router
+from routes.data_room import router as data_room_router
 
 # Import Middleware
 from core.logging_middleware import LoggingMiddleware
@@ -56,6 +62,12 @@ app.include_router(portfolio_companies_router, prefix=f"{api_prefix}/portfolio",
 app.include_router(comments_router, prefix=f"{api_prefix}/comments", tags=["Comments"])
 app.include_router(tasks_router, prefix=f"{api_prefix}/tasks", tags=["Tasks"])
 app.include_router(ai_router, prefix=f"{api_prefix}/deals", tags=["AI Intelligence"])
+app.include_router(copilot_router, prefix=f"{api_prefix}/assistant", tags=["Assistant"])
+app.include_router(intelligence_router, prefix=f"{api_prefix}/intelligence", tags=["Intelligence"])
+app.include_router(sourcing_router, prefix=f"{api_prefix}/sourcing", tags=["Sourcing"])
+app.include_router(kg_router, prefix=f"{api_prefix}/knowledge-graph", tags=["Knowledge Graph"])
+app.include_router(autonomous_router, prefix=f"{api_prefix}/autonomous", tags=["Autonomous"])
+app.include_router(data_room_router, prefix=f"{api_prefix}/data-room", tags=["Data Room"])
 
 @app.get(f"{api_prefix}/health", tags=["System"])
 def health_check():
