@@ -26,7 +26,13 @@ export default function InvestmentCommandCenter() {
     async function loadDeals() {
       try {
         const { api } = await import("@/lib/api");
-        const data = await api.getDeals();
+        let data = await api.getDeals();
+        
+        if (data.length === 0) {
+          console.warn("API returned 0 deals. Falling back to extendedDeals to show previous startups.");
+          const { extendedDeals } = await import("@/data/extended_deals");
+          data = extendedDeals as any;
+        }
         
         // Map the backend/mock data to the UI format
         const mappedDeals = data.map((d: any) => ({
