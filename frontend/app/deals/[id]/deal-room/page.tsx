@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import Link from "next/link"
 import { 
   Target, AlertTriangle, Sparkles, Globe, Cpu, Users, 
   Banknote, LineChart, PieChart, ShieldAlert, Zap, TrendingUp, CheckCircle, Crosshair, MessageSquare
