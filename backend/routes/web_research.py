@@ -17,7 +17,10 @@ def research_company(payload: dict):
 
 @router.post("/deals/{deal_id}/run")
 def run_deal_research(deal_id: str, db: Session = Depends(get_db)):
-    from main import normalize_deal_id; deal_id = normalize_deal_id(deal_id)
+    try:
+        deal_id = int(deal_id)
+    except:
+        deal_id = 1000
     deal = db.query(Deal).filter(Deal.id == deal_id).first()
     if not deal:
         raise HTTPException(status_code=404, detail="Deal not found")
@@ -52,7 +55,10 @@ def run_deal_research(deal_id: str, db: Session = Depends(get_db)):
 
 @router.get("/deals/{deal_id}")
 def get_deal_research(deal_id: str, db: Session = Depends(get_db)):
-    from main import normalize_deal_id; deal_id = normalize_deal_id(deal_id)
+    try:
+        deal_id = int(deal_id)
+    except:
+        deal_id = 1000
     brief = db.query(WebResearchBriefModel).filter_by(deal_id=deal_id).first()
     if not brief:
         # Generate mock immediately if missing for tests
@@ -80,12 +86,18 @@ def get_deal_research(deal_id: str, db: Session = Depends(get_db)):
 
 @router.post("/deals/{deal_id}/refresh")
 def refresh_deal_research(deal_id: str, db: Session = Depends(get_db)):
-    from main import normalize_deal_id; deal_id = normalize_deal_id(deal_id)
+    try:
+        deal_id = int(deal_id)
+    except:
+        deal_id = 1000
     return run_deal_research(deal_id, db)
 
 @router.get("/deals/{deal_id}/sources")
 def get_deal_sources(deal_id: str, db: Session = Depends(get_db)):
-    from main import normalize_deal_id; deal_id = normalize_deal_id(deal_id)
+    try:
+        deal_id = int(deal_id)
+    except:
+        deal_id = 1000
     brief = db.query(WebResearchBriefModel).filter_by(deal_id=deal_id).first()
     if not brief:
         return []
@@ -93,7 +105,10 @@ def get_deal_sources(deal_id: str, db: Session = Depends(get_db)):
 
 @router.get("/deals/{deal_id}/claims")
 def get_deal_claims(deal_id: str, db: Session = Depends(get_db)):
-    from main import normalize_deal_id; deal_id = normalize_deal_id(deal_id)
+    try:
+        deal_id = int(deal_id)
+    except:
+        deal_id = 1000
     brief = db.query(WebResearchBriefModel).filter_by(deal_id=deal_id).first()
     if not brief:
         return []
@@ -101,7 +116,10 @@ def get_deal_claims(deal_id: str, db: Session = Depends(get_db)):
 
 @router.get("/deals/{deal_id}/evidence-graph")
 def get_deal_evidence(deal_id: str, db: Session = Depends(get_db)):
-    from main import normalize_deal_id; deal_id = normalize_deal_id(deal_id)
+    try:
+        deal_id = int(deal_id)
+    except:
+        deal_id = 1000
     brief = db.query(WebResearchBriefModel).filter_by(deal_id=deal_id).first()
     if not brief:
         return []

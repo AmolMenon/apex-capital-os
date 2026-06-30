@@ -23,6 +23,7 @@ from routes.autonomous import router as autonomous_router
 from routes.data_room import router as data_room_router
 from routes.agent_workflow import router as agent_workflow_router
 from routes.brain import router as brain_router
+from routes.deal_sync import router as deal_sync_router
 from routes.conversation import router as conversation_router
 from routes.diligence_run import router as diligence_run_router
 from routes.document_intelligence import router as doc_intel_router
@@ -77,6 +78,7 @@ app.include_router(copilot_router, prefix=f"{api_prefix}/assistant", tags=["Assi
 app.include_router(intelligence_router, prefix=f"{api_prefix}/intelligence", tags=["Intelligence"])
 app.include_router(sourcing_router, prefix=f"{api_prefix}/sourcing", tags=["Sourcing"])
 app.include_router(kg_router, prefix=f"{api_prefix}/knowledge-graph", tags=["Knowledge Graph"])
+app.include_router(deal_sync_router, prefix=f"{api_prefix}/deal-sync", tags=["Deal Sync"])
 app.include_router(autonomous_router, prefix=f"{api_prefix}/autonomous", tags=["Autonomous"])
 app.include_router(data_room_router, prefix=f"{api_prefix}/data-room", tags=["Data Room"])
 app.include_router(agent_workflow_router, prefix=f"{api_prefix}/workflows", tags=["Agent Workflow"])
