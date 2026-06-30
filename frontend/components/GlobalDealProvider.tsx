@@ -50,6 +50,26 @@ export function GlobalDealProvider({ children, dealId }: { children: React.React
       setError(null);
     } catch (err: any) {
       console.error("Failed to fetch autonomous state", err);
+      // Fallback to mock data if API is unavailable or returns 404
+      const { extendedDeals } = await import("@/data/extended_deals");
+      const deal = extendedDeals.find(d => d.id.toString() === dealId.toString()) || extendedDeals[0];
+      if (deal) {
+        setState({
+          deal: deal,
+          autonomous: {
+            stage: "Completed",
+            progress: 100,
+            logs: [],
+            timeline: []
+          },
+          research: {},
+          deck: {},
+          diligence: {},
+          fund_fit: {},
+          analysis: (deal as any).analysis || {},
+          partner_questions: []
+        });
+      }
       setError(err);
     } finally {
       setLoading(false);
