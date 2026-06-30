@@ -23,33 +23,31 @@ export default function InvestmentCommandCenter() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // In a real app we'd fetch from our new Epic 3 API
-    // For now we simulate the live response structure
-    setTimeout(() => {
-      setDeals([
-        {
-          id: 1,
-          name: "NeuralDesk",
-          stage: "Seed",
-          conviction_score: 82,
-          conviction_change: "+4",
-          last_analysis: "10m ago",
-          contradictions: 0,
+    async function loadDeals() {
+      try {
+        const { api } = await import("@/lib/api");
+        const data = await api.getDeals();
+        
+        // Map the backend/mock data to the UI format
+        const mappedDeals = data.map((d: any) => ({
+          id: d.id,
+          name: d.startup_name || d.name || `Deal ${d.id}`,
+          stage: d.stage || "Unknown",
+          conviction_score: d.analysis?.overall_score || d.conviction_score || 50,
+          conviction_change: "+0", // Placeholder until historical memory API is integrated
+          last_analysis: "Just now",
+          contradictions: d.contradictions || 0,
           pending_override: false
-        },
-        {
-          id: 2,
-          name: "EcoLogistics",
-          stage: "Series A",
-          conviction_score: 45,
-          conviction_change: "-12",
-          last_analysis: "1h ago",
-          contradictions: 2,
-          pending_override: true
-        }
-      ])
-      setLoading(false)
-    }, 1500)
+        }));
+        
+        setDeals(mappedDeals);
+      } catch (error) {
+        console.error("Failed to fetch deals:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadDeals();
   }, [])
 
   if (loading) {
