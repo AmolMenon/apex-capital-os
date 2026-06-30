@@ -25,10 +25,11 @@ def run_deal_research(deal_id: str, db: Session = Depends(get_db)):
     if not deal:
         raise HTTPException(status_code=404, detail="Deal not found")
     
-    brief_data = WebResearchOrchestrator.run_research(deal.startup_name, {
-        "sector": deal.sector,
-        "description": deal.description,
-        "public_profile_json": deal.public_profile_json
+    company_name = deal.company.name if deal.company else "Unknown Company"
+    brief_data = WebResearchOrchestrator.run_research(company_name, {
+        "sector": deal.company.sector if deal.company else None,
+        "description": deal.company.description if deal.company else None,
+        "public_profile_json": "{}"
     })
     
     # Save to DB
@@ -37,7 +38,7 @@ def run_deal_research(deal_id: str, db: Session = Depends(get_db)):
         existing = WebResearchBriefModel(deal_id=deal.id)
         db.add(existing)
         
-    existing.company_name = brief_data.get("company_name", deal.startup_name)
+    existing.company_name = brief_data.get("company_name", company_name)
     existing.research_mode = brief_data.get("research_mode", "mock")
     existing.source_quality_score = brief_data.get("source_quality_score", 0)
     existing.public_data_confidence = brief_data.get("public_data_confidence", "Unknown")
