@@ -104,6 +104,11 @@ function resolveId(id: string | number | undefined | null): string {
 
 export const api = {
 
+  // Intelligence
+  runCommitteeSim: (id: string | number) => fetchAPI<any>(`/intelligence/${resolveId(id)}/committee/run`, { method: "POST" }),
+  runContradictions: (id: string | number) => fetchAPI<any>(`/intelligence/${resolveId(id)}/contradictions/detect`, { method: "POST" }),
+  simulateScenario: (id: string | number, payload: any) => fetchAPI<any>(`/intelligence/${resolveId(id)}/scenarios/simulate`, { method: "POST", body: JSON.stringify(payload) }),
+
   // Data Room
   getDataRoomStatus: () => fetchAPI<any>("/data-room/status"),
   uploadDataRoomDocument: async (id: string | number, file: File, category: string) => {

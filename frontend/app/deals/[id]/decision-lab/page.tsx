@@ -29,7 +29,7 @@ export default function DecisionLab() {
     setIsSimulating(true);
     setResults(null);
     try {
-      const res = await api.post(`/api/deals/${deal?.id}/simulate-scenario`, {
+      const res = await api.simulateScenario(deal?.id as string, {
         revenue_drop_pct: revenueDrop,
         cac_increase_pct: cacIncrease,
         founder_leaves: founderLeaves
