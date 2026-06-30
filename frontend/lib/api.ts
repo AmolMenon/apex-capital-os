@@ -145,7 +145,12 @@ export const api = {
   // Deals
   getDeals: async () => {
     try {
-      return await fetchAPI<Deal[]>("/deals");
+      const data = await fetchAPI<Deal[]>("/deals");
+      if (Array.isArray(data) && data.length === 0) {
+        console.warn("[getDeals] API returned empty array, falling back to mock deals.");
+        return extendedDeals as any;
+      }
+      return data;
     } catch (e) {
       console.warn("[getDeals] Failed to fetch deals, returning mock list.");
       return extendedDeals as any;
