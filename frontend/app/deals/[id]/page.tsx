@@ -17,6 +17,7 @@ import { calculateDealHealth } from "@/lib/deal-logic"
 import { DealTimeline } from "@/components/ui/DealTimeline"
 import { PartnerView } from "@/components/ui/PartnerView"
 import { motion } from "framer-motion"
+import { ConvictionHistoryGraph } from "@/components/ui/ConvictionHistoryGraph"
 
 export default function DealRoomOverview() {
   const { state, loading, isPartnerMode } = useGlobalDeal();
@@ -26,9 +27,12 @@ export default function DealRoomOverview() {
   const { deal, analysis } = state;
   
   // Opinionated AI Outputs
-  const recommendationText = analysis?.recommendation === "Invest" 
-    ? `Although market size is highly attractive and early traction is promising, customer concentration (Top 3 account for 45% of revenue) introduces significant downside risk. However, their unique technological moat justifies the valuation. Strongly recommend proceeding to deep Technical Diligence.`
-    : `Market is heavily saturated. While the team is strong, the GTM motion is unproven and unit economics do not support a venture-scale return profile in the current macro environment. Pass.`;
+  const recommendationText = analysis?.opinionated_recommendation || 
+    (analysis?.recommendation === "Invest" 
+      ? `Although market size is highly attractive and early traction is promising, customer concentration (Top 3 account for 45% of revenue) introduces significant downside risk. However, their unique technological moat justifies the valuation. Strongly recommend proceeding to deep Technical Diligence.`
+      : `Market is heavily saturated. While the team is strong, the GTM motion is unproven and unit economics do not support a venture-scale return profile in the current macro environment. Pass.`);
+  
+  const confidenceLevel = analysis?.confidence || "Medium";
 
   return (
     <motion.div 
@@ -84,7 +88,9 @@ export default function DealRoomOverview() {
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-primary/10">
                 <div>
                   <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Confidence</h4>
-                  <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1"><CheckCircle className="w-4 h-4"/> High (Verified)</p>
+                  <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 cursor-help" title="Confidence based on triangulated founder references and 3 months of cohort data.">
+                    <CheckCircle className="w-4 h-4"/> {confidenceLevel}
+                  </p>
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Missing Info</h4>
@@ -94,8 +100,13 @@ export default function DealRoomOverview() {
             </CardContent>
           </Card>
 
-          {/* Deal Health Engine */}
-          {deal && <DealHealthEngine factors={calculateDealHealth(deal).healthFactors || []} />}
+          {/* Deal Health Engine with Historical Conviction */}
+          <div>
+            {deal && <DealHealthEngine factors={calculateDealHealth(deal).healthFactors || []} />}
+            <div className="bg-card/30 border border-border/50 rounded-b-lg p-4 -mt-2 shadow-sm relative z-0">
+               <ConvictionHistoryGraph baseScore={deal.conviction_score || 85} />
+            </div>
+          </div>
 
           {/* Business Model & Traction */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
@@ -261,7 +272,7 @@ export default function DealRoomOverview() {
                       <span className="text-[10px] text-muted-foreground font-mono">1h ago</span>
                     </div>
                     <p className="text-sm text-foreground bg-muted/40 p-3 rounded-lg border border-border/50 shadow-sm relative before:absolute before:w-2 before:h-2 before:bg-muted/40 before:border-l before:border-t before:border-border/50 before:-left-1.5 before:top-3 before:-rotate-45">
-                      On it. Adding it to the <Link href="diligence" className="text-primary hover:underline font-medium">Technical Diligence</Link> pipeline.
+                      On it. Adding it to the <Link prefetch={true} href="diligence" className="text-primary hover:underline font-medium">Technical Diligence</Link> pipeline.
                     </p>
                   </div>
                 </div>
@@ -278,7 +289,7 @@ export default function DealRoomOverview() {
                     </div>
                     <div className="p-3 bg-primary/5 rounded-lg border border-primary/20 shadow-sm relative before:absolute before:w-2 before:h-2 before:bg-primary/5 before:border-l before:border-t before:border-primary/20 before:-left-1.5 before:top-3 before:-rotate-45">
                       <p className="text-xs text-foreground/80 leading-relaxed font-medium">
-                        Updated the Living Thesis with 2 new risk factors based on <Link href="research" className="text-primary hover:underline">Recent News Analysis</Link>.
+                        Updated the Living Thesis with 2 new risk factors based on <Link prefetch={true} href="research" className="text-primary hover:underline">Recent News Analysis</Link>.
                       </p>
                     </div>
                   </div>
