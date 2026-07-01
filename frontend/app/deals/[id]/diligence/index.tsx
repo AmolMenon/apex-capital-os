@@ -41,7 +41,7 @@ export default function DiligenceCommandCenterPage() {
     loadData()
   }, [params.id])
 
-  const handleGenerate = async () => {
+  const handleEvaluate = async () => {
     setLoading(true)
     await fetch(`${"http://127.0.0.1:8000"}/diligence/${params.id}`, { method: "POST" })
     await loadData()
@@ -60,10 +60,10 @@ export default function DiligenceCommandCenterPage() {
         />
         <EmptyState 
           title="No Diligence Plan" 
-          description="Generate a plan to convert open risks and unsupported claims into actionable tasks."
+          description="Evaluate a plan to convert open risks and unsupported claims into actionable tasks."
           icon={RefreshCw}
-          primaryActionLabel="Generate Diligence Plan"
-          onPrimaryAction={handleGenerate}
+          primaryActionLabel="Investigate Diligence Gaps"
+          onPrimaryAction={handleEvaluate}
         />
       </div>
     )
@@ -103,7 +103,7 @@ export default function DiligenceCommandCenterPage() {
               {aiMeta.fallback_used && <span className="text-amber-500 ml-1">(Fallback)</span>}
             </Badge>
           )}
-          <Button variant="outline" size="sm" onClick={handleGenerate}><RefreshCw className="h-4 w-4 mr-2" /> Refresh Plan</Button>
+          <Button variant="outline" size="sm" onClick={handleEvaluate}><RefreshCw className="h-4 w-4 mr-2" /> Refresh Plan</Button>
         </div>
       </div>
 

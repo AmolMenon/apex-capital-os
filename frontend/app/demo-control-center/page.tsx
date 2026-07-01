@@ -17,7 +17,7 @@ const DEMO_STEPS = [
   { num: 8, name: "Open Deal Sync", route: "/deals/999/deal-sync", status: "Ready", icon: Users, script: "The Deal Sync turns the deal into an investment debate, not just a score." },
   { num: 9, name: "Ask Assistant", route: "/deals/999/assistant", status: "Mock Ready", icon: MessageSquare, script: "The Assistant lets a partner ask why the deal is interesting, what is missing, and what would change our mind." },
   { num: 10, name: "Open Decision Engine", route: "/deals/999/decision", status: "Ready", icon: Activity, script: "The Decision Engine does not say Invest. It says Diligence Required because key private data is missing." },
-  { num: 11, name: "Generate IC Packet", route: "/deals/999/ic-packet", status: "Ready", icon: FileText, script: "The IC Packet is a partner-ready draft." },
+  { num: 11, name: "Draft IC Packet", route: "/deals/999/ic-packet", status: "Ready", icon: FileText, script: "The IC Packet is a partner-ready draft." },
   { num: 12, name: "Open Trust Center", route: "/trust-center", status: "Ready", icon: ShieldCheck, script: "The Trust Center shows it still needs review." },
   { num: 13, name: "Open Operations Tasks", route: "/operations", status: "Ready", icon: CheckSquare, script: "Finally, Operations turns the missing evidence into tasks, owners, and follow-ups." },
 ]

@@ -33,7 +33,7 @@ export default function DealFundFitPage() {
     loadAssessment();
   }, [id]);
 
-  const handleGenerate = async () => {
+  const handleEvaluate = async () => {
     setGenerating(true);
     try {
       const res = await fetch(`${"http://127.0.0.1:8000"}/fund/deals/${id}/fit`, {
@@ -67,7 +67,7 @@ export default function DealFundFitPage() {
         explanation="A good deal must also be a good fund fit. This evaluates power-law outcomes, check size, and portfolio construction."
       />
       <div className="flex justify-between items-end">
-        <Button onClick={handleGenerate} disabled={generating}>
+        <Button onClick={handleEvaluate} disabled={generating}>
           {generating ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <RefreshCw className="w-4 h-4 mr-2" />}
           Re-Run Assessment
         </Button>
@@ -79,7 +79,7 @@ export default function DealFundFitPage() {
           description="Evaluate how this deal fits into the broader fund strategy, including ownership targets and reserves."
           icon={RefreshCw}
           primaryActionLabel="Run Assessment"
-          onPrimaryAction={handleGenerate}
+          onPrimaryAction={handleEvaluate}
         />
       ) : (
         <div className="grid grid-cols-1 gap-6 pb-12">

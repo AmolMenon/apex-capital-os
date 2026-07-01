@@ -58,7 +58,7 @@ export default function MeetingDetail() {
           <Card>
             <CardHeader><CardTitle>Actions</CardTitle></CardHeader>
             <CardContent className="space-y-4">
-              <Button className="w-full" onClick={() => api.generateMeetingPrep(meeting_id as string).then(alert)}>Generate Prep</Button>
+              <Button className="w-full" onClick={() => api.generateMeetingPrep(meeting_id as string).then(alert)}>Evaluate Prep</Button>
               <Button variant="outline" className="w-full" onClick={() => api.analyzeMeetingTranscript(meeting_id as string).then(alert)}>Analyze Transcript</Button>
             </CardContent>
           </Card>

@@ -42,7 +42,7 @@ export default function GPCockpit() {
             <Button variant="outline" className="border-zinc-700 bg-zinc-900 text-zinc-300">View Performance Math</Button>
           </Link>
           <Link href="/fund-os/lp-report">
-            <Button className="bg-indigo-600 hover:bg-indigo-700 text-white border-0">Generate LP Report</Button>
+            <Button className="bg-indigo-600 hover:bg-indigo-700 text-white border-0">Evaluate LP Report</Button>
           </Link>
         </div>
       </div>
@@ -150,7 +150,7 @@ export default function GPCockpit() {
             <Link href="/fund-os/lp-report">
               <Button variant="secondary" className="w-full justify-start bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-300">
                 <LayoutDashboard className="w-4 h-4 mr-2 text-purple-400" />
-                Generate LP Quarterly Report
+                Evaluate LP Quarterly Report
               </Button>
             </Link>
           </div>

@@ -78,7 +78,7 @@ export default function PlatformDiligenceReportPage() {
       {/* Print-only Header */}
       <div className="hidden print:block border-b border-gray-200 pb-6 mb-8">
          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 mb-2">Platform Diligence Report</h1>
-         <div className="text-gray-500 font-medium">Generated for Deal ID: {dealId}</div>
+         <div className="text-gray-500 font-medium">Evaluated for Deal ID: {dealId}</div>
       </div>
 
       {/* Disclaimer */}

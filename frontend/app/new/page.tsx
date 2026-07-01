@@ -294,7 +294,7 @@ export default function NewDeal() {
             <div className="mt-8 flex justify-end gap-4">
               <Button type="button" variant="outline" onClick={() => router.back()}>Cancel</Button>
               <Button type="submit" disabled={loading} size="lg" className="px-8 shadow-md font-semibold">
-                {loading ? "Analyzing Deal..." : "Submit & Generate Analysis"}
+                {loading ? "Analyzing Deal..." : "Submit & Evaluate Analysis"}
               </Button>
             </div>
           </form>

@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { BrainCircuit, AlertTriangle, TrendingUp, TrendingDown, ArrowRight, Activity, ShieldAlert, BookOpen, DollarSign, PieChart, Star, Clock } from "lucide-react"
+import { AnimatedScore } from "@/components/ui/AnimatedScore"
 
 interface Deal {
   id: number
@@ -153,7 +154,7 @@ export default function ExecutiveDashboard() {
                     <div className="text-center">
                       <div className="text-sm text-muted-foreground mb-1">AI Conviction</div>
                       <div className="text-2xl font-bold flex items-center gap-2 justify-center">
-                        {deal.conviction_score}
+                        <AnimatedScore value={deal.conviction_score} />
                       </div>
                     </div>
                     

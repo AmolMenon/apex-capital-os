@@ -13,7 +13,7 @@ import {
   CustomerPersonaCard, 
   SourceRegistryTable 
 } from "@/components/research/ResearchComponents"
-import { GenerateResearchButton } from "@/components/research/GenerateResearchButton"
+import { EvaluateResearchButton } from "@/components/research/EvaluateResearchButton"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { EmptyState } from "@/components/ui/EmptyState"
 import { PageHelpBanner } from "@/components/ui/PageHelpBanner"

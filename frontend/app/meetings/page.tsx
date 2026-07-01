@@ -18,7 +18,7 @@ export default function MeetingIntelligence() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold flex items-center gap-2"><Presentation className="text-violet-600 w-8 h-8"/> Meeting Intelligence</h1>
-          <p className="text-muted-foreground mt-2">Generate prep briefs, analyze call transcripts, and extract follow-ups.</p>
+          <p className="text-muted-foreground mt-2">Evaluate prep briefs, analyze call transcripts, and extract follow-ups.</p>
         </div>
         <Button onClick={() => api.syncCalendarMeetings()}>Sync Calendar</Button>
       </div>

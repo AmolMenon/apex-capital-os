@@ -56,7 +56,7 @@ export default function LPReportHQ() {
             <CardHeader className="pb-4 border-b border-zinc-800">
               <CardTitle className="text-lg font-medium text-white flex items-center justify-between">
                 Report Metadata
-                <Badge className="bg-emerald-500/10 text-emerald-500 font-normal">Generated</Badge>
+                <Badge className="bg-emerald-500/10 text-emerald-500 font-normal">Evaluated</Badge>
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 space-y-4">

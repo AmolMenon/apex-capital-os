@@ -15,7 +15,7 @@ export function PartnerView({ deal, analysis }: { deal: any, analysis: any }) {
       <Card className="border-primary/30 bg-primary/5 shadow-sm overflow-hidden">
         <div className="bg-primary text-primary-foreground py-2 px-6 flex justify-between items-center text-sm font-bold uppercase tracking-widest">
           <span>Investment Committee Recommendation</span>
-          <span className="flex items-center gap-2"><Sparkles className="w-4 h-4" /> Apex AI Generated</span>
+          <span className="flex items-center gap-2"><Sparkles className="w-4 h-4" /> Apex AI Evaluated</span>
         </div>
         <CardContent className="pt-6">
           <div className="flex flex-col md:flex-row gap-6 items-center">

@@ -53,7 +53,7 @@ export default function CapitalPlanningPage() {
             {calls.length === 0 ? (
               <div className="text-center p-8 border border-dashed border-zinc-800 rounded">
                 <p className="text-zinc-500 mb-4">No historical capital calls recorded.</p>
-                <Button variant="outline" className="border-zinc-700 text-zinc-300">Generate Initial Call Draft</Button>
+                <Button variant="outline" className="border-zinc-700 text-zinc-300">Evaluate Initial Call Draft</Button>
               </div>
             ) : (
               <div className="space-y-4">

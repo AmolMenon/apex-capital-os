@@ -29,7 +29,7 @@ export function InvestorJudgmentCard({
 }: InvestorJudgmentCardProps) {
   const [isGenerating, setIsGenerating] = useState(false)
 
-  const handleGenerate = async (e: React.MouseEvent) => {
+  const handleEvaluate = async (e: React.MouseEvent) => {
     e.preventDefault()
     if (!dealId) return
     setIsGenerating(true)
@@ -111,8 +111,8 @@ export function InvestorJudgmentCard({
             <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3">
               Required Next Action
             </h4>
-            {nextAction === "Generate initial analysis" && dealId ? (
-              <Button className="w-full shadow-md font-semibold hover:scale-[1.02] transition-transform duration-300" size="lg" onClick={handleGenerate} disabled={isGenerating}>
+            {nextAction === "Evaluate initial analysis" && dealId ? (
+              <Button className="w-full shadow-md font-semibold hover:scale-[1.02] transition-transform duration-300" size="lg" onClick={handleEvaluate} disabled={isGenerating}>
                 {isGenerating ? <ArrowRight className="mr-2 h-4 w-4 animate-spin" /> : null}
                 {isGenerating ? "Generating Analysis..." : nextAction}
                 {!isGenerating && <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />}

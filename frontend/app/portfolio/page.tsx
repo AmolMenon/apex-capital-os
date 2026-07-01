@@ -86,7 +86,7 @@ export default function PortfolioHQ() {
             <Button variant="outline" className="border-zinc-700 bg-zinc-900 text-zinc-300 hover:text-white">View Reserves</Button>
           </Link>
           <Link href="/portfolio/lp-report">
-            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white border-0 shadow-lg shadow-emerald-900/20">Generate LP Report</Button>
+            <Button className="bg-emerald-600 hover:bg-emerald-700 text-white border-0 shadow-lg shadow-emerald-900/20">Evaluate LP Report</Button>
           </Link>
         </div>
       </div>

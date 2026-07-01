@@ -36,9 +36,9 @@ export default function FeatureMapPage() {
       title: "Investment Outputs",
       features: [
         { name: "IC Packet Builder", desc: "Compiled IC Document", status: "Ready", route: "/deals/1000/ic-packet" },
-        { name: "Public Benchmark Memo", desc: "Generated deal memo based on public signal", status: "Ready", route: "/deals/1000/memo" },
+        { name: "Public Benchmark Memo", desc: "Evaluated deal memo based on public signal", status: "Ready", route: "/deals/1000/memo" },
         { name: "IC One-Pager", desc: "Summarized single page overview", status: "Ready", route: "/deals/1000/ic-one-pager" },
-        { name: "Founder Email", desc: "Generated diligence follow-up email", status: "Ready", route: "/deals/1000/founder-email" },
+        { name: "Founder Email", desc: "Evaluated diligence follow-up email", status: "Ready", route: "/deals/1000/founder-email" },
       ]
     }
   ]

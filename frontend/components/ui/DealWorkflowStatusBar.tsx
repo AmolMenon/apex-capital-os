@@ -30,7 +30,7 @@ export function DealWorkflowStatusBar({ deal }: DealWorkflowStatusBarProps) {
       path: "deal-room",
       isCompleted: !!deal.analysis,
       tooltip: deal.analysis ? "Initial analysis generated." : "No analysis has been generated yet.",
-      action: deal.analysis ? "" : "Generate initial analysis to score the startup."
+      action: deal.analysis ? "" : "Evaluate initial analysis to score the startup."
     },
     {
       id: "research",
@@ -38,7 +38,7 @@ export function DealWorkflowStatusBar({ deal }: DealWorkflowStatusBarProps) {
       path: "research",
       isCompleted: !!deal.analysis,
       tooltip: deal.analysis ? "Market and competitor research generated." : "No research brief available.",
-      action: deal.analysis ? "" : "Generate research brief to validate claims."
+      action: deal.analysis ? "" : "Evaluate research brief to validate claims."
     },
     {
       id: "deck",
@@ -62,7 +62,7 @@ export function DealWorkflowStatusBar({ deal }: DealWorkflowStatusBarProps) {
       path: "diligence",
       isCompleted: !!deal.analysis,
       tooltip: deal.analysis ? "Diligence plan created." : "No diligence plan generated.",
-      action: deal.analysis ? "" : "Generate diligence plan to resolve risks."
+      action: deal.analysis ? "" : "Evaluate diligence plan to resolve risks."
     },
     {
       id: "fund-fit",
@@ -78,7 +78,7 @@ export function DealWorkflowStatusBar({ deal }: DealWorkflowStatusBarProps) {
       path: "memo",
       isCompleted: !!deal.analysis?.memo,
       tooltip: deal.analysis?.memo ? "Investment memo generated." : "No investment memo generated yet.",
-      action: deal.analysis?.memo ? "" : "Generate final memo."
+      action: deal.analysis?.memo ? "" : "Evaluate final memo."
     },
     {
       id: "ic",
@@ -86,7 +86,7 @@ export function DealWorkflowStatusBar({ deal }: DealWorkflowStatusBarProps) {
       path: "ic-one-pager",
       isCompleted: !!deal.analysis?.ic_one_pager,
       tooltip: deal.analysis?.ic_one_pager ? "IC One-Pager prepared." : "No IC One-Pager available.",
-      action: deal.analysis?.ic_one_pager ? "" : "Generate partner tear sheet."
+      action: deal.analysis?.ic_one_pager ? "" : "Evaluate partner tear sheet."
     }
   ]
 

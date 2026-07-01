@@ -119,7 +119,7 @@ export default function WebResearchPage() {
           </div>
           
           <div>
-            <h3 className="font-semibold text-sm text-muted-foreground uppercase mb-2">Private Diligence Questions Generated</h3>
+            <h3 className="font-semibold text-sm text-muted-foreground uppercase mb-2">Private Diligence Questions Evaluated</h3>
             <ul className="list-disc pl-5 text-sm space-y-1">
               {(synthesis.private_diligence_questions || []).map((q: string, i: number) => (
                 <li key={i}>{q}</li>

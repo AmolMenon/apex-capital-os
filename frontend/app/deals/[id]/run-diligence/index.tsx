@@ -140,7 +140,7 @@ export default function RunDiligencePage() {
               <Switch checked={config.include_uploaded_documents} onCheckedChange={(v) => setConfig({...config, include_uploaded_documents: v})} />
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium">Generate IC Packet</span>
+              <span className="text-sm font-medium">Draft IC Packet</span>
               <Switch checked={config.generate_ic_packet} onCheckedChange={(v) => setConfig({...config, generate_ic_packet: v})} />
             </div>
             <div className="flex items-center justify-between">

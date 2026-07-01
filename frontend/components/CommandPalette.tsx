@@ -62,61 +62,52 @@ export function CommandPalette() {
               <Command.Empty className="py-6 text-center text-sm text-muted-foreground">No results found.</Command.Empty>
 
               <Command.Group heading="Navigation" className="px-2 py-1.5 text-xs font-medium text-muted-foreground">
-                <Command.Item onSelect={() => handleSelect('/command-center')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
-                  <LayoutDashboard className="mr-2 h-4 w-4 text-indigo-500" /> Command Center
+                <Command.Item onSelect={() => handleSelect('/')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
+                  <LayoutDashboard className="mr-2 h-4 w-4 text-indigo-500" /> Executive Overview
                 </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/pipeline')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
+                <Command.Item onSelect={() => handleSelect('/pipeline')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
                   <Database className="mr-2 h-4 w-4 text-emerald-500" /> Deal Pipeline
                 </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/deals/new')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
-                  <FilePlus className="mr-2 h-4 w-4" /> Create New Deal
+                <Command.Item onSelect={() => handleSelect('/deals/new')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
+                  <FilePlus className="mr-2 h-4 w-4" /> Add Deal
                 </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/compare')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
+                <Command.Item onSelect={() => handleSelect('/compare')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
                   <Presentation className="mr-2 h-4 w-4" /> Compare Deals
                 </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/portfolio')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
+                <Command.Item onSelect={() => handleSelect('/portfolio')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
                   <Database className="mr-2 h-4 w-4 text-blue-500" /> Portfolio Intelligence
-                </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/settings')} className="flex cursor-pointer items-center rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
-                  <Settings className="mr-2 h-4 w-4" /> Settings
                 </Command.Item>
               </Command.Group>
 
               <Command.Separator className="-mx-1 my-1 h-px bg-border" />
               
               <Command.Group heading="AI Actions" className="px-2 py-1.5 text-xs font-medium text-muted-foreground">
-                <Command.Item onSelect={() => handleSelect('/assistant')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
+                <Command.Item onSelect={() => handleSelect('/assistant')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
                   <div className="flex items-center">
                     <Search className="mr-2 h-4 w-4 text-emerald-500" />
                     <span>Ask Global Copilot</span>
                   </div>
                   <span className="text-xs text-muted-foreground">⌘+A</span>
                 </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/deals/new')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
-                  <div className="flex items-center">
-                    <FilePlus className="mr-2 h-4 w-4 text-blue-500" />
-                    <span>Create Deal</span>
-                  </div>
-                </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/deals/new')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
+                <Command.Item onSelect={() => handleSelect('/deals/new')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
                   <div className="flex items-center">
                     <FileText className="mr-2 h-4 w-4 text-amber-500" />
-                    <span>Generate Memo</span>
+                    <span>Draft Memo</span>
                   </div>
                 </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/portfolio')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
+                <Command.Item onSelect={() => handleSelect('/portfolio')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
                   <div className="flex items-center">
                     <Database className="mr-2 h-4 w-4 text-purple-500" />
                     <span>Open Portfolio</span>
                   </div>
                 </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/assistant')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
+                <Command.Item onSelect={() => handleSelect('/assistant')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
                   <div className="flex items-center">
                     <Bot className="mr-2 h-4 w-4 text-indigo-500" />
-                    <span>Run Research</span>
+                    <span>Evaluate Research</span>
                   </div>
                 </Command.Item>
-                <Command.Item onSelect={() => handleSelect('/deals/new')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted">
+                <Command.Item onSelect={() => handleSelect('/deals/new')} className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors">
                   <div className="flex items-center">
                     <Upload className="mr-2 h-4 w-4 text-rose-500" />
                     <span>Upload Pitch Deck</span>
@@ -129,8 +120,8 @@ export function CommandPalette() {
                   {deals.map(deal => (
                     <Command.Item 
                       key={deal.id} 
-                      onSelect={() => handleSelect(`/deals/${deal.id}/deal-room`)}
-                      className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted"
+                      onSelect={() => handleSelect(`/deals/${deal.id}`)}
+                      className="flex cursor-pointer items-center justify-between rounded-md px-2 py-2 text-sm text-foreground hover:bg-muted aria-selected:bg-muted aria-selected:text-accent-foreground data-[selected=true]:bg-muted transition-colors"
                     >
                       <div className="flex items-center">
                         <Briefcase className="mr-2 h-4 w-4 text-muted-foreground" />

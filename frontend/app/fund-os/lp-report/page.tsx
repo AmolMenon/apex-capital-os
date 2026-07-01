@@ -26,7 +26,7 @@ export default function LPReportPage() {
     load();
   }, []);
 
-  const handleGenerate = () => {
+  const handleEvaluate = () => {
     setGenerating(true);
     setTimeout(() => {
       setGenerating(false);
@@ -51,7 +51,7 @@ export default function LPReportPage() {
           <Button variant="outline" className="border-zinc-700 bg-zinc-900 text-zinc-300" disabled={generating}>
             <Download className="w-4 h-4 mr-2" /> Export PDF
           </Button>
-          <Button onClick={handleGenerate} className="bg-indigo-600 hover:bg-indigo-700" disabled={generating}>
+          <Button onClick={handleEvaluate} className="bg-indigo-600 hover:bg-indigo-700" disabled={generating}>
             {generating ? "Synthesizing Data..." : "Regenerate Report"}
           </Button>
         </div>

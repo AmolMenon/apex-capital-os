@@ -24,9 +24,9 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
     {
       id: 2,
       title: "Deal Analysis",
-      explanation: "Generate the first structured investment view: scorecard, thesis, risks, and recommendation.",
+      explanation: "Evaluate the first structured investment view: scorecard, thesis, risks, and recommendation.",
       status: deal?.analysis ? "Completed" : (deal ? "Ready" : "Not Started"),
-      actionLabel: "Generate Analysis",
+      actionLabel: "Evaluate Analysis",
       actionHref: deal ? `/deals/${deal.id}/deal-room` : "#"
     },
     {
@@ -42,7 +42,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       title: "Research Intelligence",
       explanation: "Validate market, customer, competitor, pricing, GTM, and evidence quality.",
       status: deal?.analysis ? "Completed" : (deal?.analysis ? "Ready" : "Not Started"),
-      actionLabel: "Generate Research Brief",
+      actionLabel: "Evaluate Research Brief",
       actionHref: deal ? `/deals/${deal.id}/research` : "#"
     },
     {
@@ -58,7 +58,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       title: "Diligence",
       explanation: "Convert risks and unsupported claims into diligence tasks, founder questions, customer references, and data room requests.",
       status: deal?.analysis ? "Completed" : (deal?.analysis ? "Ready" : "Not Started"),
-      actionLabel: "Generate Diligence Plan",
+      actionLabel: "Investigate Diligence Gaps",
       actionHref: deal ? `/deals/${deal.id}/diligence` : "#"
     },
     {

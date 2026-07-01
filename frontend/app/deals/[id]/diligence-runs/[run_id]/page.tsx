@@ -106,7 +106,7 @@ export default function DiligenceRunReportPage() {
           <h3 className="text-lg font-semibold mb-4 flex items-center text-blue-800">
             <ListTodo className="w-5 h-5 mr-2" /> Operations Tasks Created
           </h3>
-          <p className="text-sm text-blue-900 mb-2">Generated {run.missing_information.length} tasks from missing diligence gaps.</p>
+          <p className="text-sm text-blue-900 mb-2">Evaluated {run.missing_information.length} tasks from missing diligence gaps.</p>
           <ul className="list-disc list-inside text-sm text-blue-800 space-y-1">
             {run.missing_information.slice(0, 5).map((gap: string, i: number) => (
               <li key={i}>Collect: {gap.replace('Missing', '')}</li>
@@ -129,7 +129,7 @@ export default function DiligenceRunReportPage() {
           <div className="p-4 border rounded-lg bg-neutral-50">
             <Eye className="w-6 h-6 mx-auto mb-2 text-neutral-400" />
             <div className="font-semibold text-neutral-700">Deal Sync</div>
-            <div className="text-neutral-500 text-xs mt-1">Summary Generated</div>
+            <div className="text-neutral-500 text-xs mt-1">Summary Evaluated</div>
           </div>
           <div className="p-4 border rounded-lg bg-neutral-50">
             <Target className="w-6 h-6 mx-auto mb-2 text-neutral-400" />

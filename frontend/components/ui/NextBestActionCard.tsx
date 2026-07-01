@@ -18,7 +18,7 @@ export function NextBestActionCard({ deal, hasFundFit = false }: NextBestActionC
   let urgencyClass = "text-primary bg-primary/10"
   let urgencyLabel = "High"
 
-  if (health.nextActionTitle.includes("Generate initial analysis")) {
+  if (health.nextActionTitle.includes("Evaluate initial analysis")) {
     icon = Play
     urgencyLabel = "Critical"
     urgencyClass = "text-destructive bg-destructive/10"

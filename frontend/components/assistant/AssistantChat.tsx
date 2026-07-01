@@ -229,9 +229,9 @@ export function AssistantChat({ dealId, crossDeal = false, fullHeight = false }:
                 "Which deal has the highest IC readiness?"
               ] : [
                 "Summarize this deal",
-                "Generate founder questions",
+                "Evaluate founder questions",
                 "What concerns should I investigate?",
-                "Generate investment memo"
+                "Evaluate investment memo"
               ]).map((q, idx) => (
                 <button
                   key={idx}
