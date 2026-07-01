@@ -26,8 +26,9 @@ export default function ErrorBoundary({
         The application encountered an unexpected error. This might be due to a disconnected backend or missing data.
       </p>
       
-      <div className="bg-slate-50 border p-4 rounded-lg w-full text-left mb-8 overflow-auto max-h-48 text-sm font-mono text-slate-600">
-        {error.message || "Unknown error occurred."}
+      <div className="bg-slate-50 border border-slate-200 p-4 rounded-lg w-full text-left mb-8 max-h-48 text-sm text-slate-600 shadow-sm">
+        <p className="font-medium">Please verify your connection and try reloading.</p>
+        <p className="mt-2 text-xs text-slate-500">If the problem persists, contact platform support.</p>
       </div>
 
       <div className="flex gap-4">

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGlobalDeal } from "@/components/GlobalDealProvider";
-import DiligencePage from "../diligence/index";
-import DealStructuringPage from "../deal-structuring/index";
+import DiligencePage from "@/components/deal-tabs/DiligencePage";
+import DealStructuringPage from "@/components/deal-tabs/DealStructuringPage";
 
 export default function ExecuteDealPage() {
   const { state, loading } = useGlobalDeal();

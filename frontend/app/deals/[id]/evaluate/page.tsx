@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGlobalDeal } from "@/components/GlobalDealProvider";
-import ResearchBriefPage from "../research/index";
-import DeckIntelligencePage from "../deck/index";
-import EvidenceCenterPage from "../evidence-center/index";
-import PlatformDiligencePage from "../platform-diligence/index";
+import ResearchBriefPage from "@/components/deal-tabs/ResearchBriefPage";
+import DeckIntelligencePage from "@/components/deal-tabs/DeckIntelligencePage";
+import EvidenceCenterPage from "@/components/deal-tabs/EvidenceCenterPage";
+import PlatformDiligencePage from "@/components/deal-tabs/PlatformDiligencePage";
 
 export default function EvaluateDealPage() {
   const { state, loading } = useGlobalDeal();

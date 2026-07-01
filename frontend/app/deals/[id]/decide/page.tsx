@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGlobalDeal } from "@/components/GlobalDealProvider";
-import ICPacketPage from "../ic-packet/index";
-import RiskPage from "../risk/index";
-import ThesisPage from "../thesis/index";
+import ICPacketPage from "@/components/deal-tabs/ICPacketPage";
+import RiskPage from "@/components/deal-tabs/RiskPage";
+import ThesisPage from "@/components/deal-tabs/ThesisPage";
 import { ScenarioSimulator } from "@/components/ui/ScenarioSimulator";
 
 export default function DecideDealPage() {

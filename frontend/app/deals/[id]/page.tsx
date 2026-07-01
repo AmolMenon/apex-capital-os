@@ -75,8 +75,8 @@ export default function DealRoomOverview() {
           <div className="lg:col-span-2 space-y-6">
           
           {/* Executive Summary & AI Opinion */}
-          <Card className="border-primary/20 bg-primary/5 shadow-sm">
-            <CardHeader className="pb-3 border-b border-primary/10">
+          <Card className="border-border/40 bg-card shadow-sm">
+            <CardHeader className="pb-3 border-b border-border/40">
               <CardTitle className="text-lg flex items-center gap-2 text-primary">
                 <Sparkles className="w-5 h-5" /> Platform Synthesis
               </CardTitle>
@@ -391,9 +391,9 @@ export default function DealRoomOverview() {
           </Card>
 
           {/* AI Questions for Founder */}
-          <Card className="border-indigo-500/20 bg-indigo-500/5 shadow-sm">
-            <CardHeader className="pb-2 border-b border-indigo-500/10">
-              <CardTitle className="text-sm flex items-center gap-2 text-indigo-700 dark:text-indigo-400">
+          <Card className="border-border/40 bg-card shadow-sm">
+            <CardHeader className="pb-2 border-b border-border/40">
+              <CardTitle className="text-sm flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
                 <Crosshair className="w-4 h-4" /> Questions for Founder
               </CardTitle>
             </CardHeader>
