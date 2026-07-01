@@ -8,11 +8,12 @@ import { ShieldCheck, FileText, Globe, AlertTriangle, Link as LinkIcon, Database
 import { api } from "@/lib/api"
 import { Deal } from "@/types"
 
-import { useDeal } from "@/components/DealProvider"
+import { useGlobalDeal } from "@/components/GlobalDealProvider"
 
 export default function EvidenceCenterPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = useParams() as any;
-  const deal = useDeal()
+  const { state } = useGlobalDeal();
+  const deal = state?.deal;
   const [loading, setLoading] = useState(true)
   const [research, setResearch] = useState<any>(null)
   const [filter, setFilter] = useState('All')

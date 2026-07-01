@@ -8,13 +8,14 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Loader2, Play, FileText, CheckCircle, AlertTriangle, ShieldCheck, Database, RefreshCw, X, FolderOpen, ArrowRight } from "lucide-react";
-import { useDeal } from "@/components/DealProvider"
+import { useGlobalDeal } from "@/components/GlobalDealProvider"
 
 export default function RunDiligencePage() {
   const params = useParams();
   const router = useRouter();
   const id = params.id as string;
-  const deal = useDeal();
+  const { state } = useGlobalDeal();
+  const deal = state?.deal;
   const [readiness, setReadiness] = useState<any>(null);
   const [latestRun, setLatestRun] = useState<any>(null);
   const [loading, setLoading] = useState(true);

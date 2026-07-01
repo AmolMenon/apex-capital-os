@@ -9,11 +9,12 @@ import { api } from "@/lib/api"
 import { Deal, MemoOutput, ICOnePagerOutput } from "@/types"
 import { FileText, Download, Copy, Printer, CheckCircle, Bot } from "lucide-react"
 import Link from "next/link"
-import { useDeal } from "@/components/DealProvider"
+import { useGlobalDeal } from "@/components/GlobalDealProvider"
 
 export default function ICPacketPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
-  const dealContext = useDeal();
+  const { state } = useGlobalDeal();
+  const dealContext = state?.deal;
   const [deal, setDeal] = useState<Deal | null>(dealContext || {
     id: "demo",
     startup_name: "Mock AI Corp",

@@ -1,6 +1,6 @@
 "use client"
 import { OperationsPanel } from "@/components/OperationsPanel";
-import { useDeal } from "@/components/DealProvider";
+import { useGlobalDeal } from "@/components/GlobalDealProvider";
 import { useState, useEffect } from "react"
 import { api } from "@/lib/api"
 import { DealWarRoom, Deal } from "@/types"
@@ -23,7 +23,8 @@ import { useParams } from "next/navigation"
 export default function WarRoomPage() {
   const params = useParams()
   const id = params.id as string
-  const deal = useDeal()
+  const { state } = useGlobalDeal();
+  const deal = state?.deal;
   const [warRoom, setWarRoom] = useState<DealWarRoom | null>(null)
   const [loading, setLoading] = useState(true)
   const [running, setRunning] = useState(false)

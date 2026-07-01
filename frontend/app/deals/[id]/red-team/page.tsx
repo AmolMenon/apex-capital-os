@@ -8,11 +8,12 @@ import { api } from "@/lib/api"
 import { Deal, FullAnalysisOutput } from "@/types"
 import { ShieldAlert, TrendingDown, Target, CircleHelp, CheckCircle } from "lucide-react"
 
-import { useDeal } from "@/components/DealProvider"
+import { useGlobalDeal } from "@/components/GlobalDealProvider"
 
 export default function RedTeamPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = useParams() as any;
-  const deal = useDeal()
+  const { state } = useGlobalDeal();
+  const deal = state?.deal;
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {

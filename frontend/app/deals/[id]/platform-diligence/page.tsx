@@ -9,13 +9,14 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ShieldAlert, Activity, Search, AlertTriangle, ArrowRight, ArrowLeft, Target, Globe, TerminalSquare } from 'lucide-react';
 
-import { useDeal } from "@/components/DealProvider"
+import { useGlobalDeal } from "@/components/GlobalDealProvider"
 
 export default function PlatformDiligencePage() {
   const params = useParams();
   const dealId = params.id as string;
   const router = useRouter();
-  const deal = useDeal();
+  const { state } = useGlobalDeal();
+  const deal = state?.deal;
 
   const [loading, setLoading] = useState(true);
   const [latestRun, setLatestRun] = useState<any>(null);
