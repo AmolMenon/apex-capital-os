@@ -22,7 +22,7 @@ import { useGlobalDeal } from "@/components/GlobalDealProvider"
 export default function ResearchBriefPage() {
   const { state, loading, simulateAutonomous } = useGlobalDeal();
 
-  if (loading || !state) return <div className="p-12 text-center animate-pulse">Loading Research...</div>;
+  if (loading || !state) return <LoadingState />;
 
   const research = state.research;
   const deal = state.deal;

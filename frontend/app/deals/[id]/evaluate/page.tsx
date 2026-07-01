@@ -12,7 +12,7 @@ export default function EvaluateDealPage() {
   const { state, loading } = useGlobalDeal();
 
   if (loading || !state) {
-    return <div className="p-12 animate-pulse">Loading Evaluate Module...</div>;
+    return <LoadingState />;
   }
 
   return (

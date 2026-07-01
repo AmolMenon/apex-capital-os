@@ -46,6 +46,13 @@ export function GlobalDealProvider({ children, dealId }: { children: React.React
   const fetchState = async () => {
     try {
       const res = await api.get(`/deals/${dealId}/autonomous-state`);
+      
+      // AI SHOULD THINK: If the deal is completely empty, automatically kick off the autonomous pipeline!
+      if (res && res.autonomous && res.autonomous.stage === "Not Started" && Object.keys(res.research || {}).length === 0) {
+          console.log("Empty deal detected. Automatically kicking off autonomous pipeline...");
+          api.post(`/deals/${dealId}/simulate-autonomous`, {}).catch(e => console.error(e));
+      }
+
       setState(res);
       setError(null);
     } catch (err: any) {

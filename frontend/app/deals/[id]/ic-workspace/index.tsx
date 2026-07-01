@@ -63,7 +63,7 @@ export default function ICWorkspace() {
     }
   };
 
-  if (loading || !state) return <div className="p-12 text-center animate-pulse">Loading IC Workspace...</div>;
+  if (loading || !state) return <LoadingState />;
 
   return (
     <div className="space-y-6">
