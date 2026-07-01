@@ -33,6 +33,8 @@ from routes.platform_diligence import router as platform_diligence_router
 from routes.portfolio import router as portfolio_router
 from routes.web_research import router as web_research_router
 from routes.workspace import router as workspace_router
+from routes.deal_structuring import router as deal_structuring_router
+from routes.decision_lab import router as decision_lab_router
 
 # Import Middleware
 from core.logging_middleware import LoggingMiddleware
@@ -135,6 +137,8 @@ app.include_router(platform_diligence_router, prefix=f"{api_prefix}/platform-dil
 app.include_router(portfolio_router, prefix=f"{api_prefix}/portfolio-management", tags=["Portfolio Management"])
 app.include_router(web_research_router, prefix=f"{api_prefix}/web-research", tags=["Web Research"])
 app.include_router(workspace_router, prefix=f"{api_prefix}/workspace", tags=["Workspace"])
+app.include_router(deal_structuring_router, prefix=f"{api_prefix}/deal-structuring", tags=["Deal Structuring"])
+app.include_router(decision_lab_router, prefix=f"{api_prefix}/decision-lab", tags=["Decision Lab"])
 
 @app.get(f"{api_prefix}/health", tags=["System"])
 def health_check():
