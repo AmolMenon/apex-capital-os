@@ -82,6 +82,9 @@ try:
         )
         db.add(analysis)
         db.commit()
+        
+        from seed_mock_pipeline import seed_autonomous_pipeline
+        seed_autonomous_pipeline(db, 1000)
 except Exception as e:
     print(f"Error seeding DB: {e}")
 finally:
