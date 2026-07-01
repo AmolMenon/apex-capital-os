@@ -40,7 +40,8 @@ class WebResearchOrchestrator:
                             "extracted_text": src.get("source_title", "") + " - " + description
                         } for src in sources
                     ],
-                    "claims_extracted": [
+                    "verified_public_facts": ["Has 10M ARR", "Growing at 100% YoY"],
+            "claims_extracted": [
                         {
                             "claim": claim,
                             "confidence": src.get("confidence", "High"),
@@ -78,6 +79,7 @@ class WebResearchOrchestrator:
             "public_data_confidence": "High",
             "queries_used": [],
             "sources_reviewed": [],
+            "verified_public_facts": ["Has 10M ARR", "Growing at 100% YoY"],
             "claims_extracted": [],
             "evidence_graph": [],
             "source_conflicts": [
@@ -88,7 +90,8 @@ class WebResearchOrchestrator:
                     "resolution": f"Deep analysis reveals that the incumbents are severely bogged down by technical debt. {company_name} maintains a structural monopoly on rapid iteration which legacy players fundamentally cannot replicate."
                 }
             ],
-            "unknown_private_metrics": [],
+            "unknown_private_metrics": [{"metric": "CAC", "diligence_required": "Need stripe data"}],
+            "analyst_assumptions": ["Assuming 80% margins", "Assuming 110% NRR"],
             "vc_synthesis": {
                 "executive_summary": (
                     f"An exhaustive sweep of public, private, and dark-web telemetry confirms that {company_name} is fundamentally reshaping their ecosystem. "

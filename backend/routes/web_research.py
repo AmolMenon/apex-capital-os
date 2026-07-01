@@ -60,30 +60,16 @@ def get_deal_research(deal_id: str, db: Session = Depends(get_db)):
         deal_id = int(deal_id)
     except:
         deal_id = 1000
-    brief = db.query(WebResearchBriefModel).filter_by(deal_id=deal_id).first()
-    if not brief:
-        # Generate mock immediately if missing for tests
-        deal = db.query(Deal).filter(Deal.id == deal_id).first()
-        if not deal:
-            raise HTTPException(status_code=404, detail="Deal not found")
-        run_deal_research(deal_id, db)
-        brief = db.query(WebResearchBriefModel).filter_by(deal_id=deal_id).first()
+    deal = db.query(Deal).filter(Deal.id == deal_id).first()
+    if not deal:
+        raise HTTPException(status_code=404, detail="Deal not found")
         
-    return {
-        "company_name": brief.company_name,
-        "research_mode": brief.research_mode,
-        "source_quality_score": brief.source_quality_score,
-        "public_data_confidence": brief.public_data_confidence,
-        "queries_used": json.loads(brief.queries_json),
-        "sources_reviewed": json.loads(brief.sources_json),
-        "claims_extracted": json.loads(brief.claims_json),
-        "evidence_graph": json.loads(brief.evidence_graph_json),
-        "source_conflicts": json.loads(brief.conflicts_json),
-        "unknown_private_metrics": json.loads(brief.unknown_metrics_json),
-        "vc_synthesis": json.loads(brief.synthesis_json),
-        "citations": json.loads(brief.citations_json),
-        "updated_at": brief.updated_at
-    }
+    company_name = deal.company.name if deal.company else "Unknown Company"
+    return WebResearchOrchestrator.run_research(company_name, {
+        "sector": deal.company.sector if deal.company else None,
+        "description": deal.company.description if deal.company else None,
+        "public_profile_json": "{}"
+    })
 
 @router.post("/deals/{deal_id}/refresh")
 def refresh_deal_research(deal_id: str, db: Session = Depends(get_db)):
