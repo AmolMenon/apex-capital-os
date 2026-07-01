@@ -8,15 +8,11 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 const WORKFLOW_STAGES = [
-  { id: 'deal-room', label: 'Initial Screening', number: 1 },
-  { id: 'research', label: 'Market & Competitor Analysis', number: 2 },
-  { id: 'ecosystem', label: 'Ecosystem Intelligence', number: 3 },
-  { id: 'verification', label: 'Diligence Verification', number: 4 },
-  { id: 'diligence', label: 'Deep Diligence', number: 5 },
-  { id: 'risk', label: 'Risk Assessment', number: 6 },
-  { id: 'thesis', label: 'Investment Thesis', number: 7 },
-  { id: 'ic-memo', label: 'IC Memo Preparation', number: 8 },
-  { id: 'portfolio', label: 'Portfolio Integration', number: 9 },
+  { id: '', label: 'Executive Overview', number: 1 },
+  { id: 'evaluate', label: 'Evaluate', number: 2 },
+  { id: 'decide', label: 'Decide', number: 3 },
+  { id: 'execute', label: 'Execute', number: 4 },
+  { id: 'manage', label: 'Manage', number: 5 },
 ];
 
 export function AutonomousSidebar() {

@@ -12,37 +12,49 @@ import {
 } from "lucide-react"
 import { useState } from "react"
 
-const primaryRoutes = [
-  { name: "Home", path: "/", icon: LayoutDashboard, isDeal: false },
-  { name: "Demo Script", path: "/demo-script", icon: Play, isDeal: false },
-  { name: "Deal Inbox", path: "/deal-inbox", icon: Inbox, isDeal: false },
-  { name: "Pipeline", path: "/pipeline", icon: Bookmark, isDeal: false },
-  { name: "Deal Room", path: "/deal-room", icon: Briefcase, isDeal: true },
-  { name: "Evidence Center", path: "/evidence-center", icon: Database, isDeal: true },
-  { name: "Deal Sync", path: "/deal-sync", icon: Users, isDeal: true },
-  { name: "Assistant", path: "/assistant", icon: MessageSquare, isDeal: true },
-  { name: "Decision Engine", path: "/decision", icon: Activity, isDeal: true },
-  { name: "IC Packet", path: "/ic-packet", icon: FileText, isDeal: true },
-  { name: "Trust Center", path: "/trust-center", icon: ShieldCheck, isDeal: false },
-  { name: "Operations", path: "/operations", icon: CheckSquare, isDeal: false },
-  { name: "Settings", path: "/settings", icon: Settings, isDeal: false },
-]
-
-const advancedRoutes = [
-  { name: "Data Room", path: "/data-room", icon: Folder, isDeal: true },
-  { name: "Meeting Intelligence", path: "/meetings", icon: Presentation, isDeal: false },
-  { name: "Knowledge Graph", path: "/knowledge-graph", icon: Network, isDeal: false },
-  { name: "Playbooks", path: "/playbooks", icon: BookOpen, isDeal: false },
-  { name: "Portfolio Intelligence", path: "/portfolio-intelligence", icon: PieChart, isDeal: false },
-  { name: "Fund OS", path: "/fund-os", icon: Activity, isDeal: false },
-  { name: "Decision Lab", path: "/decision-lab", icon: FlaskConical, isDeal: false },
-  { name: "Deal Structuring", path: "/deal-structuring", icon: Calculator, isDeal: true },
+const menuGroups = [
+  {
+    title: "Discover",
+    routes: [
+      { name: "Executive Dashboard", path: "/", icon: LayoutDashboard, isDeal: false },
+      { name: "Deal Inbox", path: "/deal-inbox", icon: Inbox, isDeal: false },
+      { name: "Pipeline", path: "/pipeline", icon: Bookmark, isDeal: false },
+      { name: "Sourcing", path: "/sourcing", icon: Network, isDeal: false },
+    ]
+  },
+  {
+    title: "Evaluate",
+    routes: [
+      { name: "Executive Overview", path: "", icon: Briefcase, isDeal: true },
+      { name: "Evaluate Deal", path: "/evaluate", icon: Database, isDeal: true },
+    ]
+  },
+  {
+    title: "Decide",
+    routes: [
+      { name: "Decision Center", path: "/decide", icon: Activity, isDeal: true },
+      { name: "Decision Lab", path: "/decision-lab", icon: FlaskConical, isDeal: false },
+    ]
+  },
+  {
+    title: "Execute",
+    routes: [
+      { name: "Execution Ops", path: "/execute", icon: CheckSquare, isDeal: true },
+      { name: "Fund Operations", path: "/operations", icon: Settings, isDeal: false },
+    ]
+  },
+  {
+    title: "Manage",
+    routes: [
+      { name: "Portfolio", path: "/portfolio", icon: PieChart, isDeal: false },
+      { name: "Fund OS", path: "/fund-os", icon: LayoutDashboard, isDeal: false },
+    ]
+  }
 ]
 
 export function Sidebar({ mobile }: { mobile?: boolean } = {}) {
   const pathname = usePathname()
   const { isScreenshotMode } = useScreenshotMode()
-  const [advancedOpen, setAdvancedOpen] = useState(false)
 
   const segments = pathname.split('/').filter(Boolean)
   const isDealRoute = segments[0] === 'deal' || segments[0] === 'deals'
@@ -56,6 +68,8 @@ export function Sidebar({ mobile }: { mobile?: boolean } = {}) {
       if (routePath === '/') return pathname === '/';
       return pathname.startsWith(routePath);
     } else {
+      const dealPath = `/deals/${currentDealId}${routePath}`;
+      if (routePath === '') return pathname === `/deals/${currentDealId}` || pathname === `/deals/${currentDealId}/`;
       return pathname.includes(routePath);
     }
   }
@@ -63,7 +77,7 @@ export function Sidebar({ mobile }: { mobile?: boolean } = {}) {
   const NavItem = ({ route }: { route: any }) => {
     const isDeal = route.isDeal;
     const isActive = isRouteActive(route.path, isDeal)
-    const href = isDeal ? `/deals/${currentDealId}${route.path.replace('/deal-room', '')}` : route.path
+    const href = isDeal ? `/deals/${currentDealId}${route.path}` : route.path
     
     return (
       <div className="relative group/tooltip">
@@ -89,7 +103,7 @@ export function Sidebar({ mobile }: { mobile?: boolean } = {}) {
   }
 
   return (
-    <div className={cn("flex flex-col border-r bg-card py-6 overflow-y-auto", mobile ? "w-full h-full" : "w-64 h-screen")}>
+    <div className={cn("flex flex-col border-r bg-card py-6 overflow-y-auto", mobile ? "w-full h-full" : "w-64 h-screen shrink-0")}>
       <div className="mb-6 px-6 flex flex-col gap-1">
         <Link href="/">
           <h1 className="text-xl font-bold tracking-tight text-primary">APEX<span className="text-foreground">CAPITAL</span></h1>
@@ -107,30 +121,24 @@ export function Sidebar({ mobile }: { mobile?: boolean } = {}) {
       </div>
       
       <div className="flex-1 px-3 space-y-6">
-        <div>
-          <div className="px-3 mb-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground/50">
-            Primary
-          </div>
-          <div className="space-y-0.5">
-            {primaryRoutes.map(route => <NavItem key={route.name} route={route} />)}
-          </div>
-        </div>
-
-        <div>
-          <button 
-            onClick={() => setAdvancedOpen(!advancedOpen)}
-            className="w-full flex items-center justify-between px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground/50 hover:text-foreground transition-colors"
-          >
-            <span>Advanced Modules</span>
-            {advancedOpen ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
-          </button>
+        {menuGroups.map((group, i) => {
+          // Hide deal groups if not in a deal
+          if (!isDealRoute && group.routes.every(r => r.isDeal)) return null;
           
-          {advancedOpen && (
-            <div className="space-y-0.5 mt-1 border-l-2 border-muted ml-3 pl-2">
-              {advancedRoutes.map(route => <NavItem key={route.name} route={route} />)}
+          return (
+            <div key={i}>
+              <div className="px-3 mb-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground/50">
+                {group.title}
+              </div>
+              <div className="space-y-0.5">
+                {group.routes.map(route => {
+                  if (route.isDeal && !isDealRoute) return null;
+                  return <NavItem key={route.name} route={route} />
+                })}
+              </div>
             </div>
-          )}
-        </div>
+          )
+        })}
       </div>
 
       <div className="mt-auto px-4 pb-2 pt-4">
