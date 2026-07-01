@@ -75,7 +75,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking NexusAI since their Seed. The momentum here is undeniable. Revenue growth is at 227% YoY, which is top-quartile for AI. However, I am increasingly concerned about their burn rate of $1622k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 227% YoY places NexusAI in the top-quartile for AI. However, current financial models highlight a concerning burn rate of $1622k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -154,7 +154,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking Aura Health since their Seed. The momentum here is undeniable. Revenue growth is at 169% YoY, which is top-quartile for Healthcare. However, I am increasingly concerned about their burn rate of $2602k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 169% YoY places Aura Health in the top-quartile for Healthcare. However, current financial models highlight a concerning burn rate of $2602k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -234,7 +234,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 17.9 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating ShieldDev, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 17.9 months, weakening initial assumptions. Unless a definitive path to outcompeting ShieldDev can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -313,7 +313,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 8.1 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating RoboFlex, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 8.1 months, weakening initial assumptions. Unless a definitive path to outcompeting RoboFlex can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -393,8 +393,8 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "The net dollar retention of 135% indicates immense product stickiness. I spoke with 3 former customers of their main competitor, TrendSet, and they all cited ShieldDev's superior UX. This is a definitive signal. Recommend moving to deep diligence.",
-      "confidence": "Medium-High"
+      "opinionated_recommendation": "Net dollar retention of 135% provides strong evidence of product stickiness. Customer reference transcripts consistently cite superior UX compared to TrendSet. The available data supports moving to deep diligence.",
+      "confidence": "Moderate"
     }
   },
   {
@@ -471,7 +471,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 8.2 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating TuringData, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 8.2 months, weakening initial assumptions. Unless a definitive path to outcompeting TuringData can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -550,8 +550,8 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "The net dollar retention of 124% indicates immense product stickiness. I spoke with 3 former customers of their main competitor, MedSync, and they all cited ForgeTech's superior UX. This is a definitive signal. Recommend moving to deep diligence.",
-      "confidence": "Medium-High"
+      "opinionated_recommendation": "Net dollar retention of 124% provides strong evidence of product stickiness. Customer reference transcripts consistently cite superior UX compared to MedSync. The available data supports moving to deep diligence.",
+      "confidence": "Moderate"
     }
   },
   {
@@ -628,8 +628,8 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "The net dollar retention of 138% indicates immense product stickiness. I spoke with 3 former customers of their main competitor, BuildKite, and they all cited QuantumCore's superior UX. This is a definitive signal. Recommend moving to deep diligence.",
-      "confidence": "Medium-High"
+      "opinionated_recommendation": "Net dollar retention of 138% provides strong evidence of product stickiness. Customer reference transcripts consistently cite superior UX compared to BuildKite. The available data supports moving to deep diligence.",
+      "confidence": "Moderate"
     }
   },
   {
@@ -708,7 +708,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking Lumiere since their Seed. The momentum here is undeniable. Revenue growth is at 230% YoY, which is top-quartile for Consumer. However, I am increasingly concerned about their burn rate of $1823k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 230% YoY places Lumiere in the top-quartile for Consumer. However, current financial models highlight a concerning burn rate of $1823k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -786,7 +786,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 13.5 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating ZeroDay, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 13.5 months, weakening initial assumptions. Unless a definitive path to outcompeting ZeroDay can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -866,7 +866,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking TuringData since their Seed. The momentum here is undeniable. Revenue growth is at 128% YoY, which is top-quartile for AI. However, I am increasingly concerned about their burn rate of $2491k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 128% YoY places TuringData in the top-quartile for AI. However, current financial models highlight a concerning burn rate of $2491k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -945,7 +945,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 6.0 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating MacroFab, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 6.0 months, weakening initial assumptions. Unless a definitive path to outcompeting MacroFab can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -1023,7 +1023,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking TerraVolt since their Seed. The momentum here is undeniable. Revenue growth is at 92% YoY, which is top-quartile for Climate. However, I am increasingly concerned about their burn rate of $2177k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 92% YoY places TerraVolt in the top-quartile for Climate. However, current financial models highlight a concerning burn rate of $2177k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -1103,7 +1103,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 12.3 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating ShieldDev, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 12.3 months, weakening initial assumptions. Unless a definitive path to outcompeting ShieldDev can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -1183,7 +1183,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 13.1 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating MacroFab, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 13.1 months, weakening initial assumptions. Unless a definitive path to outcompeting MacroFab can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -1262,8 +1262,8 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "The net dollar retention of 134% indicates immense product stickiness. I spoke with 3 former customers of their main competitor, MedSync, and they all cited BuildKite's superior UX. This is a definitive signal. Recommend moving to deep diligence.",
-      "confidence": "Medium-High"
+      "opinionated_recommendation": "Net dollar retention of 134% provides strong evidence of product stickiness. Customer reference transcripts consistently cite superior UX compared to MedSync. The available data supports moving to deep diligence.",
+      "confidence": "Moderate"
     }
   },
   {
@@ -1341,7 +1341,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 8.4 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating StarkBank, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 8.4 months, weakening initial assumptions. Unless a definitive path to outcompeting StarkBank can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -1420,7 +1420,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 8.8 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating PayFlow, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 8.8 months, weakening initial assumptions. Unless a definitive path to outcompeting PayFlow can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -1498,8 +1498,8 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "The net dollar retention of 131% indicates immense product stickiness. I spoke with 3 former customers of their main competitor, MedSync, and they all cited TrendSet's superior UX. This is a definitive signal. Recommend moving to deep diligence.",
-      "confidence": "Medium-High"
+      "opinionated_recommendation": "Net dollar retention of 131% provides strong evidence of product stickiness. Customer reference transcripts consistently cite superior UX compared to MedSync. The available data supports moving to deep diligence.",
+      "confidence": "Moderate"
     }
   },
   {
@@ -1577,8 +1577,8 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "The net dollar retention of 122% indicates immense product stickiness. I spoke with 3 former customers of their main competitor, TrendSet, and they all cited WorkSphere's superior UX. This is a definitive signal. Recommend moving to deep diligence.",
-      "confidence": "Medium-High"
+      "opinionated_recommendation": "Net dollar retention of 122% provides strong evidence of product stickiness. Customer reference transcripts consistently cite superior UX compared to TrendSet. The available data supports moving to deep diligence.",
+      "confidence": "Moderate"
     }
   },
   {
@@ -1657,7 +1657,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking Cogito since their Seed. The momentum here is undeniable. Revenue growth is at 169% YoY, which is top-quartile for AI. However, I am increasingly concerned about their burn rate of $2897k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 169% YoY places Cogito in the top-quartile for AI. However, current financial models highlight a concerning burn rate of $2897k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -1737,7 +1737,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking GenoWrite since their Seed. The momentum here is undeniable. Revenue growth is at 139% YoY, which is top-quartile for Healthcare. However, I am increasingly concerned about their burn rate of $1161k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 139% YoY places GenoWrite in the top-quartile for Healthcare. However, current financial models highlight a concerning burn rate of $1161k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -1817,7 +1817,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking SunPath since their Seed. The momentum here is undeniable. Revenue growth is at 97% YoY, which is top-quartile for Climate. However, I am increasingly concerned about their burn rate of $2904k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 97% YoY places SunPath in the top-quartile for Climate. However, current financial models highlight a concerning burn rate of $2904k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -1897,8 +1897,8 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "The net dollar retention of 124% indicates immense product stickiness. I spoke with 3 former customers of their main competitor, NexusAI, and they all cited StarkBank's superior UX. This is a definitive signal. Recommend moving to deep diligence.",
-      "confidence": "Medium-High"
+      "opinionated_recommendation": "Net dollar retention of 124% provides strong evidence of product stickiness. Customer reference transcripts consistently cite superior UX compared to NexusAI. The available data supports moving to deep diligence.",
+      "confidence": "Moderate"
     }
   },
   {
@@ -1975,7 +1975,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking Phalanx since their Seed. The momentum here is undeniable. Revenue growth is at 243% YoY, which is top-quartile for Cybersecurity. However, I am increasingly concerned about their burn rate of $2728k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 243% YoY places Phalanx in the top-quartile for Cybersecurity. However, current financial models highlight a concerning burn rate of $2728k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -2053,7 +2053,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 7.0 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating GenoWrite, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 7.0 months, weakening initial assumptions. Unless a definitive path to outcompeting GenoWrite can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   },
@@ -2132,7 +2132,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking RoboFlex since their Seed. The momentum here is undeniable. Revenue growth is at 130% YoY, which is top-quartile for Manufacturing. However, I am increasingly concerned about their burn rate of $2607k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 130% YoY places RoboFlex in the top-quartile for Manufacturing. However, current financial models highlight a concerning burn rate of $2607k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -2212,8 +2212,8 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "The net dollar retention of 134% indicates immense product stickiness. I spoke with 3 former customers of their main competitor, RoboFlex, and they all cited AeroSpace's superior UX. This is a definitive signal. Recommend moving to deep diligence.",
-      "confidence": "Medium-High"
+      "opinionated_recommendation": "Net dollar retention of 134% provides strong evidence of product stickiness. Customer reference transcripts consistently cite superior UX compared to RoboFlex. The available data supports moving to deep diligence.",
+      "confidence": "Moderate"
     }
   },
   {
@@ -2292,7 +2292,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I have been tracking VibeCheck since their Seed. The momentum here is undeniable. Revenue growth is at 289% YoY, which is top-quartile for Consumer. However, I am increasingly concerned about their burn rate of $2649k/mo. If they can justify the GTM efficiency, I strongly recommend proceeding.",
+      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 289% YoY places VibeCheck in the top-quartile for Consumer. However, current financial models highlight a concerning burn rate of $2649k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
       "confidence": "High"
     }
   },
@@ -2372,7 +2372,7 @@ export const extendedDeals =
           "description": "Aggressive burn rate requires flawless execution."
         }
       ],
-      "opinionated_recommendation": "I am hesitant. While the TAM is large, the CAC payback of 4.0 months is stretching thin in this macro environment. This assumption weakened after reviewing the latest cohort data. Unless we see a clear path to beating PayFlow, we should pass.",
+      "opinionated_recommendation": "The available information is currently insufficient to justify an investment. While TAM models show promise, cohort data reveals a CAC payback of 4.0 months, weakening initial assumptions. Unless a definitive path to outcompeting PayFlow can be proven, the recommendation is to pass.",
       "confidence": "Low"
     }
   }

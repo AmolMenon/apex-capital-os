@@ -81,14 +81,36 @@ export default function DealRoomOverview() {
                 <Sparkles className="w-5 h-5" /> Platform Synthesis
               </CardTitle>
             </CardHeader>
-            <CardContent className="pt-5 space-y-4">
-              <p className="text-base font-medium leading-relaxed text-foreground">
-                {recommendationText}
-              </p>
+            <CardContent className="pt-5 space-y-6">
+              <div>
+                <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2">Summary</h4>
+                <p className="text-sm font-medium leading-relaxed text-foreground">
+                  {recommendationText}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-emerald-500/5 p-3 rounded-md border border-emerald-500/20">
+                  <h4 className="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-widest mb-1">Supporting Evidence</h4>
+                  <ul className="text-xs space-y-1 mt-2 text-foreground/80">
+                    <li>• Customer reference transcripts (3)</li>
+                    <li>• Verified NRR &gt; 120% in Q2</li>
+                    <li>• Founder background verification</li>
+                  </ul>
+                </div>
+                <div className="bg-red-500/5 p-3 rounded-md border border-red-500/20">
+                  <h4 className="text-xs font-bold text-red-700 dark:text-red-400 uppercase tracking-widest mb-1">Contradictory Evidence</h4>
+                  <ul className="text-xs space-y-1 mt-2 text-foreground/80">
+                    <li>• High customer concentration (Top 2 = 40%)</li>
+                    <li>• Pricing model undercuts margin</li>
+                  </ul>
+                </div>
+              </div>
+
               <div className="grid grid-cols-2 gap-4 pt-4 border-t border-primary/10">
                 <div>
                   <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Confidence</h4>
-                  <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 cursor-help" title="Confidence based on triangulated founder references and 3 months of cohort data.">
+                  <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1 cursor-help" title="Confidence is moderate due to unverified churn data. Requires further technical diligence.">
                     <CheckCircle className="w-4 h-4"/> {confidenceLevel}
                   </p>
                 </div>
@@ -96,6 +118,14 @@ export default function DealRoomOverview() {
                   <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-1">Missing Info</h4>
                   <p className="text-sm font-semibold text-amber-600 dark:text-amber-400">Churn data for Q3 is unverified.</p>
                 </div>
+              </div>
+
+              <div className="bg-muted p-3 rounded-md border border-border/50 flex justify-between items-center">
+                 <div>
+                   <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Recommended Next Action</h4>
+                   <p className="text-sm font-medium mt-1">Deep-dive on OpenAI inference costs</p>
+                 </div>
+                 <Link prefetch={true} href={`/deals/${deal.id}/diligence`} className="text-xs font-bold text-primary hover:underline flex items-center gap-1">Execute <TrendingUp className="w-3 h-3"/></Link>
               </div>
             </CardContent>
           </Card>
@@ -117,19 +147,27 @@ export default function DealRoomOverview() {
               <CardContent className="pt-4 space-y-4">
                 <div className="flex justify-between items-baseline">
                   <span className="text-sm text-muted-foreground">ARR</span>
-                  <span className="text-lg font-bold">${deal.arr ? (deal.arr/1000000).toFixed(1) + 'M' : '1.2M'}</span>
+                  <TooltipHelper content="Extracted from Q3 financials via Data Room. Reconciled against Stripe billing exports.">
+                    <span className="text-lg font-bold cursor-help border-b border-dashed border-muted-foreground/50">${deal.arr ? (deal.arr/1000000).toFixed(1) + 'M' : '1.2M'}</span>
+                  </TooltipHelper>
                 </div>
                 <div className="flex justify-between items-baseline">
                   <span className="text-sm text-muted-foreground">Growth (YoY)</span>
-                  <span className="text-lg font-bold text-emerald-500">+145%</span>
+                  <TooltipHelper content="Trailing 12-month calculated growth. Adjusted for seasonality.">
+                    <span className="text-lg font-bold text-emerald-500 cursor-help border-b border-dashed border-emerald-500/50">+145%</span>
+                  </TooltipHelper>
                 </div>
                 <div className="flex justify-between items-baseline">
                   <span className="text-sm text-muted-foreground">Gross Margin</span>
-                  <span className="text-lg font-bold">82%</span>
+                  <TooltipHelper content="Non-GAAP gross margin excluding one-time cloud migration costs.">
+                    <span className="text-lg font-bold cursor-help border-b border-dashed border-muted-foreground/50">82%</span>
+                  </TooltipHelper>
                 </div>
                 <div className="flex justify-between items-baseline">
                   <span className="text-sm text-muted-foreground">Burn Rate</span>
-                  <span className="text-lg font-bold text-red-500">-$240k/mo</span>
+                  <TooltipHelper content="3-month rolling average. Assumes headcount remains flat.">
+                    <span className="text-lg font-bold text-red-500 cursor-help border-b border-dashed border-red-500/50">-$240k/mo</span>
+                  </TooltipHelper>
                 </div>
               </CardContent>
             </Card>
@@ -141,7 +179,9 @@ export default function DealRoomOverview() {
               <CardContent className="pt-4 space-y-4">
                 <div>
                   <span className="text-xs font-semibold text-muted-foreground uppercase">TAM</span>
-                  <p className="text-sm font-medium mt-0.5">$14.2B (growing 22% CAGR)</p>
+                  <TooltipHelper content="Calculated using bottom-up analysis: (Target Companies) x (ACV)">
+                    <p className="text-sm font-medium mt-0.5 cursor-help border-b border-dashed border-muted-foreground/50 w-fit">$14.2B (growing 22% CAGR)</p>
+                  </TooltipHelper>
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-muted-foreground uppercase">Competitors</span>
