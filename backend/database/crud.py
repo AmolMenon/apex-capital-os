@@ -6,17 +6,40 @@ import json
 
 def get_deal(db: Session, deal_id: int):
     db_deal = db.query(Deal).filter(Deal.id == deal_id).first()
+    
+    # MOCK FALLBACK for MVP: Auto-seed deal 1000 if database is empty on Render
+    if not db_deal and deal_id == 1000:
+        from db.models import Company, Deal, AIAnalysis
+        mock_company = Company(name="Apex Demo Startup", sector="AI")
+        db.add(mock_company)
+        db.commit()
+        db.refresh(mock_company)
+        
+        db_deal = Deal(
+            id=1000,
+            company_id=mock_company.id,
+            status="In Review",
+            stage="Series A",
+            funding_asking=10000000,
+            valuation=50000000
+        )
+        db.add(db_deal)
+        db.commit()
+        db.refresh(db_deal)
+        
+        analysis = AIAnalysis(
+            deal_id=1000,
+            full_analysis_json='{"recommendation": "Invest", "score": 85, "risks": ["Competition"]}'
+        )
+        db.add(analysis)
+        db.commit()
+        db.refresh(db_deal)
+        
     if db_deal and db_deal.analysis:
         try:
-            # Parse the JSON string into the Pydantic schema structure
             analysis_dict = json.loads(db_deal.analysis.full_analysis_json)
-            # Add back the ID since it might not be in the JSON
             analysis_dict['id'] = db_deal.analysis.id
             analysis_dict['created_at'] = db_deal.analysis.created_at
-            
-            # Use setattr to attach the parsed analysis dynamically to the deal object 
-            # so Pydantic can read it, but this is a bit tricky with SQLAlchemy 
-            # Instead, we will construct the schema at the router level, or modify the Deal model to return dict.
         except Exception:
             pass
     return db_deal

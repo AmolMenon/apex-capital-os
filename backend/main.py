@@ -50,6 +50,42 @@ with engine.begin() as conn:
     conn.execute(text("DROP TABLE IF EXISTS deal_war_rooms"))
 Base.metadata.create_all(bind=engine)
 
+# Auto-seed Deal 1000 for Demo MVP
+from db.database import SessionLocal
+from db.models import Company, Deal, Analysis
+db = SessionLocal()
+try:
+    if not db.query(Deal).filter(Deal.id == 1000).first():
+        import datetime
+        mock_company = Company(id=1000, name="Apex Demo Startup", sector="AI")
+        db.add(mock_company)
+        db.commit()
+        db.refresh(mock_company)
+        
+        mock_deal = Deal(
+            id=1000,
+            company_id=mock_company.id,
+            status="In Review",
+            stage="Series A",
+            funding_asking=10000000,
+            valuation=50000000
+        )
+        db.add(mock_deal)
+        db.commit()
+        db.refresh(mock_deal)
+        
+        analysis = Analysis(
+            deal_id=1000,
+            full_analysis_json='{"recommendation": "Invest", "score": 85, "risks": ["Competition"]}'
+        )
+        db.add(analysis)
+        db.commit()
+except Exception as e:
+    print(f"Error seeding DB: {e}")
+finally:
+    db.close()
+
+
 app = FastAPI(
     title="Apex Capital OS API",
     version="4.0.0",
