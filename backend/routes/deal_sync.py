@@ -117,7 +117,7 @@ def get_deal_sync(deal_id: str, db: Session = Depends(get_db)):
     }
 
 @router.post("/deals/{deal_id}/run")
-pends(get_db)):
+def run_deal_sync(deal_id: str, db: Session = Depends(get_db)):
     try:
         deal_id = int(deal_id)
     except:
