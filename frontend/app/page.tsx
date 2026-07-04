@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { BrainCircuit, AlertTriangle, TrendingUp, TrendingDown, ArrowRight, Activity, ShieldAlert, BookOpen, DollarSign, PieChart, Star, Clock } from "lucide-react"
+import { BrainCircuit, AlertTriangle, TrendingUp, TrendingDown, ArrowRight, Activity, ShieldAlert, BookOpen, DollarSign, PieChart, Star, Clock, Loader2 } from "lucide-react"
 import { AnimatedScore } from "@/components/ui/AnimatedScore"
 
 interface Deal {
