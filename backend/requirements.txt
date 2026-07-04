@@ -20,4 +20,3 @@ python-jose
 alembic
 boto3
 google-api-python-client
-google-antigravity
