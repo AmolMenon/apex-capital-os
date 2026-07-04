@@ -59,8 +59,6 @@ export const extendedDeals =
       },
       {
         "date": "2025-12-12",
-      {
-        "date": "2025-12-12",
         "event": "Hit $1M ARR milestone"
       }
     ]
