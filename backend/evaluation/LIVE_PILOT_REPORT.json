@@ -1,0 +1,374 @@
+[
+  {
+    "case_id": "VC_01",
+    "path": "A_FULL_PIPELINE",
+    "topology": "single",
+    "metrics": {
+      "deterministic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "unsupported_assertion_rate": 1.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 14
+  },
+  {
+    "case_id": "VC_01",
+    "path": "A_FULL_PIPELINE",
+    "topology": "parallel",
+    "metrics": {
+      "deterministic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "unsupported_assertion_rate": 1.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 5
+  },
+  {
+    "case_id": "VC_01",
+    "path": "A_FULL_PIPELINE",
+    "topology": "deliberative",
+    "metrics": {
+      "deterministic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "unsupported_assertion_rate": 1.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 5
+  },
+  {
+    "case_id": "VC_01",
+    "path": "B_CONTROLLED_REASONING",
+    "topology": "single",
+    "metrics": {
+      "deterministic": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "unsupported_assertion_rate": 0.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 3
+  },
+  {
+    "case_id": "VC_01",
+    "path": "B_CONTROLLED_REASONING",
+    "topology": "parallel",
+    "metrics": {
+      "deterministic": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "unsupported_assertion_rate": 0.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 4
+  },
+  {
+    "case_id": "VC_01",
+    "path": "B_CONTROLLED_REASONING",
+    "topology": "deliberative",
+    "metrics": {
+      "deterministic": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "unsupported_assertion_rate": 0.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 3
+  },
+  {
+    "case_id": "CS_03",
+    "path": "A_FULL_PIPELINE",
+    "topology": "single",
+    "metrics": {
+      "deterministic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "unsupported_assertion_rate": 1.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 7
+  },
+  {
+    "case_id": "CS_03",
+    "path": "A_FULL_PIPELINE",
+    "topology": "parallel",
+    "metrics": {
+      "deterministic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "unsupported_assertion_rate": 1.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 5
+  },
+  {
+    "case_id": "CS_03",
+    "path": "A_FULL_PIPELINE",
+    "topology": "deliberative",
+    "metrics": {
+      "deterministic": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "unsupported_assertion_rate": 1.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 5
+  },
+  {
+    "case_id": "CS_03",
+    "path": "B_CONTROLLED_REASONING",
+    "topology": "single",
+    "metrics": {
+      "deterministic": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "unsupported_assertion_rate": 0.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 3
+  },
+  {
+    "case_id": "CS_03",
+    "path": "B_CONTROLLED_REASONING",
+    "topology": "parallel",
+    "metrics": {
+      "deterministic": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "unsupported_assertion_rate": 0.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 3
+  },
+  {
+    "case_id": "CS_03",
+    "path": "B_CONTROLLED_REASONING",
+    "topology": "deliberative",
+    "metrics": {
+      "deterministic": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "unsupported_assertion_rate": 0.0
+      },
+      "traceability": {
+        "is_valid": false,
+        "errors": [
+          "Quoted span for claim 1 not found in chunk 1.",
+          "Quoted span for claim 2 not found in chunk 1."
+        ],
+        "claims_checked": 2,
+        "chunks_found": 2,
+        "documents_found": 2,
+        "spans_verified": 0
+      },
+      "semantic": {
+        "reasoning_coverage": 0.2,
+        "risk_recall": 0.1,
+        "agent_diversity": 0.0,
+        "disagreement_quality": 0.0,
+        "recommendation_coherence": 1.0
+      }
+    },
+    "latency_total_ms": 5
+  }
+]

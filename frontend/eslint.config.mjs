@@ -1,1 +1,11 @@
-export default [];
+export default [
+  {
+    ignores: [
+      ".next/**",
+      "node_modules/**",
+      "coverage/**",
+      "test-results/**",
+      "playwright-report/**"
+    ]
+  }
+];

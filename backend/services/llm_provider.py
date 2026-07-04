@@ -3,6 +3,7 @@ import json
 import logging
 import time
 from typing import Dict, Any, List, Optional
+import requests
 import google.generativeai as genai
 
 from core.config import settings

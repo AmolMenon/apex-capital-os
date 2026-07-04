@@ -1,6 +1,14 @@
 node_modules
-venv
 .env
+.DS_Store
+
+# Database & Logs
+*.db
+*.db-journal
+*.log
+*output.txt
+analysis_dump.json
+playwright-error*.png
 .env.local
 __pycache__
 *.pyc
@@ -10,3 +18,5 @@ dist
 coverage
 .pytest_cache
 testenv/
+venv/
+backend/venv/
