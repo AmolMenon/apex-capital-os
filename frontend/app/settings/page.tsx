@@ -59,7 +59,7 @@ export default function SettingsPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Server className="w-5 h-5 text-primary" />
-            Live Agentic Workflow Status
+            Live AI Workflow Status
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -74,7 +74,7 @@ export default function SettingsPage() {
             </div>
             <div className="p-3 border rounded-md bg-muted/20">
               <div className="text-xs text-muted-foreground uppercase mb-1">Default Provider</div>
-              <div className="font-semibold">Gemini</div>
+              <div className="font-semibold">Primary LLM</div>
             </div>
             <div className="p-3 border rounded-md bg-muted/20">
               <div className="text-xs text-muted-foreground uppercase mb-1">Mock Fallback</div>
@@ -84,18 +84,18 @@ export default function SettingsPage() {
           
           <div className="mt-6 flex flex-col sm:flex-row gap-6">
             <div className="flex-1">
-              <h4 className="text-sm font-semibold mb-3">Agent Routing</h4>
+              <h4 className="text-sm font-semibold mb-3">Analysis Modules</h4>
               <div className="flex flex-wrap gap-2">
-                {["Research Planner (Gemini)", "Search (Gemini)", "Source Quality (Gemini)", "Claim Extraction (Gemini)", "Evidence Verification (Gemini)", "Market Mapping (Gemini)", "Competitor Analysis (Gemini)", "Diligence Gap (Gemini)", "Fund Fit (Gemini)", "Red Team (Claude)", "Memo Writer (Gemini)", "IC Readiness (Gemini)"].map((agent, i) => (
+                {["Research Planner", "Search", "Source Quality", "Claim Extraction", "Evidence Verification", "Market Mapping", "Competitor Analysis", "Diligence Gap", "Fund Fit", "Red Team", "Memo Writer", "IC Readiness"].map((module, i) => (
                   <div key={i} className="text-[10px] border px-2 py-1 rounded-full bg-slate-50 text-slate-700 font-mono">
-                    {agent}
+                    {module}
                   </div>
                 ))}
               </div>
             </div>
             <div className="flex-none flex items-end">
-              <button onClick={() => alert(`Testing AI Router...\n\n[Mock Fallback triggered: Missing GEMINI_API_KEY]`)} className="text-xs px-4 py-2 border rounded-md hover:bg-slate-50">
-                Test Agent Router
+              <button onClick={() => alert(`Testing Analysis Router...\n\n[Mock Fallback triggered: Missing API_KEY]`)} className="text-xs px-4 py-2 border rounded-md hover:bg-slate-50">
+                Test Module Router
               </button>
             </div>
           </div>

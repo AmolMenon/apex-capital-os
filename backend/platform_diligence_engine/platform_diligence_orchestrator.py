@@ -21,7 +21,7 @@ def run_platform_diligence(db: Session, deal_id: int, config: dict):
     if not deal:
         raise ValueError(f"Deal with ID {deal_id} not found")
         
-    deal_name = deal.startup_name
+    deal_name = deal.company.name if deal.company else "Unknown Startup"
     
     run_id = str(uuid.uuid4())
     db_run = crud.create_platform_diligence_run(db, deal_id, run_id, json.dumps(config))

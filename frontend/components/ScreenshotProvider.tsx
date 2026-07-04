@@ -39,7 +39,8 @@ export function ScreenshotProvider({ children }: { children: React.ReactNode }) 
 export function useScreenshotMode() {
   const context = useContext(ScreenshotContext)
   if (context === undefined) {
-    throw new Error("useScreenshotMode must be used within a ScreenshotProvider")
+    console.warn("useScreenshotMode must be used within a ScreenshotProvider")
+    return { isScreenshotMode: false, toggleScreenshotMode: () => {} }
   }
   return context
 }

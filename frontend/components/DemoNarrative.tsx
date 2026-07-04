@@ -19,7 +19,7 @@ export function DemoNarrative() {
     say = "This is the fund-level command center. It shows deal flow, evidence quality, IC readiness, risks, and portfolio-level signals."
     pointOut = ["The Active Pipeline", "The global metrics"]
     matters = "Proves this is a portfolio orchestration tool, not just a single-deal analyzer."
-  } else if (pathname.includes('/deal-room')) {
+  } else if (pathname.includes('')) {
     title = "Deal Room"
     say = "This is the command center for one startup. It brings together thesis, scorecard, research, deck evidence, diligence, fund fit, memo, and IC readiness."
     pointOut = ["The Deal Health Summary", "The Next Best Action routing", "The Investor Judgment card"]

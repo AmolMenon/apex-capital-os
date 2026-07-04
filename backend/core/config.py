@@ -4,7 +4,30 @@ from typing import Optional
 class Settings(BaseSettings):
     APP_ENV: str = "development"
     APP_MODE: str = "mock"
+    APEX_LLM_MODE: str = "test"  # live or test
     ENABLE_REAL_LLM: bool = False
+    
+    # Decoupled Provider Configuration
+    APEX_EXTRACTION_PROVIDER: str = "gemini"
+    APEX_EXTRACTION_MODEL: str = "gemini-2.5-flash"
+    
+    APEX_REASONING_PROVIDER: str = "gemini"
+    APEX_REASONING_MODEL: str = "gemini-2.5-flash"
+    
+    APEX_SYNTHESIS_PROVIDER: str = "gemini"
+    APEX_SYNTHESIS_MODEL: str = "gemini-2.5-flash"
+    
+    APEX_GRADER_PROVIDER: str = "gemini"
+    APEX_GRADER_MODEL: str = "gemini-2.5-flash"
+
+    # Safety Controls
+    MAX_TOKENS_EXTRACTION: int = 8000
+    MAX_TOKENS_AGENT: int = 16000
+    MAX_TOKENS_CHALLENGE: int = 16000
+    MAX_TOKENS_SYNTHESIS: int = 32000
+    
+    MAX_COST_PER_CASE: float = 5.0
+    MAX_COST_PER_PILOT: float = 20.0
 
     DATABASE_URL: str = "sqlite:///./apex_capital.db"
     TEST_DATABASE_URL: str = "sqlite:///./test_apex_capital.db"
@@ -26,7 +49,7 @@ class Settings(BaseSettings):
     S3_SECRET_ACCESS_KEY: Optional[str] = None
 
     GEMINI_API_KEY: Optional[str] = None
-    GEMINI_MODEL: str = "gemini-1.5-pro"
+    GEMINI_MODEL: str = "gemini-2.5-pro"
     OPENAI_API_KEY: Optional[str] = None
     OPENAI_MODEL: str = "gpt-4o-mini"
     ANTHROPIC_API_KEY: Optional[str] = None

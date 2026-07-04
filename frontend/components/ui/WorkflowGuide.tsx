@@ -27,7 +27,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Evaluate the first structured investment view: scorecard, thesis, risks, and recommendation.",
       status: deal?.analysis ? "Completed" : (deal ? "Ready" : "Not Started"),
       actionLabel: "Evaluate Analysis",
-      actionHref: deal ? `/deals/${deal.id}/deal-room` : "#"
+      actionHref: deal ? `/deals/${deal.id}` : "#"
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Use this as the central command center for the startup.",
       status: deal?.analysis ? "Completed" : "Not Started",
       actionLabel: "Open Deal Room",
-      actionHref: deal ? `/deals/${deal.id}/deal-room` : "#"
+      actionHref: deal ? `/deals/${deal.id}` : "#"
     },
     {
       id: 4,
@@ -91,7 +91,7 @@ export function WorkflowGuide({ deal, hasFundFit = false }: WorkflowGuideProps) 
       explanation: "Move the deal to Watchlist, Diligence, Invested, Passed, or Revisit Later.",
       status: deal?.status !== "New" && deal?.analysis?.ic_one_pager ? "Ready" : "Not Started",
       actionLabel: "Update Status",
-      actionHref: deal ? `/deals/${deal.id}/deal-room` : "#"
+      actionHref: deal ? `/deals/${deal.id}` : "#"
     }
   ]
 

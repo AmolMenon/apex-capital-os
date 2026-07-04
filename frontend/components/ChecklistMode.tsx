@@ -16,19 +16,19 @@ export function ChecklistMode({ deal, hasFundFit = false }: ChecklistModeProps) 
       id: "basic",
       label: "Basic deal profile completed",
       completed: !!deal,
-      href: `/deals/${deal.id}/deal-room`
+      href: `/deals/${deal.id}`
     },
     {
       id: "scorecard",
       label: "Scorecard generated",
       completed: !!deal.analysis?.scorecard,
-      href: `/deals/${deal.id}/deal-room`
+      href: `/deals/${deal.id}`
     },
     {
       id: "risks",
       label: "Key risks identified",
       completed: !!deal.analysis?.risks && deal.analysis.risks.length > 0,
-      href: `/deals/${deal.id}/deal-room`
+      href: `/deals/${deal.id}`
     },
     {
       id: "research",
@@ -100,7 +100,7 @@ export function ChecklistMode({ deal, hasFundFit = false }: ChecklistModeProps) 
       id: "final",
       label: "Final recommendation reviewed",
       completed: deal.status !== "New" && deal.status !== "Screening" && deal.status !== "Research",
-      href: `/deals/${deal.id}/deal-room`
+      href: `/deals/${deal.id}`
     }
   ]
 

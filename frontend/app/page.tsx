@@ -56,7 +56,12 @@ export default function ExecutiveDashboard() {
   }, [])
 
   if (loading) {
-    return <div className="p-8 animate-pulse text-xl">Loading Executive Dashboard...</div>
+    return (
+      <div className="flex flex-col h-full items-center justify-center bg-slate-950">
+        <Loader2 className="w-8 h-8 animate-spin text-blue-500 mb-4" />
+        <p className="text-slate-400 font-medium tracking-wide">Compiling Pipeline Overview...</p>
+      </div>
+    )
   }
 
   return (
@@ -158,7 +163,7 @@ export default function ExecutiveDashboard() {
                       </div>
                     </div>
                     
-                    <Link href={`/deals/${deal.id}`}>
+                    <Link href={`/decisions/${deal.id}`}>
                       <Button variant="default" size="sm" className="font-bold">
                         Executive Overview <ArrowRight className="w-4 h-4 ml-2" />
                       </Button>

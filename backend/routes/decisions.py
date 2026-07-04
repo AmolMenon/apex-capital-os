@@ -1,0 +1,113 @@
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
+from typing import List, Any
+from db.database import get_db
+from auth.dependencies import get_current_active_user
+import database.crud as crud
+from schemas.decision import DecisionResponse, DecisionCreate, DecisionUpdate
+
+router = APIRouter()
+
+@router.get("/", response_model=List[DecisionResponse])
+def read_decisions(
+    db: Session = Depends(get_db),
+    skip: int = 0,
+    limit: int = 100,
+    current_user: Any = Depends(get_current_active_user)
+):
+    return crud.get_decisions(db, skip=skip, limit=limit)
+
+@router.post("/", response_model=DecisionResponse)
+def create_decision(
+    decision: DecisionCreate,
+    db: Session = Depends(get_db),
+    current_user: Any = Depends(get_current_active_user)
+):
+    return crud.create_decision(db, decision.model_dump())
+
+@router.get("/{id}", response_model=DecisionResponse)
+def read_decision(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: Any = Depends(get_current_active_user)
+):
+    decision = crud.get_decision(db, id)
+    if not decision:
+        raise HTTPException(status_code=404, detail="Decision not found")
+    return decision
+
+@router.patch("/{id}/status", response_model=DecisionResponse)
+def update_decision_status(
+    id: int,
+    status: str,
+    db: Session = Depends(get_db),
+    current_user: Any = Depends(get_current_active_user)
+):
+    decision = crud.update_decision_status(db, id, status)
+    if not decision:
+        raise HTTPException(status_code=404, detail="Decision not found")
+    return decision
+
+from pydantic import BaseModel
+class HumanDecisionInput(BaseModel):
+    human_final_decision: str
+    human_rationale: str
+    override_reason: str = None
+    approvers_json: str = None
+    conditions_json: str = None
+
+@router.post("/{id}/human_decision")
+def record_human_decision(
+    id: int,
+    decision_input: HumanDecisionInput,
+    db: Session = Depends(get_db),
+    current_user: Any = Depends(get_current_active_user)
+):
+    import db.models as db_models
+    import json
+    
+    run = db.query(db_models.ReasoningRun).filter_by(decision_id=id).order_by(db_models.ReasoningRun.start_time.desc()).first()
+    ai_recommendation = ""
+    ai_confidence = 0
+    if run and run.output_json:
+        out = json.loads(run.output_json)
+        synth = out.get("synthesis", {})
+        ai_recommendation = synth.get("recommendation", "")
+        ai_confidence = synth.get("model_confidence", 0)
+        
+    record = db_models.HumanDecisionRecord(
+        decision_id=id,
+        ai_recommendation=ai_recommendation,
+        ai_confidence=ai_confidence,
+        human_final_decision=decision_input.human_final_decision,
+        human_rationale=decision_input.human_rationale,
+        override_reason=decision_input.override_reason,
+        approvers_json=decision_input.approvers_json,
+        conditions_json=decision_input.conditions_json
+    )
+    db.add(record)
+    db.commit()
+    return {"status": "success", "record_id": record.id}
+
+@router.get("/{id}/human_decision")
+def get_human_decision(
+    id: int,
+    db: Session = Depends(get_db),
+    current_user: Any = Depends(get_current_active_user)
+):
+    import db.models as db_models
+    record = db.query(db_models.HumanDecisionRecord).filter_by(decision_id=id).order_by(db_models.HumanDecisionRecord.created_at.desc()).first()
+    if not record:
+        raise HTTPException(status_code=404, detail="Human decision not found")
+    return {
+        "id": record.id,
+        "decision_id": record.decision_id,
+        "ai_recommendation": record.ai_recommendation,
+        "ai_confidence": record.ai_confidence,
+        "human_final_decision": record.human_final_decision,
+        "human_rationale": record.human_rationale,
+        "override_reason": record.override_reason,
+        "approvers_json": record.approvers_json,
+        "conditions_json": record.conditions_json,
+        "created_at": record.created_at
+    }

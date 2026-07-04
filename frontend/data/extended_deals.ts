@@ -2,13 +2,13 @@ export const extendedDeals =
 [
   {
     "id": 1000,
-    "startup_name": "NexusAI",
+    "startup_name": "Nexus Data Systems",
     "sector": "AI",
     "sub_sector": "Enterprise",
     "geography": "San Francisco, CA",
     "stage": "Series C",
     "business_model": "B2B SaaS",
-    "description": "NexusAI is building the Enterprise LLM Orchestration.",
+    "description": "Nexus Data Systems is building the Enterprise LLM Orchestration.",
     "tagline": "Enterprise LLM Orchestration",
     "deal_type": "active",
     "is_public_benchmark": false,
@@ -55,29 +55,15 @@ export const extendedDeals =
       },
       {
         "date": "2025-07-30",
-        "event": "Launched V1 of NexusAI platform"
+        "event": "Launched V1 of Nexus Data Systems platform"
       },
+      {
+        "date": "2025-12-12",
       {
         "date": "2025-12-12",
         "event": "Hit $1M ARR milestone"
       }
-    ],
-    "analysis": {
-      "overall_score": 85,
-      "recommendation": "Proceed to Partner Review",
-      "risks": [
-        {
-          "category": "Market",
-          "description": "High competition from incumbents."
-        },
-        {
-          "category": "Execution",
-          "description": "Aggressive burn rate requires flawless execution."
-        }
-      ],
-      "opinionated_recommendation": "Historical analysis indicates strong momentum. Revenue growth of 227% YoY places NexusAI in the top-quartile for AI. However, current financial models highlight a concerning burn rate of $1622k/mo. If GTM efficiency can be verified, evidence supports proceeding.",
-      "confidence": "High"
-    }
+    ]
   },
   {
     "id": 1001,

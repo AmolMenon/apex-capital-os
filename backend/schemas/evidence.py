@@ -1,0 +1,21 @@
+from pydantic import BaseModel
+from typing import Optional, List, Dict, Any
+from datetime import datetime
+
+class EvidenceBase(BaseModel):
+    title: str
+    content: Optional[str] = None
+    source_url: Optional[str] = None
+    evidence_type: str
+    metadata_json: Optional[str] = "{}"
+
+class EvidenceCreate(EvidenceBase):
+    decision_id: int
+
+class EvidenceResponse(EvidenceBase):
+    id: int
+    decision_id: int
+    created_at: datetime
+    
+    class Config:
+        from_attributes = True

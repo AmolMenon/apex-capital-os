@@ -134,7 +134,7 @@ export default function NewDeal() {
         method: 'POST'
       })
       
-      router.push(`/deals/${deal.id}/deal-room`)
+      router.push(`/deals/${deal.id}`)
     } catch (err) {
       console.error(err)
       setLoading(false)

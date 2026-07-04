@@ -24,336 +24,140 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
-    # Relationships
-    deals_assigned = relationship("DealAssignment", back_populates="user", cascade="all, delete-orphan")
-    comments = relationship("Comment", back_populates="user", cascade="all, delete-orphan")
-    votes = relationship("Vote", back_populates="user", cascade="all, delete-orphan")
+    decisions_assigned = relationship("DecisionAssignment", back_populates="user", cascade="all, delete-orphan")
 
-class Company(Base):
-    __tablename__ = "companies"
+class DomainPack(Base):
+    __tablename__ = "domain_packs"
+    id = Column(String, primary_key=True, index=True) # e.g. "venture_capital", "mergers_acquisitions"
+    name = Column(String, index=True)
+    description = Column(Text, nullable=True)
+    config_json = Column(Text) # Templates, prompts, evaluation criteria
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    reasoning_agents = relationship("ReasoningAgent", back_populates="domain_pack", cascade="all, delete-orphan")
+    decision_frameworks = relationship("DecisionFramework", back_populates="domain_pack", cascade="all, delete-orphan")
+
+class ReasoningAgent(Base):
+    __tablename__ = "reasoning_agents"
+    id = Column(String, primary_key=True, index=True)
+    domain_pack_id = Column(String, ForeignKey("domain_packs.id", ondelete="CASCADE"), index=True)
+    name = Column(String) # e.g. "Devil's Advocate", "Strategy Consultant"
+    system_prompt = Column(Text)
+    capabilities_json = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    domain_pack = relationship("DomainPack", back_populates="reasoning_agents")
+
+class DecisionFramework(Base):
+    __tablename__ = "decision_frameworks"
+    id = Column(String, primary_key=True, index=True)
+    domain_pack_id = Column(String, ForeignKey("domain_packs.id", ondelete="CASCADE"), index=True)
+    name = Column(String)
+    stages_json = Column(Text) # Array of stages like ["Framing", "Evidence", "Debate", "Execution"]
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    domain_pack = relationship("DomainPack", back_populates="decision_frameworks")
+
+class DecisionSubject(Base):
+    __tablename__ = "decision_subjects"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
-    website = Column(String, nullable=True)
     description = Column(Text, nullable=True)
-    sector = Column(String, nullable=True)
-    geography = Column(String, nullable=True)
+    metadata_json = Column(Text) # Catch-all for domain-specific fields (e.g. website, sector)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
-    # Relationships
-    founders = relationship("Founder", back_populates="company", cascade="all, delete-orphan")
-    deals = relationship("Deal", back_populates="company", cascade="all, delete-orphan")
-    portfolio_record = relationship("PortfolioCompany", back_populates="company", uselist=False, cascade="all, delete-orphan")
+    decisions = relationship("Decision", back_populates="subject", cascade="all, delete-orphan")
 
-class Founder(Base):
-    __tablename__ = "founders"
+class Decision(Base):
+    __tablename__ = "decisions"
     id = Column(Integer, primary_key=True, index=True)
-    company_id = Column(Integer, ForeignKey("companies.id", ondelete="CASCADE"), index=True)
-    user_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True) # If they have an account
-    name = Column(String)
-    email = Column(String, nullable=True)
-    linkedin_url = Column(String, nullable=True)
-    background = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    
-    company = relationship("Company", back_populates="founders")
-    user = relationship("User")
-
-class Deal(Base):
-    __tablename__ = "deals"
-    id = Column(Integer, primary_key=True, index=True)
-    company_id = Column(Integer, ForeignKey("companies.id", ondelete="CASCADE"), index=True)
-    status = Column(String, default="New", index=True)
-    stage = Column(String, nullable=True) # Seed, Series A, etc
-    funding_asking = Column(Float, nullable=True)
-    valuation = Column(Float, nullable=True)
-    source = Column(String, nullable=True)
+    subject_id = Column(Integer, ForeignKey("decision_subjects.id", ondelete="CASCADE"), index=True)
+    domain_pack_id = Column(String, ForeignKey("domain_packs.id", ondelete="SET NULL"), nullable=True)
+    title = Column(String, index=True)
+    description = Column(Text, nullable=True)
+    status = Column(String, default="Framing", index=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
-    company = relationship("Company", back_populates="deals")
-    assignments = relationship("DealAssignment", back_populates="deal", cascade="all, delete-orphan")
-    documents = relationship("Document", back_populates="deal", cascade="all, delete-orphan")
-    memos = relationship("InvestmentMemo", back_populates="deal", cascade="all, delete-orphan")
-    research_reports = relationship("ResearchReport", back_populates="deal", cascade="all, delete-orphan")
-    tasks = relationship("Task", back_populates="deal", cascade="all, delete-orphan")
-    comments = relationship("Comment", back_populates="deal", cascade="all, delete-orphan")
-    votes = relationship("Vote", back_populates="deal", cascade="all, delete-orphan")
+    # Economics Tracking
+    base_analysis_calls = Column(Integer, default=0)
+    challenge_calls = Column(Integer, default=0)
+    synthesis_calls = Column(Integer, default=0)
+    grader_calls = Column(Integer, default=0)
+    input_tokens = Column(Integer, default=0)
+    output_tokens = Column(Integer, default=0)
+    latency_ms = Column(Integer, default=0)
+    escalation_reason = Column(String, nullable=True)
+    avoided_full_deliberation_estimate = Column(Integer, default=0) # Estimated tokens saved
+    
+    subject = relationship("DecisionSubject", back_populates="decisions")
+    assignments = relationship("DecisionAssignment", back_populates="decision", cascade="all, delete-orphan")
+    evidence = relationship("Evidence", back_populates="decision", cascade="all, delete-orphan")
+    scenario_simulations = relationship("ScenarioSimulation", back_populates="decision", cascade="all, delete-orphan")
+    action_plans = relationship("ActionPlan", back_populates="decision", cascade="all, delete-orphan")
 
-class DealAssignment(Base):
-    __tablename__ = "deal_assignments"
+class DecisionAssignment(Base):
+    __tablename__ = "decision_assignments"
     id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), index=True)
-    role = Column(String) # e.g. Lead, Analyst
+    role = Column(String)
     
-    deal = relationship("Deal", back_populates="assignments")
-    user = relationship("User", back_populates="deals_assigned")
+    decision = relationship("Decision", back_populates="assignments")
+    user = relationship("User", back_populates="decisions_assigned")
 
-class Document(Base):
-    __tablename__ = "documents"
+class Evidence(Base):
+    __tablename__ = "evidence"
     id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    uploaded_by = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
-    filename = Column(String)
-    file_url = Column(String)
-    doc_type = Column(String) # Pitch Deck, Financials, etc
-    extracted_text = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    
-    deal = relationship("Deal", back_populates="documents")
-    uploader = relationship("User")
-
-class InvestmentMemo(Base):
-    __tablename__ = "investment_memos"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    author_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
-    content_json = Column(Text)
-    status = Column(String, default="Draft") # Draft, Ready for IC, Approved, Rejected
-    created_at = Column(DateTime, default=datetime.utcnow)
-    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-    
-    deal = relationship("Deal", back_populates="memos")
-    author = relationship("User")
-
-class ResearchReport(Base):
-    __tablename__ = "research_reports"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    generated_by = Column(String) # AI agent id or User id
-    report_type = Column(String) # Market, Competitor, Diligence
-    content_json = Column(Text)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    
-    deal = relationship("Deal", back_populates="research_reports")
-
-class Task(Base):
-    __tablename__ = "tasks"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    assignee_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
     title = Column(String)
-    description = Column(Text, nullable=True)
-    status = Column(String, default="Pending") # Pending, In Progress, Done
-    due_date = Column(DateTime, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    
-    deal = relationship("Deal", back_populates="tasks")
-    assignee = relationship("User")
-
-class Comment(Base):
-    __tablename__ = "comments"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), index=True)
-    content = Column(Text)
-    context_type = Column(String, nullable=True) # General, Diligence, Memo
-    created_at = Column(DateTime, default=datetime.utcnow)
-    
-    deal = relationship("Deal", back_populates="comments")
-    user = relationship("User", back_populates="comments")
-
-class Vote(Base):
-    __tablename__ = "votes"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), index=True)
-    decision = Column(String) # Invest, Pass, Abstain
-    rationale = Column(Text, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    
-    deal = relationship("Deal", back_populates="votes")
-    user = relationship("User", back_populates="votes")
-
-class PortfolioCompany(Base):
-    __tablename__ = "portfolio_companies"
-    id = Column(Integer, primary_key=True, index=True)
-    company_id = Column(Integer, ForeignKey("companies.id", ondelete="CASCADE"), unique=True)
-    investment_date = Column(DateTime)
-    amount_invested = Column(Float)
-    equity_percentage = Column(Float, nullable=True)
-    status = Column(String, default="Active") # Active, Exited, Written Off
-    created_at = Column(DateTime, default=datetime.utcnow)
-    
-    company = relationship("Company", back_populates="portfolio_record")
-
-class AuditLog(Base):
-    __tablename__ = "audit_logs"
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = Column(Integer, ForeignKey("users.id", ondelete="SET NULL"), nullable=True)
-    action = Column(String, index=True)
-    entity_type = Column(String)
-    entity_id = Column(Integer, nullable=True)
-    details_json = Column(Text, nullable=True)
-    ip_address = Column(String, nullable=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    
-    user = relationship("User")
-
-class AIAnalysisMemory(Base):
-    """
-    Stores historical memory of AI decisions and conviction scores for a specific deal.
-    """
-    __tablename__ = "ai_analysis_memory"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    conviction_score = Column(Float)
-    risk_score = Column(Float)
-    recommendation = Column(String)
-    analysis_json = Column(Text) # The full synthesized output
-    created_at = Column(DateTime, default=datetime.utcnow)
-    
-    deal = relationship("Deal")
-
-class AIEvidence(Base):
-    """
-    Strict mapping table that links an AI claim to a specific source document.
-    """
-    __tablename__ = "ai_evidence"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    claim_text = Column(Text)
-    source_document_id = Column(Integer, ForeignKey("documents.id", ondelete="CASCADE"), nullable=True)
-    source_url = Column(String, nullable=True) # If it came from a live API
-    confidence_score = Column(Float)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class AIScenario(Base):
-    """
-    Stores generated scenarios (Bear, Base, Bull) for a deal.
-    """
-    __tablename__ = "ai_scenarios"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    scenario_type = Column(String, index=True) # Bear, Base, Bull, Shock
-    description = Column(Text)
-    recommendation_impact = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class AIOverrideLog(Base):
-    """
-    Tracks when a Partner overrides an AI recommendation for learning.
-    """
-    __tablename__ = "ai_override_logs"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"))
-    ai_recommendation = Column(String)
-    partner_decision = Column(String)
-    override_reason = Column(Text)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class Analysis(Base):
-    __tablename__ = "deal_analysis"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    full_analysis_json = Column(Text)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class ResearchBriefModel(Base):
-    __tablename__ = "research_briefs"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    market_research_json = Column(Text)
-    competitor_research_json = Column(Text)
-    customer_personas_json = Column(Text)
-    pricing_research_json = Column(Text)
-    gtm_research_json = Column(Text)
-    tam_sam_som_json = Column(Text)
-    evidence_grade_json = Column(Text)
-    source_registry_json = Column(Text)
-    research_gaps_json = Column(Text)
-    source_confidence = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class DeckAnalysisModel(Base):
-    __tablename__ = "deck_analyses"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    deck_name = Column(String)
-    file_type = Column(String)
-    deck_summary = Column(Text)
-    deck_quality_score = Column(Integer)
-    investor_readiness_score = Column(Integer)
-    extracted_sections_json = Column(Text)
-    key_claims_json = Column(Text)
-    financials_json = Column(Text)
-    traction_json = Column(Text)
-    risks_json = Column(Text)
-    missing_sections_json = Column(Text)
-    deck_quality_json = Column(Text)
-    readiness_breakdown_json = Column(Text)
-    recommended_follow_up_questions_json = Column(Text)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class DiligencePlanModel(Base):
-    __tablename__ = "diligence_plans"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    ic_readiness_score = Column(Integer)
-    diligence_status = Column(String)
-    final_diligence_verdict = Column(String)
-    priority_tasks_json = Column(Text)
-    claim_verifications_json = Column(Text)
-    founder_followups_json = Column(Text)
-    customer_reference_questions_json = Column(Text)
-    data_room_requests_json = Column(Text)
-    risk_resolution_plan_json = Column(Text)
-    evidence_items_json = Column(Text)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class ICDecisionLogModel(Base):
-    __tablename__ = "ic_decision_logs"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    decision = Column(String)
-    decision_rationale = Column(Text)
-    conditions = Column(Text)
-    partner_concerns = Column(Text)
-    next_step = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class FundFitAssessmentModel(Base):
-    __tablename__ = "fund_fit_assessments"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    fund_size = Column(Integer)
-    initial_check_size = Column(Integer)
-    target_ownership = Column(Float)
-    required_exit_value_for_1x_fund = Column(Integer)
-    fund_return_potential = Column(String)
-    thesis_fit_score = Column(Integer)
-    portfolio_concentration_risk = Column(String)
-    recommendation = Column(String)
-    key_constraints_json = Column(Text)
-    thesis_fit_json = Column(Text)
-    ownership_scenarios_json = Column(Text)
-    reserve_strategy_json = Column(Text)
-    power_law_simulation_json = Column(Text)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class DealWarRoomModel(Base):
-    __tablename__ = "deal_war_rooms"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    company_name = Column(String)
-    war_room_status = Column(String)
-    thesis_json = Column(Text)
-    anti_thesis_json = Column(Text)
-    what_must_be_true_json = Column(Text)
-    partner_personas_json = Column(Text)
-    partner_questions_json = Column(Text)
-    ic_simulation_json = Column(Text)
-    conviction_score_json = Column(Text)
-    conviction_deltas_json = Column(Text)
-    valuation_sensitivity_json = Column(Text)
-    ownership_scenarios_json = Column(Text)
-    fund_return_scenarios_json = Column(Text)
-    change_our_mind_json = Column(Text)
-    decision_gates_json = Column(Text)
-    final_recommendation_json = Column(Text)
+    content = Column(Text, nullable=True)
+    source_url = Column(String, nullable=True)
+    evidence_type = Column(String)
     metadata_json = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    decision = relationship("Decision", back_populates="evidence")
+
+class ScenarioSimulation(Base):
+    __tablename__ = "scenario_simulations"
+    id = Column(Integer, primary_key=True, index=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    scenario_type = Column(String) # Best Case, Worst Case, Base Case
+    parameters_json = Column(Text)
+    forecast_results_json = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    decision = relationship("Decision", back_populates="scenario_simulations")
+
+class InstitutionalMemory(Base):
+    __tablename__ = "institutional_memory"
+    id = Column(Integer, primary_key=True, index=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    predicted_outcome = Column(Text)
+    actual_outcome = Column(Text, nullable=True)
+    lessons_learned_json = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+class ActionPlan(Base):
+    __tablename__ = "action_plans"
+    id = Column(Integer, primary_key=True, index=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    title = Column(String)
+    status = Column(String, default="Pending")
+    milestones_json = Column(Text)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    decision = relationship("Decision", back_populates="action_plans")
+
+# Keep the remaining models that are still useful globally
+class Workspace(Base):
+    __tablename__ = "workspaces"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
 
 class PlatformSourceModel(Base):
@@ -366,7 +170,7 @@ class PlatformSourceModel(Base):
 class PlatformDiligenceRunModel(Base):
     __tablename__ = "platform_diligence_runs"
     id = Column(String, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
     status = Column(String)
     config_json = Column(Text)
     report_json = Column(Text)
@@ -376,99 +180,313 @@ class PlatformDiligenceRunModel(Base):
 class PlatformSignalModel(Base):
     __tablename__ = "platform_signals"
     id = Column(Integer, primary_key=True, autoincrement=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
     signal_type = Column(String)
     content = Column(Text)
     metadata_json = Column(Text)
     created_at = Column(DateTime, default=datetime.utcnow)
 
+# ==========================================
+# PHASE 4: KNOWLEDGE GRAPH & INSTITUTIONAL MEMORY
+# ==========================================
 
-class DealDataRoomReport(Base):
-    __tablename__ = "deal_data_room_reports"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    report_json = Column(Text)
+class GraphNode(Base):
+    __tablename__ = "graph_nodes"
+    id = Column(String, primary_key=True, index=True) # e.g. "claim_123", "evidence_456"
+    node_type = Column(String, index=True) # "Claim", "Evidence", "Assumption", etc.
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), nullable=True)
+    content = Column(Text)
+    metadata_json = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-class DealDocument(Base):
-    __tablename__ = "deal_documents"
-    id = Column(Integer, primary_key=True, index=True)
-    document_id = Column(String, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    file_name = Column(String)
-    file_type = Column(String)
-    document_category = Column(String)
-    status = Column(String, default="uploaded")
-    metadata_json = Column(Text)
+class GraphEdge(Base):
+    __tablename__ = "graph_edges"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    source_node_id = Column(String, ForeignKey("graph_nodes.id", ondelete="CASCADE"), index=True)
+    target_node_id = Column(String, ForeignKey("graph_nodes.id", ondelete="CASCADE"), index=True)
+    relationship = Column(String, index=True) # "SUPPORTS", "CONTRADICTS", "DEPENDS_ON"
+    weight = Column(Float, default=1.0)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-
-class InvestmentThesis(Base):
-    __tablename__ = "investment_theses"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    thesis_statement = Column(Text)
-    key_risks = Column(Text)
+class Assumption(Base):
+    __tablename__ = "assumptions"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    category = Column(String, index=True) # "Market", "Financial", etc.
+    statement = Column(Text)
+    confidence = Column(Integer, default=50) # 0-100
+    status = Column(String, default="Unverified") # "Verified", "Unverified", "Invalidated"
+    accuracy_score = Column(Float, nullable=True) # populated after postmortem
     created_at = Column(DateTime, default=datetime.utcnow)
-
-class DecisionAuditLog(Base):
-    __tablename__ = "decision_audit_logs"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    action = Column(String)
-    user_id = Column(Integer, nullable=True)
-    details = Column(Text)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-class WebResearchBriefModel(Base):
-    __tablename__ = "web_research_briefs"
-    id = Column(Integer, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    company_name = Column(String)
-    research_mode = Column(String)
-    source_quality_score = Column(Integer)
-    public_data_confidence = Column(String)
-    queries_json = Column(Text)
-    sources_json = Column(Text)
-    claims_json = Column(Text)
-    evidence_graph_json = Column(Text)
-    conflicts_json = Column(Text)
-    unknown_metrics_json = Column(Text)
-    synthesis_json = Column(Text)
-    citations_json = Column(Text)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+class Prediction(Base):
+    __tablename__ = "predictions"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    agent_id = Column(String, nullable=True) # If made by an AI agent
+    target_metric = Column(String)
+    expected_value = Column(String)
+    confidence = Column(Integer) # 0-100
+    expected_date = Column(DateTime, nullable=True)
+    actual_result = Column(String, nullable=True)
+    error_magnitude = Column(Float, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-class AgentWorkflowRunModel(Base):
-    __tablename__ = "agent_workflow_runs"
-    id = Column(String, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    workflow_type = Column(String)
-    status = Column(String)
-    result_json = Column(Text)
+class Postmortem(Base):
+    __tablename__ = "postmortems"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), unique=True)
+    expected_outcome = Column(Text)
+    actual_outcome = Column(Text)
+    decision_quality_score = Column(Integer) # 0-100
+    outcome_quality_score = Column(Integer) # 0-100
+    went_right = Column(Text)
+    went_wrong = Column(Text)
+    lessons_json = Column(Text)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-class DiligenceRunModel(Base):
-    __tablename__ = "diligence_runs"
-    id = Column(String, primary_key=True, index=True)
-    deal_id = Column(Integer, ForeignKey("deals.id", ondelete="CASCADE"), index=True)
-    status = Column(String)
-    config_json = Column(Text)
-    result_json = Column(Text)
+class Pattern(Base):
+    __tablename__ = "patterns"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    domain_pack_id = Column(String, nullable=True)
+    pattern_type = Column(String) # "Blind Spot", "Success Pattern", "Bias"
+    statement = Column(Text)
+    confidence = Column(Integer, default=80)
+    supporting_decisions_json = Column(Text) # array of decision IDs
     created_at = Column(DateTime, default=datetime.utcnow)
 
-class DiligenceRunStepModel(Base):
-    __tablename__ = "diligence_run_steps"
+# ==========================================
+# PHASE 5: REALITY, PROVENANCE & OBSERVABILITY
+# ==========================================
+
+class ProvenanceType(str, enum.Enum):
+    SOURCE_FACT = "Source Fact"
+    EXTRACTED_CLAIM = "Extracted Claim"
+    AI_INFERENCE = "AI Inference"
+    ASSUMPTION = "Assumption"
+    PREDICTION = "Prediction"
+    RECOMMENDATION = "Recommendation"
+    HUMAN_JUDGMENT = "Human Judgment"
+
+class Document(Base):
+    __tablename__ = "documents"
     id = Column(Integer, primary_key=True, index=True)
-    run_id = Column(String, ForeignKey("diligence_runs.id", ondelete="CASCADE"), index=True)
-    step_name = Column(String)
-    status = Column(String)
-    result_json = Column(Text)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    filename = Column(String)
+    file_type = Column(String) # pdf, txt, docx
+    content_hash = Column(String, nullable=True)
+    metadata_json = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
+    
+    chunks = relationship("Chunk", back_populates="document", cascade="all, delete-orphan")
 
-
-class Workspace(Base):
-    __tablename__ = "workspaces"
+class Chunk(Base):
+    __tablename__ = "chunks"
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
+    document_id = Column(Integer, ForeignKey("documents.id", ondelete="CASCADE"), index=True)
+    chunk_index = Column(Integer)
+    content = Column(Text)
+    canonical_content = Column(Text, nullable=True) # Normalized text for deterministic provenance
+    page_number = Column(Integer, nullable=True)
+    metadata_json = Column(Text, nullable=True)
+    
+    document = relationship("Document", back_populates="chunks")
+    
+class Claim(Base):
+    __tablename__ = "claims"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    statement = Column(Text)
+    provenance_type = Column(String, default=ProvenanceType.EXTRACTED_CLAIM.value)
+    source_chunk_id = Column(Integer, ForeignKey("chunks.id", ondelete="SET NULL"), nullable=True)
+    quoted_evidence_span = Column(Text, nullable=True) # Exact substring required
+    character_offsets_json = Column(Text, nullable=True) # [start, end]
+    confidence = Column(Integer, default=100)
+    extraction_rationale = Column(Text, nullable=True)
+    verification_status = Column(String, default="Unverified")
+    related_assertions_json = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+class ReasoningRun(Base):
+    __tablename__ = "reasoning_runs"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    experiment_batch_id = Column(String, index=True, nullable=True)
+    grading_status = Column(String, default="PENDING")
+    grader_failure_reason = Column(String, nullable=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    evaluation_run_id = Column(String, nullable=True, index=True)
+    case_id = Column(String, nullable=True)
+    domain_pack_id = Column(String, nullable=True)
+    execution_mode = Column(String) # test | live
+    evaluation_path = Column(String) # full_pipeline | controlled_reasoning
+    execution_topology = Column(String) # single | parallel | deliberative
+    provider = Column(String)
+    model = Column(String)
+    prompt_version = Column(String, nullable=True)
+    status = Column(String, default="Running")
+    stage_status = Column(String, default="STARTED") # INGESTION_COMPLETE, EXTRACTION_COMPLETE, etc.
+    accumulated_cost = Column(Float, default=0.0)
+    
+    # Detailed config
+    temperature = Column(Float, nullable=True)
+    reasoning_config_json = Column(Text, nullable=True)
+    memory_enabled = Column(Boolean, default=True)
+    agent_config_json = Column(Text, nullable=True)
+    retrieval_config_json = Column(Text, nullable=True)
+    git_commit_hash = Column(String, nullable=True)
+    intermediate_state_json = Column(Text, nullable=True) # stores round 1 and 2 outputs for resumability
+    
+    # Economics and latency
+    latency_ms_json = Column(Text, nullable=True) # { "extraction": 120, "r1": 450... }
+    cost_json = Column(Text, nullable=True) # { "extraction": 0.001 ... }
+    token_usage_json = Column(Text, nullable=True) # { "input": 1200, "output": 450 }
+    
+    memory_objects_used_json = Column(Text, nullable=True)
+    claims_used_json = Column(Text, nullable=True)
+    
+    start_time = Column(DateTime, default=datetime.utcnow)
+    end_time = Column(DateTime, nullable=True)
+    errors_json = Column(Text, nullable=True)
+    output_json = Column(Text, nullable=True)
+
+class Assertion(Base):
+    __tablename__ = "assertions"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    assertion_id = Column(String, index=True)
+    evaluation_run_id = Column(String, index=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    stage = Column(String)
+    source_type = Column(String)
+    source_agent = Column(String, nullable=True)
+    assertion_text = Column(Text)
+    assertion_type = Column(String)
+    cited_claim_ids_json = Column(Text, nullable=True)
+    cited_assumption_ids_json = Column(Text, nullable=True)
+    classification = Column(String, nullable=True)
+    validation_method = Column(String, nullable=True)
+    validation_rationale = Column(Text, nullable=True)
+
+class EvidenceConflict(Base):
+    __tablename__ = "evidence_conflicts"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    relationship_id = Column(String, index=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    claim_a_id = Column(Integer, ForeignKey("claims.id", ondelete="CASCADE"))
+    claim_b_id = Column(Integer, ForeignKey("claims.id", ondelete="CASCADE"))
+    relationship_type = Column(String)
+    confidence = Column(Integer, nullable=True)
+    resolution_status = Column(String, nullable=True)
+    resolution_rationale = Column(Text, nullable=True)
+
+class ModelTelemetry(Base):
+    __tablename__ = "model_telemetry"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    evaluation_run_id = Column(String, index=True)
+    decision_id = Column(Integer, index=True)
+    stage = Column(String)
+    provider = Column(String)
+    model = Column(String)
+    input_tokens = Column(Integer, nullable=True)
+    output_tokens = Column(Integer, nullable=True)
+    latency_ms = Column(Integer)
+    estimated_cost = Column(Float)
+    retry_count = Column(Integer)
+    structured_output_validity = Column(Boolean)
+    timestamp = Column(DateTime, default=datetime.utcnow)
+
+class EscalationSignal(Base):
+    __tablename__ = "escalation_signals"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    evaluation_run_id = Column(String, index=True)
+    signal_type = Column(String, index=True) # EXPLICIT_EVIDENCE_CONFLICT, UNSUPPORTED_MATERIAL_CLAIM, etc.
+    severity = Column(String)
+    source_claim_ids_json = Column(Text, nullable=True)
+    source_assumption_ids_json = Column(Text, nullable=True)
+    source_conflict_ids_json = Column(Text, nullable=True)
+    reason = Column(Text)
+    recommended_challenge_type = Column(String)
+    priority = Column(String)
+    status = Column(String, default="DETECTED") # DETECTED, ASSIGNED, RESOLVED, IGNORED
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class ChallengeTask(Base):
+    __tablename__ = "challenge_tasks"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    evaluation_run_id = Column(String, index=True)
+    target_type = Column(String) # Claim, Assumption, EvidenceConflict, Risk
+    target_id = Column(String)
+    challenge_question = Column(Text)
+    why_material = Column(Text)
+    supporting_evidence_ids_json = Column(Text, nullable=True)
+    contradicting_evidence_ids_json = Column(Text, nullable=True)
+    missing_information = Column(Text, nullable=True)
+    challenge_mode = Column(String) # FALSIFICATION, CONTRADICTION_RESOLUTION, etc.
+    status = Column(String, default="PENDING")
+    challenge_findings_json = Column(Text, nullable=True) # Stores the LLM challenge response
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class HumanDecisionRecord(Base):
+    __tablename__ = "human_decision_records"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), unique=True)
+    ai_recommendation = Column(String)
+    ai_confidence = Column(Integer)
+    escalation_signals_json = Column(Text, nullable=True)
+    challenges_performed_json = Column(Text, nullable=True)
+    material_position_changes_json = Column(Text, nullable=True)
+    unresolved_conflicts_json = Column(Text, nullable=True)
+    human_final_decision = Column(String)
+    human_rationale = Column(Text)
+    override_reason = Column(Text, nullable=True)
+    approvers_json = Column(Text, nullable=True)
+    conditions_json = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class ChallengeFinding(Base):
+    __tablename__ = "challenge_findings"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    challenge_task_id = Column(Integer, ForeignKey("challenge_tasks.id", ondelete="CASCADE"), index=True)
+    position_changed = Column(Boolean, default=False)
+    position_before = Column(String, nullable=True)
+    position_after = Column(String, nullable=True)
+    confidence_before = Column(Integer, nullable=True)
+    confidence_after = Column(Integer, nullable=True)
+    new_evidence_relationships_json = Column(Text, nullable=True)
+    unresolved_questions = Column(Text, nullable=True)
+    conditions_for_reversal = Column(Text, nullable=True)
+    recommendation_impact = Column(String, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class Recommendation(Base):
+    __tablename__ = "recommendations"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    reasoning_run_id = Column(Integer, ForeignKey("reasoning_runs.id", ondelete="CASCADE"), index=True)
+    recommendation_value = Column(String)
+    recommendation_type = Column(String)
+    model_confidence = Column(Integer)
+    status = Column(String, default="FINALIZED") # DRAFT, BLOCKED_PENDING_REVIEW, CRITICAL_REVIEW_REQUIRED, FINALIZED
+    key_risks_json = Column(Text, nullable=True)
+    missing_information_json = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+class DecisionIntegrityEnvelope(Base):
+    __tablename__ = "decision_integrity_envelopes"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    recommendation_id = Column(Integer, ForeignKey("recommendations.id", ondelete="CASCADE"), index=True)
+    reasoning_run_id = Column(Integer, ForeignKey("reasoning_runs.id", ondelete="CASCADE"), index=True)
+    hard_conflicts_json = Column(Text) # array of robust objects referencing IDs
+    critical_assumptions_json = Column(Text)
+    unresolved_high_severity_signals_json = Column(Text)
+    mandatory_human_review = Column(Boolean, default=False)
+    blocking_conditions_json = Column(Text)
+    required_next_actions_json = Column(Text)
+    integrity_status = Column(String) # CLEAR, CONDITIONAL, BLOCKED_PENDING_REVIEW, CRITICAL_REVIEW_REQUIRED
+    generated_at = Column(DateTime, default=datetime.utcnow)
+    formula_version = Column(String)
+

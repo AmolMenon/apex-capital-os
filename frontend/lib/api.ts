@@ -189,7 +189,7 @@ export const api = {
       if (found) return found;
     }
     
-    const priorityNames = ["NexusAI", "Aura Health", "CarbonGrid", "PayFlow"];
+    const priorityNames = ["Nexus Data Systems", "Aura Health", "CarbonGrid", "PayFlow"];
     for (const name of priorityNames) {
       const found = deals.find(d => d.startup_name === name);
       if (found) {
@@ -227,6 +227,8 @@ export const api = {
   getMemo: (id: string | number) => fetchAPI<any>(`/deals/${resolveId(id)}/memo`),
   getICOnePager: (id: string | number) => fetchAPI<any>(`/deals/${resolveId(id)}/one-pager`),
   getICPacket: (id: string | number) => fetchAPI<any>(`/deals/${resolveId(id)}/one-pager`),
+  recordHumanDecision: (id: string | number, payload: any) => fetchAPI<any>(`/decisions/${resolveId(id)}/human_decision`, { method: "POST", body: JSON.stringify(payload) }),
+  getHumanDecision: (id: string | number) => fetchAPI<any>(`/decisions/${resolveId(id)}/human_decision`),
 
   // Legacy analysis & deck routes (kept for compatibility if components still call them)
   analyzeDeal: (id: string | number) => fetchAPI<FullAnalysisOutput>(`/analyze/${resolveId(id)}`, { method: "POST" }),
@@ -252,6 +254,9 @@ export const api = {
   getDealKnowledgeGraph: (id: string | number) => fetchAPI<any>(`/knowledge-graph/deals/${resolveId(id)}`),
   getSimilarDeals: (id: string | number) => fetchAPI<any[]>(`/knowledge-graph/deals/${resolveId(id)}/similar`),
   getCrossDealInsights: () => fetchAPI<any>("/knowledge-graph/insights"),
+  
+  // Memory
+  getMemoryDecisions: () => fetchAPI<any[]>("/memory/decisions"),
 
   // Sourcing Engine
   getSourcingStatus: () => fetchAPI<any>("/sourcing/status"),

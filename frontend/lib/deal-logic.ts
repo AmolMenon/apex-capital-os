@@ -19,7 +19,7 @@ export function calculateDealHealth(deal: Deal): DealHealthMetrics {
   let fundFit = "Pending"
   let mainBlocker = "Data ingestion incomplete."
   let nextActionTitle = "Generate initial analysis"
-  let nextActionHref = `/deals/${deal.id}/deal-room`
+  let nextActionHref = `/deals/${deal.id}`
 
   if (deal.analysis) {
     evidenceScore = 40 // Base score if only analysis is present
@@ -49,7 +49,7 @@ export function calculateDealHealth(deal: Deal): DealHealthMetrics {
     if (deal.analysis && deal.analysis.ic_one_pager) {
       mainBlocker = "None. Ready for Investment Committee."
       nextActionTitle = "Update Deal Status"
-      nextActionHref = `/deals/${deal.id}/deal-room`
+      nextActionHref = `/deals/${deal.id}`
       icReadiness = 100
       evidenceScore = 95
       deckQuality = "Verified"
