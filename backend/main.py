@@ -61,6 +61,10 @@ def health_check():
     from core.config import settings
     return {"status": "ok", "version": "5.0.0", "llm_mode": settings.APEX_LLM_MODE}
 
+@app.get("/", include_in_schema=False)
+def root_health_check():
+    return {"status": "ok", "service": "Apex Capital OS API"}
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
