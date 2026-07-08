@@ -14,8 +14,7 @@ python-pptx
 requests
 python-multipart
 tenacity
-passlib
-bcrypt==3.2.2
+bcrypt
 python-jose
 alembic
 boto3
