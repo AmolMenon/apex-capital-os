@@ -15,7 +15,7 @@ requests
 python-multipart
 tenacity
 passlib
-bcrypt
+bcrypt==3.2.2
 python-jose
 alembic
 boto3
