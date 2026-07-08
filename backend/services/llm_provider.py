@@ -161,9 +161,9 @@ class DeterministicTestProvider(BaseLLMProvider):
         # Explicit Test Mode Path
         if "items" in schema.get("properties", {}):
             return {"items": [
-                {"statement": "Nexus generated $1.5M in ARR last year.", "provenance_type": "Source Fact", "confidence_score": 99},
-                {"statement": "We will hit $10M ARR next year.", "provenance_type": "Assumption", "confidence_score": 85},
-                {"statement": "Our CTO left last week due to disagreements.", "provenance_type": "Extracted Claim", "confidence_score": 90}
+                {"statement": "Nexus generated $8.0M in ARR last year.", "provenance_type": "Source Fact", "confidence_score": 99},
+                {"statement": "Net Dollar Retention (NDR) exceeds 120% YoY.", "provenance_type": "Assumption", "confidence_score": 85},
+                {"statement": "Management asserts a robust $20M qualified sales pipeline.", "provenance_type": "Extracted Claim", "confidence_score": 90}
             ]}, {"input": 100, "output": 50, "latency_ms": 100}
         elif "position" in schema.get("properties", {}):
             scenario = os.environ.get("MOCK_SCENARIO", "BLOCKED")
@@ -181,12 +181,12 @@ class DeterministicTestProvider(BaseLLMProvider):
                 }, {"input": 150, "output": 80, "latency_ms": 150}
             else:
                 return {
-                    "position": "Hold pending CTO leave clarification and churn data.",
+                    "position": "Hold pending ARR discrepancy clarification.",
                     "confidence": 80,
                     "supporting_claim_ids": [1],
                     "contradicting_claim_ids": [2],
                     "assumption_ids": [1, 2],
-                    "key_risks": ["Leadership instability (CTO leave)", "Revenue quality ($400k non-recurring)"],
+                    "key_risks": ["Revenue quality ($5.4M vs $8.0M ARR gap)"],
                     "missing_information": ["Customer churn data"],
                     "questions_to_resolve": [],
                     "conditions_that_would_change_position": []
@@ -195,7 +195,7 @@ class DeterministicTestProvider(BaseLLMProvider):
             return {
                 "target_id": "claim:2",
                 "original_position": "Hold",
-                "challenge_findings": "Found $400k of non-recurring revenue in financials, contradicting the $1.5M ARR claim.",
+                "challenge_findings": "Found only $5.4M of recurring revenue in financials, contradicting the $8.0M ARR claim.",
                 "new_evidence_relationships": ["challenge_finding:1->recommendation:1"],
                 "assumption_status_change": "Invalidated",
                 "risk_status_change": "Materialized",
@@ -233,21 +233,21 @@ class DeterministicTestProvider(BaseLLMProvider):
                 }, {"input": 250, "output": 150, "latency_ms": 250}
             else:
                 return {
-                    "recommendation": "Do not proceed until CTO departure and ARR discrepancies are resolved.",
+                    "recommendation": "Do not proceed until ARR discrepancies are resolved.",
                     "recommendation_type": "Hold",
                     "recommendation_confidence": 75,
                     "model_confidence": 85,
                     "supporting_claim_ids": [1],
                     "contradicting_claim_ids": [2],
                     "assumption_ids": [1, 2, 3],
-                    "key_risks": ["Leadership instability (CTO leave)", "Revenue quality ($400k non-recurring)"],
+                    "key_risks": ["Revenue quality ($5.4M vs $8.0M ARR gap)"],
                     "missing_information": ["Customer churn data"],
-                    "missing_critical_information": ["Customer churn data", "Reason for CTO leave of absence"],
+                    "missing_critical_information": ["Customer churn data"],
                     "unresolved_disagreements": ["ARR vs Total Revenue definition"],
-                    "unresolved_conflicts": ["Claim 1 ($1.5M ARR) conflicts with Claim 2 ($400k PS)"],
-                    "challenge_findings": ["Found $400k of non-recurring revenue in financials, contradicting the $1.5M ARR claim."],
-                    "critical_assumptions": ["Nexus will hit $10M ARR next year (6x growth)"],
-                    "conditions_for_reversal": ["CTO returns or strong replacement hired", "Provide historical churn data showing >95% NDR"],
+                    "unresolved_conflicts": ["Claim 1 ($8.0M ARR) conflicts with Claim 2 ($5.4M ARR)"],
+                    "challenge_findings": ["Found only $5.4M of recurring revenue in financials, contradicting the $8.0M ARR claim."],
+                    "critical_assumptions": ["Net Dollar Retention (NDR) exceeds 120% YoY"],
+                    "conditions_for_reversal": ["Provide historical churn data showing >95% NDR"],
                     "next_best_action": "Request true software ARR breakdown and churn data",
                     "memory_objects_used": []
                 }, {"input": 250, "output": 150, "latency_ms": 250}

@@ -116,6 +116,7 @@ class AdaptiveReasoningController:
                 task = ChallengeTask(
                     decision_id=decision.id,
                     evaluation_run_id=run_id,
+                    escalation_signal_id=sig.id,
                     target_type=sig.signal_type,
                     target_id=str(sig.id),
                     challenge_question=f"Evaluate this signal: {sig.reason}",
@@ -132,14 +133,24 @@ class AdaptiveReasoningController:
                 findings, c_tokens = TargetedChallengeEngine.execute_challenge(self.db, task, perspective, relevant_context, llm_provider=self.llm_provider)
                 _track_cost(c_tokens, "challenge")
                 
+                # Deterministic Validation (Bypassing LLM text reliance)
+                pos_before = findings.get("position_before", "")
+                pos_after = findings.get("position_after", "")
+                position_changed = bool(pos_before and pos_after and pos_before != pos_after)
+                
+                conf_before = findings.get("confidence_before", 0)
+                conf_after = findings.get("confidence_after", 0)
+                if position_changed and conf_after >= conf_before:
+                    conf_after = max(0, conf_before - 10)  # Deterministic penalty
+                    
                 finding_obj = ChallengeFinding(
                     decision_id=decision.id,
                     challenge_task_id=task.id,
-                    position_changed=findings.get("position_changed", False) == True,
-                    position_before=findings.get("position_before"),
-                    position_after=findings.get("position_after"),
-                    confidence_before=findings.get("confidence_before"),
-                    confidence_after=findings.get("confidence_after"),
+                    position_changed=position_changed,
+                    position_before=pos_before,
+                    position_after=pos_after,
+                    confidence_before=conf_before,
+                    confidence_after=conf_after,
                     new_evidence_relationships_json=json.dumps(findings.get("new_evidence_relationships", [])),
                     unresolved_questions=json.dumps(findings.get("unresolved_questions", [])),
                     conditions_for_reversal=json.dumps(findings.get("conditions_for_reversal", [])),

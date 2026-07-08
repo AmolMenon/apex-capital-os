@@ -49,12 +49,14 @@ def update_decision_status(
     return decision
 
 from pydantic import BaseModel
+from typing import Optional
+
 class HumanDecisionInput(BaseModel):
     human_final_decision: str
     human_rationale: str
-    override_reason: str = None
-    approvers_json: str = None
-    conditions_json: str = None
+    override_reason: Optional[str] = None
+    approvers_json: Optional[str] = None
+    conditions_json: Optional[str] = None
 
 @router.post("/{id}/human_decision")
 def record_human_decision(
@@ -69,14 +71,17 @@ def record_human_decision(
     run = db.query(db_models.ReasoningRun).filter_by(decision_id=id).order_by(db_models.ReasoningRun.start_time.desc()).first()
     ai_recommendation = ""
     ai_confidence = 0
+    rec_id = None
     if run and run.output_json:
         out = json.loads(run.output_json)
         synth = out.get("synthesis", {})
         ai_recommendation = synth.get("recommendation", "")
         ai_confidence = synth.get("model_confidence", 0)
+        rec_id = out.get("recommendation_id")
         
     record = db_models.HumanDecisionRecord(
         decision_id=id,
+        recommendation_id=rec_id,
         ai_recommendation=ai_recommendation,
         ai_confidence=ai_confidence,
         human_final_decision=decision_input.human_final_decision,

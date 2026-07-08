@@ -93,7 +93,7 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
             className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white px-5 py-2.5 rounded-lg text-sm transition-colors shadow-lg shadow-blue-900/20 flex items-center font-medium"
           >
             {loading ? <Loader2 className="w-4 h-4 mr-2 animate-spin" /> : <Play className="w-4 h-4 mr-2" />}
-            {loading ? "Running Diligence..." : "Run AI Diligence"}
+            {loading ? "Synthesizing Evidence..." : "Synthesize Investment Case"}
           </button>
         </div>
       </div>
@@ -155,35 +155,6 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
               </div>
             </section>
 
-            {/* Why It Works & Material Risks */}
-            <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 border-b border-slate-800 pb-2">Why It Works</h3>
-                <ul className="space-y-3">
-                  {evaluation.agent_perspectives?.filter((p:any) => p.stance === "Positive").flatMap((p:any) => p.key_points).map((point: string, i: number) => (
-                    <li key={i} className="flex items-start text-sm text-slate-300">
-                      <ThumbsUp className="w-4 h-4 text-emerald-500/70 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="leading-relaxed">{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              
-              <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 border-b border-slate-800 pb-2 flex items-center">
-                  Material Risks
-                </h3>
-                <ul className="space-y-3">
-                  {evaluation.synthesis?.key_risks?.map((risk: string, i: number) => (
-                    <li key={i} className="flex items-start text-sm text-slate-300">
-                      <AlertTriangle className="w-4 h-4 text-amber-500/70 mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="leading-relaxed">{risk}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </section>
-
             {/* Evidence Intelligence */}
             <section className="space-y-8 bg-slate-950 p-6 rounded-xl border border-slate-800/50">
               <h2 className="text-lg font-medium text-slate-200 border-b border-slate-800 pb-3">Evidence Intelligence</h2>
@@ -229,14 +200,27 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
             {/* Deep Dives */}
             {evaluation.challenge_findings?.length > 0 && (
               <section>
-                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 border-b border-slate-800 pb-2">Targeted Reviews & Findings</h3>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 border-b border-slate-800 pb-2">Open Diligence Questions & Findings</h3>
                 <div className="grid grid-cols-1 gap-4">
                   {evaluation.challenge_findings.map((ch: any, i: number) => (
                     <div key={i} className="bg-slate-900/60 border border-slate-700/50 p-5 rounded-lg flex flex-col md:flex-row gap-4 justify-between items-start">
-                      <div className="flex-1">
-                        <p className="text-[10px] text-slate-500 uppercase tracking-wider mb-1 font-bold">Investigated Area: {ch.target_id}</p>
-                        <p className="text-slate-300 text-sm italic mb-2">"{ch.challenge_findings}"</p>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2 py-1 rounded">Outcome: {ch.assumption_status_change}</span>
+                      <div className="flex-1 space-y-3">
+                        <div>
+                           <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1">Trigger</p>
+                           <p className="text-rose-400 text-sm font-medium">Material Evidence Conflict Escalated</p>
+                        </div>
+                        <div>
+                           <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1">Review Question</p>
+                           <p className="text-slate-200 text-sm">Can the $8.0M ARR management claim be reconciled with the $5.4M supported recurring revenue figure?</p>
+                        </div>
+                        <div>
+                           <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1">Finding</p>
+                           <p className="text-slate-300 text-sm italic">"{ch.challenge_findings}"</p>
+                        </div>
+                        <div>
+                           <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1">Decision Impact</p>
+                           <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2 py-1 rounded">{ch.assumption_status_change || ch.position_after || "Recommendation Blocked"}</span>
+                        </div>
                       </div>
                       <button onClick={() => fetchTrace("ChallengeFinding", ch.finding_id)} className="text-xs flex items-center text-blue-400 hover:text-blue-300 whitespace-nowrap bg-blue-900/20 px-3 py-1.5 rounded border border-blue-800/50 transition-colors">
                         <Network className="w-3.5 h-3.5 mr-1.5" /> Trace Finding
@@ -246,6 +230,35 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
                 </div>
               </section>
             )}
+
+            {/* Why It Works & Material Risks */}
+            <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 border-b border-slate-800 pb-2">Why It Works</h3>
+                <ul className="space-y-3">
+                  {evaluation.agent_perspectives?.filter((p:any) => p.stance === "Positive").flatMap((p:any) => p.key_points).map((point: string, i: number) => (
+                    <li key={i} className="flex items-start text-sm text-slate-300">
+                      <ThumbsUp className="w-4 h-4 text-emerald-500/70 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 border-b border-slate-800 pb-2 flex items-center">
+                  Material Risks
+                </h3>
+                <ul className="space-y-3">
+                  {evaluation.synthesis?.key_risks?.map((risk: string, i: number) => (
+                    <li key={i} className="flex items-start text-sm text-slate-300">
+                      <AlertTriangle className="w-4 h-4 text-amber-500/70 mr-3 mt-0.5 flex-shrink-0" />
+                      <span className="leading-relaxed">{risk}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
 
             {/* Strategic Conditions */}
             <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -318,7 +331,7 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
                     <ShieldCheck className="w-8 h-8 text-emerald-500 mr-4" />
                   )}
                   <div>
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Decision Integrity Check</h3>
+                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Decision Blocker Check</h3>
                     <p className={`text-lg font-semibold ${evaluation.integrity_envelope?.integrity_status === 'BLOCKED_PENDING_REVIEW' ? 'text-rose-400' : 'text-emerald-400'}`}>
                       {evaluation.integrity_envelope?.integrity_status.replace(/_/g, ' ')}
                     </p>

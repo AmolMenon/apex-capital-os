@@ -192,7 +192,7 @@ export function EvidenceExplorer({ decisionId }: { decisionId: string }) {
                         <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Claim A</span>
                         <span className="text-[10px] bg-blue-500/10 text-blue-400 px-1.5 py-0.5 rounded uppercase font-semibold">Management Claim</span>
                       </div>
-                      <p className="text-slate-200 text-sm font-medium leading-relaxed">"{claims.find(c => c.id === 1)?.statement || 'Nexus generated $1.5M in ARR last year.'}"</p>
+                      <p className="text-slate-200 text-sm font-medium leading-relaxed">"{claims.find(c => c.id === 1)?.statement || 'Claim data unavailable.'}"</p>
                     </div>
                     <div className="mt-4 pt-4 border-t border-slate-700/50 flex items-center text-xs text-slate-400">
                       <FileText className="w-3.5 h-3.5 mr-1.5" />
@@ -208,9 +208,9 @@ export function EvidenceExplorer({ decisionId }: { decisionId: string }) {
                     <div>
                       <div className="flex justify-between items-start mb-3">
                         <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Claim B</span>
-                        <span className="text-[10px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded uppercase font-semibold">Verified Fact</span>
+                        <span className="text-[10px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded uppercase font-semibold">Financial Evidence</span>
                       </div>
-                      <p className="text-slate-200 text-sm font-medium leading-relaxed">"{claims.find(c => c.id === 2)?.statement || 'Of the $1.5M revenue, $400k is deferred professional services.'}"</p>
+                      <p className="text-slate-200 text-sm font-medium leading-relaxed">"{claims.find(c => c.id === 2)?.statement || 'Claim data unavailable.'}"</p>
                     </div>
                     <div className="mt-4 pt-4 border-t border-slate-700/50 flex items-center text-xs text-slate-400">
                       <FileText className="w-3.5 h-3.5 mr-1.5" />
@@ -222,7 +222,7 @@ export function EvidenceExplorer({ decisionId }: { decisionId: string }) {
                 <div className="mt-6 bg-slate-900/40 p-4 rounded-lg border border-slate-800">
                   <h4 className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold mb-2">Investment Implication</h4>
                   <p className="text-sm text-slate-300">
-                    The $400k difference in ARR definition materially alters the valuation multiple and growth trajectory. This conflict triggers an automatic <strong>Challenge Finding</strong> and blocks the recommendation until explicitly overridden by the IC.
+                    The difference in ARR definition materially alters the valuation multiple and growth trajectory. This conflict triggers an automatic <strong>Challenge Finding</strong> and blocks the recommendation until explicitly overridden by the IC.
                   </p>
                 </div>
                 

@@ -51,6 +51,7 @@ class EscalationPolicyService:
                     signal_type="EXPLICIT_EVIDENCE_CONFLICT",
                     severity="HIGH",
                     source_conflict_ids_json=json.dumps([conflict.id]),
+                    evidence_conflict_id=conflict.id,
                     reason=f"Unresolved evidence conflict: {conflict.relationship_type}",
                     recommended_challenge_type="CONTRADICTION_RESOLUTION",
                     priority="HIGH"
@@ -87,14 +88,15 @@ class EscalationPolicyService:
             
         # Rule 4: Critical Assumptions
         assumptions = single_perspective.get("assumption_ids", [])
-        if assumptions:
+        for asm_id in assumptions:
             sig = EscalationSignal(
                 decision_id=decision_id,
                 evaluation_run_id=evaluation_run_id,
                 signal_type="CRITICAL_ASSUMPTION",
                 severity="MEDIUM",
-                source_assumption_ids_json=json.dumps(assumptions),
-                reason=f"Material recommendation depends on unverified critical assumptions.",
+                source_assumption_ids_json=json.dumps([asm_id]),
+                assumption_id=asm_id,
+                reason=f"Material recommendation depends on unverified critical assumption ID: {asm_id}.",
                 recommended_challenge_type="ASSUMPTION_STRESS_TEST",
                 priority="MEDIUM"
             )

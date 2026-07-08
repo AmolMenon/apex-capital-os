@@ -11,6 +11,7 @@ export function DecisionWorkspace({ decisionId }: { decisionId: string }) {
   // Human Decision State
   const [icDecision, setIcDecision] = useState<string>("")
   const [rationale, setRationale] = useState<string>("")
+  const [overrideAcknowledged, setOverrideAcknowledged] = useState(false)
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
 
@@ -121,7 +122,7 @@ export function DecisionWorkspace({ decisionId }: { decisionId: string }) {
           </div>
 
           <div className={`border rounded-xl p-6 ${isBlocked ? 'bg-rose-950/20 border-rose-900/50' : 'bg-emerald-950/20 border-emerald-900/50'}`}>
-            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Decision Integrity Envelope</h4>
+            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Decision Blocker Status</h4>
             <div className="flex items-center mt-2 mb-4">
               {isBlocked ? <AlertTriangle className="w-6 h-6 text-rose-400 mr-3" /> : <ShieldCheck className="w-6 h-6 text-emerald-400 mr-3" />}
               <span className={`text-xl font-medium ${isBlocked ? 'text-rose-400' : 'text-emerald-400'}`}>
@@ -212,12 +213,8 @@ export function DecisionWorkspace({ decisionId }: { decisionId: string }) {
                     <input 
                       type="checkbox" 
                       className="mt-1 w-4 h-4 rounded border-rose-700 text-rose-600 focus:ring-rose-500 bg-slate-900" 
-                      onChange={(e) => {
-                        // Using a data attribute or class instead of explicit React state for simplicity in this inline edit,
-                        // but actually we need a state variable. Let's add it via DOM since we can't easily add a new useState hook without editing the top of the file.
-                        // Actually, I can just rely on rationale length for now, or add a state.
-                        // Let's use the standard approach: I will edit the top of the file to add the state.
-                      }}
+                      checked={overrideAcknowledged}
+                      onChange={(e) => setOverrideAcknowledged(e.target.checked)}
                       id="override-ack"
                     />
                     <span className="text-sm text-rose-200">I acknowledge the active integrity blockers and assume responsibility for this override.</span>
@@ -237,17 +234,10 @@ export function DecisionWorkspace({ decisionId }: { decisionId: string }) {
 
               <div className="pt-6 border-t border-slate-800">
                 <button 
-                  onClick={() => {
-                    const ack = document.getElementById('override-ack') as HTMLInputElement;
-                    if (isBlocked && icDecision === "Approve" && (!ack || !ack.checked)) {
-                      alert("You must acknowledge the override warning.");
-                      return;
-                    }
-                    handleSaveDecision();
-                  }}
-                  disabled={!icDecision || saving || (isBlocked && icDecision === "Approve" && rationale.length < 20)}
+                  onClick={handleSaveDecision}
+                  disabled={!icDecision || saving || (isBlocked && icDecision === "Approve" && (rationale.length < 20 || !overrideAcknowledged))}
                   className={`w-full py-4 rounded-lg font-bold tracking-wide transition-colors flex items-center justify-center uppercase text-sm ${
-                    !icDecision || (isBlocked && icDecision === "Approve" && rationale.length < 20)
+                    !icDecision || (isBlocked && icDecision === "Approve" && (rationale.length < 20 || !overrideAcknowledged))
                       ? "bg-slate-800 text-slate-500 cursor-not-allowed"
                       : icDecision === "Approve" 
                         ? "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-900/20" 

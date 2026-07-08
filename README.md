@@ -1,171 +1,52 @@
-<div align="center">
-  <div style="padding: 1rem; border-radius: 50%; background: rgba(59,130,246,0.1); display: inline-block; margin-bottom: 1rem;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="4 17 10 11 4 5"></polyline>
-      <line x1="12" y1="19" x2="20" y2="19"></line>
-    </svg>
-  </div>
-  
-  # Apex Capital
-  
-  **An agentic VC analyst operating system for evidence-backed startup evaluation.**
+# Apex Capital OS
 
-  [View Live Demo](#) · [Report Bug](#) · [Request Feature](#)
-</div>
+Apex Capital OS is a decision-support infrastructure designed for evidence-intensive investment workflows. It bridges the gap between raw data analysis and human investment committee (IC) decisions by structurally enforcing evidence integrity and explicitly blocking decisions when material conflicts exist.
 
----
+## 1. The Investment Workflow Problem
+In venture capital and private equity, investment diligence is difficult because claims, evidence, assumptions, and contradictions are often spread across disparate documents, models, and analyst workflows. Standard AI summarizing tools often gloss over critical discrepancies, generating confident summaries that bury material risks. 
 
-<br />
+## 2. The Product Thesis
+A useful investment intelligence system must do more than summarize documents; it must rigorously map management claims against ground-truth evidence, deterministically flag conflicts, and force human review when AI certainty breaks down. 
 
-Apex Capital is a full-stack, institutional-grade venture capital operating system. It transforms fragmented startup information—pitch decks, founders' claims, market research, and diligence Q&A—into a highly structured, deterministic investment workflow.
+Apex Capital OS treats investment diligence not as a text-generation problem, but as an **integrity enforcement problem**.
 
-By separating the **narrative thesis** from **hard evidence**, Apex Capital ensures that investors make rigorous, data-backed decisions instead of falling in love with a story.
+## 3. The Nexus Data Systems Canonical Case
+To demonstrate this architecture, we use a repeatable, canonical test case: **Nexus Data Systems (Series A)**.
+*   **Management Claim:** The startup claims $8.0M in ARR.
+*   **Supporting Evidence:** Audited financials only support $5.4M in recurring revenue.
+*   **Material Discrepancy:** $2.6M.
 
-<br />
+## 4. The Workflow
+1.  **Evidence Room:** The system maps the management claims to the raw data room documents.
+2.  **Conflict Detection:** The AI synthesis engine detects the $2.6M discrepancy.
+3.  **Targeted Review:** The system generates an open diligence question requiring investigation into the revenue gap.
+4.  **Decision Blocker:** A deterministic integrity policy flags the material conflict and blocks the "Invest" recommendation, shifting the state to `BLOCKED_PENDING_REVIEW`.
+5.  **Human IC Decision:** The human Investment Committee must explicitly review the blocker, provide a written rationale, and manually override the system to proceed.
+6.  **Institutional Memory:** The override, alongside the rationale and the original AI warning, is immutably logged in the ledger for future reference.
 
-## ✨ Core Product Workflow
+## 5. Deterministic Integrity Outside the LLM
+LLMs are probabilistic and prone to hallucination; they should not be trusted with final policy enforcement. In Apex, the LLM is only used for data extraction and synthesis. The actual **Decision Integrity Envelope** is a deterministic, rule-based system running on the backend that evaluates the LLM's output and hard-blocks the workflow if a discrepancy exceeds the defined threshold.
 
-1. **Thesis-Driven Sourcing Engine**: Define investment theses, track market radar signals (hiring, compute), and proactively discover matching companies.
-2. **Deal Intake**: Automated screening against VC power-law logic and baseline fund criteria. Converts sourced leads directly to pipeline.
-3. **Analysis Engine**: Deep-dive grading of the team, market, and product.
-4. **Research Intelligence**: AI-powered market sizing (TAM/SAM/SOM), competitive mapping, and tailwind identification.
-4. **Deck Intelligence**: Extracts claims directly from founder decks and cross-references them against missing market evidence.
-5. **Diligence Command**: Auto-generates exact diligence action items, customer reference scripts, and data room requests based on identified risks.
-6. **Conversation Intelligence**: Multi-round transcript analysis identifying contradictions, evasion, and extracted evidence to assess founder credibility over time.
-7. **Decision Engine**: A deterministic rules-engine highlighting exact upgrade/downgrade triggers for an investment and computing final IC Readiness.
-8. **Fund Fit**: Real-time portfolio concentration and required exit scaling calculations based on actual fund mathematics.
-9. **Investment Memo & IC One-Pager**: Instant markdown generation for final partner review.
+## 6. High-Level Architecture
+*   **Frontend:** Next.js (React), TailwindCSS, providing a clean, professional "Command Center" and Investment Memorandum UI.
+*   **Backend:** Python (FastAPI), managing state, orchestration, and the deterministic integrity policies.
+*   **Data Persistence:** Relational database ensuring lossless traceability of decisions and overrides.
 
-<br />
+## 7. Validation Methodology
+The project is validated through strict, automated end-to-end (E2E) testing:
+*   **Deterministic Workflows:** Uses a mocked LLM provider during tests to ensure 100% repeatable execution.
+*   **Playwright E2E:** A canonical test suite runs the entire Nexus Data Systems workflow, asserting that the blocker is triggered, the UI renders correctly, the human override succeeds, and the data persists.
+*   **Repeatability:** Tests are mandated to pass consecutive repeatability runs to prove architectural stability.
 
-## 🏗 Technical Architecture
+## 8. Current Limitations
+*   **Fictional Data:** The canonical Nexus Demo uses mocked, fictional data designed specifically to trigger the integrity policies.
+*   **No Autonomous Decisions:** The system explicitly does not make investment decisions; it strictly acts as a diligence blocker and support tool.
+*   **Test Provider Dependency:** Real-world LLM variability is bypassed during E2E testing using deterministic mocks.
 
-Built for scale, stability, and intelligence.
-
-- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS, `shadcn/ui`, Framer Motion.
-- **Backend**: FastAPI, Python 3.9+, SQLAlchemy.
-- **Production Readiness**: Full JWT authentication, workspace/team multitenancy, Alembic database migrations, Rate Limiting middleware, and S3 file storage abstraction.
-- **AI Orchestration**: Model-agnostic routing layer with Tenacity retries and exponential backoff. Dynamically routes between OpenAI, Anthropic, Gemini, or local models based on task complexity.
-- **Data Persistence**: SQLite (local development / mock mode), PostgreSQL (production-ready).
-- **Stability First**: Incorporates a 100% deterministic fallback "Mock Mode" for flawless live demonstrations without API latency or rate limits.
-
-<br />
-
-## 🚀 Getting Started
-
-### 1. Backend Setup
-
-```bash
-cd backend
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-### 2. Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Visit `http://localhost:3000` to access the OS. To launch a guided product walkthrough, click **Start Guided Demo**.
-
-<br />
-
-## ⚙️ Environment Configuration
-
-Ensure both frontend and backend have their environment variables set. Reference the `.env.example` files provided in both directories.
-
-**Frontend:**
-```env
-NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
-```
-
-**Backend:**
-```env
-APP_MODE=mock  # Set to 'real' to use live APIs
-ENABLE_REAL_LLM=false # Set to true to route to live LLMs
-OPENAI_API_KEY=sk-...
-```
-
-<br />
-
-## 💡 The "Mock Mode" Paradigm
-
-Apex Capital is engineered specifically to be a **robust portfolio piece and interview artifact**. By default, it operates in a fully simulated "Mock Mode" (`APP_MODE=mock`). 
-
-This architecture guarantees:
-- **Flawless Live Demos:** Zero third-party API latency or timeouts during critical presentations.
-- **Cost Efficiency:** No LLM API costs incurred during routine development or public portfolio views.
-- **Seeded Scenarios:** The flagship "NeuralDesk" deal is meticulously crafted to demonstrate edge cases like missing evidence and founder contradictions.
-
-*To deploy in production with real AI reasoning, simply configure your API keys and switch to `APP_MODE=real`.*
-
-<br />
-
-## 🎙 Interview Talking Points
-
-If reviewing this repository as part of an engineering, product, or VC interview:
-
-1. **Thesis vs. Evidence**: *"Apex Capital forces intellectual honesty. It separates a compelling narrative thesis from the cold evidence required to underwrite a check. It prevents investors from falling in love with a story without verifying the facts."*
-2. **Workflow, Not Just Chat**: *"Unlike typical 'ChatGPT wrappers' which rely on open-ended chat interfaces, this is an agentic workflow. The AI operates deterministically in the background, surfacing highly structured insights directly into an enterprise-grade UI."*
-3. **Model-Agnostic Routing**: *"The backend orchestrator dynamically routes prompts to different LLMs based on task complexity and cost, seamlessly falling back to a deterministic mock data layer to ensure 100% demo uptime."*
-
-<br />
-
-## ⚠️ Disclaimer
-
-Every public-facing document and output generated by this application must include the following notice:
-
-> **Apex Capital** is a portfolio project and educational prototype. It is not financial advice, investment advice, or a substitute for professional diligence. Outputs run in mock mode by default unless real providers are configured.
-
----
-
-<div align="center">
-  <p>Built with precision and intellectual rigor.</p>
-</div>
-
-### Real Startup Benchmark Mode
-Apex Capital supports evaluating high-profile public companies (e.g., Mistral AI, Zepto, Sarvam AI) as benchmarks to ground the AI's analysis in reality. 
-- **No Hallucinations:** Real companies use strict `Public Source Registries` to back up claims.
-- **Diligence Gates:** Since private metrics (like ARR and precise retention) aren't public, the system correctly flags them as "Not publicly available" and downgrades the investment confidence to "Requires Private Diligence".
-- **Compare Mode:** Cross-evaluate your own pipeline against industry benchmarks.
-
-### Agentic VC Research Workflow
-Apex Capital now runs an autonomous, multi-agent evaluation pipeline consisting of 12 specialized agents:
-- **Research Planner Agent**: Defines the objectives and search strategy.
-- **Search Agent**: Interfaces with the Web Research Engine.
-- **Source Quality Agent**: Scores domain authority.
-- **Claim Extraction Agent**: Structures unstructured text into claims.
-- **Evidence Verification Agent**: Cross-references claims and determines what enters the memo as fact.
-- **Market Mapping Agent**: Assesses category dynamics.
-- **Competitor Analysis Agent**: Maps direct/adjacent threats.
-- **Diligence Gap Agent**: Flags critical missing private metrics (e.g. Cohort Retention).
-- **Fund Fit Agent**: Checks cheque size and ownership feasibility.
-- **Red Team Agent**: Actively attacks the thesis and highlights hype risks.
-- **Memo Writer Agent**: Generates the final IC read-out.
-- **IC Readiness Agent**: Sets deterministic blockers based on missing data.
-
-### Thesis-Driven Sourcing Engine
-Apex moves beyond reactive deal evaluation into proactive market mapping:
-- **Thesis Engine**: Define rigid theses (e.g., India AI Infra) and score newly discovered companies against them.
-- **Market Radar**: Scans public signals like hiring spikes, Github stars, and compute acquisitions to detect heating markets before companies actively fundraise.
-- **Company Discovery**: Matches companies to theses and computes a unified Sourcing Score based on thesis fit, signal strength, and market timing.
-- **Founder Outreach**: Auto-generates personalized email drafts, LinkedIn messages, and Analyst call prep notes directly from public signals.
-
-### Cross-Fund Copilot & Knowledge Graph
-Chat directly with the intelligence layer using the **Partner Copilot**:
-- Ask questions across the entire portfolio: *"Which deal has the highest IC readiness?"*
-- Extract patterns using the **Learning Loop**: *"Why do our AI Infra deals keep stalling in IC?"*
-- Identify immediate priorities: *"Which sourced company should I look at first?"*
-
-### Autonomous Deal War Room & IC Simulator
-Apex Capital goes beyond static memos by simulating a live Investment Committee debate using the Autonomous Deal War Room. 
-- **Conviction Dashboard**: Translates evidence quality and thesis strength into an actionable 0-100 score.
-- **Partner Personas**: Simulates how different partners (e.g. Growth Partner, Deep Tech Partner) would react to the deal.
-- **What Must Be True**: Tracks critical assumptions against current evidence confidence.
-- **Fund Math Engine**: Projects required entry/exit valuations and ownership targets to achieve a 1x/3x fund return.
-- **Change Our Mind Protocol**: Deterministic conditions outlining exact triggers that would upgrade a 'Pass' to an 'Invest'.
+## 9. Local Development
+1. Clone the repository.
+2. Backend: `cd backend && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt`
+3. Seed the DB: `python scripts/seed_demo.py`
+4. Start Backend: `uvicorn main:app --reload`
+5. Frontend: `cd frontend && npm install && npm run dev`
+6. Access at `http://localhost:3000`

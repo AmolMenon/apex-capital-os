@@ -150,7 +150,7 @@ export const api = {
   // Deals
   getDeals: async () => {
     try {
-      const data = await fetchAPI<Deal[]>("/deals");
+      const data = await fetchAPI<Deal[]>("/api/v1/decisions");
       if (Array.isArray(data) && data.length === 0) {
         console.warn("[getDeals] API returned empty array, falling back to mock deals.");
         return extendedDeals as any;
@@ -163,7 +163,7 @@ export const api = {
   },
   getDeal: async (id: string | number) => {
     try {
-      return await fetchAPI<Deal>(`/deals/${resolveId(id)}`);
+      return await fetchAPI<Deal>(`/api/v1/decisions/${resolveId(id)}`);
     } catch (e) {
       console.warn(`[getDeal] Failed to fetch deal ${id}, returning mock data.`);
       const activeId = resolveId(id);
@@ -227,8 +227,8 @@ export const api = {
   getMemo: (id: string | number) => fetchAPI<any>(`/deals/${resolveId(id)}/memo`),
   getICOnePager: (id: string | number) => fetchAPI<any>(`/deals/${resolveId(id)}/one-pager`),
   getICPacket: (id: string | number) => fetchAPI<any>(`/deals/${resolveId(id)}/one-pager`),
-  recordHumanDecision: (id: string | number, payload: any) => fetchAPI<any>(`/decisions/${resolveId(id)}/human_decision`, { method: "POST", body: JSON.stringify(payload) }),
-  getHumanDecision: (id: string | number) => fetchAPI<any>(`/decisions/${resolveId(id)}/human_decision`),
+  recordHumanDecision: (id: string | number, payload: any) => fetchAPI<any>(`/api/v1/decisions/${resolveId(id)}/human_decision`, { method: "POST", body: JSON.stringify(payload) }),
+  getHumanDecision: (id: string | number) => fetchAPI<any>(`/api/v1/decisions/${resolveId(id)}/human_decision`),
 
   // Legacy analysis & deck routes (kept for compatibility if components still call them)
   analyzeDeal: (id: string | number) => fetchAPI<FullAnalysisOutput>(`/analyze/${resolveId(id)}`, { method: "POST" }),
@@ -256,7 +256,7 @@ export const api = {
   getCrossDealInsights: () => fetchAPI<any>("/knowledge-graph/insights"),
   
   // Memory
-  getMemoryDecisions: () => fetchAPI<any[]>("/memory/decisions"),
+  getMemoryDecisions: () => fetchAPI<any[]>("/api/v1/memory/decisions"),
 
   // Sourcing Engine
   getSourcingStatus: () => fetchAPI<any>("/sourcing/status"),

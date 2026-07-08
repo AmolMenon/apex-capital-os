@@ -65,14 +65,14 @@ export default function VCDecisionWorkspace() {
             </div>
             <div className="w-px h-8 bg-slate-800"></div>
             <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-widest text-slate-500 mb-1">Confidence</span>
-              <span className="text-sm font-semibold text-slate-200">{confidence}%</span>
+              <span className="text-[10px] uppercase tracking-widest text-slate-500 mb-1">Evidence Strength</span>
+              <span className="text-sm font-semibold text-slate-200">{confidence > 80 ? "High" : confidence > 60 ? "Moderate" : "Weak"}</span>
             </div>
             <div className="w-px h-8 bg-slate-800"></div>
             <div className="flex flex-col">
-              <span className="text-[10px] uppercase tracking-widest text-slate-500 mb-1">Integrity Status</span>
+              <span className="text-[10px] uppercase tracking-widest text-slate-500 mb-1">Decision Blocker</span>
               <span className={`text-sm font-bold ${integrityStatus === 'BLOCKED_PENDING_REVIEW' ? 'text-rose-400' : integrityStatus === 'CLEAR' ? 'text-emerald-400' : 'text-amber-400'}`}>
-                {integrityStatus.replace(/_/g, ' ')}
+                {integrityStatus === 'BLOCKED_PENDING_REVIEW' ? 'Material Conflict' : integrityStatus.replace(/_/g, ' ')}
               </span>
             </div>
             <div className="w-px h-8 bg-slate-800"></div>

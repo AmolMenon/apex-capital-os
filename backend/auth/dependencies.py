@@ -4,10 +4,17 @@ from sqlalchemy.orm import Session
 from auth.jwt_handler import decode_access_token
 from db.database import get_db
 from db.models import User, RoleEnum
+from core.config import settings
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/v1/auth/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/v1/auth/login", auto_error=False)
 
-def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)) -> User:
+def get_current_user(db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)) -> User:
+    if not settings.ENABLE_AUTH:
+        return User(id=1, email="demo@apexcapital.com", name="Demo User", role="Admin", is_active=True)
+        
+    if not token:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+        
     token_data = decode_access_token(token)
     user = db.query(User).filter(User.id == int(token_data.user_id)).first()
     if user is None:

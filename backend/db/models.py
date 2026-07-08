@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Text, ForeignKey, DateTime, Boolean, Enum
+from sqlalchemy import Column, Integer, String, Float, Text, ForeignKey, DateTime, Boolean, Enum, Table
 from sqlalchemy.orm import relationship
 from datetime import datetime
 import enum
@@ -402,6 +402,12 @@ class EscalationSignal(Base):
     evaluation_run_id = Column(String, index=True)
     signal_type = Column(String, index=True) # EXPLICIT_EVIDENCE_CONFLICT, UNSUPPORTED_MATERIAL_CLAIM, etc.
     severity = Column(String)
+    
+    # Deterministic Source ID Relationships (Phase 2 Hardening)
+    evidence_conflict_id = Column(Integer, ForeignKey("evidence_conflicts.id", ondelete="SET NULL"), nullable=True)
+    assumption_id = Column(Integer, ForeignKey("assumptions.id", ondelete="SET NULL"), nullable=True)
+    
+    # Retained temporarily for backward compatibility
     source_claim_ids_json = Column(Text, nullable=True)
     source_assumption_ids_json = Column(Text, nullable=True)
     source_conflict_ids_json = Column(Text, nullable=True)
@@ -416,6 +422,10 @@ class ChallengeTask(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
     evaluation_run_id = Column(String, index=True)
+    
+    # Deterministic Relationship (Phase 2 Hardening)
+    escalation_signal_id = Column(Integer, ForeignKey("escalation_signals.id", ondelete="SET NULL"), nullable=True)
+    
     target_type = Column(String) # Claim, Assumption, EvidenceConflict, Risk
     target_id = Column(String)
     challenge_question = Column(Text)
@@ -432,6 +442,7 @@ class HumanDecisionRecord(Base):
     __tablename__ = "human_decision_records"
     id = Column(Integer, primary_key=True, autoincrement=True)
     decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), unique=True)
+    recommendation_id = Column(Integer, ForeignKey("recommendations.id", ondelete="CASCADE"), nullable=True)
     ai_recommendation = Column(String)
     ai_confidence = Column(Integer)
     escalation_signals_json = Column(Text, nullable=True)
@@ -474,15 +485,42 @@ class Recommendation(Base):
     missing_information_json = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
+# DecisionIntegrityEnvelope Association Tables
+envelope_hard_conflicts = Table(
+    'envelope_hard_conflicts', Base.metadata,
+    Column('envelope_id', Integer, ForeignKey('decision_integrity_envelopes.id', ondelete="CASCADE"), primary_key=True),
+    Column('conflict_id', Integer, ForeignKey('evidence_conflicts.id', ondelete="CASCADE"), primary_key=True)
+)
+
+envelope_critical_assumptions = Table(
+    'envelope_critical_assumptions', Base.metadata,
+    Column('envelope_id', Integer, ForeignKey('decision_integrity_envelopes.id', ondelete="CASCADE"), primary_key=True),
+    Column('assumption_id', Integer, ForeignKey('assumptions.id', ondelete="CASCADE"), primary_key=True)
+)
+
+envelope_unresolved_signals = Table(
+    'envelope_unresolved_signals', Base.metadata,
+    Column('envelope_id', Integer, ForeignKey('decision_integrity_envelopes.id', ondelete="CASCADE"), primary_key=True),
+    Column('signal_id', Integer, ForeignKey('escalation_signals.id', ondelete="CASCADE"), primary_key=True)
+)
+
 class DecisionIntegrityEnvelope(Base):
     __tablename__ = "decision_integrity_envelopes"
     id = Column(Integer, primary_key=True, autoincrement=True)
     decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
     recommendation_id = Column(Integer, ForeignKey("recommendations.id", ondelete="CASCADE"), index=True)
     reasoning_run_id = Column(Integer, ForeignKey("reasoning_runs.id", ondelete="CASCADE"), index=True)
-    hard_conflicts_json = Column(Text) # array of robust objects referencing IDs
+    
+    # Relationally Strong Deterministic Associations
+    hard_conflicts = relationship("EvidenceConflict", secondary=envelope_hard_conflicts)
+    critical_assumptions = relationship("Assumption", secondary=envelope_critical_assumptions)
+    unresolved_signals = relationship("EscalationSignal", secondary=envelope_unresolved_signals)
+    
+    # COMPATIBILITY_PROJECTION_NOT_AUTHORITY
+    hard_conflicts_json = Column(Text) 
     critical_assumptions_json = Column(Text)
     unresolved_high_severity_signals_json = Column(Text)
+    
     mandatory_human_review = Column(Boolean, default=False)
     blocking_conditions_json = Column(Text)
     required_next_actions_json = Column(Text)
