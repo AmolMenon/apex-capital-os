@@ -17,7 +17,11 @@ def mock_require_decision_access(decision_id: int, db: Session = Depends(lambda:
     decision = db.query(models.Decision).filter(models.Decision.id == decision_id).first()
     return decision
 
-app.dependency_overrides[require_decision_access] = mock_require_decision_access
+@pytest.fixture(autouse=True)
+def override_dependencies():
+    app.dependency_overrides[require_decision_access] = mock_require_decision_access
+    yield
+    app.dependency_overrides.clear()
 
 @pytest.fixture(scope="module")
 def setup_db():

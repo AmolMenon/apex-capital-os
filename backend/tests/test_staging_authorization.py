@@ -25,11 +25,9 @@ def override_get_db():
     finally:
         db.close()
 
-app.dependency_overrides[get_db] = override_get_db
-client = TestClient(app)
-
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def setup_auth_db():
+    original_auth = settings.ENABLE_AUTH
     Base.metadata.create_all(bind=engine)
     db = TestingSessionLocal()
     
@@ -75,8 +73,10 @@ def setup_auth_db():
 
     db.close()
     Base.metadata.drop_all(bind=engine)
+    app.dependency_overrides.clear()
+    settings.ENABLE_AUTH = original_auth
 
-def get_token(username: str):
+def get_token(client: TestClient, username: str):
     response = client.post(
         "/api/v1/auth/login",
         data={"username": username, "password": "test"}
@@ -84,6 +84,8 @@ def get_token(username: str):
     return response.json()["access_token"]
 
 def test_unauthenticated_rejected(setup_auth_db):
+    app.dependency_overrides[get_db] = override_get_db
+    client = TestClient(app)
     settings.ENABLE_AUTH = True
     dec_a = setup_auth_db["dec_a"]
     
@@ -92,8 +94,10 @@ def test_unauthenticated_rejected(setup_auth_db):
     assert response.status_code == 401
 
 def test_cross_workspace_denied(setup_auth_db):
+    app.dependency_overrides[get_db] = override_get_db
+    client = TestClient(app)
     settings.ENABLE_AUTH = True
-    token_a = get_token("usera@alpha.com")
+    token_a = get_token(client, "usera@alpha.com")
     headers = {"Authorization": f"Bearer {token_a}"}
     
     dec_b = setup_auth_db["dec_b"]
@@ -123,8 +127,10 @@ def test_cross_workspace_denied(setup_auth_db):
     assert response.status_code == 403 or response.status_code == 404
 
 def test_workspace_member_allowed(setup_auth_db):
+    app.dependency_overrides[get_db] = override_get_db
+    client = TestClient(app)
     settings.ENABLE_AUTH = True
-    token_a = get_token("usera@alpha.com")
+    token_a = get_token(client, "usera@alpha.com")
     headers = {"Authorization": f"Bearer {token_a}"}
     
     dec_a = setup_auth_db["dec_a"]
@@ -134,8 +140,10 @@ def test_workspace_member_allowed(setup_auth_db):
     assert response.status_code == 200
 
 def test_deal_list_scoping(setup_auth_db):
+    app.dependency_overrides[get_db] = override_get_db
+    client = TestClient(app)
     settings.ENABLE_AUTH = True
-    token_a = get_token("usera@alpha.com")
+    token_a = get_token(client, "usera@alpha.com")
     headers = {"Authorization": f"Bearer {token_a}"}
     
     dec_a = setup_auth_db["dec_a"]
