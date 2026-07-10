@@ -68,5 +68,18 @@ class Settings(BaseSettings):
         if self.DATABASE_URL and self.DATABASE_URL.startswith("postgres://"):
             self.DATABASE_URL = self.DATABASE_URL.replace("postgres://", "postgresql://", 1)
         return self
+        
+    @model_validator(mode='after')
+    def validate_staging_production(self) -> 'Settings':
+        if self.APP_ENV in ["staging", "production"]:
+            if not self.ENABLE_AUTH:
+                raise ValueError("ENABLE_AUTH must be True in staging/production")
+            if not self.ENABLE_WORKSPACES:
+                raise ValueError("ENABLE_WORKSPACES must be True in staging/production")
+            if self.CORS_ORIGINS == "*":
+                raise ValueError("CORS_ORIGINS cannot be '*' in staging/production")
+            if self.JWT_SECRET_KEY == "change_me":
+                raise ValueError("JWT_SECRET_KEY must be changed in staging/production")
+        return self
 
 settings = Settings()

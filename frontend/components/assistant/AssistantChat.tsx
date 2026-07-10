@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { api } from "@/lib/api";
-import { Send, Bot, User, AlertCircle, ShieldAlert, FileText, Crosshair, ChevronRight, MessageSquare, AlertTriangle, CheckCircle } from "lucide-react";
+import { Send, Bot, User, AlertCircle, ShieldAlert, FileText, Crosshair, ChevronRight, MessageSquare, AlertTriangle, CheckCircle, Sparkles } from "lucide-react";
 
 export function AssistantChat({ dealId, crossDeal = false, fullHeight = false }: { dealId?: string | number, crossDeal?: boolean, fullHeight?: boolean }) {
   const [messages, setMessages] = useState<any[]>([]);

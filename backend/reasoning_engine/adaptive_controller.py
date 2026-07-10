@@ -41,9 +41,29 @@ class AdaptiveReasoningController:
         self.engine = UniversalReasoningEngine(db, llm_provider=self.llm_provider)
 
     def evaluate_decision_adaptive(self, decision_id: int):
+        import hashlib
+        from sqlalchemy.exc import IntegrityError
+        from fastapi import HTTPException
+        
         decision = crud.get_decision(self.db, decision_id)
         domain_pack = crud.get_domain_pack(self.db, decision.domain_pack_id)
         subject = decision.subject
+
+        # Check if currently running to fail fast
+        existing_running = self.db.query(ReasoningRun).filter(
+            ReasoningRun.decision_id == decision.id,
+            ReasoningRun.status == "Running"
+        ).first()
+        if existing_running:
+            raise ValueError("Evaluation is already running for this decision.")
+
+        # Compute material state fingerprint
+        claims = self.db.query(Claim).filter(Claim.decision_id == decision.id).all()
+        assumptions = self.db.query(Assumption).filter(Assumption.decision_id == decision.id).all()
+        conflicts = self.db.query(EvidenceConflict).filter(EvidenceConflict.decision_id == decision.id).all()
+        
+        state_str = f"d:{decision.id}|c:{len(claims)}|a:{len(assumptions)}|cf:{len(conflicts)}"
+        run_key = hashlib.md5(state_str.encode()).hexdigest()
 
         # Create or fetch run
         run = ReasoningRun(
@@ -52,10 +72,18 @@ class AdaptiveReasoningController:
             provider=settings.APEX_REASONING_PROVIDER,
             model=settings.APEX_REASONING_MODEL,
             execution_topology="adaptive",
-            status="Running"
+            status="Running",
+            run_key=run_key
         )
         self.db.add(run)
-        self.db.commit()
+        
+        try:
+            self.db.commit()
+        except IntegrityError:
+            self.db.rollback()
+            # If we hit this, another request with the exact same material state just started a run
+            # or already finished a run
+            raise ValueError("Evaluation is already running or completed for this specific state.")
 
         run_id = run.evaluation_run_id or f"run_{run.id}"
         run.evaluation_run_id = run_id
@@ -112,24 +140,76 @@ class AdaptiveReasoningController:
             for sig in signals:
                 if sig.recommended_challenge_type == "HUMAN_REVIEW_REQUIRED":
                     continue
+                    
+                import hashlib
+                from db.models import AssumptionClaimLink
+                fingerprint_str = f"dec_{decision.id}:{sig.signal_type}:{sig.id}"
+                
+                if sig.signal_type == "EXPLICIT_EVIDENCE_CONFLICT" and sig.evidence_conflict_id:
+                    c = next((c for c in conflicts if c.id == sig.evidence_conflict_id), None)
+                    if c:
+                        fingerprint_str = f"conflict_{c.id}_st_{c.status}"
+                elif sig.signal_type == "CRITICAL_ASSUMPTION" and sig.assumption_id:
+                    a = next((a for a in assumptions if a.id == sig.assumption_id), None)
+                    if a:
+                        links = self.db.query(AssumptionClaimLink).filter_by(assumption_id=a.id).count()
+                        fingerprint_str = f"assumption_{a.id}_st_{a.status}_links_{links}"
+                
+                trigger_fingerprint = hashlib.md5(fingerprint_str.encode()).hexdigest()
+                
+                existing_task = self.db.query(ChallengeTask).filter_by(
+                    decision_id=decision.id,
+                    trigger_fingerprint=trigger_fingerprint
+                ).first()
+                
+                if existing_task and existing_task.status in ["PENDING", "COMPLETED"]:
+                    continue
+                    
                 # Create task
                 task = ChallengeTask(
                     decision_id=decision.id,
                     evaluation_run_id=run_id,
                     escalation_signal_id=sig.id,
                     target_type=sig.signal_type,
-                    target_id=str(sig.id),
+                    target_id=str(sig.id) if not sig.evidence_conflict_id and not sig.assumption_id else str(sig.evidence_conflict_id or sig.assumption_id),
                     challenge_question=f"Evaluate this signal: {sig.reason}",
                     why_material="Material because it triggered an escalation rule.",
-                    challenge_mode=sig.recommended_challenge_type
+                    challenge_mode=sig.recommended_challenge_type,
+                    trigger_fingerprint=trigger_fingerprint
                 )
-                self.db.add(task)
-                self.db.flush()
+                
+                try:
+                    with self.db.begin_nested():
+                        self.db.add(task)
+                        self.db.flush()
+                except IntegrityError:
+                    continue
                 
                 GraphService.link_escalation_to_challenge(self.db, decision.id, sig, task)
                 
                 t_chal = time.time()
-                relevant_context = {"conflicts": [c.id for c in conflicts]} # Stub
+                
+                relevant_context = {}
+                if sig.signal_type == "EXPLICIT_EVIDENCE_CONFLICT" and sig.evidence_conflict_id:
+                    c = next((c for c in conflicts if c.id == sig.evidence_conflict_id), None)
+                    if c:
+                        claim_a = next((cl for cl in claims if cl.id == c.claim_a_id), None)
+                        claim_b = next((cl for cl in claims if cl.id == c.claim_b_id), None)
+                        relevant_context["conflict"] = {
+                            "id": c.id,
+                            "relationship_type": c.relationship_type,
+                            "claim_a_text": claim_a.statement if claim_a else "Unknown",
+                            "claim_b_text": claim_b.statement if claim_b else "Unknown",
+                            "status": c.status
+                        }
+                elif sig.signal_type == "CRITICAL_ASSUMPTION" and sig.assumption_id:
+                    a = next((a for a in assumptions if a.id == sig.assumption_id), None)
+                    if a:
+                        relevant_context["assumption"] = {
+                            "id": a.id,
+                            "statement": a.statement,
+                            "status": a.status
+                        }
                 findings, c_tokens = TargetedChallengeEngine.execute_challenge(self.db, task, perspective, relevant_context, llm_provider=self.llm_provider)
                 _track_cost(c_tokens, "challenge")
                 
@@ -156,8 +236,12 @@ class AdaptiveReasoningController:
                     conditions_for_reversal=json.dumps(findings.get("conditions_for_reversal", [])),
                     recommendation_impact=findings.get("recommendation_impact")
                 )
-                self.db.add(finding_obj)
-                self.db.flush()
+                try:
+                    with self.db.begin_nested():
+                        self.db.add(finding_obj)
+                        self.db.flush()
+                except IntegrityError:
+                    pass
                 
                 GraphService.persist_challenge_finding_chain(self.db, decision.id, task, finding_obj)
                 

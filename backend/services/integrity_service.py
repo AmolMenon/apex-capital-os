@@ -122,14 +122,17 @@ class DecisionIntegrityService:
         
         # Link envelope in graph
         env_node_id = GraphService.upsert_node(db, decision_id, "DecisionIntegrityEnvelope", envelope.id, f"Integrity: {envelope.integrity_status}")
-        rec_node_id = GraphService.generate_node_id("Recommendation", recommendation_id)
         
-        GraphService.add_validated_edge(db, decision_id, env_node_id, rec_node_id, "INTEGRITY_ENVELOPE_GOVERNS_RECOMMENDATION")
+        rec_node_id = None
+        if recommendation_id:
+            rec_node_id = GraphService.generate_node_id("Recommendation", recommendation_id)
+            GraphService.add_validated_edge(db, decision_id, env_node_id, rec_node_id, "INTEGRITY_ENVELOPE_GOVERNS_RECOMMENDATION")
         
         if policy_result["integrity_status"] in ["BLOCKED_PENDING_REVIEW", "CRITICAL_REVIEW_REQUIRED"]:
             for hc in hard_conflicts:
                 GraphService.add_validated_edge(db, decision_id, GraphService.generate_node_id("EvidenceConflict", hc["conflict_id"]), env_node_id, "EVIDENCE_CONFLICT_REQUIRES_REVIEW")
-                GraphService.add_validated_edge(db, decision_id, rec_node_id, GraphService.generate_node_id("EvidenceConflict", hc["conflict_id"]), "RECOMMENDATION_BLOCKED_BY_CONFLICT")
+                if rec_node_id:
+                    GraphService.add_validated_edge(db, decision_id, rec_node_id, GraphService.generate_node_id("EvidenceConflict", hc["conflict_id"]), "RECOMMENDATION_BLOCKED_BY_CONFLICT")
             
             for ca in critical_assumptions:
                 GraphService.add_validated_edge(db, decision_id, GraphService.generate_node_id("Assumption", ca["assumption_id"]), env_node_id, "ASSUMPTION_REQUIRES_VALIDATION")

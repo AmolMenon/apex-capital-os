@@ -2,19 +2,20 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutDashboard, BrainCircuit, Network, BookOpen, Settings } from "lucide-react"
+import { LayoutDashboard, BookOpen, Settings, Briefcase, PieChart } from "lucide-react"
 
 const NAV_ITEMS = [
-  { name: "Pipeline", href: "/", icon: LayoutDashboard },
-  { name: "Monitoring", href: "/monitoring", icon: BrainCircuit },
+  { name: "Home", href: "/", icon: LayoutDashboard },
+  { name: "Pipeline", href: "/deals", icon: Briefcase },
   { name: "Decision Memory", href: "/memory", icon: BookOpen },
+  { name: "Portfolio", href: "/portfolio", icon: PieChart },
 ]
 
-export function WorkspaceNav() {
+export function WorkspaceNav({ mobile }: { mobile?: boolean } = {}) {
   const pathname = usePathname()
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-slate-900 border-r border-white/10 flex flex-col pt-16 z-10 backdrop-blur-xl bg-opacity-80">
+    <aside className={`flex flex-col bg-slate-900 border-r border-white/10 z-10 ${mobile ? "w-full h-full pt-4" : "fixed left-0 top-0 h-screen w-64 pt-16 backdrop-blur-xl bg-opacity-80"}`}>
       <div className="px-6 pb-6">
         <h2 className="text-white/50 text-xs font-semibold tracking-wider uppercase mb-4">Workspace</h2>
         <nav className="space-y-1">

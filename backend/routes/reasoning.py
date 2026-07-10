@@ -2,8 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import Any
 from db.database import get_db
-from auth.dependencies import get_current_active_user
+from auth.dependencies import get_current_active_user, require_decision_access
 import database.crud as crud
+from db.models import Decision
 from reasoning_engine.engine import UniversalReasoningEngine
 
 router = APIRouter()
@@ -12,11 +13,8 @@ router = APIRouter()
 def evaluate_decision(
     decision_id: int,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
-    decision = crud.get_decision(db, decision_id)
-    if not decision:
-        raise HTTPException(status_code=404, detail="Decision not found")
         
     engine = UniversalReasoningEngine(db=db)
     try:
@@ -29,12 +27,9 @@ def evaluate_decision(
 def evaluate_decision_adaptive(
     decision_id: int,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
     from reasoning_engine.adaptive_controller import AdaptiveReasoningController
-    decision = crud.get_decision(db, decision_id)
-    if not decision:
-        raise HTTPException(status_code=404, detail="Decision not found")
         
     controller = AdaptiveReasoningController(db=db)
     try:
@@ -48,7 +43,7 @@ def evaluate_decision_adaptive(
 def get_evaluation(
     decision_id: int,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
     import db.models as db_models
     import json
@@ -64,13 +59,31 @@ def get_evaluation(
         
     return json.loads(run.output_json)
 
+@router.get("/{decision_id}/status")
+def get_run_status(
+    decision_id: int,
+    db: Session = Depends(get_db),
+    decision: Decision = Depends(require_decision_access)
+):
+    import db.models as db_models
+    
+    # Get the latest reasoning run
+    run = db.query(db_models.ReasoningRun).filter(
+        db_models.ReasoningRun.decision_id == decision_id
+    ).order_by(db_models.ReasoningRun.start_time.desc()).first()
+    
+    if not run:
+        return {"status": "Not Started"}
+        
+    return {"status": run.status, "run_id": run.id}
+
 @router.get("/{decision_id}/adaptive-trace/{object_type}/{object_id}")
 def get_adaptive_trace(
     decision_id: int,
     object_type: str,
     object_id: str,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
     from services.graph_service import GraphService
     node_id = f"{object_type.lower()}:{object_id}"

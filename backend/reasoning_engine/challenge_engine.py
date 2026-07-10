@@ -35,8 +35,18 @@ class TargetedChallengeEngine:
                 "original_position": {"type": "string"},
                 "challenge_findings": {"type": "string"},
                 "new_evidence_relationships": {"type": "array", "items": {"type": "string"}},
-                "assumption_status_change": {"type": "string"},
-                "risk_status_change": {"type": "string"},
+                "resolution_effect": {
+                    "type": "string",
+                    "enum": ["SUPPORTS_CLAIM_A", "SUPPORTS_CLAIM_B", "RECONCILES_BOTH", "INSUFFICIENT_EVIDENCE", "CONFLICT_REMAINS"]
+                },
+                "assumption_effect": {
+                    "type": "string",
+                    "enum": ["SUPPORTS", "WEAKENS", "INVALIDATES", "NO_CHANGE"]
+                },
+                "strength": {
+                    "type": "string",
+                    "enum": ["LIMITED", "MATERIAL", "DECISION_CRITICAL"]
+                },
                 "position_before": {"type": "string"},
                 "position_after": {"type": "string"},
                 "confidence_before": {"type": "integer"},
@@ -53,9 +63,37 @@ class TargetedChallengeEngine:
         provider = llm_provider or LLMProvider()
         response, tokens = provider.generate_structured(system_prompt, user_prompt, schema)
         
+        from db.models import ChallengeFinding
+        from services.orchestrator_service import InvestmentCaseOrchestrator
+        
         # Save to task
         challenge_task.challenge_findings_json = json.dumps(response)
         challenge_task.status = "COMPLETED"
+        
+        finding = ChallengeFinding(
+            decision_id=challenge_task.decision_id,
+            challenge_task_id=challenge_task.id,
+            position_before=response.get("position_before"),
+            position_after=response.get("position_after"),
+            resolution_effect=response.get("resolution_effect"),
+            assumption_effect=response.get("assumption_effect"),
+            strength=response.get("strength"),
+            recommendation_impact=response.get("recommended_action")
+        )
+        from sqlalchemy.exc import IntegrityError
+        
+        try:
+            with db.begin_nested():
+                db.add(finding)
+                db.flush()
+        except IntegrityError:
+            db.rollback()
+            # The finding already exists, fetch it
+            finding = db.query(ChallengeFinding).filter_by(challenge_task_id=challenge_task.id).first()
+
         db.commit()
+        db.refresh(finding)
+        
+        InvestmentCaseOrchestrator.apply_finding(db, finding.id)
         
         return response, tokens

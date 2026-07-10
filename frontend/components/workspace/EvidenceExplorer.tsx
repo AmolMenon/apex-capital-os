@@ -21,12 +21,9 @@ export function EvidenceExplorer({ decisionId }: { decisionId: string }) {
         api.get(`/api/v1/decisions/${decisionId}/claims`).catch(() => [])
       ])
       
-      // Mock documents for the demo
-      setEvidence([
-        { title: "Nexus Series A Pitch Deck.pdf", type: "Management Presentation", status: "Extracted" },
-        { title: "Founder Update Email - Q3.txt", type: "Internal Communication", status: "Extracted" },
-        { title: "Nexus Financials YTD.csv", type: "Financial Data", status: "Extracted" }
-      ])
+      if (evData) {
+        setEvidence(evData)
+      }
       
       if (clData) {
         setClaims(clData)
@@ -122,16 +119,9 @@ export function EvidenceExplorer({ decisionId }: { decisionId: string }) {
             </div>
           ))}
           
-          <div className="mt-8 pt-6 border-t border-slate-800/50">
-            <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Missing Information</h3>
-            <div className="bg-rose-950/20 border border-rose-900/30 p-3 rounded-lg flex items-start">
-              <FileQuestion className="w-4 h-4 text-rose-400 mr-3 mt-0.5" />
-              <div>
-                <h4 className="text-sm font-medium text-rose-300">Customer Churn Data</h4>
-                <p className="text-xs text-rose-400/70 mt-1">Not found in any provided document.</p>
-              </div>
-            </div>
-          </div>
+          {evidence.length === 0 && (
+             <div className="text-sm text-muted-foreground italic p-4 bg-muted/10 rounded-lg border">No source documents uploaded.</div>
+          )}
         </div>
 
         {/* Evidence Ledger */}
@@ -176,56 +166,20 @@ export function EvidenceExplorer({ decisionId }: { decisionId: string }) {
             ))}
 
             {activeTab === 'conflicts' && (
-              <div className="bg-rose-950/10 border border-rose-900/30 p-6 rounded-xl flex flex-col shadow-sm">
-                <div className="flex items-center justify-between border-b border-rose-900/30 pb-4 mb-4">
-                  <div className="flex items-center text-rose-400">
-                    <AlertCircle className="w-5 h-5 mr-2" />
-                    <h3 className="font-semibold tracking-wide uppercase text-sm">Material Evidence Conflict</h3>
-                  </div>
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-rose-500 bg-rose-500/10 px-2 py-1 rounded">High Severity</span>
-                </div>
-                
-                <div className="flex flex-col md:flex-row gap-6 relative">
-                  <div className="flex-1 bg-slate-900/60 border border-slate-700/50 p-5 rounded-lg flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-between items-start mb-3">
-                        <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Claim A</span>
-                        <span className="text-[10px] bg-blue-500/10 text-blue-400 px-1.5 py-0.5 rounded uppercase font-semibold">Management Claim</span>
+              <div className="space-y-4">
+                {claims.filter(c => c.category === 'conflict' || c.is_conflict).length > 0 ? claims.filter(c => c.category === 'conflict' || c.is_conflict).map((conflict, idx) => (
+                  <div key={idx} className="bg-rose-50 border border-rose-200 p-6 rounded-xl flex flex-col shadow-sm">
+                    <div className="flex items-center justify-between border-b border-rose-200 pb-4 mb-4">
+                      <div className="flex items-center text-rose-800">
+                        <AlertCircle className="w-5 h-5 mr-2" />
+                        <h3 className="font-bold tracking-wide uppercase text-sm">Evidence Conflict</h3>
                       </div>
-                      <p className="text-slate-200 text-sm font-medium leading-relaxed">"{claims.find(c => c.id === 1)?.statement || 'Claim data unavailable.'}"</p>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-slate-700/50 flex items-center text-xs text-slate-400">
-                      <FileText className="w-3.5 h-3.5 mr-1.5" />
-                      Source: Nexus Series A Pitch Deck.pdf (Slide 4)
-                    </div>
+                    <p className="text-foreground text-sm font-medium leading-relaxed">"{conflict.statement}"</p>
                   </div>
-                  
-                  <div className="hidden md:flex flex-col justify-center items-center px-2 z-10">
-                    <div className="bg-rose-500/20 text-rose-400 text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest border border-rose-500/30">Versus</div>
-                  </div>
-                  
-                  <div className="flex-1 bg-slate-900/60 border border-slate-700/50 p-5 rounded-lg flex flex-col justify-between">
-                    <div>
-                      <div className="flex justify-between items-start mb-3">
-                        <span className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Claim B</span>
-                        <span className="text-[10px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded uppercase font-semibold">Financial Evidence</span>
-                      </div>
-                      <p className="text-slate-200 text-sm font-medium leading-relaxed">"{claims.find(c => c.id === 2)?.statement || 'Claim data unavailable.'}"</p>
-                    </div>
-                    <div className="mt-4 pt-4 border-t border-slate-700/50 flex items-center text-xs text-slate-400">
-                      <FileText className="w-3.5 h-3.5 mr-1.5" />
-                      Source: Nexus Financials YTD.csv (Row 42)
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-6 bg-slate-900/40 p-4 rounded-lg border border-slate-800">
-                  <h4 className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold mb-2">Investment Implication</h4>
-                  <p className="text-sm text-slate-300">
-                    The difference in ARR definition materially alters the valuation multiple and growth trajectory. This conflict triggers an automatic <strong>Challenge Finding</strong> and blocks the recommendation until explicitly overridden by the IC.
-                  </p>
-                </div>
-                
+                )) : (
+                  <p className="text-muted-foreground italic bg-muted/20 p-6 rounded-xl border border-dashed text-center">No conflicts detected in the current evidence base.</p>
+                )}
               </div>
             )}
 

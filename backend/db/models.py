@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, Text, ForeignKey, DateTime, Boolean, Enum, Table
+from sqlalchemy import Column, Integer, String, Float, Text, ForeignKey, DateTime, Boolean, Enum, Table, UniqueConstraint
 from sqlalchemy.orm import relationship
 from datetime import datetime
 import enum
@@ -72,6 +72,7 @@ class DecisionSubject(Base):
 class Decision(Base):
     __tablename__ = "decisions"
     id = Column(Integer, primary_key=True, index=True)
+    workspace_id = Column(Integer, ForeignKey("workspaces.id", ondelete="CASCADE"), index=True, nullable=True)
     subject_id = Column(Integer, ForeignKey("decision_subjects.id", ondelete="CASCADE"), index=True)
     domain_pack_id = Column(String, ForeignKey("domain_packs.id", ondelete="SET NULL"), nullable=True)
     title = Column(String, index=True)
@@ -160,6 +161,14 @@ class Workspace(Base):
     name = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
 
+class WorkspaceMembership(Base):
+    __tablename__ = "workspace_memberships"
+    id = Column(Integer, primary_key=True, index=True)
+    workspace_id = Column(Integer, ForeignKey("workspaces.id", ondelete="CASCADE"), index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    role = Column(String, default="Member")
+    created_at = Column(DateTime, default=datetime.utcnow)
+
 class PlatformSourceModel(Base):
     __tablename__ = "platform_sources"
     id = Column(String, primary_key=True, index=True)
@@ -219,6 +228,15 @@ class Assumption(Base):
     accuracy_score = Column(Float, nullable=True) # populated after postmortem
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+class AssumptionClaimLink(Base):
+    __tablename__ = "assumption_claim_links"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    assumption_id = Column(Integer, ForeignKey("assumptions.id", ondelete="CASCADE"), index=True)
+    claim_id = Column(Integer, ForeignKey("claims.id", ondelete="CASCADE"), index=True)
+    relationship = Column(String) # SUPPORTS, CONTRADICTS, CONTEXT
+    provenance_notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
 class Prediction(Base):
     __tablename__ = "predictions"
@@ -316,6 +334,7 @@ class ReasoningRun(Base):
     grader_failure_reason = Column(String, nullable=True)
     decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
     evaluation_run_id = Column(String, nullable=True, index=True)
+    run_key = Column(String, unique=True, index=True, nullable=True) # Deterministic logical evaluation execution identity
     case_id = Column(String, nullable=True)
     domain_pack_id = Column(String, nullable=True)
     execution_mode = Column(String) # test | live
@@ -376,7 +395,9 @@ class EvidenceConflict(Base):
     claim_b_id = Column(Integer, ForeignKey("claims.id", ondelete="CASCADE"))
     relationship_type = Column(String)
     confidence = Column(Integer, nullable=True)
-    resolution_status = Column(String, nullable=True)
+    status = Column(String, default="OPEN") # OPEN, INVESTIGATING, RESOLVED, CONFIRMED_CONTRADICTION
+    origin = Column(String, default="SYSTEM_DETECTED") # SYSTEM_DETECTED, ANALYST_LOGGED
+    resolution_status = Column(String, nullable=True) # Deprecated loosely in favor of status, but keep for compat
     resolution_rationale = Column(Text, nullable=True)
 
 class ModelTelemetry(Base):
@@ -419,6 +440,7 @@ class EscalationSignal(Base):
 
 class ChallengeTask(Base):
     __tablename__ = "challenge_tasks"
+    __table_args__ = (UniqueConstraint('decision_id', 'trigger_fingerprint', name='uq_decision_fingerprint'),)
     id = Column(Integer, primary_key=True, autoincrement=True)
     decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
     evaluation_run_id = Column(String, index=True)
@@ -434,6 +456,7 @@ class ChallengeTask(Base):
     contradicting_evidence_ids_json = Column(Text, nullable=True)
     missing_information = Column(Text, nullable=True)
     challenge_mode = Column(String) # FALSIFICATION, CONTRADICTION_RESOLUTION, etc.
+    trigger_fingerprint = Column(String, nullable=True, index=True) # Deterministic deduplication key
     status = Column(String, default="PENDING")
     challenge_findings_json = Column(Text, nullable=True) # Stores the LLM challenge response
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -460,7 +483,7 @@ class ChallengeFinding(Base):
     __tablename__ = "challenge_findings"
     id = Column(Integer, primary_key=True, autoincrement=True)
     decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
-    challenge_task_id = Column(Integer, ForeignKey("challenge_tasks.id", ondelete="CASCADE"), index=True)
+    challenge_task_id = Column(Integer, ForeignKey("challenge_tasks.id", ondelete="CASCADE"), index=True, unique=True)
     position_changed = Column(Boolean, default=False)
     position_before = Column(String, nullable=True)
     position_after = Column(String, nullable=True)
@@ -469,6 +492,9 @@ class ChallengeFinding(Base):
     new_evidence_relationships_json = Column(Text, nullable=True)
     unresolved_questions = Column(Text, nullable=True)
     conditions_for_reversal = Column(Text, nullable=True)
+    resolution_effect = Column(String, nullable=True) # SUPPORTS_CLAIM_A, SUPPORTS_CLAIM_B, RECONCILES_BOTH, INSUFFICIENT_EVIDENCE, CONFLICT_REMAINS
+    assumption_effect = Column(String, nullable=True) # SUPPORTS, WEAKENS, INVALIDATES, NO_CHANGE
+    strength = Column(String, nullable=True) # LIMITED, MATERIAL, DECISION_CRITICAL
     recommendation_impact = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 

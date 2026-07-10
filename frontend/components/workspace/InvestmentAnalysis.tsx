@@ -105,11 +105,11 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
       )}
 
       {evaluation ? (
-        <div className="bg-slate-900 border border-slate-800 rounded-xl mt-6 font-sans">
+        <div className="bg-card border rounded-xl mt-6 font-sans">
           
           {/* Memo Header */}
-          <div className="p-8 border-b border-slate-800 bg-slate-900/80">
-            <h1 className="text-3xl font-light text-slate-100 mb-6">Investment Memorandum</h1>
+          <div className="p-8 border-b bg-muted/20">
+            <h1 className="text-3xl font-light text-foreground mb-6">Investment Memorandum</h1>
             <div className="flex flex-wrap gap-y-4 gap-x-12">
               <div>
                 <span className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold block mb-1">Recommendation</span>
@@ -122,10 +122,10 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
                 <span className="text-lg font-bold text-slate-200">{evaluation.synthesis?.confidence || 0}%</span>
               </div>
               <div>
-                <span className="text-[10px] uppercase tracking-widest text-slate-500 font-semibold block mb-1">Prepared By</span>
-                <span className="text-lg font-bold text-slate-200 flex items-center">
-                  <Brain className="w-4 h-4 mr-2 text-blue-400" />
-                  Apex Intelligence
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-bold block mb-1">Prepared By</span>
+                <span className="text-lg font-bold text-foreground flex items-center">
+                  <Brain className="w-4 h-4 mr-2 text-primary" />
+                  Analysis Engine
                 </span>
               </div>
             </div>
@@ -156,15 +156,15 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
             </section>
 
             {/* Evidence Intelligence */}
-            <section className="space-y-8 bg-slate-950 p-6 rounded-xl border border-slate-800/50">
-              <h2 className="text-lg font-medium text-slate-200 border-b border-slate-800 pb-3">Evidence Intelligence</h2>
+            <section className="space-y-8 bg-muted/5 p-6 rounded-xl border border-dashed">
+              <h2 className="text-lg font-bold text-foreground border-b pb-3">Evidence Intelligence</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Critical Assumptions</h3>
                   <ul className="space-y-2">
                     {evaluation.synthesis?.unverified_assumptions?.map((assm: string, i: number) => (
-                      <li key={i} className="text-sm text-slate-300 flex items-start bg-slate-900/50 p-3 rounded border border-slate-800">
+                      <li key={i} className="text-sm text-foreground flex items-start bg-amber-50/50 p-3 rounded border border-amber-100">
                         <span className="text-amber-500 mr-2 font-bold">?</span> {assm}
                       </li>
                     ))}
@@ -174,8 +174,8 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
                   <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">Missing Information</h3>
                   <ul className="space-y-2">
                     {evaluation.synthesis?.missing_information?.map((miss: string, i: number) => (
-                      <li key={i} className="text-sm text-slate-300 flex items-start bg-slate-900/50 p-3 rounded border border-slate-800">
-                        <FileSearch className="w-4 h-4 text-slate-500 mr-2 mt-0.5" /> {miss}
+                      <li key={i} className="text-sm text-foreground flex items-start bg-muted/10 p-3 rounded border">
+                        <FileSearch className="w-4 h-4 text-muted-foreground mr-2 mt-0.5" /> {miss}
                       </li>
                     ))}
                   </ul>
@@ -187,9 +187,9 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
                   <h3 className="text-xs font-semibold uppercase tracking-wider text-rose-500 mb-3">Unresolved Evidence Conflicts</h3>
                   <div className="space-y-3">
                     {evaluation.synthesis.unresolved_conflicts.map((conflict: string, i: number) => (
-                      <div key={i} className="bg-rose-950/20 p-4 rounded-lg border border-rose-900/50 flex items-start">
+                      <div key={i} className="bg-rose-50/50 p-4 rounded-lg border border-rose-100 flex items-start">
                         <AlertTriangle className="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" />
-                        <p className="text-sm text-rose-200 leading-relaxed">{conflict}</p>
+                        <p className="text-sm text-rose-900 leading-relaxed">{conflict}</p>
                       </div>
                     ))}
                   </div>
@@ -203,28 +203,17 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
                 <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4 border-b border-slate-800 pb-2">Open Diligence Questions & Findings</h3>
                 <div className="grid grid-cols-1 gap-4">
                   {evaluation.challenge_findings.map((ch: any, i: number) => (
-                    <div key={i} className="bg-slate-900/60 border border-slate-700/50 p-5 rounded-lg flex flex-col md:flex-row gap-4 justify-between items-start">
+                    <div key={i} className="bg-muted/10 border p-5 rounded-lg flex flex-col md:flex-row gap-4 justify-between items-start">
                       <div className="flex-1 space-y-3">
                         <div>
-                           <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1">Trigger</p>
-                           <p className="text-rose-400 text-sm font-medium">Material Evidence Conflict Escalated</p>
+                           <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-1">Trigger</p>
+                           <p className="text-rose-600 text-sm font-medium">Material Evidence Conflict Escalated</p>
                         </div>
                         <div>
-                           <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1">Review Question</p>
-                           <p className="text-slate-200 text-sm">Can the $8.0M ARR management claim be reconciled with the $5.4M supported recurring revenue figure?</p>
-                        </div>
-                        <div>
-                           <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1">Finding</p>
-                           <p className="text-slate-300 text-sm italic">"{ch.challenge_findings}"</p>
-                        </div>
-                        <div>
-                           <p className="text-[10px] text-slate-500 uppercase tracking-wider font-bold mb-1">Decision Impact</p>
-                           <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2 py-1 rounded">{ch.assumption_status_change || ch.position_after || "Recommendation Blocked"}</span>
+                           <p className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold mb-1">Finding</p>
+                           <p className="text-foreground text-sm italic">"{ch.challenge_findings}"</p>
                         </div>
                       </div>
-                      <button onClick={() => fetchTrace("ChallengeFinding", ch.finding_id)} className="text-xs flex items-center text-blue-400 hover:text-blue-300 whitespace-nowrap bg-blue-900/20 px-3 py-1.5 rounded border border-blue-800/50 transition-colors">
-                        <Network className="w-3.5 h-3.5 mr-1.5" /> Trace Finding
-                      </button>
                     </div>
                   ))}
                 </div>
@@ -297,10 +286,10 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
                     };
                     const title = titleMap[agent.agent_name] || `${agent.agent_name} Assessment`;
                     return (
-                      <div key={idx} className="bg-slate-900/40 border border-slate-800/50 rounded-xl p-5 hover:border-slate-700 transition-colors">
+                      <div key={idx} className="bg-muted/10 border rounded-xl p-5 hover:border-border transition-colors">
                         <div className="flex items-center justify-between mb-4">
-                          <h4 className="text-sm font-medium text-slate-200">{title}</h4>
-                          <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded ${agent.stance === 'Positive' ? 'bg-emerald-500/10 text-emerald-400' : agent.stance === 'Negative' ? 'bg-rose-500/10 text-rose-400' : 'bg-amber-500/10 text-amber-400'}`}>
+                          <h4 className="text-sm font-bold text-foreground">{title}</h4>
+                          <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded ${agent.stance === 'Positive' ? 'bg-emerald-50 text-emerald-700' : agent.stance === 'Negative' ? 'bg-rose-50 text-rose-700' : 'bg-amber-50 text-amber-700'}`}>
                             {agent.stance}
                           </span>
                         </div>
@@ -321,9 +310,8 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
               </section>
             )}
 
-            {/* Integrity Check */}
-            <section className="mt-12 pt-8 border-t border-slate-800">
-              <div className={`p-6 rounded-xl border ${evaluation.integrity_envelope?.integrity_status === 'BLOCKED_PENDING_REVIEW' ? 'bg-rose-950/20 border-rose-900/50' : 'bg-emerald-950/20 border-emerald-900/50'} flex flex-col md:flex-row gap-6 items-center justify-between`}>
+            <section className="mt-12 pt-8 border-t">
+              <div className={`p-6 rounded-xl border ${evaluation.integrity_envelope?.integrity_status === 'BLOCKED_PENDING_REVIEW' ? 'bg-rose-50 border-rose-200' : 'bg-emerald-50 border-emerald-200'} flex flex-col md:flex-row gap-6 items-center justify-between`}>
                 <div className="flex items-center">
                   {evaluation.integrity_envelope?.integrity_status === 'BLOCKED_PENDING_REVIEW' ? (
                     <AlertTriangle className="w-8 h-8 text-rose-500 mr-4" />
@@ -353,10 +341,10 @@ export function InvestmentAnalysis({ decisionId }: { decisionId: string }) {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center py-24 border border-slate-800/50 border-dashed rounded-xl bg-slate-900/20">
-          <Search className="w-12 h-12 text-slate-700 mb-4" />
-          <p className="text-slate-500 font-medium">No diligence analysis generated yet.</p>
-          <p className="text-slate-600 text-sm mt-1">Click "Run AI Diligence" to analyze evidence and form a thesis.</p>
+        <div className="flex flex-col items-center justify-center py-24 border border-dashed rounded-xl bg-muted/20">
+          <Search className="w-12 h-12 text-muted-foreground mb-4 opacity-50" />
+          <p className="text-foreground font-medium">No diligence analysis generated yet.</p>
+          <p className="text-muted-foreground text-sm mt-1">Click "Synthesize Investment Case" to analyze evidence.</p>
         </div>
       )}
       

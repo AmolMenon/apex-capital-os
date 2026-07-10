@@ -185,13 +185,13 @@ export const api = {
     
     const activeId = typeof window !== 'undefined' ? localStorage.getItem("activeDealId") : null;
     if (activeId) {
-      const found = deals.find(d => d.id.toString() === activeId || d.id === parseInt(activeId));
+      const found = deals.find((d: any) => d.id.toString() === activeId || d.id === parseInt(activeId));
       if (found) return found;
     }
     
     const priorityNames = ["Nexus Data Systems", "Aura Health", "CarbonGrid", "PayFlow"];
     for (const name of priorityNames) {
-      const found = deals.find(d => d.startup_name === name);
+      const found = deals.find((d: any) => d.startup_name === name);
       if (found) {
         if (typeof window !== 'undefined') localStorage.setItem("activeDealId", found.id.toString());
         return found;

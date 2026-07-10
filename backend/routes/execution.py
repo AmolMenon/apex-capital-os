@@ -2,7 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import Any
 from db.database import get_db
-from auth.dependencies import get_current_active_user
+from auth.dependencies import get_current_active_user, require_decision_access
+from db.models import Decision
 import database.crud as crud
 import db.models as db_models
 import json
@@ -13,11 +14,8 @@ router = APIRouter()
 def generate_action_plan(
     decision_id: int,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
-    decision = crud.get_decision(db, decision_id)
-    if not decision:
-        raise HTTPException(status_code=404, detail="Decision not found")
         
     # MOCK AI: Generate an action plan based on the domain pack
     plan = db_models.ActionPlan(
@@ -40,11 +38,8 @@ def archive_decision_and_learn(
     decision_id: int,
     actual_outcome: str,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
-    decision = crud.get_decision(db, decision_id)
-    if not decision:
-        raise HTTPException(status_code=404, detail="Decision not found")
         
     memory = db_models.InstitutionalMemory(
         decision_id=decision_id,

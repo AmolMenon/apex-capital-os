@@ -10,6 +10,7 @@ from routes.domains import router as domains_router
 from routes.evidence import router as evidence_router
 from routes.reasoning import router as reasoning_router
 from routes.execution import router as execution_router
+from routes.intelligence import router as intelligence_router
 
 from routes.users import router as users_router
 from routes.workspace import router as workspace_router
@@ -22,9 +23,11 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 import db.models as models
+from core.config import settings
 
-# Create DB tables
-Base.metadata.create_all(bind=engine)
+# Create DB tables ONLY in development/mock modes, not staging/prod
+if settings.APP_ENV in ["development", "test"]:
+    Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Apex Decision Intelligence OS API",
@@ -32,10 +35,13 @@ app = FastAPI(
     description="Production-grade API for Apex Decision Intelligence OS, a universal platform for high-stakes decisions.",
 )
 
+# Parse CORS origins
+cors_origins = [origin.strip() for origin in settings.CORS_ORIGINS.split(",")] if settings.CORS_ORIGINS else []
+
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -53,13 +59,27 @@ app.include_router(domains_router, prefix=f"{api_prefix}/domains", tags=["Domain
 app.include_router(evidence_router, prefix=f"{api_prefix}/decisions", tags=["Evidence"])
 app.include_router(reasoning_router, prefix=f"{api_prefix}/decisions", tags=["Reasoning"])
 app.include_router(execution_router, prefix=f"{api_prefix}/decisions", tags=["Execution"])
+app.include_router(intelligence_router, prefix=f"{api_prefix}/decisions", tags=["Intelligence"])
 app.include_router(workspace_router, prefix=f"{api_prefix}/workspace", tags=["Workspace"])
 app.include_router(memory_router, prefix=f"{api_prefix}", tags=["Memory"])
 
-@app.get(f"{api_prefix}/health", tags=["System"])
-def health_check():
-    from core.config import settings
-    return {"status": "ok", "version": "5.0.0", "llm_mode": settings.APEX_LLM_MODE}
+@app.get(f"{api_prefix}/health/liveness", tags=["System"])
+def liveness_check():
+    return {"status": "ok", "service": "Apex Capital OS API"}
+
+from sqlalchemy.sql import text
+from db.database import get_db
+from sqlalchemy.orm import Session
+
+@app.get(f"{api_prefix}/health/readiness", tags=["System"])
+def readiness_check(db: Session = Depends(get_db)):
+    try:
+        db.execute(text("SELECT 1"))
+        return {"status": "ready", "database": "connected"}
+    except Exception as e:
+        logger.error(f"Readiness check failed: {str(e)}")
+        from fastapi import HTTPException
+        raise HTTPException(status_code=503, detail="Service Unavailable: Database not connected")
 
 @app.get("/", include_in_schema=False)
 def root_health_check():

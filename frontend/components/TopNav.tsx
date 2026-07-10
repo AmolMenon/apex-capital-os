@@ -2,16 +2,14 @@
 
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Bell, Search, CircleUser, ChevronRight, Camera, Route } from "lucide-react"
-import { DemoNarrative } from "@/components/DemoNarrative"
-import { DealSwitcher } from "@/components/DealSwitcher"
+import { Search, CircleUser, ChevronRight, Camera, Route } from "lucide-react"
 import { HelpDrawer } from "@/components/ui/HelpDrawer"
 import { useScreenshotMode } from "@/components/ScreenshotProvider"
 import React from "react"
 import Link from "next/link"
 import { Menu } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet"
-import { Sidebar } from "@/components/Sidebar"
+import { WorkspaceNav } from "@/components/workspace/WorkspaceNav"
 
 export function TopNav() {
   const pathname = usePathname()
@@ -54,7 +52,7 @@ export function TopNav() {
             <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
             <SheetDescription className="sr-only">Access all platform modules.</SheetDescription>
             <div className="h-full overflow-y-auto">
-              <Sidebar mobile />
+              <WorkspaceNav mobile />
             </div>
           </SheetContent>
         </Sheet>
@@ -71,9 +69,6 @@ export function TopNav() {
         </div>
       </div>
       <div className="ml-4 flex items-center md:ml-6 space-x-4">
-        <div className="hidden md:block">
-          <DealSwitcher />
-        </div>
         <div className="w-full max-w-sm hidden md:block">
           <form>
             <div className="relative">
@@ -107,11 +102,6 @@ export function TopNav() {
           <Camera className="h-5 w-5" />
         </Button>
 
-        <DemoNarrative />
-        <HelpDrawer />
-        <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
-          <Bell className="h-5 w-5" />
-        </Button>
         <Button variant="ghost" size="icon" className="text-muted-foreground hover:text-foreground">
           <CircleUser className="h-5 w-5" />
         </Button>

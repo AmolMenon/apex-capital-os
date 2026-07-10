@@ -10,6 +10,7 @@ export interface DealHealthMetrics {
   mainBlocker: string
   nextActionTitle: string
   nextActionHref: string
+  healthFactors?: any[]
 }
 
 export function calculateDealHealth(deal: Deal): DealHealthMetrics {

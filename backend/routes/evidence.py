@@ -4,7 +4,8 @@ from typing import List, Any
 import os
 import shutil
 from db.database import get_db
-from auth.dependencies import get_current_active_user
+from auth.dependencies import get_current_active_user, require_decision_access
+from db.models import Decision
 import database.crud as crud
 from schemas.evidence import EvidenceCreate, EvidenceResponse
 import db.models as db_models
@@ -17,11 +18,8 @@ def upload_evidence_file(
     decision_id: int,
     file: UploadFile = File(...),
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
-    decision = crud.get_decision(db, decision_id)
-    if not decision:
-        raise HTTPException(status_code=404, detail="Decision not found")
         
     # Save file temporarily
     file_ext = file.filename.split('.')[-1].lower() if '.' in file.filename else ''
@@ -48,12 +46,8 @@ def add_evidence(
     decision_id: int,
     evidence: EvidenceCreate,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
-    decision = crud.get_decision(db, decision_id)
-    if not decision:
-        raise HTTPException(status_code=404, detail="Decision not found")
-        
     db_evidence = db_models.Evidence(**evidence.model_dump())
     db.add(db_evidence)
     db.commit()
@@ -65,7 +59,7 @@ def extract_claims(
     decision_id: int,
     document_id: int,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
     from services.extraction_service import ExtractionService
     
@@ -90,7 +84,7 @@ def extract_claims(
 def get_decision_claims(
     decision_id: int,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
     claims = db.query(db_models.Claim).filter(db_models.Claim.decision_id == decision_id).all()
     return [{
@@ -106,12 +100,8 @@ def get_decision_claims(
 def get_evidence(
     decision_id: int,
     db: Session = Depends(get_db),
-    current_user: Any = Depends(get_current_active_user)
+    decision: Decision = Depends(require_decision_access)
 ):
-    decision = crud.get_decision(db, decision_id)
-    if not decision:
-        raise HTTPException(status_code=404, detail="Decision not found")
-        
     # We will return the legacy evidence PLUS the new documents formatted similarly for the UI
     legacy_evidence = db.query(db_models.Evidence).filter(db_models.Evidence.decision_id == decision_id).all()
     documents = db.query(db_models.Document).filter(db_models.Document.decision_id == decision_id).all()
