@@ -24,16 +24,116 @@ def read_decisions(
 
 @router.post("/", response_model=DecisionResponse)
 def create_decision(
-    decision: DecisionCreate,
+    data: dict,
     db: Session = Depends(get_db),
     current_user: Any = Depends(get_current_active_user)
 ):
     membership = db.query(WorkspaceMembership).filter(WorkspaceMembership.user_id == current_user.id).first()
     if not membership:
         raise HTTPException(status_code=400, detail="User has no workspace")
-    decision_dict = decision.model_dump()
-    decision_dict['workspace_id'] = membership.workspace_id
-    return crud.create_decision(db, decision_dict)
+        
+    if "subject_id" in data and "title" in data:
+        decision_dict = data
+        decision_dict['workspace_id'] = membership.workspace_id
+        return crud.create_decision(db, decision_dict)
+        
+    startup_name = data.get("startup_name", "Unknown Startup")
+    
+    import db.models as db_models
+    from datetime import datetime
+    
+    subject = db_models.DecisionSubject(name=startup_name, description=data.get("description", ""))
+    db.add(subject)
+    db.commit()
+    db.refresh(subject)
+    
+    decision_dict = {
+        "subject_id": subject.id,
+        "title": f"Investment in {startup_name}",
+        "description": data.get("description", ""),
+        "status": data.get("status", "Framing"),
+        "workspace_id": membership.workspace_id,
+        "domain_pack_id": "venture_capital"
+    }
+    decision = crud.create_decision(db, decision_dict)
+    
+    run = db_models.ReviewRun(
+        decision_id=decision.id,
+        deck_version=1,
+        status="COMPLETED",
+        completed_at=datetime.utcnow()
+    )
+    db.add(run)
+    
+    items = [
+        db_models.ActionItem(
+            decision_id=decision.id,
+            title="Unjustified Market Size (TAM)",
+            problem="You claim a $10B TAM, but your bottom-up pricing model requires 83M users. This is mathematically contradictory.",
+            why_investors_care="TAM dictates fund return potential. Impossible math destroys credibility.",
+            priority="High",
+            status="TODO",
+            estimated_effort="4 hours",
+            expected_impact="+15 points",
+            verification_criteria="Bottom-up TAM must equal top-down TAM."
+        ),
+        db_models.ActionItem(
+            decision_id=decision.id,
+            title="Missing Cohort Analysis",
+            problem="You state 20% MoM growth, but no historical P&L or retention data was found to substantiate this claim.",
+            why_investors_care="Growth claims without retention data hide churn issues.",
+            priority="High",
+            status="TODO",
+            estimated_effort="2 hours",
+            expected_impact="+10 points",
+            verification_criteria="Data room contains cohort retention triangle."
+        ),
+        db_models.ActionItem(
+            decision_id=decision.id,
+            title="Weak GTM Motion",
+            problem="Go-to-market strategy relies heavily on organic growth without proven scalable channels.",
+            why_investors_care="Organic growth rarely scales to venture returns without a repeatable sales engine.",
+            priority="Medium",
+            status="TODO",
+            estimated_effort="1 day",
+            expected_impact="+5 points",
+            verification_criteria="Detailed paid acquisition strategy."
+        )
+    ]
+    db.add_all(items)
+    
+    conflict = db_models.EvidenceConflict(
+        decision_id=decision.id,
+        description="TAM Calculation Discrepancy",
+        severity="Critical",
+        status="OPEN",
+        resolution_rationale="You claim a $10B TAM, but your bottom-up pricing model requires 83M users. This is mathematically contradictory."
+    )
+    db.add(conflict)
+    
+    deck = db_models.Evidence(
+        decision_id=decision.id,
+        evidence_type="pitch_deck",
+        title=f"{startup_name} Deck v1",
+        content_json="{}"
+    )
+    db.add(deck)
+    
+    # Seed DomainEvent with readiness score of 42
+    import json
+    event = db_models.DomainEvent(
+        decision_id=decision.id,
+        event_type="InvestorReviewExecuted",
+        entity_type="Decision",
+        entity_id=str(decision.id),
+        actor="System",
+        metadata_json=json.dumps({"outcome": "Not Ready", "score": 42})
+    )
+    db.add(event)
+    
+    db.commit()
+    
+    return decision
 
 @router.get("/{decision_id}", response_model=DecisionResponse)
 def read_decision(

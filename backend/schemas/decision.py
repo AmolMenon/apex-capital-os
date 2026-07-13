@@ -27,6 +27,13 @@ class DecisionBase(BaseModel):
 class DecisionCreate(DecisionBase):
     pass
 
+class DealCreate(BaseModel):
+    startup_name: str
+    stage: str
+    description: str
+    status: str
+
+
 class DecisionUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
