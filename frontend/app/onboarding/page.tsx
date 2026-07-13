@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,6 +15,8 @@ export default function OnboardingPage() {
   const [logs, setLogs] = useState<string[]>([]);
   const [dealId, setDealId] = useState<number | null>(null);
 
+  const hiddenFileInput = useRef<HTMLInputElement>(null);
+
   const handleCreateCompany = async () => {
     if (!companyName) return;
     try {
@@ -28,8 +30,18 @@ export default function OnboardingPage() {
       setStep(2);
     } catch (e) {
       console.error(e);
-      // Fallback for demo purposes
       setStep(2);
+    }
+  };
+
+  const handleUploadClick = () => {
+    hiddenFileInput.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      simulateProcessing();
     }
   };
 
@@ -112,9 +124,16 @@ export default function OnboardingPage() {
             </div>
             
             <div 
-              onClick={simulateProcessing}
+              onClick={handleUploadClick}
               className="border-2 border-dashed border-border hover:border-primary/50 hover:bg-primary/5 transition-colors cursor-pointer rounded-xl p-16 flex flex-col items-center justify-center text-center space-y-4"
             >
+              <input 
+                type="file" 
+                ref={hiddenFileInput} 
+                onChange={handleFileChange} 
+                style={{ display: "none" }} 
+                accept=".pdf,.pptx"
+              />
               <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center text-muted-foreground">
                 <UploadCloud className="w-8 h-8" />
               </div>
