@@ -21,6 +21,7 @@ export interface DealState {
 
 interface GlobalDealContextType {
   state: DealState | null;
+  deal: any | null;
   loading: boolean;
   error: any;
   simulateAutonomous: () => void;
@@ -30,6 +31,7 @@ interface GlobalDealContextType {
 
 const GlobalDealContext = createContext<GlobalDealContextType>({
   state: null,
+  deal: null,
   loading: true,
   error: null,
   simulateAutonomous: () => {},
@@ -104,6 +106,7 @@ export function GlobalDealProvider({ children, dealId }: { children: React.React
   return (
     <GlobalDealContext.Provider value={{ 
       state, 
+      deal: state?.deal || null,
       loading, 
       error, 
       simulateAutonomous,

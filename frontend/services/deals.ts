@@ -55,5 +55,38 @@ export const DealsService = {
       method: "POST", 
       body: JSON.stringify(data) 
     });
+  },
+
+  updateDeal: async (id: string | number, data: any): Promise<Deal> => {
+    return fetchAPI<Deal>(`/api/v1/decisions/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(data)
+    });
+  },
+
+  runInvestorReview: async (id: string | number): Promise<any> => {
+    return fetchAPI<any>(`/api/v1/decisions/${id}/investor_review`, {
+      method: "POST"
+    });
+  },
+
+  getTimeline: async (id: string | number): Promise<any> => {
+    return fetchAPI<any>(`/api/v1/decisions/${id}/timeline`);
+  },
+
+  getCompare: async (id: string | number, v1: number, v2: number): Promise<any> => {
+    return fetchAPI<any>(`/api/v1/decisions/${id}/compare?v1=${v1}&v2=${v2}`);
+  },
+
+  getExecutiveSummary: async (id: string | number): Promise<any> => {
+    return fetchAPI<any>(`/api/v1/decisions/${id}/executive-summary`);
+  },
+
+  getSlideReview: async (id: string | number): Promise<any> => {
+    return fetchAPI<any>(`/api/v1/decisions/${id}/slide-review`);
+  },
+
+  getWorkQueue: async (id: string | number): Promise<any> => {
+    return fetchAPI<any>(`/api/v1/decisions/${id}/work-queue`);
   }
 };

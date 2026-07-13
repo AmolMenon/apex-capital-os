@@ -1,0 +1,98 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.9.6, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.12.1, asyncio-1.2.0
+asyncio: mode=strict, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 51 items
+
+tests/test_auth.py ........                                              [ 15%]
+tests/test_core.py .                                                     [ 17%]
+tests/test_decision_integrity.py ......                                  [ 29%]
+tests/test_deliberation_delta.py .....                                   [ 39%]
+tests/test_grader_failure.py .                                           [ 41%]
+tests/test_graph_integrity.py .....                                      [ 50%]
+tests/test_integrity_chain.py .                                          [ 52%]
+tests/test_intelligence_engine.py ....                                   [ 60%]
+tests/test_intelligence_loop.py ..........                               [ 80%]
+tests/test_llm_provider_retry.py ..                                      [ 84%]
+tests/test_quota_preflight.py ...                                        [ 90%]
+tests/test_staging_authorization.py ....                                 [ 98%]
+tests/test_telemetry_accounting.py .                                     [100%]
+
+=============================== warnings summary ===============================
+auth/routes.py:30
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/auth/routes.py:30: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class UserResponse(BaseModel):
+
+../testenv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/testenv/lib/python3.9/site-packages/pydantic/_internal/_config.py:386: UserWarning: Valid config keys have changed in V2:
+  * 'orm_mode' has been renamed to 'from_attributes'
+    warnings.warn(message, UserWarning)
+
+schemas/decision.py:13
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/schemas/decision.py:13: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class DecisionSubjectResponse(DecisionSubjectBase):
+
+schemas/decision.py:37
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/schemas/decision.py:37: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class DecisionResponse(DecisionBase):
+
+schemas/domain.py:5
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/schemas/domain.py:5: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class ReasoningAgentResponse(BaseModel):
+
+schemas/domain.py:16
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/schemas/domain.py:16: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class DecisionFrameworkResponse(BaseModel):
+
+schemas/domain.py:31
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/schemas/domain.py:31: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class DomainPackResponse(DomainPackBase):
+
+schemas/evidence.py:15
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/schemas/evidence.py:15: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class EvidenceResponse(EvidenceBase):
+
+<frozen importlib._bootstrap>:228
+<frozen importlib._bootstrap>:228
+  <frozen importlib._bootstrap>:228: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:228
+<frozen importlib._bootstrap>:228
+  <frozen importlib._bootstrap>:228: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:228
+  <frozen importlib._bootstrap>:228: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+../testenv/lib/python3.9/site-packages/google/api_core/_python_version_support.py:242
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/testenv/lib/python3.9/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+    warnings.warn(message, FutureWarning)
+
+../testenv/lib/python3.9/site-packages/google/auth/__init__.py:54
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/testenv/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+    warnings.warn(eol_message.format("3.9"), FutureWarning)
+
+../testenv/lib/python3.9/site-packages/google/oauth2/__init__.py:40
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/testenv/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+    warnings.warn(eol_message.format("3.9"), FutureWarning)
+
+services/llm_provider.py:7
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/services/llm_provider.py:7: FutureWarning: 
+  
+  All support for the `google.generativeai` package has ended. It will no longer be receiving 
+  updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+  See README for more details:
+  
+  https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+  
+    import google.generativeai as genai
+
+schemas/user.py:18
+  /Users/AmolMenon/.gemini/antigravity/scratch/apex-capital/backend/schemas/user.py:18: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class UserInDBBase(UserBase):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 51 passed, 18 warnings in 9.52s ========================
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute

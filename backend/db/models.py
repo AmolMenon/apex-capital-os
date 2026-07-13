@@ -118,6 +118,13 @@ class Evidence(Base):
     evidence_type = Column(String)
     metadata_json = Column(Text)
     created_at = Column(DateTime, default=datetime.utcnow)
+    last_modified_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    version = Column(Integer, default=1)
+    deck_version = Column(Integer, nullable=True)
+    uploaded_at = Column(DateTime, nullable=True)
+    uploaded_by = Column(String, nullable=True)
+    previous_version_id = Column(Integer, ForeignKey("evidence.id", ondelete="SET NULL"), nullable=True)
+    is_stale = Column(Boolean, default=False)
     
     decision = relationship("Decision", back_populates="evidence")
 
@@ -286,6 +293,12 @@ class ProvenanceType(str, enum.Enum):
     PREDICTION = "Prediction"
     RECOMMENDATION = "Recommendation"
     HUMAN_JUDGMENT = "Human Judgment"
+    # Apex 5.0 Calibration Types
+    HARD_EVIDENCE = "Hard Evidence"
+    SOFT_EVIDENCE = "Soft Evidence"
+    MARKETING_CLAIM = "Marketing Claim"
+    FORWARD_LOOKING = "Forward Looking Statement"
+    UNKNOWN = "Unknown"
 
 class Document(Base):
     __tablename__ = "documents"
@@ -554,3 +567,68 @@ class DecisionIntegrityEnvelope(Base):
     generated_at = Column(DateTime, default=datetime.utcnow)
     formula_version = Column(String)
 
+class ReviewRun(Base):
+    __tablename__ = "review_runs"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    deck_version = Column(Integer)
+    status = Column(String, default="Running")
+    started_at = Column(DateTime, default=datetime.utcnow)
+    completed_at = Column(DateTime, nullable=True)
+    duration_ms = Column(Integer, nullable=True)
+    token_usage_json = Column(Text, nullable=True)
+    provider = Column(String, nullable=True)
+    model = Column(String, nullable=True)
+
+class ActionItem(Base):
+    __tablename__ = "action_items"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    title = Column(String)
+    priority = Column(String)
+    status = Column(String, default="TODO")
+    linked_assumption_id = Column(Integer, ForeignKey("assumptions.id", ondelete="SET NULL"), nullable=True)
+    linked_conflict_id = Column(Integer, ForeignKey("evidence_conflicts.id", ondelete="SET NULL"), nullable=True)
+    linked_claim_id = Column(Integer, ForeignKey("claims.id", ondelete="SET NULL"), nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    completed_at = Column(DateTime, nullable=True)
+
+class DomainEvent(Base):
+    __tablename__ = "domain_events"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    event_type = Column(String, index=True)
+    entity_type = Column(String)
+    entity_id = Column(Integer, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    actor = Column(String, nullable=True)
+    metadata_json = Column(Text, nullable=True)
+
+class InvestorMeeting(Base):
+    __tablename__ = "investor_meetings"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    investor_name = Column(String)
+    fund_name = Column(String, nullable=True)
+    stage = Column(String, nullable=True)
+    meeting_date = Column(DateTime)
+    founder_notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    questions = relationship("InvestorQuestion", back_populates="meeting", cascade="all, delete-orphan")
+
+class InvestorQuestion(Base):
+    __tablename__ = "investor_questions"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    meeting_id = Column(Integer, ForeignKey("investor_meetings.id", ondelete="CASCADE"), index=True)
+    decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
+    question_text = Column(Text)
+    category = Column(String) # Market, Team, Traction, etc.
+    frequency = Column(Integer, default=1)
+    related_assumption_ids_json = Column(Text, nullable=True)
+    related_claim_ids_json = Column(Text, nullable=True)
+    related_evidence_ids_json = Column(Text, nullable=True)
+    related_risks_json = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    
+    meeting = relationship("InvestorMeeting", back_populates="questions")

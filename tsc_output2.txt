@@ -1,0 +1,2 @@
+app/admin/alpha/page.tsx(62,15): error TS2322: Type '{ title: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'title' does not exist on type 'IntrinsicAttributes'.

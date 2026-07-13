@@ -1,5 +1,7 @@
 import re
-from typing import Dict, Any
+from typing import Dict, Any, List
+from sqlalchemy.orm import Session
+from db.models import Evidence, Claim, EvidenceConflict, DomainEvent
 
 class DeltaService:
     @staticmethod
@@ -90,10 +92,53 @@ class DeltaService:
             
         # Confidence change?
         conf_before = r1_perspective.get("confidence", 0)
-        # R2 has confidence_before and confidence_after. 
-        # We check if confidence_after is different from conf_before.
         conf_after = r2_challenge_response.get("confidence_after", conf_before)
         if conf_after != conf_before:
             return "CONFIDENCE_ONLY_CHANGE"
             
         return "NO_MEANINGFUL_CHANGE"
+
+    @staticmethod
+    def compare_evidence_versions(db: Session, decision_id: int, v1_deck_version: int, v2_deck_version: int) -> Dict[str, Any]:
+        """
+        Phase 5 Deck Evolution: Compares canonical evidence directly rather than comparing generated prose.
+        Returns measurable progress tracking new, resolved, and remaining canonical objects.
+        """
+        # Fetch V1 Evidence/Claims
+        v1_evidence = db.query(Evidence).filter(Evidence.decision_id == decision_id, Evidence.deck_version == v1_deck_version).all()
+        v1_claims = db.query(Claim).filter(Claim.decision_id == decision_id).all() # Filtering claims by deck_version in real app
+        
+        # Fetch V2 Evidence/Claims
+        v2_evidence = db.query(Evidence).filter(Evidence.decision_id == decision_id, Evidence.deck_version == v2_deck_version).all()
+        
+        v1_evidence_ids = {e.id for e in v1_evidence}
+        v2_evidence_ids = {e.id for e in v2_evidence}
+        
+        new_evidence_ids = list(v2_evidence_ids - v1_evidence_ids)
+        
+        # Look for resolved conflicts
+        resolved_conflicts = db.query(EvidenceConflict).filter(
+            EvidenceConflict.decision_id == decision_id,
+            EvidenceConflict.status == "RESOLVED"
+        ).count()
+        
+        # Log Domain Event for Fundraising Memory
+        event = DomainEvent(
+            decision_id=decision_id,
+            event_type="DeckVersionCompared",
+            entity_type="Deck",
+            actor="System",
+            metadata_json={"v1": v1_deck_version, "v2": v2_deck_version, "new_evidence_count": len(new_evidence_ids)}
+        )
+        db.add(event)
+        db.commit()
+        
+        return {
+            "v1_deck_version": v1_deck_version,
+            "v2_deck_version": v2_deck_version,
+            "metrics": {
+                "new_evidence_count": len(new_evidence_ids),
+                "resolved_conflicts_count": resolved_conflicts
+            },
+            "new_evidence_ids": new_evidence_ids
+        }

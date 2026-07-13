@@ -1,14 +1,7 @@
 import json
 from .base import BaseAIProvider
 from typing import Dict, Any, Optional
-from platform_diligence_engine.platform_diligence_fixtures import (
-    generate_mock_reddit_signals,
-    generate_mock_review_signals,
-    generate_mock_social_signals,
-    generate_mock_competitor_signals,
-    generate_mock_pain_points,
-    generate_mock_reputation_risks
-)
+
 
 def is_supertails(prompt: str) -> bool:
     return "supertails" in prompt.lower()
@@ -153,22 +146,22 @@ class MockProvider(BaseAIProvider):
             return parts[0] if parts else text
 
         if task_type == "platform_reddit_research":
-            return {"findings": generate_mock_reddit_signals(_extract_deal(prompt))}
+            return {"findings": [{"signal": "Strong traction on reddit", "sentiment": "positive"}]}
             
         if task_type == "platform_review_research":
-            return {"findings": generate_mock_review_signals(_extract_deal(prompt))}
+            return {"findings": [{"signal": "Good reviews on G2", "sentiment": "positive"}]}
             
         if task_type == "platform_social_research":
-            return {"findings": generate_mock_social_signals(_extract_deal(prompt))}
+            return {"findings": [{"signal": "Viral on Twitter", "sentiment": "positive"}]}
             
         if task_type == "platform_competitor_research":
-            return {"findings": generate_mock_competitor_signals(_extract_deal(prompt))}
+            return {"findings": [{"signal": "Outpacing LegacyCorp", "sentiment": "positive"}]}
             
         if task_type == "platform_pain_points":
-            return {"pain_points": generate_mock_pain_points(_extract_deal(prompt))}
+            return {"pain_points": ["Integration takes too long", "High pricing"]}
             
         if task_type == "platform_reputation_risks":
-            return {"reputation_risks": generate_mock_reputation_risks(_extract_deal(prompt))}
+            return {"reputation_risks": ["Data privacy concerns", "Founder turnover"]}
             
         if task_type == "platform_sentiment_analysis":
             d_name = _extract_deal(prompt).lower()

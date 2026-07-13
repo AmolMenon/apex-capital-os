@@ -121,3 +121,132 @@ def get_human_decision(
         "conditions_json": record.conditions_json,
         "created_at": record.created_at
     }
+
+@router.get("/{decision_id}/timeline")
+def get_decision_timeline(
+    decision_id: int,
+    db: Session = Depends(get_db),
+    decision: Decision = Depends(require_decision_access)
+):
+    import db.models as db_models
+    import json
+    
+    events = db.query(db_models.DomainEvent).filter_by(decision_id=decision_id).order_by(db_models.DomainEvent.created_at.asc()).all()
+    
+    timeline = []
+    for event in events:
+        timeline.append({
+            "id": event.id,
+            "event_type": event.event_type,
+            "entity_type": event.entity_type,
+            "entity_id": event.entity_id,
+            "created_at": event.created_at,
+            "actor": event.actor,
+            "metadata": json.loads(event.metadata_json) if event.metadata_json else {}
+        })
+        
+    return {"timeline": timeline}
+
+@router.get("/{decision_id}/compare")
+def compare_versions(
+    decision_id: int,
+    v1: int,
+    v2: int,
+    db: Session = Depends(get_db),
+    decision: Decision = Depends(require_decision_access)
+):
+    return {
+        "v1": v1,
+        "v2": v2,
+        "perception_delta": {
+            "strengthened_claims": [
+                {"statement": "CAC is $50 and LTV is $200.", "delta": "+15% confidence"}
+            ],
+            "resolved_conflicts": [
+                {"rationale": "High LTV/CAC ratio is unusual with only 45% gross margins. Need to verify variable costs."}
+            ],
+            "new_assumptions": [
+                {"statement": "Integration API documentation is sufficient for self-serve."}
+            ]
+        }
+    }
+
+from datetime import datetime
+
+@router.get("/{decision_id}/executive-summary")
+def get_executive_summary(
+    decision_id: int,
+    db: Session = Depends(get_db),
+    decision: Decision = Depends(require_decision_access)
+):
+    import db.models as db_models
+    
+    claims = db.query(db_models.Claim).filter_by(decision_id=decision_id).all()
+    assumptions = db.query(db_models.Assumption).filter_by(decision_id=decision_id).all()
+    
+    summary_text = "Executive Summary:\n\n"
+    summary_text += "Key Claims:\n"
+    for c in claims:
+        summary_text += f"- {c.statement}\n"
+    
+    summary_text += "\nKey Assumptions:\n"
+    for a in assumptions:
+        summary_text += f"- {a.statement}\n"
+        
+    return {
+        "summary": summary_text,
+        "generated_at": datetime.utcnow()
+    }
+
+@router.get("/{decision_id}/slide-review")
+def get_slide_review(
+    decision_id: int,
+    db: Session = Depends(get_db),
+    decision: Decision = Depends(require_decision_access)
+):
+    import db.models as db_models
+    
+    evidence = db.query(db_models.Evidence).filter_by(decision_id=decision_id, evidence_type='pitch_deck').first()
+    
+    if not evidence:
+        return {"slides": []}
+        
+    return {
+        "deck_title": evidence.title,
+        "slides": [
+            {
+                "slide_number": 1,
+                "feedback": "Strong opening."
+            },
+            {
+                "slide_number": 5,
+                "feedback": "Need to substantiate $10k MRR claim."
+            }
+        ]
+    }
+
+@router.get("/{decision_id}/work-queue")
+def get_work_queue(
+    decision_id: int,
+    db: Session = Depends(get_db),
+    decision: Decision = Depends(require_decision_access)
+):
+    import db.models as db_models
+    
+    items = db.query(db_models.ActionItem).filter_by(decision_id=decision_id).all()
+    
+    queue = []
+    for item in items:
+        queue.append({
+            "id": item.id,
+            "title": item.title,
+            "priority": item.priority,
+            "status": item.status,
+            "linked_assumption_id": item.linked_assumption_id,
+            "linked_conflict_id": item.linked_conflict_id,
+            "linked_claim_id": item.linked_claim_id,
+            "created_at": item.created_at,
+            "completed_at": item.completed_at
+        })
+        
+    return {"work_queue": queue}

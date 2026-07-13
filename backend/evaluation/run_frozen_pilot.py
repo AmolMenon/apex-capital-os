@@ -8,7 +8,7 @@ from core.config import settings
 from db.models import Decision, Claim, Assumption, EvidenceConflict, ReasoningRun, ModelTelemetry, Document, Chunk
 from reasoning_engine.engine import UniversalReasoningEngine
 from reasoning_engine.prompts import PromptRegistry
-from services.confidence_service import ConfidenceService
+from services.confidence_service import ReadinessService
 from services.llm_provider import LLMProvider, LLMProviderException
 from evaluation.datasets import GOLDEN_CASES
 from evaluation.graders import SemanticGrader

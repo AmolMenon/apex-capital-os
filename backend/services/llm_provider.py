@@ -251,4 +251,56 @@ class DeterministicTestProvider(BaseLLMProvider):
                     "next_best_action": "Request true software ARR breakdown and churn data",
                     "memory_objects_used": []
                 }, {"input": 250, "output": 150, "latency_ms": 250}
+        elif "memo" in schema.get("properties", {}):
+            return {
+                "memo": {
+                    "executive_summary": "Strong core product with early traction but questions remain around TAM and GTM efficiency.",
+                    "business_overview": "B2B SaaS platform for enterprise compliance.",
+                    "market_opportunity": "Large but highly competitive market. True TAM may be smaller than stated $10B.",
+                    "product_assessment": "Product is well-designed and solves a real pain point, as evidenced by user engagement.",
+                    "traction": "Growing quickly, $1M ARR.",
+                    "business_model": "Standard SaaS subscription. High gross margins.",
+                    "competition": "Incumbents like AcmeCorp are slow but well-resourced.",
+                    "team": "Experienced founders with domain expertise.",
+                    "strengths": ["Strong domain expertise", "High user engagement"],
+                    "weaknesses": ["GTM strategy is unproven", "Sales cycles are long"],
+                    "key_assumptions": ["NDR will stay above 120%", "CAC will decrease over time"],
+                    "evidence_quality": "Financials are unaudited but cohort data is strong.",
+                    "critical_risks": ["Churn may spike after year 1", "Competition may lower prices"],
+                    "open_questions": ["What is the true enterprise sales cycle length?"],
+                    "recommendation": "Advance to meeting to dig into GTM metrics.",
+                    "confidence": 85,
+                    "next_milestones": ["Reach $2M ARR", "Hire VP Sales"]
+                },
+                "perspectives": {
+                    "areas_of_alignment": ["The product is technically sound and solves a real problem.", "The founding team has excellent domain expertise."],
+                    "areas_of_concern": ["GTM efficiency is low; CAC payback period is over 18 months.", "The target TAM may be restricted by compliance regulations in EMEA."],
+                    "split_opinions": ["Whether the current pricing model can scale to enterprise customers.", "If the competitive moat is strong enough against incumbent feature-matching."]
+                },
+                "investor_questions": [
+                    {
+                        "question": "How do you plan to reduce the CAC payback period from 18 months?",
+                        "importance": "High",
+                        "why_ask": "18 months is too long for a Series A company and indicates GTM inefficiency.",
+                        "existing_evidence": "Historical P&L shows high sales & marketing spend.",
+                        "missing_evidence": "Cohort analysis breaking down CAC by channel.",
+                        "how_to_prepare": "Prepare a detailed bridge showing how inbound marketing or channel partnerships will lower blended CAC."
+                    }
+                ],
+                "decision": {
+                    "outcome": "Meeting Recommended",
+                    "rationale": "The team and product are strong enough to warrant a partner meeting, provided they can address the GTM efficiency concerns."
+                },
+                "action_plan": [
+                    {
+                        "title": "Clarify GTM Strategy",
+                        "reason": "CAC payback is currently uninvestable for growth stages.",
+                        "supporting_evidence": "Financials show CAC payback > 18 months.",
+                        "expected_investor_impact": "Will flip skeptics who worry about capital efficiency.",
+                        "estimated_effort": "Medium",
+                        "priority": "P0",
+                        "navigation_target": "Data Room"
+                    }
+                ]
+            }, {"input": 400, "output": 800, "latency_ms": 1200}
         return {}, {"input": 0, "output": 0, "latency_ms": 0}

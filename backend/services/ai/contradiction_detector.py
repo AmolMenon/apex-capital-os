@@ -4,12 +4,15 @@ from pydantic import BaseModel, Field
 from typing import List
 
 class Contradiction(BaseModel):
-    claim_a: str = Field(description="The first claim")
-    source_a: str = Field(description="Source of the first claim")
-    claim_b: str = Field(description="The conflicting claim")
-    source_b: str = Field(description="Source of the conflicting claim")
-    explanation: str = Field(description="Why this is a contradiction")
     severity: str = Field(description="HIGH, MEDIUM, LOW")
+    reason: str = Field(description="Clear explanation of the logical or numerical contradiction")
+    evidence: str = Field(description="Verbatim quotes or data points from documents demonstrating the contradiction")
+    missing_verification: str = Field(description="What data is required to verify or resolve this discrepancy")
+    investor_implication: str = Field(description="How this impacts investor trust, valuation, or perceived risk")
+    claim_a: str = Field(description="The first claim or data point")
+    source_a: str = Field(description="Source document of the first claim")
+    claim_b: str = Field(description="The conflicting claim or data point")
+    source_b: str = Field(description="Source document of the conflicting claim")
 
 class ContradictionReport(BaseModel):
     contradictions: List[Contradiction]
@@ -25,8 +28,18 @@ class ContradictionDetector:
         Takes a dict of {source_name: text_content} and looks for logical contradictions.
         """
         prompt = f"""
-        You are a highly analytical auditor for a venture capital firm.
-        Analyze the following documents and identify any logical contradictions or inconsistencies between them.
+        You are a highly analytical institutional venture capital auditor.
+        Analyze the following documents and identify any strict logical or numerical contradictions.
+
+        Specifically look for:
+        1. Deck vs Financial Model discrepancies.
+        2. Deck vs KPI Sheet discrepancies.
+        3. Version vs Version changes.
+        4. Internal Metric Inconsistency (e.g. CAC/LTV math not matching raw numbers).
+        5. Market Narrative vs Numbers (e.g. claiming bottom-up growth but top-down sizing).
+        6. Competition inconsistencies.
+
+        DO NOT fabricate contradictions. If everything is consistent, return an empty contradictions array.
         
         Documents:
         {json.dumps(documents_text)}

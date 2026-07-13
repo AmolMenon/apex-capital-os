@@ -11,10 +11,12 @@ from routes.evidence import router as evidence_router
 from routes.reasoning import router as reasoning_router
 from routes.execution import router as execution_router
 from routes.intelligence import router as intelligence_router
+from routes.investor_review import router as investor_review_router
 
 from routes.users import router as users_router
 from routes.workspace import router as workspace_router
 from routes.memory import router as memory_router
+from routes.admin import router as admin_router
 
 # Import Middleware
 from core.logging_middleware import LoggingMiddleware
@@ -60,8 +62,10 @@ app.include_router(evidence_router, prefix=f"{api_prefix}/decisions", tags=["Evi
 app.include_router(reasoning_router, prefix=f"{api_prefix}/decisions", tags=["Reasoning"])
 app.include_router(execution_router, prefix=f"{api_prefix}/decisions", tags=["Execution"])
 app.include_router(intelligence_router, prefix=f"{api_prefix}/decisions", tags=["Intelligence"])
+app.include_router(investor_review_router, prefix=f"{api_prefix}/decisions", tags=["Investor Review"])
 app.include_router(workspace_router, prefix=f"{api_prefix}/workspace", tags=["Workspace"])
 app.include_router(memory_router, prefix=f"{api_prefix}", tags=["Memory"])
+app.include_router(admin_router)
 
 @app.get(f"{api_prefix}/health/liveness", tags=["System"])
 def liveness_check():

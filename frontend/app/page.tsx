@@ -1,104 +1,120 @@
-"use client"
+import Link from "next/link";
+import { ArrowRight, BarChart3, ShieldAlert, Target } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Activity, Briefcase, ArrowRight } from "lucide-react"
-import { DealsService } from "@/services/deals"
-import { Deal } from "@/types"
-
-export default function Home() {
-  const [deals, setDeals] = useState<Deal[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
-
-  useEffect(() => {
-    async function loadDeals() {
-      try {
-        const data = await DealsService.getDeals();
-        setDeals(data || []);
-      } catch (error: any) {
-        console.error("Failed to fetch deals:", error);
-        setError("Unable to connect to the Investment OS backend.");
-      } finally {
-        setLoading(false);
-      }
-    }
-    loadDeals();
-  }, [])
-
-  if (loading) {
-    return (
-      <div className="flex flex-col h-full items-center justify-center text-muted-foreground">
-        <Activity className="w-8 h-8 animate-pulse text-primary mb-4" />
-        <p className="font-medium tracking-wide">Connecting to Workspace...</p>
-      </div>
-    )
-  }
-
+export default function LandingPage() {
   return (
-    <div className="p-8 space-y-8 max-w-[1200px] mx-auto animate-in fade-in duration-500">
-      <div className="flex justify-between items-end border-b pb-4">
-        <div>
-          <h1 className="text-3xl font-extrabold tracking-tight">Investment Workbench</h1>
-          <p className="text-muted-foreground text-lg mt-1">Active deals and attention queue</p>
-        </div>
-        <Link href="/deals/new">
-          <Button className="font-bold">New Deal</Button>
-        </Link>
-      </div>
-
-      {error ? (
-        <Card className="border-destructive/50 bg-destructive/10">
-          <CardContent className="p-6 flex flex-col items-center justify-center text-center">
-            <Activity className="w-10 h-10 text-destructive mb-4" />
-            <h3 className="text-lg font-bold text-destructive mb-2">Connection Error</h3>
-            <p className="text-sm text-destructive/80 max-w-md">{error}</p>
-          </CardContent>
-        </Card>
-      ) : deals.length === 0 ? (
-        <Card className="border-dashed bg-muted/30">
-          <CardContent className="p-12 flex flex-col items-center justify-center text-center">
-            <Briefcase className="w-12 h-12 text-muted-foreground mb-4 opacity-50" />
-            <h3 className="text-lg font-bold mb-2">No Active Deals</h3>
-            <p className="text-sm text-muted-foreground max-w-md mb-6">
-              Your pipeline is currently empty. Add a new deal to begin the investment analysis workflow.
-            </p>
-            <Link href="/deals/new">
-              <Button>Source New Deal</Button>
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      {/* Header */}
+      <header className="border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="font-bold text-xl tracking-tight">Apex</div>
+          <nav className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
+            <Link href="#problem" className="hover:text-foreground transition-colors">The Problem</Link>
+            <Link href="#solution" className="hover:text-foreground transition-colors">How it Works</Link>
+            <Link href="#pricing" className="hover:text-foreground transition-colors">Pricing</Link>
+          </nav>
+          <div className="flex items-center gap-4">
+            <Link href="/onboarding">
+              <Button variant="ghost">Sign In</Button>
             </Link>
-          </CardContent>
-        </Card>
-      ) : (
-        <div className="space-y-4">
-          {deals.map(deal => (
-            <Card key={deal.id} className="overflow-hidden hover:shadow-md transition-shadow">
-              <div className="flex flex-col md:flex-row p-5 gap-6 items-center">
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-xl font-bold">{deal.startup_name || `Deal ${deal.id}`}</h3>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-md bg-secondary text-secondary-foreground border">
-                      {deal.stage || "Review"}
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted-foreground line-clamp-1">
-                    {deal.description || "No description available."}
-                  </p>
-                </div>
-                
-                <div className="flex items-center gap-4 border-l pl-6 min-w-[200px]">
-                  <Link href={`/deals/${deal.id}`} className="w-full">
-                    <Button variant="secondary" className="w-full font-bold">
-                      Open Workspace <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </Card>
-          ))}
+            <Link href="/onboarding">
+              <Button>Start the Simulation</Button>
+            </Link>
+          </div>
         </div>
-      )}
+      </header>
+
+      <main className="flex-1">
+        {/* Hero Section */}
+        <section className="py-32 px-6 text-center max-w-5xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
+            Know exactly how VCs will evaluate you.<br />
+            <span className="text-muted-foreground">Before you pitch.</span>
+          </h1>
+          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+            Apex runs a brutally honest, mathematically sound diligence simulation on your pitch deck and data room. Fix your weak points. Raise your next round with confidence.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/onboarding">
+              <Button size="lg" className="h-14 px-8 text-lg w-full sm:w-auto">
+                Start the Simulation <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+          </div>
+        </section>
+
+        {/* The Problem */}
+        <section id="problem" className="py-24 bg-card border-y border-border/40">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold tracking-tight mb-4">Fundraising is an opaque, high-stakes game.</h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                You spend months building a deck, only to get passed on with a generic "It's not a fit right now." The truth? There was a fatal flaw in your unit economics, or a glaring contradiction in your market sizing that you couldn't see.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="p-6 bg-background rounded-lg border">
+                <ShieldAlert className="w-10 h-10 text-destructive mb-4" />
+                <h3 className="font-bold text-lg mb-2">Hidden Contradictions</h3>
+                <p className="text-muted-foreground">Your slide 4 TAM doesn't mathematically align with your slide 12 pricing model.</p>
+              </div>
+              <div className="p-6 bg-background rounded-lg border">
+                <BarChart3 className="w-10 h-10 text-warning mb-4" />
+                <h3 className="font-bold text-lg mb-2">Unsubstantiated Metrics</h3>
+                <p className="text-muted-foreground">You claim strong retention, but your data room lacks the cohort analysis to prove it.</p>
+              </div>
+              <div className="p-6 bg-background rounded-lg border">
+                <Target className="w-10 h-10 text-primary mb-4" />
+                <h3 className="font-bold text-lg mb-2">Weak Narrative Pillars</h3>
+                <p className="text-muted-foreground">Your Go-To-Market strategy is generic and lacks evidence of repeatability.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works */}
+        <section id="solution" className="py-24 px-6 max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight mb-4">Meet your Automated Diligence Engine.</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Powered by the same deterministic reasoning engine used by top venture capital firms, Apex strips away the noise. It doesn't just summarize your deck—it stress-tests every claim against reality.
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            <div className="flex gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xl">1</div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Upload your Materials</h3>
+                <p className="text-muted-foreground">Drop in your deck and financials. Apex instantly reads and parses your entire narrative.</p>
+              </div>
+            </div>
+            <div className="flex gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xl">2</div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">The Simulation Runs</h3>
+                <p className="text-muted-foreground">Our engine builds an evidence graph, finding every logical leap, contradiction, and missing data point.</p>
+              </div>
+            </div>
+            <div className="flex gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xl">3</div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Execute the Action Plan</h3>
+                <p className="text-muted-foreground">You get a prioritized checklist of exactly what to fix to become fundable.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      
+      <footer className="border-t border-border/40 py-12">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="font-bold text-lg">Apex Intelligence</div>
+          <div className="text-sm text-muted-foreground">© 2026 Apex. All rights reserved.</div>
+        </div>
+      </footer>
     </div>
-  )
+  );
 }
