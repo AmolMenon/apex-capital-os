@@ -179,7 +179,7 @@ class InvestorReviewService:
         self.db.add(run)
         
         # Also log a domain event for the timeline
-        from db.models import DomainEvent
+        from db.models import DomainEvent, ActionItem
         event = DomainEvent(
             decision_id=decision_id,
             event_type="InvestorReviewExecuted",
@@ -188,6 +188,27 @@ class InvestorReviewService:
             metadata_json=json.dumps({"outcome": response.get("decision", {}).get("outcome")})
         )
         self.db.add(event)
+        
+        # 4. Persist Execution Tickets (ActionItems)
+        # Clear existing uncompleted ones to avoid duplicates or update them
+        self.db.query(ActionItem).filter_by(decision_id=decision_id, status="TODO").delete()
+        
+        for action in action_plan:
+            new_item = ActionItem(
+                decision_id=decision_id,
+                title=action.get("what_needs_to_change", "Action Required")[:255],
+                priority="High" if action.get("priority") in ["P0", "P1"] else "Medium",
+                status="TODO",
+                problem=action.get("problem"),
+                why_investors_care=action.get("why_investors_care"),
+                missing_evidence=action.get("missing_evidence"),
+                definition_of_done=action.get("definition_of_done"),
+                estimated_effort=action.get("difficulty"),
+                expected_impact=action.get("expected_fundraising_impact"),
+                verification_criteria=action.get("verification_criteria")
+            )
+            self.db.add(new_item)
+
         self.db.commit()
         
         return response

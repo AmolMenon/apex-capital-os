@@ -3,16 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
-  LayoutDashboard, 
-  Building2, 
-  Presentation, 
-  Activity, 
-  CheckSquare, 
-  MessageSquare, 
-  FolderOpen, 
+  Home, 
+  Files, 
+  CheckCircle2, 
   Settings,
-  Rocket,
-  FileText
+  MoreHorizontal
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -24,31 +19,23 @@ export default function DashboardLayout({
   const pathname = usePathname();
 
   const navItems = [
-    { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Company", href: "/dashboard/company", icon: Building2 },
-    { name: "Executive Summary", href: "/dashboard/executive-summary", icon: FileText },
-    { name: "Pitch Deck", href: "/dashboard/deck", icon: Presentation },
-    { name: "Fundraising Readiness", href: "/dashboard/readiness", icon: Activity },
-    { name: "Action Center", href: "/dashboard/action-center", icon: CheckSquare },
-    { name: "Investor Simulator", href: "/dashboard/simulator", icon: MessageSquare },
-    { name: "Data Room", href: "/dashboard/data-room", icon: FolderOpen },
+    { name: "Home", href: "/dashboard", icon: Home },
+    { name: "Deck", href: "/dashboard/deck", icon: Files },
+    { name: "Tasks", href: "/dashboard/execution-workspace", icon: CheckCircle2 },
   ];
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
       {/* Sidebar Navigation */}
-      <aside className="w-64 flex-shrink-0 border-r border-border bg-card flex flex-col">
-        <div className="p-6 flex items-center gap-3">
-          <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center text-primary-foreground">
-            <Rocket className="w-5 h-5" />
+      <aside className="w-60 flex-shrink-0 border-r border-border/50 bg-background flex flex-col pt-4">
+        <div className="px-6 pb-6 flex items-center gap-2">
+          <div className="w-5 h-5 rounded bg-primary text-primary-foreground flex items-center justify-center font-bold text-[10px]">
+            A
           </div>
-          <span className="font-bold text-xl tracking-tight">Apex</span>
+          <span className="font-semibold text-sm tracking-tight">Apex</span>
         </div>
         
-        <nav className="flex-1 px-4 space-y-1 overflow-y-auto">
-          <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-4 mt-2 px-2">
-            Workspace
-          </div>
+        <nav className="flex-1 px-3 space-y-[2px] overflow-y-auto">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
@@ -56,38 +43,37 @@ export default function DashboardLayout({
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                  "flex items-center gap-2.5 px-3 py-1.5 rounded-md text-[13px] font-medium transition-colors",
                   isActive
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    ? "bg-secondary text-foreground"
+                    : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
                 )}
               >
-                <item.icon className={cn("w-4 h-4", isActive ? "text-primary" : "text-muted-foreground")} />
+                <item.icon className={cn("w-4 h-4", isActive ? "text-foreground" : "text-muted-foreground")} strokeWidth={isActive ? 2.5 : 2} />
                 {item.name}
               </Link>
             );
           })}
         </nav>
         
-        <div className="p-4 border-t border-border">
-          <Link
-            href="/dashboard/settings"
-            className={cn(
-              "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-              pathname === "/dashboard/settings"
-                ? "bg-primary/10 text-primary"
-                : "text-muted-foreground hover:bg-muted hover:text-foreground"
-            )}
+        <div className="p-3 border-t border-border/50">
+          <button
+            className="w-full flex items-center justify-between px-3 py-2 rounded-md text-[13px] font-medium text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors"
           >
-            <Settings className="w-4 h-4" />
-            Settings
-          </Link>
+            <div className="flex items-center gap-2.5">
+              <div className="w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-[10px] text-foreground">
+                F
+              </div>
+              Founder
+            </div>
+            <MoreHorizontal className="w-4 h-4 opacity-50" />
+          </button>
         </div>
       </aside>
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col min-w-0 overflow-y-auto">
-        <div className="flex-1 p-8 max-w-7xl mx-auto w-full">
+      <main className="flex-1 flex flex-col min-w-0 overflow-y-auto bg-background">
+        <div className="flex-1 p-8 max-w-5xl mx-auto w-full">
           {children}
         </div>
       </main>

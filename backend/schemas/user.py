@@ -1,6 +1,6 @@
 from typing import Optional
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 # Shared properties
 class UserBase(BaseModel):
@@ -19,8 +19,7 @@ class UserInDBBase(UserBase):
     id: int
     created_at: Optional[datetime] = None
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Properties to return to client
 class UserResponse(UserInDBBase):

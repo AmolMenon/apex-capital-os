@@ -61,5 +61,9 @@ export const DecisionsService = {
       method: "POST",
       body: JSON.stringify(data)
     });
+  },
+  
+  getFounderHome: async (decisionId: string | number) => {
+    return fetchAPI<any>(`/api/v1/decisions/${decisionId}/founder-home`);
   }
 };

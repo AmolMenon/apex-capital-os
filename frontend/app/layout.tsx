@@ -4,12 +4,12 @@ import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 import { ScreenshotProvider } from "@/components/ScreenshotProvider";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "Apex | AI Fundraising Intelligence",
-  description: "Know exactly how VCs will evaluate you. Before you pitch.",
+  title: "Apex Capital OS",
+  description: "Enterprise Readiness Engine",
 };
 
 export default function RootLayout({
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-background text-foreground`} suppressHydrationWarning>
+      <body className={`${sans.variable} ${mono.variable} font-sans bg-background text-foreground tracking-tight selection:bg-primary/20 selection:text-primary`} suppressHydrationWarning>
         <AuthProvider>
           <ScreenshotProvider>
             {children}
