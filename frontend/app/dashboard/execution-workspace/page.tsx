@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 export default function ExecutionWorkspacePage() {
   const [selectedTask, setSelectedTask] = useState<number | null>(null);
   const [tasks, setTasks] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const { deal } = useGlobalDeal();
 
   useEffect(() => {
@@ -27,16 +29,53 @@ export default function ExecutionWorkspacePage() {
             expected_impact: t.expected_impact,
             verification_criteria: t.verification_criteria,
             priority_label: t.priority,
-            linked_claim_id: t.linked_claim_id,
-            linked_assumption_id: t.linked_assumption_id,
-            linked_conflict_id: t.linked_conflict_id
+            linked_claim_text: t.linked_claim_text,
+            linked_assumption_text: t.linked_assumption_text,
+            linked_conflict_text: t.linked_conflict_text
           })));
         }
+        setLoading(false);
+      }).catch((e) => {
+        // APM logging
+        setErrorMsg("Failed to load tasks. Please try again.");
+        setLoading(false);
       });
     }
   }, [deal]);
 
   const activeTaskData = tasks.find(t => t.id === selectedTask);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col h-[calc(100vh-6rem)] animate-in fade-in duration-300">
+        <div className="flex items-center gap-2 mb-6">
+          <ListTodo className="w-5 h-5 text-muted-foreground" />
+          <h1 className="text-xl font-semibold tracking-tight">Execution Workspace</h1>
+        </div>
+        <div className="flex-1 flex gap-0 border border-border/50 rounded-lg bg-card shadow-sm overflow-hidden">
+          <div className="w-[40%] flex flex-col border-r border-border/50 bg-background/50 p-4 space-y-4">
+            {[1, 2, 3, 4].map(i => <div key={i} className="h-16 bg-secondary/50 animate-pulse rounded" />)}
+          </div>
+          <div className="w-[60%] flex flex-col bg-background p-8 space-y-8">
+            <div className="h-8 w-2/3 bg-secondary/50 animate-pulse rounded" />
+            <div className="h-32 bg-secondary/50 animate-pulse rounded" />
+            <div className="h-32 bg-secondary/50 animate-pulse rounded" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (errorMsg) {
+    return (
+      <div className="flex flex-col h-[calc(100vh-6rem)] animate-in fade-in duration-300 items-center justify-center">
+        <ShieldAlert className="w-12 h-12 text-destructive mx-auto mb-4" />
+        <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
+        <p className="text-muted-foreground text-sm mb-6">{errorMsg}</p>
+        <Button onClick={() => window.location.reload()}>Retry</Button>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-[calc(100vh-6rem)] animate-in fade-in duration-500">
@@ -56,7 +95,11 @@ export default function ExecutionWorkspacePage() {
           
           <div className="flex-1 overflow-y-auto">
             {tasks.length === 0 ? (
-              <div className="p-8 text-center text-sm text-muted-foreground">No tasks found.</div>
+              <div className="p-8 text-center text-sm text-muted-foreground">
+                <CheckCircle2 className="w-8 h-8 text-muted-foreground mx-auto mb-3" />
+                <h3 className="text-base font-semibold text-foreground">All clear</h3>
+                <p className="mt-1">No pending tasks for this version.</p>
+              </div>
             ) : (
               <div className="divide-y divide-border/30">
                 {tasks.map(task => (
@@ -148,18 +191,27 @@ export default function ExecutionWorkspacePage() {
                   <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground mb-4">
                     <GitCommit className="w-4 h-4" /> Provenance Chain
                   </div>
-                  <div className="flex gap-4 text-xs text-muted-foreground">
-                    {activeTaskData.linked_claim_id && (
-                      <span className="bg-secondary/50 px-2 py-1 rounded">Claim #{activeTaskData.linked_claim_id}</span>
+                  <div className="flex flex-col gap-4 text-muted-foreground">
+                    {activeTaskData.linked_claim_text && (
+                      <div className="bg-secondary/30 p-3 rounded-lg border border-border/50 text-sm text-foreground">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-1">Source Claim</span>
+                        "{activeTaskData.linked_claim_text}"
+                      </div>
                     )}
-                    {activeTaskData.linked_conflict_id && (
-                      <span className="bg-secondary/50 px-2 py-1 rounded">Conflict #{activeTaskData.linked_conflict_id}</span>
+                    {activeTaskData.linked_conflict_text && (
+                      <div className="bg-secondary/30 p-3 rounded-lg border border-border/50 text-sm text-foreground">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-1">Source Conflict</span>
+                        {activeTaskData.linked_conflict_text}
+                      </div>
                     )}
-                    {activeTaskData.linked_assumption_id && (
-                      <span className="bg-secondary/50 px-2 py-1 rounded">Assumption #{activeTaskData.linked_assumption_id}</span>
+                    {activeTaskData.linked_assumption_text && (
+                      <div className="bg-secondary/30 p-3 rounded-lg border border-border/50 text-sm text-foreground">
+                        <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground block mb-1">Source Assumption</span>
+                        {activeTaskData.linked_assumption_text}
+                      </div>
                     )}
-                    {!activeTaskData.linked_claim_id && !activeTaskData.linked_conflict_id && !activeTaskData.linked_assumption_id && (
-                      <span>System generated.</span>
+                    {!activeTaskData.linked_claim_text && !activeTaskData.linked_conflict_text && !activeTaskData.linked_assumption_text && (
+                      <span className="text-sm">System generated task based on overall narrative analysis.</span>
                     )}
                   </div>
                 </div>

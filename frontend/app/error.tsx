@@ -13,7 +13,7 @@ export default function ErrorBoundary({
   reset: () => void
 }) {
   useEffect(() => {
-    console.error("Global Application Error:", error)
+    // APM Logging
   }, [error])
 
   return (

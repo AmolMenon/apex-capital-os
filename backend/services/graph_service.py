@@ -273,3 +273,39 @@ class GraphService:
             "nodes": [{"id": n.id, "type": n.node_type, "content": n.content, "metadata": n.metadata_json} for n in nodes],
             "edges": [{"id": e.id, "source": e.source_node_id, "target": e.target_node_id, "relationship": e.relationship, "weight": e.weight} for e in edges]
         }
+
+    @staticmethod
+    def compute_canonical_graph_hash(db: Session, decision_id: int) -> str:
+        """
+        Computes a deterministic hash of the canonical graph (Claims, Assumptions, Conflicts).
+        Used by the dashboard to determine if cached LLM responses are stale.
+        """
+        import hashlib
+        from db.models import Claim, Assumption, EvidenceConflict
+        claims = db.query(Claim.id, Claim.verification_status).filter(Claim.decision_id == decision_id).order_by(Claim.id).all()
+        assumptions = db.query(Assumption.id, Assumption.status).filter(Assumption.decision_id == decision_id).order_by(Assumption.id).all()
+        conflicts = db.query(EvidenceConflict.id, EvidenceConflict.status).filter(EvidenceConflict.decision_id == decision_id).order_by(EvidenceConflict.id).all()
+        
+        # Build a string representing the current state
+        state_str = "Claims:" + ",".join([f"{c[0]}_{c[1]}" for c in claims])
+        state_str += "|Assumptions:" + ",".join([f"{a[0]}_{a[1]}" for a in assumptions])
+        state_str += "|Conflicts:" + ",".join([f"{c[0]}_{c[1]}" for c in conflicts])
+        
+        return hashlib.sha256(state_str.encode('utf-8')).hexdigest()
+
+_ephemeral_language_cache = {}
+
+class EphemeralLanguageCache:
+    @staticmethod
+    def set_cache(decision_id: int, hash_val: str, key: str, data: Any):
+        if decision_id not in _ephemeral_language_cache:
+            _ephemeral_language_cache[decision_id] = {}
+        _ephemeral_language_cache[decision_id][key] = {"hash": hash_val, "data": data}
+        
+    @staticmethod
+    def get_cache(decision_id: int, current_hash: str, key: str) -> Optional[Any]:
+        decision_cache = _ephemeral_language_cache.get(decision_id, {})
+        entry = decision_cache.get(key)
+        if entry and entry["hash"] == current_hash:
+            return entry["data"]
+        return None

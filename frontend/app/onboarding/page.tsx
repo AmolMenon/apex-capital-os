@@ -16,9 +16,11 @@ export default function OnboardingPage() {
   const [dealId, setDealId] = useState<number | null>(null);
 
   const hiddenFileInput = useRef<HTMLInputElement>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const handleCreateCompany = async () => {
     if (!companyName) return;
+    setErrorMsg(null);
     try {
       const deal = await DealsService.createDeal({
         startup_name: companyName,
@@ -28,9 +30,9 @@ export default function OnboardingPage() {
       });
       setDealId(deal.id);
       setStep(2);
-    } catch (e) {
-      console.error(e);
-      setStep(2);
+    } catch (e: any) {
+      // APM logging
+      setErrorMsg(e.message || "Failed to create company. Please try again.");
     }
   };
 
@@ -38,37 +40,42 @@ export default function OnboardingPage() {
     hiddenFileInput.current?.click();
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      simulateProcessing();
+    if (file && dealId) {
+      await processRealUpload(file, dealId);
     }
   };
 
-  const simulateProcessing = () => {
+  const processRealUpload = async (file: File, dealId: number) => {
     setStep(3);
-    const script = [
-      "Initializing Diligence Engine...",
-      "Extracting narrative pillars from Pitch Deck...",
-      "Mapping claims to market realities...",
-      "Cross-referencing metrics against industry benchmarks...",
-      "Simulating Investor Review...",
-      "Generating Bear Case and Bull Case...",
-      "Identifying logical contradictions...",
-      "Calculating Fundraising Readiness Score...",
-      "Finalizing Action Plan..."
-    ];
+    setErrorMsg(null);
+    setLogs(["Uploading deck..."]);
     
-    let currentLog = 0;
-    const interval = setInterval(() => {
-      if (currentLog < script.length) {
-        setLogs(prev => [...prev, script[currentLog]]);
-        currentLog++;
-      } else {
-        clearInterval(interval);
-        setTimeout(() => setStep(4), 1000);
-      }
-    }, 600);
+    try {
+      // 1. Upload
+      const uploadRes = await DealsService.uploadDeck(dealId, file);
+      const documentId = uploadRes.document_id;
+      setLogs(prev => [...prev, "Extracting evidence and narrative pillars..."]);
+      
+      // 2. Extract Claims
+      await DealsService.extractClaims(dealId, documentId);
+      setLogs(prev => [...prev, "Building Canonical Investment Case..."]);
+      
+      // 3. Review
+      setLogs(prev => [...prev, "Generating Investor Review..."]);
+      await DealsService.runInvestorReview(dealId);
+      
+      setLogs(prev => [...prev, "Complete."]);
+      
+      // Navigate to dashboard automatically
+      setTimeout(() => router.push("/dashboard"), 1000);
+      
+    } catch (e: any) {
+      // APM logging
+      setErrorMsg(e.message || "An error occurred during upload or analysis.");
+      setStep(2); // Go back to upload step to let them retry
+    }
   };
 
   return (
@@ -112,6 +119,11 @@ export default function OnboardingPage() {
               >
                 Continue
               </Button>
+              {errorMsg && (
+                <div className="mt-4 p-3 rounded bg-destructive/10 text-destructive text-sm border border-destructive/20 text-center">
+                  {errorMsg}
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -120,7 +132,7 @@ export default function OnboardingPage() {
           <div className="space-y-8 animate-in slide-in-from-right-8 duration-500">
             <div className="text-center space-y-2">
               <h2 className="text-3xl font-bold tracking-tight">Upload your Pitch Deck</h2>
-              <p className="text-muted-foreground">Our engine will instantly run a diligence simulation.</p>
+              <p className="text-muted-foreground">Our engine will instantly run diligence verification.</p>
             </div>
             
             <div 
@@ -142,6 +154,15 @@ export default function OnboardingPage() {
                 <p className="text-sm text-muted-foreground">PDF or PPTX (Max 20MB)</p>
               </div>
             </div>
+            {errorMsg && (
+              <div className="mt-4 p-4 rounded bg-destructive/10 text-destructive text-sm border border-destructive/20">
+                <div className="font-bold mb-1">Upload Failed</div>
+                <p>{errorMsg}</p>
+                <Button variant="outline" size="sm" className="mt-3 text-foreground" onClick={() => setErrorMsg(null)}>
+                  Retry
+                </Button>
+              </div>
+            )}
           </div>
         )}
 
@@ -149,7 +170,7 @@ export default function OnboardingPage() {
           <div className="w-full max-w-2xl mx-auto space-y-6">
             <div className="flex items-center gap-3 mb-8">
               <Terminal className="w-6 h-6 text-primary animate-pulse" />
-              <h2 className="text-xl font-mono font-bold tracking-tight">Running Simulation...</h2>
+              <h2 className="text-xl font-mono font-bold tracking-tight">Processing Documentation...</h2>
             </div>
             
             <div className="bg-[#09090B] border border-border rounded-lg p-6 font-mono text-sm space-y-3 min-h-[300px]">
@@ -163,41 +184,7 @@ export default function OnboardingPage() {
           </div>
         )}
 
-        {step === 4 && (
-          <div className="space-y-8 animate-in zoom-in duration-500">
-            <div className="text-center space-y-4">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-destructive/10 text-destructive font-bold text-sm mb-2 border border-destructive/20">
-                Simulation Complete
-              </div>
-              <h2 className="text-4xl font-extrabold tracking-tight">We found 3 critical risks.</h2>
-              <p className="text-muted-foreground text-lg">Your Fundraising Readiness Score is currently <span className="font-bold text-foreground">42/100</span>.</p>
-            </div>
-
-            <div className="bg-card border border-border rounded-xl p-6 space-y-4">
-              <div className="p-4 rounded-lg bg-background border border-destructive/20 flex gap-4 items-start">
-                <div className="w-2 h-2 rounded-full bg-destructive mt-2" />
-                <div>
-                  <h4 className="font-bold mb-1">Unjustified Market Size (TAM)</h4>
-                  <p className="text-sm text-muted-foreground">You claim a $10B TAM, but your bottom-up pricing model requires 83M users. This is mathematically contradictory.</p>
-                </div>
-              </div>
-              <div className="p-4 rounded-lg bg-background border border-warning/20 flex gap-4 items-start">
-                <div className="w-2 h-2 rounded-full bg-warning mt-2" />
-                <div>
-                  <h4 className="font-bold mb-1">Missing Cohort Analysis</h4>
-                  <p className="text-sm text-muted-foreground">You state 20% MoM growth, but no historical P&L or retention data was found to substantiate this claim.</p>
-                </div>
-              </div>
-            </div>
-
-            <Button 
-              className="w-full h-14 text-lg font-bold" 
-              onClick={() => router.push("/dashboard")}
-            >
-              Go to Action Center
-            </Button>
-          </div>
-        )}
+        {step === 4 && null /* We skip step 4 and navigate directly to dashboard now */}
 
       </div>
     </div>

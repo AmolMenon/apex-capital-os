@@ -168,7 +168,16 @@ class InvestorReviewService:
         
         duration_ms = int((time.time() - t0) * 1000)
         
-        # 3. Log Metadata
+        # 3. Log Metadata and Cache response
+        from services.graph_service import GraphService, EphemeralLanguageCache
+        current_hash = GraphService.compute_canonical_graph_hash(self.db, decision_id)
+        
+        # Save graph hash to token_usage_json to track which graph this run evaluated
+        if token_info:
+            token_info["canonical_graph_hash"] = current_hash
+        else:
+            token_info = {"canonical_graph_hash": current_hash}
+            
         run = ReviewRun(
             decision_id=decision_id,
             status="Completed",
@@ -177,6 +186,9 @@ class InvestorReviewService:
             completed_at=datetime.datetime.utcnow()
         )
         self.db.add(run)
+        
+        # Cache the ephemeral language
+        EphemeralLanguageCache.set_cache(decision_id, current_hash, "investor_review", response)
         
         # Also log a domain event for the timeline
         from db.models import DomainEvent, ActionItem

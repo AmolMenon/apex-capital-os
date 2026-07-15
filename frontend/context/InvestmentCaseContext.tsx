@@ -31,7 +31,7 @@ export function InvestmentCaseProvider({
       const data = await InvestmentCaseService.getInvestmentCase(decisionId);
       setInvestmentCase(data);
     } catch (err: any) {
-      console.error("Failed to load canonical investment case:", err);
+      // APM logging
       setError(err.message || "Failed to load investment case");
     } finally {
       setIsLoading(false);

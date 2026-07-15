@@ -12,14 +12,13 @@ export default function LandingPage() {
           <nav className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
             <Link href="#problem" className="hover:text-foreground transition-colors">The Problem</Link>
             <Link href="#solution" className="hover:text-foreground transition-colors">How it Works</Link>
-            <Link href="#pricing" className="hover:text-foreground transition-colors">Pricing</Link>
           </nav>
           <div className="flex items-center gap-4">
             <Link href="/onboarding">
               <Button variant="ghost">Sign In</Button>
             </Link>
             <Link href="/onboarding">
-              <Button>Start the Simulation</Button>
+              <Button>Run Diligence on My Deck</Button>
             </Link>
           </div>
         </div>
@@ -38,9 +37,25 @@ export default function LandingPage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/onboarding">
               <Button size="lg" className="h-14 px-8 text-lg w-full sm:w-auto">
-                Start the Simulation <ArrowRight className="ml-2 w-5 h-5" />
+                Run Diligence on My Deck <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
+          </div>
+          
+          {/* Security & Privacy Promise */}
+          <div className="mt-16 pt-8 border-t border-border/40 max-w-2xl mx-auto text-left flex flex-col md:flex-row items-center justify-center gap-6 text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <ShieldAlert className="w-5 h-5 text-success" />
+              <span className="text-sm font-medium">Bank-grade Confidentiality</span>
+            </div>
+            <div className="hidden md:block w-1 h-1 rounded-full bg-border" />
+            <div className="text-sm">
+              Your deck is <strong>never</strong> used to train AI models.
+            </div>
+            <div className="hidden md:block w-1 h-1 rounded-full bg-border" />
+            <div className="text-sm">
+              Only you control access.
+            </div>
           </div>
         </section>
 

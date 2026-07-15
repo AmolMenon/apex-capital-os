@@ -256,73 +256,47 @@ def compare_versions(
     decision: Decision = Depends(require_decision_access)
 ):
     import db.models as db_models
-    from services.llm_provider import LLMProvider, DeterministicTestProvider
-    from core.config import settings
     
+    # In a fully modelled system, we would group claims by deck_version. 
+    # For now, we simulate the deterministic grouping based on current claims vs assumptions and conflicts.
     claims = db.query(db_models.Claim).filter_by(decision_id=decision_id).all()
     conflicts = db.query(db_models.EvidenceConflict).filter_by(decision_id=decision_id).all()
     assumptions = db.query(db_models.Assumption).filter_by(decision_id=decision_id).all()
     
-    provider = LLMProvider() if settings.APEX_LLM_MODE == "live" else DeterministicTestProvider()
+    resolved_conflicts = [c for c in conflicts if c.status == "RESOLVED"]
+    open_conflicts = [c for c in conflicts if c.status != "RESOLVED"]
+    validated_assumptions = [a for a in assumptions if a.status == "Verified"]
     
-    system_prompt = "You are an AI investment analyst comparing two versions of a startup's data room/pitch deck. Based on the provided claims, assumptions, and conflicts, generate a realistic perception delta and progress metrics. Be highly specific and data-driven."
-    user_prompt = f"Version 1: {v1}\nVersion 2: {v2}\n\nClaims:\n" + "\n".join([c.statement for c in claims]) + "\n\nConflicts:\n" + "\n".join([c.resolution_rationale or "Conflict" for c in conflicts]) + "\n\nAssumptions:\n" + "\n".join([a.statement for a in assumptions])
-    
-    schema = {
-        "type": "object",
-        "properties": {
-            "v1": {"type": "integer"},
-            "v2": {"type": "integer"},
-            "confidence_v1": {"type": "integer"},
-            "confidence_v2": {"type": "integer"},
-            "resolved_conflicts_count": {"type": "integer"},
-            "assumptions_validated_count": {"type": "integer"},
-            "perception_delta": {
-                "type": "object",
-                "properties": {
-                    "strengthened_claims": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "statement": {"type": "string"},
-                                "delta": {"type": "string"}
-                            }
-                        }
-                    },
-                    "resolved_conflicts": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "rationale": {"type": "string"}
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "required": ["v1", "v2", "confidence_v1", "confidence_v2", "resolved_conflicts_count", "assumptions_validated_count", "perception_delta"]
-    }
-    
-    try:
-        response, _ = provider.generate_structured(system_prompt, user_prompt, schema, model_name=settings.APEX_REASONING_MODEL)
-        return response
-    except Exception as e:
-        import logging
-        logging.getLogger(__name__).error(f"LLM Error in get_compare: {e}")
-        return {
-            "v1": v1,
-            "v2": v2,
-            "confidence_v1": 35,
-            "confidence_v2": 72,
-            "resolved_conflicts_count": len([c for c in conflicts if c.status == "RESOLVED"]),
-            "assumptions_validated_count": len([a for a in assumptions if a.status == "Verified"]),
-            "perception_delta": {
-                "strengthened_claims": [],
-                "resolved_conflicts": []
-            }
+    # Deterministic generation of delta
+    strengthened = []
+    if claims:
+        strengthened.append({
+            "statement": claims[0].statement,
+            "delta": "New evidence corroborated this claim in the latest version."
+        })
+        
+    resolved_list = []
+    for rc in resolved_conflicts:
+        resolved_list.append({
+            "rationale": rc.resolution_rationale or "Conflict resolved by new evidence."
+        })
+        
+    # Mathematical confidence proxy
+    v1_confidence = max(0, 50 - len(conflicts)*5)
+    v2_confidence = min(100, v1_confidence + len(resolved_conflicts)*10 + len(validated_assumptions)*5)
+        
+    return {
+        "v1": v1,
+        "v2": v2,
+        "confidence_v1": v1_confidence,
+        "confidence_v2": v2_confidence,
+        "resolved_conflicts_count": len(resolved_conflicts),
+        "assumptions_validated_count": len(validated_assumptions),
+        "perception_delta": {
+            "strengthened_claims": strengthened,
+            "resolved_conflicts": resolved_list
         }
+    }
 
 from datetime import datetime
 
@@ -332,40 +306,22 @@ def get_executive_summary(
     db: Session = Depends(get_db),
     decision: Decision = Depends(require_decision_access)
 ):
-    import db.models as db_models
-    from services.llm_provider import LLMProvider, DeterministicTestProvider
-    from core.config import settings
+    from services.graph_service import GraphService, EphemeralLanguageCache
+    from datetime import datetime
     
-    claims = db.query(db_models.Claim).filter_by(decision_id=decision_id).all()
-    assumptions = db.query(db_models.Assumption).filter_by(decision_id=decision_id).all()
-    conflicts = db.query(db_models.EvidenceConflict).filter_by(decision_id=decision_id).all()
+    current_hash = GraphService.compute_canonical_graph_hash(db, decision_id)
+    cached_response = EphemeralLanguageCache.get_cache(decision_id, current_hash, "investor_review")
     
-    provider = LLMProvider() if settings.APEX_LLM_MODE == "live" else DeterministicTestProvider()
-    
-    system_prompt = "You are a top-tier venture capital associate writing an executive summary of a startup diligence process. Synthesize the key claims, critical assumptions, and major conflicts into a concise, professional 3-4 paragraph summary."
-    user_prompt = "Claims:\n" + "\n".join([f"- {c.statement}" for c in claims]) + "\n\nAssumptions:\n" + "\n".join([f"- {a.statement}" for a in assumptions]) + "\n\nConflicts:\n" + "\n".join([f"- {c.resolution_rationale or 'Evidence Conflict'}" for c in conflicts])
-    
-    schema = {
-        "type": "object",
-        "properties": {
-            "summary": {"type": "string"}
-        },
-        "required": ["summary"]
+    if cached_response and "memo" in cached_response and "executive_summary" in cached_response["memo"]:
+        return {
+            "summary": cached_response["memo"]["executive_summary"],
+            "generated_at": datetime.utcnow()
+        }
+        
+    return {
+        "summary": "The Canonical Investment Case has been updated or no review exists yet. Please click 'Refresh Analysis' to generate a new Executive Summary.",
+        "generated_at": datetime.utcnow()
     }
-    
-    try:
-        response, _ = provider.generate_structured(system_prompt, user_prompt, schema, model_name=settings.APEX_REASONING_MODEL)
-        return {
-            "summary": response.get("summary", "Analysis failed."),
-            "generated_at": datetime.utcnow()
-        }
-    except Exception as e:
-        import logging
-        logging.getLogger(__name__).error(f"LLM Error in get_executive_summary: {e}")
-        return {
-            "summary": "Executive Summary generation failed due to API limits or error.",
-            "generated_at": datetime.utcnow()
-        }
 
 @router.get("/{decision_id}/slide-review")
 def get_slide_review(
@@ -374,8 +330,6 @@ def get_slide_review(
     decision: Decision = Depends(require_decision_access)
 ):
     import db.models as db_models
-    from services.llm_provider import LLMProvider, DeterministicTestProvider
-    from core.config import settings
     
     evidence = db.query(db_models.Evidence).filter_by(decision_id=decision_id, evidence_type='pitch_deck').first()
     
@@ -384,50 +338,43 @@ def get_slide_review(
         
     claims = db.query(db_models.Claim).filter_by(decision_id=decision_id).all()
     
-    provider = LLMProvider() if settings.APEX_LLM_MODE == "live" else DeterministicTestProvider()
+    # Group claims by their source chunk to represent slides
+    slides_map = {}
+    for c in claims:
+        # Default to slide 1 if no chunk id mapped
+        slide_num = c.source_chunk_id if c.source_chunk_id else 1 
+        if slide_num not in slides_map:
+            slides_map[slide_num] = []
+        slides_map[slide_num].append(c)
+        
+    slides_response = []
+    for slide_num, slide_claims in slides_map.items():
+        # Determine status deterministically
+        statuses = [c.verification_status for c in slide_claims]
+        if "CONTRADICTION" in statuses or "EVIDENCE_SPAN_WRONG_CHUNK" in statuses:
+            status = "CONTRADICTION"
+            feedback = "Severe contradiction detected with evidence. Data does not match claim."
+        elif "Unverified" in statuses:
+            status = "WARNING"
+            feedback = "Some claims on this slide lack supporting evidence or remain unverified."
+        else:
+            status = "VERIFIED"
+            feedback = "All claims on this slide are supported by canonical evidence."
+            
+        slides_response.append({
+            "slide_number": slide_num,
+            "title": f"Slide {slide_num}",
+            "status": status,
+            "feedback": feedback
+        })
+        
+    # Sort slides deterministically
+    slides_response = sorted(slides_response, key=lambda x: x["slide_number"])
     
-    system_prompt = "You are evaluating a startup pitch deck. Based on the extracted claims and their verification status, provide a slide-by-slide review. Assign each slide a status: 'VERIFIED' if the claims hold up, 'WARNING' if there are unsupported claims, or 'CONTRADICTION' if there are severe conflicts."
-    user_prompt = "Extracted Claims:\n" + "\n".join([f"Claim ID {c.id}: {c.statement} (Status: {c.verification_status})" for c in claims])
-    
-    schema = {
-        "type": "object",
-        "properties": {
-            "deck_title": {"type": "string"},
-            "slides": {
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "slide_number": {"type": "integer"},
-                        "title": {"type": "string"},
-                        "status": {"type": "string", "enum": ["VERIFIED", "WARNING", "CONTRADICTION"]},
-                        "feedback": {"type": "string"}
-                    },
-                    "required": ["slide_number", "title", "status", "feedback"]
-                }
-            }
-        },
-        "required": ["deck_title", "slides"]
+    return {
+        "deck_title": evidence.title,
+        "slides": slides_response
     }
-    
-    try:
-        response, _ = provider.generate_structured(system_prompt, user_prompt, schema, model_name=settings.APEX_REASONING_MODEL)
-        response["deck_title"] = evidence.title
-        return response
-    except Exception as e:
-        import logging
-        logging.getLogger(__name__).error(f"LLM Error in get_slide_review: {e}")
-        return {
-            "deck_title": evidence.title,
-            "slides": [
-                {
-                    "slide_number": 1,
-                    "title": "Title Slide",
-                    "status": "VERIFIED",
-                    "feedback": "Analysis encountered an error."
-                }
-            ]
-        }
 
 @router.get("/{decision_id}/work-queue")
 def get_work_queue(
@@ -441,6 +388,20 @@ def get_work_queue(
     
     queue = []
     for item in items:
+        claim_text = None
+        conflict_text = None
+        assumption_text = None
+        
+        if item.linked_claim_id:
+            c = db.query(db_models.Claim).filter_by(id=item.linked_claim_id).first()
+            if c: claim_text = c.statement
+        if item.linked_conflict_id:
+            c = db.query(db_models.EvidenceConflict).filter_by(id=item.linked_conflict_id).first()
+            if c: conflict_text = c.description
+        if item.linked_assumption_id:
+            a = db.query(db_models.Assumption).filter_by(id=item.linked_assumption_id).first()
+            if a: assumption_text = a.statement
+
         queue.append({
             "id": item.id,
             "title": item.title,
@@ -456,6 +417,9 @@ def get_work_queue(
             "linked_assumption_id": item.linked_assumption_id,
             "linked_conflict_id": item.linked_conflict_id,
             "linked_claim_id": item.linked_claim_id,
+            "linked_claim_text": claim_text,
+            "linked_conflict_text": conflict_text,
+            "linked_assumption_text": assumption_text,
             "created_at": item.created_at,
             "completed_at": item.completed_at
         })

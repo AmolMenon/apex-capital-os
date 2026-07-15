@@ -57,6 +57,39 @@ export const DealsService = {
     });
   },
 
+  uploadDeck: async (id: string | number, file: File): Promise<any> => {
+    const url = `${API_BASE_URL}/api/v1/decisions/${id}/upload`;
+    let accessToken = typeof window !== "undefined" ? localStorage.getItem("apex_access_token") : null;
+    
+    const headers: Record<string, string> = {};
+    if (accessToken) headers["Authorization"] = `Bearer ${accessToken}`;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers,
+      body: formData,
+    });
+
+    if (!response.ok) {
+      let errorMsg = response.statusText;
+      try {
+        const errorData = await response.json();
+        if (errorData.detail) errorMsg = errorData.detail;
+      } catch (e) {}
+      throw new DealsServiceError(response.status, errorMsg);
+    }
+    return response.json();
+  },
+
+  extractClaims: async (id: string | number, documentId: number): Promise<any> => {
+    return fetchAPI<any>(`/api/v1/decisions/${id}/documents/${documentId}/extract-claims`, {
+      method: "POST"
+    });
+  },
+
   updateDeal: async (id: string | number, data: any): Promise<Deal> => {
     return fetchAPI<Deal>(`/api/v1/decisions/${id}`, {
       method: "PUT",

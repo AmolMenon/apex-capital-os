@@ -14,6 +14,7 @@ export default function DashboardPage() {
   const [deal, setDeal] = useState<Deal | null>(null);
   const [homeData, setHomeData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadData() {
@@ -26,8 +27,9 @@ export default function DashboardPage() {
         } else {
           router.push("/onboarding");
         }
-      } catch (e) {
-        console.error(e);
+      } catch (e: any) {
+        // APM logging
+        setErrorMsg("Failed to load dashboard data. Please try again.");
       } finally {
         setLoading(false);
       }
@@ -50,7 +52,26 @@ export default function DashboardPage() {
     );
   }
 
-  if (!deal || !homeData) return null;
+  if (errorMsg) {
+    return (
+      <div className="py-24 text-center animate-in fade-in duration-300">
+        <ShieldAlert className="w-12 h-12 text-destructive mx-auto mb-4" />
+        <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
+        <p className="text-muted-foreground text-sm mb-6">{errorMsg}</p>
+        <Button onClick={() => window.location.reload()}>Retry</Button>
+      </div>
+    );
+  }
+
+  if (!deal || !homeData) {
+    return (
+      <div className="py-24 text-center animate-in fade-in duration-300">
+        <h2 className="text-xl font-semibold mb-2">No Active Deal</h2>
+        <p className="text-muted-foreground text-sm mb-6">You need to upload a deck to get started.</p>
+        <Button onClick={() => router.push("/onboarding")}>Upload Deck</Button>
+      </div>
+    );
+  }
 
   const wouldTakeMeeting = homeData.readiness_score >= 80;
 

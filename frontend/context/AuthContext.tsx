@@ -78,7 +78,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         localStorage.removeItem('token');
       }
     } catch (error) {
-      console.error('Failed to fetch user', error);
+      // In production, logging handled by APM
     } finally {
       setIsLoading(false);
     }

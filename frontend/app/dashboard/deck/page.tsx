@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { UploadCloud, Target, ShieldAlert, TrendingUp, CheckCircle2, History, ArrowRight } from "lucide-react";
+import { UploadCloud, Target, ShieldAlert, TrendingUp, CheckCircle2, History, ArrowRight, Loader2 } from "lucide-react";
 import { DealsService } from "@/services/deals";
 import { useGlobalDeal } from "@/components/GlobalDealProvider";
 import { EvidenceHeatmap } from "@/components/deck/EvidenceHeatmap";
@@ -12,6 +12,11 @@ export default function PitchDeckPage() {
   const [activeSlide, setActiveSlide] = useState(1);
   const [slides, setSlides] = useState<any[]>([]);
   const [compareData, setCompareData] = useState<any>(null);
+  const [isLoadingSlides, setIsLoadingSlides] = useState(true);
+  const [isLoadingCompare, setIsLoadingCompare] = useState(true);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { deal } = useGlobalDeal();
 
   useEffect(() => {
@@ -30,13 +35,41 @@ export default function PitchDeckPage() {
             setActiveSlide(data.slides[0].slide_number);
           }
         }
-      });
+        setIsLoadingSlides(false);
+      }).catch(() => setIsLoadingSlides(false));
 
       DealsService.getCompare(deal.id, 1, 2).then(data => {
         setCompareData(data);
-      });
+        setIsLoadingCompare(false);
+      }).catch(() => setIsLoadingCompare(false));
     }
-  }, [deal]);
+
+  const handleUploadClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && deal) {
+      setIsUploading(true);
+      setUploadStatus("Uploading deck...");
+      try {
+        const uploadRes = await DealsService.uploadDeck(deal.id, file);
+        setUploadStatus("Extracting evidence...");
+        await DealsService.extractClaims(deal.id, uploadRes.document_id);
+        setUploadStatus("Updating Canonical Graph...");
+        await DealsService.runInvestorReview(deal.id);
+        
+        // Refresh page to load new version
+        window.location.reload();
+      } catch (err: any) {
+        // APM logging
+        alert(err.message || "Failed to upload new version.");
+        setIsUploading(false);
+        setUploadStatus(null);
+      }
+    }
+  };
 
   const currentSlide = slides.find(s => s.id === activeSlide);
 
@@ -51,8 +84,19 @@ export default function PitchDeckPage() {
           <div className="text-sm font-mono text-muted-foreground">
             Current: v4_final_final.pdf
           </div>
-          <Button variant="secondary" size="sm" className="h-8">
-            <UploadCloud className="w-3.5 h-3.5 mr-2" /> Upload New Version
+          <input 
+            type="file" 
+            ref={fileInputRef} 
+            className="hidden" 
+            accept=".pdf,.pptx" 
+            onChange={handleFileChange} 
+          />
+          <Button variant="secondary" size="sm" className="h-8" onClick={handleUploadClick} disabled={isUploading}>
+            {isUploading ? (
+              <><Loader2 className="w-3.5 h-3.5 mr-2 animate-spin" /> {uploadStatus}</>
+            ) : (
+              <><UploadCloud className="w-3.5 h-3.5 mr-2" /> Upload New Version</>
+            )}
           </Button>
         </div>
       </div>
@@ -83,8 +127,17 @@ export default function PitchDeckPage() {
                 Slides
               </div>
               <div className="flex-1 overflow-y-auto py-2">
-                {slides.length === 0 ? (
-                  <div className="p-4 text-xs text-muted-foreground text-center">No slides found.</div>
+                {isLoadingSlides ? (
+                  <div className="p-4 space-y-3">
+                    {[1, 2, 3, 4, 5].map(i => (
+                      <div key={i} className="h-10 bg-secondary/50 animate-pulse rounded" />
+                    ))}
+                  </div>
+                ) : slides.length === 0 ? (
+                  <div className="p-8 text-center text-muted-foreground">
+                    <p className="text-sm">No slides processed yet.</p>
+                    <p className="text-xs mt-2">Upload a deck to generate your analysis.</p>
+                  </div>
                 ) : (
                   slides.map(slide => (
                     <button 
@@ -209,8 +262,21 @@ export default function PitchDeckPage() {
               </div>
 
             </div>
+          ) : isLoadingCompare ? (
+            <div className="py-12 space-y-6 max-w-4xl">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[1, 2, 3].map(i => (
+                  <div key={i} className="h-32 bg-secondary/30 animate-pulse rounded-lg" />
+                ))}
+              </div>
+              <div className="h-64 bg-secondary/30 animate-pulse rounded-lg" />
+            </div>
           ) : (
-            <div className="py-12 text-center text-sm text-muted-foreground">Loading progress timeline...</div>
+            <div className="py-16 text-center border border-border/50 rounded-lg bg-background/50">
+              <History className="w-8 h-8 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-foreground">No comparison data yet</h3>
+              <p className="text-sm text-muted-foreground mt-2 max-w-sm mx-auto">Upload a new version of your deck (V2) to see how your Readiness Score and Canonical Graph have evolved.</p>
+            </div>
           )}
         </TabsContent>
       </Tabs>
