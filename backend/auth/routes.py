@@ -80,6 +80,22 @@ def register(user_in: UserCreate, db: Session = Depends(get_db)) -> Any:
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
+    
+    # Create default workspace for the user
+    from db.models import Workspace, WorkspaceMembership
+    default_workspace = Workspace(name=f"{new_user.name}'s Workspace")
+    db.add(default_workspace)
+    db.commit()
+    db.refresh(default_workspace)
+    
+    membership = WorkspaceMembership(
+        workspace_id=default_workspace.id,
+        user_id=new_user.id,
+        role="Admin"
+    )
+    db.add(membership)
+    db.commit()
+    
     return new_user
 
 @router.get("/me", response_model=UserResponse)

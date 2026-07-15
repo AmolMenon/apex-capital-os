@@ -30,7 +30,21 @@ def create_decision(
 ):
     membership = db.query(WorkspaceMembership).filter(WorkspaceMembership.user_id == current_user.id).first()
     if not membership:
-        raise HTTPException(status_code=400, detail="User has no workspace")
+        # Auto-create workspace for users who signed up before this was automated
+        from db.models import Workspace
+        default_workspace = Workspace(name=f"{current_user.name}'s Workspace")
+        db.add(default_workspace)
+        db.commit()
+        db.refresh(default_workspace)
+        
+        membership = WorkspaceMembership(
+            workspace_id=default_workspace.id,
+            user_id=current_user.id,
+            role="Admin"
+        )
+        db.add(membership)
+        db.commit()
+        db.refresh(membership)
         
     if "subject_id" in data and "title" in data:
         decision_dict = data
