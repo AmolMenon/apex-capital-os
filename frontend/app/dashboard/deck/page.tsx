@@ -43,6 +43,7 @@ export default function PitchDeckPage() {
         setIsLoadingCompare(false);
       }).catch(() => setIsLoadingCompare(false));
     }
+  }, [deal]);
 
   const handleUploadClick = () => {
     fileInputRef.current?.click();
