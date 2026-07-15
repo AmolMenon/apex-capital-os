@@ -118,8 +118,7 @@ def create_decision(
     
     conflict = db_models.EvidenceConflict(
         decision_id=decision.id,
-        description="TAM Calculation Discrepancy",
-        severity="Critical",
+        relationship_type="CONTRADICTS",
         status="OPEN",
         resolution_rationale="You claim a $10B TAM, but your bottom-up pricing model requires 83M users. This is mathematically contradictory."
     )
@@ -129,7 +128,7 @@ def create_decision(
         decision_id=decision.id,
         evidence_type="pitch_deck",
         title=f"{startup_name} Deck v1",
-        content_json="{}"
+        metadata_json="{}"
     )
     db.add(deck)
     
