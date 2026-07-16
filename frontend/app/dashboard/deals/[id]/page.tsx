@@ -160,8 +160,51 @@ export default function DealWorkspacePage() {
             </div>
           )}
           
+          {activeTab === "Research" && (
+            <div className="space-y-6">
+              <h2 className="text-xl font-medium">Live Intelligence Research</h2>
+              <p className="text-sm text-muted-foreground mb-4">
+                Agents are continuously sourcing and analyzing intelligence across the web, regulatory databases, and private networks.
+              </p>
+              {dealEvents.filter(e => ["NEWS_UPDATE", "DOCUMENT_ANALYZED", "ENGINEERING_VELOCITY_UPDATE", "TALENT_SIGNAL", "REGULATORY_FILING", "MARKET_SIGNAL"].includes(e.event_type)).length > 0 ? (
+                <div className="grid gap-4">
+                  {dealEvents.filter(e => ["NEWS_UPDATE", "DOCUMENT_ANALYZED", "ENGINEERING_VELOCITY_UPDATE", "TALENT_SIGNAL", "REGULATORY_FILING", "MARKET_SIGNAL"].includes(e.event_type)).map(event => (
+                    <div key={event.id} className="p-4 border rounded-lg bg-card shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-300">
+                      <div className="flex items-start justify-between mb-2">
+                        <div className="flex flex-col">
+                          <span className="text-xs font-semibold text-primary/80 uppercase tracking-wide">{event.event_type.replace(/_/g, ' ')}</span>
+                          <h3 className="text-md font-medium mt-1">{event.metadata?.headline}</h3>
+                        </div>
+                        <span className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded-md">
+                          Conf: {event.metadata?.confidence || 80}%
+                        </span>
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-2">{event.metadata?.summary}</p>
+                      
+                      {event.metadata?.impact_assessment && (
+                        <div className={`mt-4 text-xs font-medium px-2 py-1 inline-flex rounded-md ${
+                          event.metadata.impact_assessment === 'POSITIVE_SIGNAL' ? 'bg-success/20 text-success' :
+                          event.metadata.impact_assessment === 'NEGATIVE_SIGNAL' ? 'bg-destructive/20 text-destructive' :
+                          'bg-secondary text-muted-foreground'
+                        }`}>
+                          Impact: {event.metadata.impact_assessment.replace(/_/g, ' ')}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="h-64 flex flex-col items-center justify-center p-6 border rounded-lg bg-card text-muted-foreground border-dashed">
+                  <div className="w-8 h-8 rounded-full border-2 border-primary/20 border-t-primary animate-spin mb-4" />
+                  <p className="text-sm">Autonomous agents are actively compiling data for this section.</p>
+                  <p className="text-xs opacity-60 mt-1">Check back later or request specific research.</p>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Fallback for other tabs */}
-          {["Research", "Founder Analysis", "Competition", "Risks", "Missing Diligence", "Investment Memo"].includes(activeTab) && (
+          {["Founder Analysis", "Competition", "Risks", "Missing Diligence", "Investment Memo"].includes(activeTab) && (
             <div className="space-y-6">
               <h2 className="text-xl font-medium">{activeTab}</h2>
               <div className="h-64 flex flex-col items-center justify-center p-6 border rounded-lg bg-card text-muted-foreground border-dashed">

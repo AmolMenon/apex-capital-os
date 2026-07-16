@@ -83,17 +83,45 @@ def readiness_check(db: Session = Depends(get_db)):
 def root_health_check():
     return {"status": "ok", "service": "Apex Capital OS API"}
 
+from core.connectors.mock_news import MockNewsConnector
+from core.connectors.mock_github import MockGitHubConnector
+from core.connectors.mock_linkedin import MockLinkedInConnector
+from core.connectors.mock_regulatory import MockRegulatoryConnector
+from core.connectors.mock_rss import MockRSSConnector
+
 async def background_connector_loop():
-    connector = MockNewsConnector()
+    """
+    Simulates a daemon that periodically triggers connectors.
+    In production, this might be handled by Celery/Temporal/etc.
+    """
+    connectors = [
+        MockNewsConnector(),
+        MockGitHubConnector(),
+        MockLinkedInConnector(),
+        MockRegulatoryConnector(),
+        MockRSSConnector()
+    ]
+    
     while True:
-        await asyncio.sleep(15) # Fetch intelligence every 15s in background
         try:
-            await connector.execute()
+            # Staggered fetch to simulate real-time irregular events
+            for connector in connectors:
+                await connector.publish(event_bus)
+                await asyncio.sleep(2)
+                
+            # Wait before next polling cycle
+            await asyncio.sleep(10)
+        except asyncio.CancelledError:
+            logger.info("Connector loop cancelled.")
+            break
         except Exception as e:
             logger.error(f"Connector loop error: {e}")
 
+from core.intelligence_engine import setup_intelligence_engine
+
 @app.on_event("startup")
 async def startup_event():
+    setup_intelligence_engine()
     if settings.APP_ENV in ["development", "test"]:
         asyncio.create_task(background_connector_loop())
 
