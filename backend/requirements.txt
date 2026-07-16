@@ -24,3 +24,4 @@ PyMuPDF
 pytest
 httpx
 pytest-asyncio
+sse-starlette

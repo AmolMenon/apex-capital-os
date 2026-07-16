@@ -2,184 +2,148 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { InsightCard } from "@/components/InsightCard";
+import { AutonomousAgentStatus } from "@/components/AutonomousAgentStatus";
 import { DealsService } from "@/services/deals";
-import { DecisionsService } from "@/services/decisions";
 import { Deal } from "@/types";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ShieldAlert, Target, Activity } from "lucide-react";
+import { useEventStream } from "@/hooks/useEventStream";
+import { Clock } from "lucide-react";
 
-export default function DashboardPage() {
+export default function BriefingPage() {
   const router = useRouter();
-  const [deal, setDeal] = useState<Deal | null>(null);
-  const [homeData, setHomeData] = useState<any>(null);
+  const [deals, setDeals] = useState<Deal[]>([]);
   const [loading, setLoading] = useState(true);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const liveEvents = useEventStream();
 
   useEffect(() => {
     async function loadData() {
       try {
-        const deals = await DealsService.getDeals();
-        if (deals && deals.length > 0) {
-          setDeal(deals[0]);
-          const data = await DecisionsService.getFounderHome(deals[0].id);
-          setHomeData(data);
-        } else {
-          router.push("/onboarding");
-        }
-      } catch (e: any) {
-        // APM logging
-        setErrorMsg("Failed to load dashboard data. Please try again.");
+        const data = await DealsService.getDeals();
+        setDeals(data || []);
+      } catch (e) {
+        console.error("Failed to load deals", e);
       } finally {
         setLoading(false);
       }
     }
     loadData();
-  }, [router]);
+  }, []);
 
   if (loading) {
     return (
-      <div className="space-y-8 animate-in fade-in duration-300">
-        <div className="space-y-2">
-          <div className="h-8 w-48 bg-secondary/50 rounded animate-pulse" />
-          <div className="h-4 w-96 bg-secondary/50 rounded animate-pulse" />
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="col-span-1 h-48 bg-secondary/50 rounded-xl animate-pulse" />
-          <div className="col-span-2 h-48 bg-secondary/50 rounded-xl animate-pulse" />
-        </div>
+      <div className="space-y-6 animate-pulse">
+        <div className="h-8 w-48 bg-secondary rounded" />
+        <div className="h-32 bg-secondary rounded" />
       </div>
     );
   }
-
-  if (errorMsg) {
-    return (
-      <div className="py-24 text-center animate-in fade-in duration-300">
-        <ShieldAlert className="w-12 h-12 text-destructive mx-auto mb-4" />
-        <h2 className="text-xl font-semibold mb-2">Something went wrong</h2>
-        <p className="text-muted-foreground text-sm mb-6">{errorMsg}</p>
-        <Button onClick={() => window.location.reload()}>Retry</Button>
-      </div>
-    );
-  }
-
-  if (!deal || !homeData) {
-    return (
-      <div className="py-24 text-center animate-in fade-in duration-300">
-        <h2 className="text-xl font-semibold mb-2">No Active Deal</h2>
-        <p className="text-muted-foreground text-sm mb-6">You need to upload a deck to get started.</p>
-        <Button onClick={() => router.push("/onboarding")}>Upload Deck</Button>
-      </div>
-    );
-  }
-
-  const wouldTakeMeeting = homeData.readiness_score >= 80;
 
   return (
-    <div className="space-y-10 animate-in fade-in duration-500">
-      
+    <div className="max-w-4xl space-y-12 animate-in fade-in duration-500 pb-12">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Overview</h1>
-          <p className="text-sm text-muted-foreground mt-1">Version {homeData.latest_version} Analysis</p>
+      <div>
+        <h1 className="text-3xl font-semibold tracking-tight">Good Morning.</h1>
+        <p className="text-muted-foreground mt-2">Here is your executive briefing for today.</p>
+      </div>
+
+      {/* Agents Working */}
+      <div className="flex gap-4">
+        <AutonomousAgentStatus status="working" message="Market research running on 2 new deals." />
+        <AutonomousAgentStatus status="complete" message="Portfolio monitoring up to date." />
+      </div>
+
+      {/* Opinionated Insights */}
+      <div className="space-y-4">
+        <h2 className="text-lg font-medium">Critical Insights</h2>
+        <InsightCard 
+          title="Similar Deal Detected"
+          type="info"
+          content={`One new company in your pipeline resembles "Acme Corp", which was rejected in 2024 for high customer acquisition costs.`}
+          recommendation="Compare their GTM strategies to see if they solved the CAC issue."
+        />
+        <InsightCard 
+          title="Upcoming IC Meeting"
+          type="warning"
+          content="You have an Investment Committee meeting tomorrow for Nova AI."
+          recommendation="Review the missing diligence items on the Deal Workspace."
+        />
+      </div>
+
+      {/* Pipeline Summary */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-medium">Pipeline Action Required</h2>
+          <button 
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            onClick={() => router.push('/dashboard/deals')}
+          >
+            View all deals →
+          </button>
         </div>
-        {homeData.progress_since_last_upload > 0 && (
-          <div className="text-sm font-medium text-success bg-success/10 px-3 py-1.5 rounded-md border border-success/20">
-            +{homeData.progress_since_last_upload} points since last upload
+        
+        {deals.length > 0 ? (
+          <div className="border border-border/50 rounded-lg overflow-hidden">
+            {deals.slice(0, 3).map((deal, idx) => (
+              <div 
+                key={deal.id} 
+                className={`p-4 flex items-center justify-between hover:bg-secondary/30 transition-colors cursor-pointer ${idx !== 0 ? 'border-t border-border/50' : ''}`}
+                onClick={() => router.push(`/dashboard/deals/${deal.id}`)}
+              >
+                <div>
+                  <h3 className="font-medium">{deal.title || 'Unknown Deal'}</h3>
+                  <p className="text-sm text-muted-foreground mt-0.5">Status: {deal.status}</p>
+                </div>
+                <div className="text-xs font-medium text-primary px-2.5 py-1 bg-secondary rounded-md">
+                  Action Needed
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-sm text-muted-foreground p-6 border rounded-lg text-center bg-card">
+            No active deals in the pipeline.
           </div>
         )}
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      {/* Live Intelligence Feed */}
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          <h2 className="text-lg font-medium">Live Intelligence Feed</h2>
+        </div>
         
-        {/* Readiness Core */}
-        <Card className="col-span-1 bg-card border-border/50 shadow-sm flex flex-col">
-          <CardContent className="p-6 flex-1 flex flex-col justify-between">
-            <div>
-              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-4">
-                Current Readiness
-              </div>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-6xl font-semibold tracking-tighter text-foreground">{homeData.readiness_score}</span>
-                <span className="text-lg text-muted-foreground">/ 100</span>
-              </div>
-              <div className={`inline-flex items-center gap-1.5 text-sm font-medium px-2.5 py-1 rounded-md ${wouldTakeMeeting ? 'bg-success/10 text-success' : 'bg-warning/10 text-warning'}`}>
-                {homeData.verdict}
-              </div>
-            </div>
-            
-            <div className="mt-8 pt-6 border-t border-border/50">
-              <div className="text-xs text-muted-foreground mb-1">Recommendation</div>
-              <div className="text-sm font-medium text-foreground">
-                {wouldTakeMeeting ? "Ready to pitch. Schedule meetings." : "Do not pitch yet. Resolve execution tickets."}
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Execution Workspace Summary */}
-        <Card className="col-span-2 bg-card border-border/50 shadow-sm">
-          <CardContent className="p-6">
-            <div className="flex items-center justify-between mb-6">
-              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                Top Execution Tickets
-              </div>
-              <div className="text-xs font-medium text-muted-foreground">
-                Target Score: <span className="text-foreground">{homeData.estimated_readiness_after_today}</span>
-              </div>
-            </div>
-            
-            <div className="space-y-3">
-              {homeData.top_tickets && homeData.top_tickets.length > 0 ? (
-                homeData.top_tickets.map((ticket: any, idx: number) => (
-                  <button 
-                    key={idx} 
-                    className="w-full flex items-start gap-4 p-3 rounded-md hover:bg-secondary/50 transition-colors border border-transparent text-left group"
-                    onClick={() => router.push('/dashboard/execution-workspace')}
-                  >
-                    <div className="mt-0.5 shrink-0">
-                      {ticket.priority === 'High' ? <ShieldAlert className="w-4 h-4 text-destructive" /> : <Target className="w-4 h-4 text-warning" />}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-medium text-foreground">{ticket.title}</h4>
-                      <p className="text-xs text-muted-foreground mt-1 line-clamp-1">{ticket.problem || ticket.why_investors_care}</p>
-                    </div>
-                    <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity mt-0.5 shrink-0" />
-                  </button>
-                ))
-              ) : (
-                <div className="py-8 text-center">
-                  <div className="text-sm text-muted-foreground">All execution tickets resolved.</div>
-                  <Button variant="outline" size="sm" className="mt-4" onClick={() => router.push('/dashboard/deck')}>Upload New Version</Button>
+        <div className="grid grid-cols-1 gap-4">
+          {liveEvents.length > 0 ? (
+            liveEvents.map((event) => (
+              <div key={event.id} className="p-4 border border-border/50 rounded-lg bg-card shadow-sm animate-in fade-in slide-in-from-top-4 duration-300">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-semibold text-sm">{event.metadata?.headline || event.event_type}</h3>
+                  <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+                    <Clock className="w-3 h-3" />
+                    {new Date(event.created_at).toLocaleTimeString()}
+                  </span>
                 </div>
-              )}
+                <p className="text-sm text-muted-foreground">{event.metadata?.summary}</p>
+                <div className="mt-3 flex gap-2">
+                  <span className="px-2 py-0.5 bg-secondary text-xs rounded text-muted-foreground">
+                    Source: {event.actor}
+                  </span>
+                  {event.metadata?.impact_assessment && (
+                    <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded font-medium">
+                      {event.metadata.impact_assessment.replace(/_/g, ' ')}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="p-8 text-center text-sm text-muted-foreground border rounded-lg border-dashed">
+              Listening for background intelligence...
             </div>
-            
-            {homeData.top_tickets && homeData.top_tickets.length > 0 && (
-              <Button variant="secondary" className="w-full mt-6 bg-secondary hover:bg-secondary/80 text-foreground border-0" onClick={() => router.push('/dashboard/execution-workspace')}>
-                Open Workspace
-              </Button>
-            )}
-          </CardContent>
-        </Card>
+          )}
+        </div>
       </div>
-
-      {/* Biggest Risk */}
-      {homeData.biggest_risk && (
-        <Card className="bg-destructive/5 border-destructive/20 shadow-sm">
-          <CardContent className="p-6 flex gap-4">
-            <ShieldAlert className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
-            <div>
-              <h3 className="text-sm font-semibold text-destructive mb-1">Biggest Current Risk</h3>
-              <p className="text-sm text-foreground/80 leading-relaxed">
-                {homeData.biggest_risk}
-              </p>
-            </div>
-          </CardContent>
-        </Card>
-      )}
-
     </div>
   );
 }

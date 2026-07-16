@@ -10,6 +10,9 @@ from routes.evidence import router as evidence_router
 from routes.reasoning import router as reasoning_router
 from routes.execution import router as execution_router
 from routes.investor_review import router as investor_review_router
+from routes.events import router as events_router
+from core.connectors.mock_news import MockNewsConnector
+import asyncio
 
 from routes.users import router as users_router
 
@@ -56,6 +59,7 @@ app.include_router(evidence_router, prefix=f"{api_prefix}/decisions", tags=["Evi
 app.include_router(reasoning_router, prefix=f"{api_prefix}/decisions", tags=["Reasoning"])
 app.include_router(execution_router, prefix=f"{api_prefix}/decisions", tags=["Execution"])
 app.include_router(investor_review_router, prefix=f"{api_prefix}/decisions", tags=["Investor Review"])
+app.include_router(events_router, prefix=f"{api_prefix}/events", tags=["Events"])
 
 @app.get(f"{api_prefix}/health/liveness", tags=["System"])
 def liveness_check():
@@ -78,6 +82,20 @@ def readiness_check(db: Session = Depends(get_db)):
 @app.get("/", include_in_schema=False)
 def root_health_check():
     return {"status": "ok", "service": "Apex Capital OS API"}
+
+async def background_connector_loop():
+    connector = MockNewsConnector()
+    while True:
+        await asyncio.sleep(15) # Fetch intelligence every 15s in background
+        try:
+            await connector.execute()
+        except Exception as e:
+            logger.error(f"Connector loop error: {e}")
+
+@app.on_event("startup")
+async def startup_event():
+    if settings.APP_ENV in ["development", "test"]:
+        asyncio.create_task(background_connector_loop())
 
 if __name__ == "__main__":
     import uvicorn

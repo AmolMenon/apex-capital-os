@@ -515,13 +515,20 @@ class Recommendation(Base):
     __tablename__ = "recommendations"
     id = Column(Integer, primary_key=True, autoincrement=True)
     decision_id = Column(Integer, ForeignKey("decisions.id", ondelete="CASCADE"), index=True)
-    reasoning_run_id = Column(Integer, ForeignKey("reasoning_runs.id", ondelete="CASCADE"), index=True)
+    reasoning_run_id = Column(Integer, ForeignKey("reasoning_runs.id", ondelete="CASCADE"), index=True, nullable=True)
     recommendation_value = Column(String)
     recommendation_type = Column(String)
     model_confidence = Column(Integer)
     status = Column(String, default="FINALIZED") # DRAFT, BLOCKED_PENDING_REVIEW, CRITICAL_REVIEW_REQUIRED, FINALIZED
     key_risks_json = Column(Text, nullable=True)
     missing_information_json = Column(Text, nullable=True)
+    
+    # Autonomous Engine Additions
+    version = Column(Integer, default=1)
+    reasons_confidence_increased_json = Column(Text, nullable=True)
+    reasons_confidence_decreased_json = Column(Text, nullable=True)
+    triggering_event_id = Column(Integer, ForeignKey("domain_events.id", ondelete="SET NULL"), nullable=True)
+    
     created_at = Column(DateTime, default=datetime.utcnow)
 
 # DecisionIntegrityEnvelope Association Tables
